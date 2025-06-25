@@ -1,2 +1,3 @@
 # APKG
-Application Package Application Profile
+Application Package Metadata Application Profile
+
