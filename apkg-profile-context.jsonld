@@ -64,10 +64,7 @@
                 "@id":"schema:url",
                 "@type":"xsd:anyURI"
             },
-            "registration_url":{
-                "@id":"schema:url",
-                "@type":"xsd:anyURI"
-            },
+            "registration_url": "apkg:originalURL",
             "spatial_coverage":"schema:spatialCoverage",
             "inXSDDateTime":"time:inXSDDateTime",
             "hasBeginning":"time:hasBeginning",
