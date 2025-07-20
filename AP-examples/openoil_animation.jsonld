@@ -1,0 +1,195 @@
+{
+    "@context":[
+        "https://raw.githubusercontent.com/ILIAD-ocean-twin/APKG/refs/heads/main/apkg-profile-context.jsonld"
+    ],
+    "geometry":{
+        "coordinates":[
+            [
+                [
+                    -180.0,
+                    -90.0
+                ],
+                [
+                    180.0,
+                    -90.0
+                ],
+                [
+                    180.0,
+                    90.0
+                ],
+                [
+                    -180.0,
+                    90.0
+                ],
+                [
+                    -180.0,
+                    -90.0
+                ]
+            ]
+        ],
+        "type":"Polygon"
+    },
+    "id":"openoil_animation",
+    "outputs":[
+        {
+            "format":"edam:format_3467",
+            "id":"animation",
+            "type":"File"
+        }
+    ],
+    "programming_language":"python",
+    "keywords":[
+        "oil spill",
+        "animation",
+        "simulation",
+        "openoil",
+        "opendrift"
+    ],
+    "inputs":[
+        {
+            "format":"edam:format_3650",
+            "doc":"The netcdf file containing the simulation results",
+            "id":"file",
+            "type":"File"
+        }
+    ],
+    "description":"Animation of oil spill simulation",
+    "maintainer":null,
+    "sdPublisher":[
+        {
+            "name":"Application Package Registry",
+            "class":"Organization",
+            "url":"https://iliad-registry.inesctec.pt"
+        }
+    ],
+    "temporal_coverage":null,
+    "contributor":[
+        {
+            "name":"Miguel Correia",
+            "email":"miguel.r.correia@inesctec.pt"
+        }
+    ],
+    "spatial_coverage":{
+        "geo":{
+            "box":"-90 -180 90 180"
+        },
+        "class":"schema:GeoShape"
+    },
+    "software_version":"0.1.0",
+    "class":"CommandLineTool",
+    "latest":true,
+    "identifier":"urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0",
+    "citation":null,
+    "date_created":"2025-05-12T12:29:29Z",
+    "author":[
+        {
+            "name":"Georgios Sylaios",
+            "email":"gsylaios@env.duth.gr"
+        },
+        {
+            "name":"Nikolaos Kokkos",
+            "email":"nikolaoskokkos@gmail.com"
+        }
+    ],
+    "sdDatePublished":"2025-06-11T14:22:55.895087Z",
+    "url":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=cwl",
+    "license":null,
+    "code_repository":"https://pipe-drive.inesctec.pt/application-packages/tools/openoil-animation-duth/openoil_animation_duth_0_1_0.cwl",
+    "source_organization":[
+        {
+            "address":{
+                "address_country":"PT"
+            },
+            "name":"INESCTEC",
+            "url":"https://inesctec.pt"
+        },
+        {
+            "address":{
+                "address_country":"GR"
+            },
+            "name":"D.U.TH",
+            "url":"https://env.duth.gr"
+        }
+    ],
+    "name":"openoil_animation",
+    "producer":[
+        {
+            "address":{
+                "address_country":"GR"
+            },
+            "name":"D.U.TH",
+            "url":"https://env.duth.gr"
+        }
+    ],
+    "family":"urn:apkg:tool:d.u.th:gr:openoil_animation",
+    "@id":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0",
+    "links":[
+        {
+            "type":"application/json",
+            "rel":"root",
+            "title":"The landing page of this server as JSON",
+            "href":"https://iliad-registry.inesctec.pt?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"root",
+            "title":"The landing page of this server as HTML",
+            "href":"https://iliad-registry.inesctec.pt?f=html"
+        },
+        {
+            "rel":"alternate",
+            "type":"application/geo+json",
+            "title":"This document as GeoJSON",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=json"
+        },
+        {
+            "rel":"self",
+            "type":"application/ld+json",
+            "title":"This document as RDF (JSON-LD)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=jsonld"
+        },
+        {
+            "rel":"alternate",
+            "type":"text/html",
+            "title":"This document as HTML",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=html"
+        },
+        {
+            "type":"application/cwl+yaml",
+            "rel":"alternate",
+            "title":"This document as CWL (YAML)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=cwl"
+        },
+        {
+            "type":"application/cwl+json",
+            "rel":"alternate",
+            "title":"This document as CWL (JSON)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=cwljson"
+        },
+        {
+            "rel":"collection",
+            "type":"application/json",
+            "title":"Application Packages",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg"
+        },
+        {
+            "type":"text/html",
+            "rel":"alternate",
+            "title":"All versions of this document as HTML",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:d.u.th:gr:openoil_animation\"&sortby=-software_version"
+        },
+        {
+            "type":"application/json",
+            "rel":"alternate",
+            "title":"All versions of this document as JSON",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:d.u.th:gr:openoil_animation\"&sortby=-software_version"
+        },
+        {
+            "type":"application/json",
+            "rel":"alternate",
+            "title":"All versions of this document as RDF (JSON-LD)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:d.u.th:gr:openoil_animation\"&sortby=-software_version"
+        }
+    ],
+    "@type":"apkg:ApplicationPackage"
+}
