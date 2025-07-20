@@ -1,0 +1,271 @@
+{
+    "@context":[
+        "https://raw.githubusercontent.com/ILIAD-ocean-twin/APKG/refs/heads/main/apkg-profile-context.jsonld"
+    ],
+    "geometry":{
+        "coordinates":[
+            [
+                [
+                    -180.0,
+                    -90.0
+                ],
+                [
+                    180.0,
+                    -90.0
+                ],
+                [
+                    180.0,
+                    90.0
+                ],
+                [
+                    -180.0,
+                    90.0
+                ],
+                [
+                    -180.0,
+                    -90.0
+                ]
+            ]
+        ],
+        "type":"Polygon"
+    },
+    "id":"openoil_pipeline",
+    "outputs":[
+        {
+            "id":"wf_outputs",
+            "type":"Directory"
+        }
+    ],
+    "registration_url":"https://pipe-drive.inesctec.pt/application-packages/workflows/openoil-duth/openoil_duth_0_3_0.cwl",
+    "programming_language":null,
+    "keywords":[
+        "oil spill",
+        "openoil",
+        "opendrift",
+        "animation"
+    ],
+    "Secrets":{
+        "secrets":[
+            "access_key",
+            "secret_key",
+            "session_token",
+            "password"
+        ]
+    },
+    "inputs":[
+        {
+            "doc":"The latitude of the study area",
+            "label":"openoil",
+            "id":"lat",
+            "type":"float"
+        },
+        {
+            "doc":"The longitude of the study area",
+            "label":"openoil",
+            "id":"lon",
+            "type":"float"
+        },
+        {
+            "doc":"The start time of the simulation",
+            "label":"openoil",
+            "id":"time",
+            "type":"string"
+        },
+        {
+            "doc":"The type of the oil to run the simulation",
+            "label":"openoil",
+            "id":"oiltype",
+            "type":"string"
+        },
+        {
+            "doc":"The simulation duration",
+            "label":"openoil",
+            "id":"duration",
+            "type":"int"
+        },
+        {
+            "doc":"The CMEMS username",
+            "label":"cmems_credentials",
+            "id":"username",
+            "type":"string"
+        },
+        {
+            "doc":"The CMEMS password",
+            "label":"cmems_credentials",
+            "id":"password",
+            "type":"string"
+        },
+        {
+            "doc":"Run (or not) the animation step",
+            "label":"openoil",
+            "id":"animation",
+            "type":"boolean?"
+        },
+        {
+            "doc":"S3 storage endpoint",
+            "label":"s3storage",
+            "id":"endpoint",
+            "type":"string?"
+        },
+        {
+            "doc":"S3 storage region",
+            "label":"s3storage",
+            "id":"region",
+            "type":"string?"
+        },
+        {
+            "doc":"S3 storage access_key",
+            "label":"s3storage",
+            "id":"access_key",
+            "type":"string?"
+        },
+        {
+            "doc":"S3 storage secret_key",
+            "label":"s3storage",
+            "id":"secret_key",
+            "type":"string?"
+        },
+        {
+            "doc":"S3 storage region",
+            "label":"s3storage",
+            "id":"session_token",
+            "type":"string?"
+        },
+        {
+            "doc":"S3 storage bucket",
+            "label":"s3storage",
+            "id":"bucket",
+            "type":"string?"
+        },
+        {
+            "default":"openoil_pipeline",
+            "doc":"S3 storage final directory name",
+            "label":"s3storage",
+            "id":"base_path",
+            "type":"string?"
+        }
+    ],
+    "description":"This pipeline runs an oil spill simulation with openoil, creates an animation of the simulation and stores it in S3.\n\nThe animation step is optional:\n    - If the input animation is set to false, the animation step is skipped.\n    - The default value is true (run the animation step).\n\nThe step of saving the results to S3 is optional:\n    - if the input endpoint is not set, the S3 step is skipped.\n",
+    "maintainer":null,
+    "sdPublisher":[
+        {
+            "name":"Application Package Registry",
+            "class":"Organization",
+            "url":"https://iliad-registry.inesctec.pt"
+        }
+    ],
+    "temporal_coverage":null,
+    "contributor":null,
+    "spatial_coverage":{
+        "geo":{
+            "box":"-90 -180 90 180"
+        },
+        "class":"schema:GeoShape"
+    },
+    "software_version":"0.3.0",
+    "class":"Workflow",
+    "latest":true,
+    "identifier":"urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0",
+    "citation":null,
+    "date_created":"2025-06-13T01:59:52Z",
+    "author":[
+        {
+            "name":"Miguel Correia",
+            "email":"miguel.r.correia@inesctec.pt"
+        }
+    ],
+    "sdDatePublished":"2025-06-13T02:01:58.736406Z",
+    "url":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0?f=cwl",
+    "license":null,
+    "code_repository":"https://pipe-drive.inesctec.pt/application-packages/workflows/openoil-duth/openoil_duth_0_3_0.cwl",
+    "source_organization":[
+        {
+            "address":{
+                "address_country":"PT"
+            },
+            "name":"INESCTEC",
+            "url":"https://inesctec.pt"
+        }
+    ],
+    "name":"openoil_pipeline",
+    "producer":[
+        {
+            "address":{
+                "address_country":"PT"
+            },
+            "name":"INESCTEC",
+            "url":"https://inesctec.pt"
+        }
+    ],
+    "family":"urn:apkg:workflow:inesctec:pt:openoil_pipeline",
+    "@id":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0",
+    "links":[
+        {
+            "type":"application/json",
+            "rel":"root",
+            "title":"The landing page of this server as JSON",
+            "href":"https://iliad-registry.inesctec.pt?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"root",
+            "title":"The landing page of this server as HTML",
+            "href":"https://iliad-registry.inesctec.pt?f=html"
+        },
+        {
+            "rel":"alternate",
+            "type":"application/geo+json",
+            "title":"This document as GeoJSON",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0?f=json"
+        },
+        {
+            "rel":"self",
+            "type":"application/ld+json",
+            "title":"This document as RDF (JSON-LD)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0?f=jsonld"
+        },
+        {
+            "rel":"alternate",
+            "type":"text/html",
+            "title":"This document as HTML",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0?f=html"
+        },
+        {
+            "type":"application/cwl+yaml",
+            "rel":"alternate",
+            "title":"This document as CWL (YAML)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0?f=cwl"
+        },
+        {
+            "type":"application/cwl+json",
+            "rel":"alternate",
+            "title":"This document as CWL (JSON)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_pipeline:0.3.0?f=cwljson"
+        },
+        {
+            "rel":"collection",
+            "type":"application/json",
+            "title":"Application Packages",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg"
+        },
+        {
+            "type":"text/html",
+            "rel":"alternate",
+            "title":"All versions of this document as HTML",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:openoil_pipeline\"&sortby=-software_version"
+        },
+        {
+            "type":"application/json",
+            "rel":"alternate",
+            "title":"All versions of this document as JSON",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:openoil_pipeline\"&sortby=-software_version"
+        },
+        {
+            "type":"application/json",
+            "rel":"alternate",
+            "title":"All versions of this document as RDF (JSON-LD)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:openoil_pipeline\"&sortby=-software_version"
+        }
+    ],
+    "@type":"apkg:ApplicationPackage"
+}
