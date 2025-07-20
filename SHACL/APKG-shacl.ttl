@@ -1,0 +1,362 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix apkg: <http://purl.org/apkg/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix cwltool: <http://commonwl.org/cwltool#> .
+@prefix gj: <http://purl.org/geojson/vocab#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+
+#################################################################
+# Shape: ApplicationPackage
+#################################################################
+apkg:ApplicationPackageShape a sh:NodeShape ;
+    sh:targetClass apkg:ApplicationPackage ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:keywords ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path dct:identifier ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:family ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareVersion ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:dateCreated ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:sdPublisher ;
+        sh:node apkg:Registry ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:sdDatePublished ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:citation ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:license ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:author ;
+        sh:node apkg:Person ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:maintainer ;
+        sh:node apkg:Person ;
+    ] ;
+    sh:property [
+        sh:path schema:contributor ;
+        sh:node apkg:Person ;
+    ] ;
+    sh:property [
+        sh:path schema:publisher ;
+        sh:node apkg:Person ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:sourceOrganization ;
+        sh:node apkg:Organisation ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:producer ;
+        sh:node apkg:Organisation ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:spatialCoverage ;
+        sh:node schema:Place ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:codeRepository ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:programmingLanguage ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:hasGeometry ;
+        sh:node apkg:Geometry ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:hasTemporalCoverage ;
+        sh:node apkg:TemporalCoverage ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:hasLink ;
+        sh:node apkg:Link ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:latest ;
+        sh:datatype xsd:boolean ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:originalURL ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Person
+#################################################################
+apkg:PersonShape a sh:NodeShape ;
+    sh:targetClass apkg:Person ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:email ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Organisation
+#################################################################
+apkg:OrganisationShape a sh:NodeShape ;
+    sh:targetClass apkg:Organisation ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:address ;
+        sh:node apkg:PostalAddress ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Registry
+#################################################################
+apkg:RegistryShape a sh:NodeShape ;
+    sh:targetClass apkg:Registry ;
+    sh:property [
+        sh:path schema:class ;
+        sh:in ("Organization");
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: PostalAddress
+#################################################################
+apkg:PostalAddressShape a sh:NodeShape ;
+    sh:targetClass apkg:PostalAddress ;
+    sh:property [
+        sh:path schema:addressCountry ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1
+    ] .
+
+
+#################################################################
+# Shape: Geometry
+#################################################################
+apkg:GeometryShape a sh:NodeShape ;
+    sh:targetClass apkg:Geometry ;
+    sh:property [
+        sh:path gj:coordinates ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path dct:type ;
+        sh:in ( "Polygon" ) ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: TemporalCoverage
+#################################################################
+apkg:TemporalCoverageShape a sh:NodeShape ;
+    sh:targetClass apkg:TemporalCoverage ;
+    sh:property [
+        sh:path time:hasBeginning ;
+        sh:node apkg:Instant ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path time:hasEnd ;
+        sh:node apkg:Instant ;
+        sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: TimeInstant
+#################################################################
+apkg:TimeInstantShape a sh:NodeShape ;
+    sh:targetClass apkg:Instant ;
+    sh:property [
+        sh:path time:inXSDDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Links
+#################################################################
+apkg:LinkShape a sh:NodeShape ;
+    sh:targetClass apkg:Link ;
+    sh:property [
+        sh:path dcat:mediaType  ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path dct:type ;
+        sh:datatype xsd:string ;
+        sh:in ( "root" "self" "alternate" "collection" ) ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path dct:title ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:href ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Process
+#################################################################
+apkg:ProcessShape a sh:NodeShape ;
+    sh:targetClass apkg:Process ;
+    sh:property [
+        sh:path dct:type ;
+        sh:in ( "CommandLineTool" "Workflow" ) ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:hasInput ;
+        sh:node apkg:Parameter ;
+    ] ;
+    sh:property [
+        sh:path apkg:hasOutput ;
+        sh:node apkg:Parameter ;
+        sh:minCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Parameter
+#################################################################
+apkg:ParameterShape a sh:NodeShape ;
+    sh:targetClass apkg:Parameter ;
+    sh:property [
+        sh:path dct:identifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path dct:type ;
+        sh:in (
+            "null" "boolean" "int" "long" "float" "double"
+            "string" "File" "Directory"
+        ) ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:label ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path apkg:doc ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path schema:fileFormat ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+
+#################################################################
+# Shape: Secrets
+#################################################################
+apkg:SecretsShape a sh:NodeShape ;
+    sh:targetClass apkg:Secrets ;
+    sh:property [
+        sh:path cwltool:secrets ;
+        sh:datatype xsd:string ;
+    ] .
