@@ -15,7 +15,7 @@
                 "@type":"xsd:anyURI"
             },
             "geometry":"apkg:hasGeometry",
-            "temporal_coverage":"apkg:hasTemporalCoverage,",
+            "temporal_coverage":"apkg:hasTemporalCoverage",
             "inputs":"apkg:hasInput",
             "outputs":"apkg:hasOutput",
             "label":"apkg:label",
