@@ -24,11 +24,18 @@
                 "@type":"xsd:anyURI"
             },
             "latest":"apkg:latest",
-            "links":"apkg:hasLink",
-            "title":"dct:title",
-            "rel":"dct:type",
-            "type":"dcat:mediaType",
-            "href":"schema:url",
+            "links": {
+                "@id": "apkg:hasLink",
+                "@context": {
+                    "rel": "dct:type",
+                    "type": "dcat:mediaType",
+                    "href": {
+                        "@id": "schema:url",
+                        "@type": "xsd:anyURI"
+                    },
+                    "title": "dct:title"
+                }
+            },
             "keywords":"schema:keywords",
             "date_created":{
                 "@id":"schema:dateCreated",
