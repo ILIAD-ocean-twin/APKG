@@ -9,7 +9,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix cwl: <https://w3id.org/cwl/cwl#> .
 @prefix cwltool: <http://commonwl.org/cwltool#> .
-@prefix apkg: <http://w3id.org/apkg#> .
+@prefix apkg: <http://w3id.org/apkg/terms#> .
 @prefix time:<http://www.w3.org/2006/time#> .
 
 
