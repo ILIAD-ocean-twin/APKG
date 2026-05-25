@@ -13,7 +13,6 @@
 | cwltool    | http://commonwl.org/cwltool#                         |
 | gj         | http://purl.org/geojson/vocab#                       |
 | time       | http://www.w3.org/2006/time#                         |
-| dcat       | http://www.w3.org/ns/dcat#                           |
 -----------------------------------------------------------------------
 
 
