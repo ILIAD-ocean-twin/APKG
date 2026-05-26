@@ -34,11 +34,12 @@ Table 1 - Core properties related to the catalogue record
 
 Table 2 - Core properties related to the resource
 
-| Property OGC | Label                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+| Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|              | Title of the application package                                    | dct:title                                | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
-|              | Description of the application package                              | dct:description                          | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
-|              | A spatial extent associated with the resource described by this record. | apkg:hasGeometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
+|      type        |          The nature or genre of the resource described by this record.                                                           |                                          |                                          |                  | | |
+|          title    | A human-readable name given to the resource described by this record.                                   | dct:title                                | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
+|  description            | 	A free-text description of the resource described by this record.                              | dct:description                          | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
+|   geometry           | A spatial extent associated with the resource described by this record. | apkg:hasGeometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
 |              | Keywords of the application package                                 | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
 |              | Unique identifier of the application package                        | dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
 |              | Family of this application package (identifier without version)     | apkg:family                              | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
