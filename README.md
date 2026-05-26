@@ -20,14 +20,14 @@
 
 Table 1 - Core properties related to the catalogue record
 
-| Property OGC   | Label                                                                                    | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+| OGC Property   | Label                                                                                    | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |                | __Catalogue Record__                                                                     | dcat:Catalog                             |                                          |                                   |             |     |      |
 | id             | A unique record identifier assigned by the server.                                       | schema:identifier                        | dcat:Catalog                             | xsd:anyURI                        | 1-1         |     |      |
-| created        | The date this record was created in the server.                                          | **dct:issued**                           | dcat:Catalog                             | **xsd:date**                      | 0-1         |     |      |
+| created        | The date this record was created in the server.                                          | dct:issued                           | dcat:Catalog                             | xsd:date                      | 0-1         |     |      |
 | updated        | The most recent date on which the record was changed.                                    | dct:modified                             | dcat:Catalog                             | xsd:date                          | 0-1         |     |      |
 | conformsTo     | The extensions/conformance classes used in this record                                   | dct:conformsTo                           | dcat:Catalog                             | dct:Standard                      | 0-1         |     |      |
-| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | **dct:language**                         | dcat:Catalog                             | **dct:LinguisticSystem**          | 0-M         |     |      |
+| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | dct:language                       | dcat:Catalog                             | dct:LinguisticSystem          | 0-M         |     |      |
 | links          | A link related to this record                                                            | dcterms:relation                         | dcat:Catalog                             | xsd:anyURI                        | 0-M         |     |      |
 | linkTemplates  | A link template related to this record                                                   | schema:urlTemplate                       | dcat:Catalog                             | schema:URL                        | 0-M         |     |      |
 
