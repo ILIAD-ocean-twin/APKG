@@ -20,17 +20,17 @@
 
 Table 1 - Core properties related to the catalogue record
 
-| Label                                                                                    | Property OGC | Domain                                   | Range                             | Vocabulary Term                          | Cardinality | VES | Note |
-|------------------------------------------------------------------------------------------|--------------|------------------------------------------|-----------------------------------|------------------------------------------|-------------|-----|------|
-| __Catalogue Record__                                                                     |              |                                          |                                   | dcat:Catalog                             |             |     |      |
-| A unique record identifier assigned by the server.                                       |              | dcat:Catalog                             | xsd:anyURI                        | schema:identifier                        | 1-1         |     |      |
-| The date this record was created in the server.                                          |              | dcat:Catalog                             | **xsd:date**                      | **dct:issued **                          | 0-1         |     |      |
-| The most recent date on which the record was changed.                                    |              | dcat:Catalog                             | xsd:date                          | dct:modified                             | 0-1         |     |      |
-| The extensions/conformance classes used in this record                                   |              | dcat:Catalog                             | dct:Standard                      | dct:conformsTo                           | 0-1         |     |      |
-| The language used for textual values (i.e., titles, descriptions, etc.) of this record. |              | dcat:Catalog                             | **dct:LinguisticSystem **         | **dct:language **                        | 0-M         |     |      |
-| A link related to this record                                                            |              | dcat:Catalog                             | xsd:anyURI                        | dcterms:relation                         | 0-M         |     |      |
-| A link template related to this record                                                   |              | dcat:Catalog                             | schema:URL                        | schema:urlTemplate                       | 0-M         |     |      |
-------------------------------------------------------------------------------------------------------------------------------
+| Property OGC   | Label                                                                                    | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+|----------------|------------------------------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
+|                | __Catalogue Record__                                                                     | dcat:Catalog                             |                                          |                                   |             |     |      |
+| id             | A unique record identifier assigned by the server.                                       | schema:identifier                        | dcat:Catalog                             | xsd:anyURI                        | 1-1         |     |      |
+| created        | The date this record was created in the server.                                          | **dct:issued**                           | dcat:Catalog                             | **xsd:date**                      | 0-1         |     |      |
+| updated        | The most recent date on which the record was changed.                                    | dct:modified                             | dcat:Catalog                             | xsd:date                          | 0-1         |     |      |
+| conformsTo     | The extensions/conformance classes used in this record                                   | dct:conformsTo                           | dcat:Catalog                             | dct:Standard                      | 0-1         |     |      |
+| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | **dct:language**                         | dcat:Catalog                             | **dct:LinguisticSystem**          | 0-M         |     |      |
+| links          | A link related to this record                                                            | dcterms:relation                         | dcat:Catalog                             | xsd:anyURI                        | 0-M         |     |      |
+| linkTemplates  | A link template related to this record                                                   | schema:urlTemplate                       | dcat:Catalog                             | schema:URL                        | 0-M         |     |      |
+
 
 Table 2 - Core properties related to the resource
 
