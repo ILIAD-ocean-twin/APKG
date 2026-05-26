@@ -20,7 +20,7 @@
 
 Table 1 - Core properties related to the catalogue record
 
-| OGC Property   | Label                                                                                    | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+| OGC Property   | Description                                                                                    | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |                | __Catalogue Record__                                                                     | dcat:Catalog                             |                                          |                                   |             |     |      |
 | id             | A unique record identifier assigned by the server.                                       | schema:identifier                        | dcat:Catalog                             | xsd:anyURI                        | 1-1         |     |      |
@@ -33,13 +33,14 @@ Table 1 - Core properties related to the catalogue record
 
 
 Table 2 - Core properties related to the resource
-
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |      type        |          The nature or genre of the resource described by this record.                                                           |                                          |                                          |                  | | |
 |          title    | A human-readable name given to the resource described by this record.                                   | dct:title                                | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
 |  description            | 	A free-text description of the resource described by this record.                              | dct:description                          | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
 |   geometry           | A spatial extent associated with the resource described by this record. | apkg:hasGeometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
+| time | A temporal extent associated with the resource described by this record.                         |                   | apkg:TemporalCoverage                    | apkg:hasTemporalCoverage                 | 0-1         |                                 |                                                             |
+
 |              | Keywords of the application package                                 | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
 |              | Unique identifier of the application package                        | dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
 |              | Family of this application package (identifier without version)     | apkg:family                              | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
@@ -62,12 +63,12 @@ Table 2 - Core properties related to the resource
 |              | Original URL of the application package when registered             | apkg:originalURL                         | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
 
 
+
  Table 3 - Extension properties of the Application Package type o resource
 
-| Label                                                               | Domain                                   | Range                                    | Vocabulary Term                          | Cardinality | VES                             | Note                                                        |
+| Description                                                               | Domain                                   | Range                                    | Vocabulary Term                          | Cardinality | VES                             | Note                                                        |
 |---------------------------------------------------------------------|------------------------------------------|------------------------------------------|------------------------------------------|-------------|---------------------------------|-------------------------------------------------------------|
 | __ApplicationPackage__                                              |                                          |                                          | apkg:ApplicationPackage                  |             |                                 |                                                             |
-| The Application Package has a Time Validity                         | apkg:ApplicationPackage                  | apkg:TemporalCoverage                    | apkg:hasTemporalCoverage                 | 0-1         |                                 |                                                             |
 | Link of the application package                                     | apkg:ApplicationPackage                   | apkg:Link                               | apkg:hasLink                             | 1-M         |                                 |                                                             |
 | __Person__                                                          |                                          |                                          | apkg:Person                              |             |                                 | rdfs:subClassOf schema:Person                               |
 | Name(s) of the Person                                               | apkg:Person                              | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
