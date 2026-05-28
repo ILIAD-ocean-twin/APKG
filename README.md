@@ -41,10 +41,14 @@ Table 2 - Core properties related to the resource
 |   geometry           | A spatial extent associated with the resource described by this record. | apkg:hasGeometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
 | time | A temporal extent associated with the resource described by this record.                         |         apkg:hasTemporalCoverage           |    apkg:ApplicationPackage                  |   apkg:TemporalCoverage              | 0-1         |                                 |                                                             |
 |              | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
-| theme | A knowledge organization system used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI |0-M |
+| theme | A knowledge organization system (KOS) used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI | 0-1|
+| concept |The classification of the KOS defined on theme | |apkg:ApplicationPackage  | | 0-M |
+| resourceLanguage| The list of languages in which the resource described by this record can be retrieved. | dct:language                              | apkg:ApplicatinPackage                             | dct:LinguisticSystem     | 0-M|
+| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. |  dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        |     1-M     |     |      |
 | | | | | | |
 | | | | | | |
-|              | Unique identifier of the application package                        | dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
+| | | | | | |
+|              | Unique identifier of the application package                        
 |              | Family of this application package (identifier without version)     | apkg:family                              | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
 |              | Software version of the application package                         | schema:softwareVersion                   | apkg:ApplicationPackage                  | schema:Text                       | 1-1         |     |      |
 |              | This is the latest version of the application package               | apkg:latest                              | apkg:ApplicationPackage                  | xsd:boolean                       | 1-1         |     |      |
