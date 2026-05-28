@@ -40,14 +40,23 @@ Table 2 - Core properties related to the resource
 |  description            | 	A free-text description of the resource described by this record.                              | dct:description                          | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
 |   geometry           | A spatial extent associated with the resource described by this record. | apkg:hasGeometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
 | time | A temporal extent associated with the resource described by this record.                         |         apkg:hasTemporalCoverage           |    apkg:ApplicationPackage                  |   apkg:TemporalCoverage              | 0-1         |                                 |                                                             |
-|              | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
-| theme | A knowledge organization system (KOS) used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI | 0-1|
+|      keywowrds        | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
+| themes | A knowledge organization system (KOS) used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI | 0-1|
 | concept |The classification of the KOS defined on theme | |apkg:ApplicationPackage  | | 0-M |
-| resourceLanguage| The list of languages in which the resource described by this record can be retrieved. | dct:language                              | apkg:ApplicatinPackage                             | dct:LinguisticSystem     | 0-M|
+| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | schema:inLanguage                              | apkg:ApplicatinPackage                             | dct:LinguisticSystem     | 0-M|
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. |  dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        |     1-M     |     |      |
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| formats | | | | | |
+| contacts | | | | | |
+| licence| | | | | |
+| rights| | | | | |
+
+
+
+
+Table 3 - APKG extension properties related to the resource
+
+| Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+|--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |              | Unique identifier of the application package                        
 |              | Family of this application package (identifier without version)     | apkg:family                              | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
 |              | Software version of the application package                         | schema:softwareVersion                   | apkg:ApplicationPackage                  | schema:Text                       | 1-1         |     |      |
@@ -67,14 +76,6 @@ Table 2 - Core properties related to the resource
 |              | URL of the application package code repository                      | schema:codeRepository                    | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
 |              | Programming language of the application package                     | schema:programmingLanguage               | apkg:ApplicationPackage                  | schema:Text                       | 0-1         |     |      |
 |              | Original URL of the application package when registered             | apkg:originalURL                         | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
-
-
-
- Table 3 - Extension properties of the Application Package type o resource
-
-| Description                                                               | Domain                                   | Range                                    | Vocabulary Term                          | Cardinality | VES                             | Note                                                        |
-|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|------------------------------------------|-------------|---------------------------------|-------------------------------------------------------------|
-| __ApplicationPackage__                                              |                                          |                                          | apkg:ApplicationPackage                  |             |                                 |                                                             |
 | Link of the application package                                     | apkg:ApplicationPackage                   | apkg:Link                               | apkg:hasLink                             | 1-M         |                                 |                                                             |
 | __Person__                                                          |                                          |                                          | apkg:Person                              |             |                                 | rdfs:subClassOf schema:Person                               |
 | Name(s) of the Person                                               | apkg:Person                              | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
