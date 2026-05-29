@@ -149,9 +149,9 @@ a rdf:Property,	owl:DataProperty;
 	rdfs:range xsd:boolean.
 
 apkg:originalURL
-a rdf:Property;
-a rdfs:subPropertyOf schema:url;
-rdfs:label "Original URL of the application package when registered."@en.
+a rdf:Property,	owl:DataProperty;
+  rdfs:subPropertyOf schema:url;
+  rdfs:label "Original URL of the application package when registered."@en.
 
 
 
