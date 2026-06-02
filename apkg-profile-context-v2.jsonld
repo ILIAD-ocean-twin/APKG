@@ -1,0 +1,121 @@
+{
+    "@context": {
+        "apkg": "http://purl.org/apkg/terms/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "sh": "http://www.w3.org/ns/shacl",
+        "dct": "http://purl.org/dc/terms/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "time": "http://www.w3.org/2006/time#",
+        "schema": "https://schema.org/",
+        "cwl": "https://w3id.org/cwl/cwl#",
+        "cwltool": "http://commonwl.org/cwltool#",
+        "gj": "http://purl.org/geojson/vocab#",
+
+        "id": "schema:identifier",
+        "geometry": {
+            "@id": "apkg:hasGeometry",
+            "@context": {
+                "type": "dct:type",
+                "coordinates": "gj:coordinates"
+            }
+        },
+        
+        "name": "dct:title",
+        "identifier": "dct:identifier",
+        "class": "dct:type",
+        "description": "dct:description",
+        "keywords": "dcat:keyword",
+        "family": { "@id": "apkg:family", "@type": "xsd:anyURI" },
+        "latest": "apkg:latest",
+        "date_created": "dct:issued",
+        "url": "schema:url",
+        "registration_url": "apkg:originalURL",
+        "citation": "schema:citation",
+        "license": "dct:license",
+        "code_repository": { "@id": "schema:codeRepository", "@type": "xsd:anyURI" },
+        "sdPublisher": "schema:sdPublisher",
+        "sdDatePublished": { "@id": "schema:sdDatePublished", "@type": "xsd:date" },
+        "programming_language": "schema:programmingLanguage",
+        "software_version": "schema:softwareVersion",
+
+        "source_organization": {
+            "@id": "schema:sourceOrganization",
+            "@context": {
+                "name": "schema:name",
+                "url": "schema:url"
+            }
+        },
+        "producer": {
+            "@id": "schema:producer",
+            "@context": {
+                "name": "schema:name",
+                "url": "schema:url"
+            }
+        },
+
+        "author": {
+            "@id": "schema:author",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+        "maintainer": {
+            "@id": "schema:maintainer",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+        "contributor": {
+            "@id": "schema:contributor",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+        "publisher": {
+            "@id": "schema:publisher",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+
+        "spatial_coverage": "schema:spatialCoverage",
+        "temporal_coverage": {
+            "@id": "apkg:hasTemporalCoverage",
+            "@context": {
+                "hasBeginning": "time:hasBeginning",
+                "hasEnd": "time:hasEnd",
+                "inXSDDateTimeStamp": "time:inXSDDateTimeStamp"
+            }
+        },
+
+        "inputs": {
+            "@id": "apkg:hasInput",
+            "@context": {
+                "id": "dct:identifier",
+                "label": "apkg:label",
+                "type": "dct:type",
+                "doc": "apkg:doc",
+                "format": "schema:fileFormat"
+            }
+        },
+        "outputs": {
+            "@id": "apkg:hasOutput",
+            "@context": {
+                "id": "dct:identifier",
+                "type": "dct:type",
+                "label": "apkg:label",
+                "doc": "apkg:doc",
+                "format": "schema:fileFormat"
+            }
+        },
+
+        "links": {
+            "@id": "apkg:hasLink",
+            "@context": {
+                "title": "dct:title",
+                "rel": "dct:type",
+                "type": "dcat:mediaType",
+                "href": "schema:url"
+            }
+        },
+
+        "Secrets": {
+            "@id": "cwltool:Secrets",
+            "@context": {
+                "secrets": "cwltool:secrets"
+            }
+        }
+    }
+}

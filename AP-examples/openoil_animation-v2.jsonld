@@ -1,0 +1,311 @@
+{
+    "@context": {
+        "apkg": "http://purl.org/apkg/terms/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "sh": "http://www.w3.org/ns/shacl",
+        "dct": "http://purl.org/dc/terms/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "time": "http://www.w3.org/2006/time#",
+        "schema": "https://schema.org/",
+        "cwl": "https://w3id.org/cwl/cwl#",
+        "cwltool": "http://commonwl.org/cwltool#",
+        "gj": "http://purl.org/geojson/vocab#",
+
+        "id": "schema:identifier",
+        "geometry": {
+            "@id": "apkg:hasGeometry",
+            "@context": {
+                "type": "dct:type",
+                "coordinates": "gj:coordinates"
+            }
+        },
+        
+        "name": "dct:title",
+        "identifier": "dct:identifier",
+        "class": "dct:type",
+        "description": "dct:description",
+        "keywords": "dcat:keyword",
+        "family": { "@id": "apkg:family", "@type": "xsd:anyURI" },
+        "latest": "apkg:latest",
+        "date_created": "dct:issued",
+        "url": "schema:url",
+        "registration_url": "apkg:originalURL",
+        "citation": "schema:citation",
+        "license": "dct:license",
+        "code_repository": { "@id": "schema:codeRepository", "@type": "xsd:anyURI" },
+        "sdPublisher": "schema:sdPublisher",
+        "sdDatePublished": { "@id": "schema:sdDatePublished", "@type": "xsd:date" },
+        "programming_language": "schema:programmingLanguage",
+        "software_version": "schema:softwareVersion",
+
+        "source_organization": {
+            "@id": "schema:sourceOrganization",
+            "@context": {
+                "name": "schema:name",
+                "url": "schema:url"
+            }
+        },
+        "producer": {
+            "@id": "schema:producer",
+            "@context": {
+                "name": "schema:name",
+                "url": "schema:url"
+            }
+        },
+
+        "author": {
+            "@id": "schema:author",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+        "maintainer": {
+            "@id": "schema:maintainer",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+        "contributor": {
+            "@id": "schema:contributor",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+        "publisher": {
+            "@id": "schema:publisher",
+            "@context": { "name": "schema:name", "email": "schema:email" }
+        },
+
+        "spatial_coverage": "schema:spatialCoverage",
+        "temporal_coverage": {
+            "@id": "apkg:hasTemporalCoverage",
+            "@context": {
+                "hasBeginning": "time:hasBeginning",
+                "hasEnd": "time:hasEnd",
+                "inXSDDateTimeStamp": "time:inXSDDateTimeStamp"
+            }
+        },
+
+        "inputs": {
+            "@id": "apkg:hasInput",
+            "@context": {
+                "id": "dct:identifier",
+                "label": "apkg:label",
+                "type": "dct:type",
+                "doc": "apkg:doc",
+                "format": "schema:fileFormat"
+            }
+        },
+        "outputs": {
+            "@id": "apkg:hasOutput",
+            "@context": {
+                "id": "dct:identifier",
+                "type": "dct:type",
+                "label": "apkg:label",
+                "doc": "apkg:doc",
+                "format": "schema:fileFormat"
+            }
+        },
+
+        "links": {
+            "@id": "apkg:hasLink",
+            "@context": {
+                "title": "dct:title",
+                "rel": "dct:type",
+                "type": "dcat:mediaType",
+                "href": "schema:url"
+            }
+        },
+
+        "Secrets": {
+            "@id": "cwltool:Secrets",
+            "@context": {
+                "secrets": "cwltool:secrets"
+            }
+        }
+    },
+    "geometry":{
+        "coordinates":[
+            [
+                [
+                    -180.0,
+                    -90.0
+                ],
+                [
+                    180.0,
+                    -90.0
+                ],
+                [
+                    180.0,
+                    90.0
+                ],
+                [
+                    -180.0,
+                    90.0
+                ],
+                [
+                    -180.0,
+                    -90.0
+                ]
+            ]
+        ],
+        "type":"Polygon"
+    },
+    "id":"openoil_animation",
+    "outputs":[
+        {
+            "format":"edam:format_3467",
+            "id":"animation",
+            "type":"File"
+        }
+    ],
+    "programming_language":"python",
+    "keywords":[
+        "oil spill",
+        "animation",
+        "simulation",
+        "openoil",
+        "opendrift"
+    ],
+    "inputs":[
+        {
+            "format":"edam:format_3650",
+            "doc":"The netcdf file containing the simulation results",
+            "id":"file",
+            "type":"File"
+        }
+    ],
+    "description":"Animation of oil spill simulation",
+    "maintainer":null,
+    "sdPublisher":[
+        {
+            "name":"Application Package Registry",
+            "class":"Organization",
+            "url":"https://iliad-registry.inesctec.pt"
+        }
+    ],
+    "temporal_coverage":null,
+    "contributor":[
+        {
+            "name":"Miguel Correia",
+            "email":"miguel.r.correia@inesctec.pt"
+        }
+    ],
+    "spatial_coverage":{
+        "geo":{
+            "box":"-90 -180 90 180"
+        },
+        "class":"schema:GeoShape"
+    },
+    "software_version":"0.1.0",
+    "class":"CommandLineTool",
+    "latest":true,
+    "identifier":"urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0",
+    "citation":null,
+    "date_created":"2025-05-12T12:29:29Z",
+    "author":[
+        {
+            "name":"Georgios Sylaios",
+            "email":"gsylaios@env.duth.gr"
+        },
+        {
+            "name":"Nikolaos Kokkos",
+            "email":"nikolaoskokkos@gmail.com"
+        }
+    ],
+    "sdDatePublished":"2025-06-11T14:22:55.895087Z",
+    "url":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=cwl",
+    "license":null,
+    "code_repository":"https://pipe-drive.inesctec.pt/application-packages/tools/openoil-animation-duth/openoil_animation_duth_0_1_0.cwl",
+    "source_organization":[
+        {
+            "address":{
+                "address_country":"PT"
+            },
+            "name":"INESCTEC",
+            "url":"https://inesctec.pt"
+        },
+        {
+            "address":{
+                "address_country":"GR"
+            },
+            "name":"D.U.TH",
+            "url":"https://env.duth.gr"
+        }
+    ],
+    "name":"openoil_animation",
+    "producer":[
+        {
+            "address":{
+                "address_country":"GR"
+            },
+            "name":"D.U.TH",
+            "url":"https://env.duth.gr"
+        }
+    ],
+    "family":"urn:apkg:tool:d.u.th:gr:openoil_animation",
+    "@id":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0",
+    "links":[
+        {
+            "type":"application/json",
+            "rel":"root",
+            "title":"The landing page of this server as JSON",
+            "href":"https://iliad-registry.inesctec.pt?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"root",
+            "title":"The landing page of this server as HTML",
+            "href":"https://iliad-registry.inesctec.pt?f=html"
+        },
+        {
+            "rel":"alternate",
+            "type":"application/geo+json",
+            "title":"This document as GeoJSON",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=json"
+        },
+        {
+            "rel":"self",
+            "type":"application/ld+json",
+            "title":"This document as RDF (JSON-LD)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=jsonld"
+        },
+        {
+            "rel":"alternate",
+            "type":"text/html",
+            "title":"This document as HTML",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=html"
+        },
+        {
+            "type":"application/cwl+yaml",
+            "rel":"alternate",
+            "title":"This document as CWL (YAML)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=cwl"
+        },
+        {
+            "type":"application/cwl+json",
+            "rel":"alternate",
+            "title":"This document as CWL (JSON)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:d.u.th:gr:openoil_animation:0.1.0?f=cwljson"
+        },
+        {
+            "rel":"collection",
+            "type":"application/json",
+            "title":"Application Packages",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg"
+        },
+        {
+            "type":"text/html",
+            "rel":"alternate",
+            "title":"All versions of this document as HTML",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:d.u.th:gr:openoil_animation\"&sortby=-software_version"
+        },
+        {
+            "type":"application/json",
+            "rel":"alternate",
+            "title":"All versions of this document as JSON",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:d.u.th:gr:openoil_animation\"&sortby=-software_version"
+        },
+        {
+            "type":"application/json",
+            "rel":"alternate",
+            "title":"All versions of this document as RDF (JSON-LD)",
+            "href":"https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:d.u.th:gr:openoil_animation\"&sortby=-software_version"
+        }
+    ],
+    "@type":"apkg:ApplicationPackage"
+}
