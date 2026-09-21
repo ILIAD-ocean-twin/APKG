@@ -1,0 +1,120 @@
+# The __Application Package__ Metadata Application Profile V2.0 - APKG-MAP
+
+# NameSpaces
+| Prefix     | URI                                                  |
+| ---------- | -----------------------------------------------------|
+| apkg       | http://w3id.org/apkg/terms#                          |
+| xsd        | http://www.w3.org/2001/XMLSchema#                    |
+| rdf        | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
+| dct        | http://purl.org/dc/terms/                            |
+| dcat       | http://www.w3.org/ns/dcat#                           |
+| schema     | http://schema.org/                                   |
+| cwl        | https://w3id.org/cwl/cwl#                            |
+| cwltool    | http://commonwl.org/cwltool#                         |
+| gj         | http://purl.org/geojson/vocab#                       |
+| time       | http://www.w3.org/2006/time#                         |
+-----------------------------------------------------------------------
+
+
+# Linked Data Application Profile - Metadata Application Profile
+
+Table 1 - Core properties related to the catalogue record
+
+| OGC Property   | Description                                                                                    | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+|----------------|------------------------------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
+|  | __ApplicationPackage__  | apkg:ApplicationPackage                            |                                          |                                   |             |     |      |
+| id             | A unique record identifier assigned by the server.                                       | schema:identifier                        | apkg:ApplicationPackage                             | xsd:anyURI                        | 1-1         |     |      |
+| created        | The date this record was created in the server.                                          | dct:issued                               | apkg:ApplicationPackage                             | xsd:date                      | 0-1         |     |      |
+| updated        | The most recent date on which the record was changed.                                    | dct:modified                             | apkg:ApplicationPackage                             | xsd:date                          | 0-1         |     |      |
+| conformsTo     | The extensions/conformance classes used in this record                                   | dct:conformsTo                           | apkg:ApplicationPackage                             | dct:Standard                      | 0-1         |     |      |
+| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | dct:language                              | apkg:ApplicationPackage                             | dct:LinguisticSystem          | 0-M         |     |      |
+| links          | A link related to this record                                                            | dcterms:relation                         | apkg:ApplicationPackage                             | xsd:anyURI                        | 0-M         |     |      |
+| linkTemplates  | A link template related to this record                                                   | schema:urlTemplate                       | apkg:ApplicationPackage                             | schema:URL                        | 0-M         |     |      |
+
+
+Table 2 - Core properties related to the resource
+| Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+|--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
+|      type        |          The nature or genre of the resource described by this record.                                                           |                                          |                                          |                  | | |
+|          title    | A human-readable name given to the resource described by this record.                                   | dct:title                                | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
+|  description            | 	A free-text description of the resource described by this record.                              | dct:description                          | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
+|   geometry           | A spatial extent associated with the resource described by this record. | gj:geometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
+| time | A temporal extent associated with the resource described by this record.                         |         apkg:hasTemporalCoverage           |    apkg:ApplicationPackage                  |   apkg:TemporalCoverage              | 0-1         |                                 |                                                             |
+|      keywowrds        | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
+| themes | A knowledge organization system (KOS) used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI | 0-1|
+| concept |The classification of the KOS defined on theme | |apkg:ApplicationPackage  | | 0-M |
+| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | schema:inLanguage                              | apkg:ApplicationPackage                             | dct:LinguisticSystem     | 0-M|
+| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. |  dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        |     1-M     |     |      |
+| formats | | | | | |
+| contacts | | | | | |
+| licence| | | | | |
+| rights| | | | | |
+
+
+
+
+Table 3 - APKG extension properties related to the resource
+
+| Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
+|--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
+|              | Unique identifier of the application package                        
+|              | Family of this application package (identifier without version)     | apkg:family                              | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
+|              | Software version of the application package                         | schema:softwareVersion                   | apkg:ApplicationPackage                  | schema:Text                       | 1-1         |     |      |
+|              | This is the latest version of the application package               | apkg:latest                              | apkg:ApplicationPackage                  | xsd:boolean                       | 1-1         |     |      |
+|              | Registry where the application package is registered in             | schema:sdPublisher                       | apkg:ApplicationPackage                  | apkg:Registry                     | 1-1         |     |      |
+|              | Date and time the application package was registered                | schema:sdDatePublished                   | apkg:ApplicationPackage                  | xsd:date                          | 1-1         |     |      |
+|              | URL of the application package's CWL                                | schema:url                               | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
+|              | Citation of a work related to the application package               | schema:citation                          | apkg:ApplicationPackage                  | schema:Text                       | 0-1         |     |      |
+|              | License of the application package                                  | dct:license                              | apkg:ApplicationPackage                  | dct:LicenseDocument               | 0-1         |     |      |
+|              | Author of the application package                                   | schema:author                            | apkg:ApplicationPackage                  | apkg:Person                       | 1-M         |     |      |
+|              | Contributor of the application package                              | schema:contributor                       | apkg:ApplicationPackage                  | apkg:Person                       | 0-M         |     |      |
+|              | Maintainer of the application package                               | schema:maintainer                        | apkg:ApplicationPackage                  | apkg:Person                       | 0-M         |     |      |
+|              | Publisher of the application package                                | schema:publisher                         | apkg:ApplicationPackage                  | apkg:Person                       | 0-1         |     |      |
+|              | Organisations involved in the application package                   | schema:sourceOrganization                | apkg:ApplicationPackage                  | apkg:Organisation                 | 1-M         |     |      |
+|              | Organisation that produced the application package                  | schema:author                            | apkg:ApplicationPackage                  | apkg:Organisation                 | 1-1         |     |      |
+|              | Spatial coverage of the application package                         | schema:spatialCoverage                   | apkg:ApplicationPackage                  | schema:Place                      | 1-1         |     |      |
+|              | URL of the application package code repository                      | schema:codeRepository                    | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
+|              | Programming language of the application package                     | schema:programmingLanguage               | apkg:ApplicationPackage                  | schema:Text                       | 0-1         |     |      |
+|              | Original URL of the application package when registered             | apkg:originalURL                         | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
+| Link of the application package                                     | apkg:ApplicationPackage                   | apkg:Link                               | apkg:hasLink                             | 1-M         |                                 |                                                             |
+| __Person__                                                          |                                          |                                          | apkg:Person                              |             |                                 | rdfs:subClassOf schema:Person                               |
+| Name(s) of the Person                                               | apkg:Person                              | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
+| Email address of the person                                         | apkg:Person                              | xsd:string                               | schema:email                             | 1-1         |                                 |                                                             |                                                    
+| __Registry__                                                        |                                          |                                          | apkg:Registry                            |             |                                 | rdfs:subClassOf schema:Organization                         |
+| Name of the Application Package Registry                            | apkg:Registry                            | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
+| URL of the webpage of the registry                                  | apkg:Registry                            | schema:URL                               | schema:url                               | 1-1         |                                 |                                                             |                                   
+| __Organisation__                                                    |                                          |                                          | apkg:Organisation                        |             |                                 | rdfs:subClassOf schema:Organization                         |
+| Name of the Organisation                                            | apkg:Organisation                        | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
+| URL of the webpage of Organisation                                  | apkg:Organisation                        |  schema:URL                              | schema:url                               | 1-1         |                                 |                                                             |                                   
+| Address of the Organisation                                         | apkg:Organisation                        | apkg:PostalAddress                       | schema:address                           | 1-1         |                                 |                                                             |  
+| __PostalAddress__                                                   |                                          |                                          | apkg:PostalAddress                       |             |                                 | rdfs:subClassOf schema:PostalAddress                        |   
+| Country                                                             | apkg:PostalAddress                       | xsd:string                               | schema:addressCountry                    | 1-1         |                                 |                                                             |                                                     
+| __Process__                                                         |                                          |                                          | apkg:Process                             |             |                                 | rdfs:subClassOf cwl:Process                                 |
+| Class of the Process (CommandLineTool or Workflow)                  | apkg:Process                             | xsd:string                               | dct:type                                 | 1-1         | ["CommandLineTool", "Workflow"] |                                                             |
+| Input of the Process                                                | apkg:Process                             | apkg:Parameter                           | apkg:hasInput                            | 0-M         |                                 |                                                             |
+| Output of the Process                                               | apkg:Process                             | apkg:Parameter                           | apkg:hasOutput                           | 1-M         |                                 |                                                             |
+| __Parameter__                                                       |                                          |                                          | apkg:Parameter                           |             |                                 | rdfs:subClassOf cwl:InputParameter                          |
+| The unique identifier for the object                                | apkg:Parameter                           | xsd:string                               | dct:identifier                           | 0-1         |                                 |                                                             |
+| The type of data                                                    | apkg:Parameter                           | xsd:string                               | dct:type                                 | 1-1         |  ["null","boolean", "int", "long", "float", "double", "string", "File", "Directory" ] |       |
+| A short, human-readable label                                       | apkg:Parameter                           | xsd:string                               | apkg:label                               | 0-1         |                                 |                                                             |
+| A documentation string                                              | apkg:Parameter                           | xsd:string                               | apkg:doc                                 | 0-1         |                                 |                                                             |
+| The file format that will be assigned to the output File object     | apkg:Parameter                           | xsd:string                               | schema:fileFormat                        | 0-1         |                                 | Use only when apkg:hasType is a CWLtype=File                |
+| __Temporal Coverage__                                               |                                          |                                          | apkg:TemporalCoverage                    |             |                                 | rdfs:subClassOf time:TemporalEntity                         |
+| Start date-time                                                     | apkg:TemporalCoverage                    | apkg:Instant                             | time:hasBeginning                        | 0-1         |                                 |                                                             |
+| End date-time                                                       | apkg:TemporalCoverage                    | apkg:Instant                             | time:hasEnd                              | 0-1         |                                 |                                                             |                                                      
+| __TimeInstant__                                                     |                                          |                                          | apkg:Instant                             |             |                                 | rdfs:subClassOf time:Instant                                |
+| Date-time                                                           | apkg:Instant                             | **xsd:dateTimeStamp**                    | **time:inXSDDateTimeStamp  **            | 1-1         |                                 |                                                             |
+| __Spatial validity of the model__                                   |                                          |                                          | apkg:Geometry                            |             |                                 |  rdfs:subClassOf gj:Geometry                                |
+| Coordinates                                                         | apkg:Geometry                            | gj:coordinates                           | gj:coordinates                           | 1-M         |                                 |                                                             |
+| Type                                                                | apkg:Geometry                            | xsd:anyURI                              | gj:type                                 | 1-1         | gj:Polygon                    |                                                             |
+| __Link of the application package__                                 |                                          |                                          | apkg:Link                                |             |                                 |                                                             |
+| Title of the destination                                            | apkg:Link                                | xsd:string                               | dct:title                                | 0-1         |                                 |                                                             |
+| Type or semantics of the relation                                   | apkg:Link                                | xsd:string                               | dct:type                                 | 0-1         | ["root", "self", "alternate", "collection"]  |                                                |
+| The URL of the link                                                 | apkg:Link                                | schema:URL                               | schema:url                               | 1-1         |                                 |                                                             |
+| The mimetype of the link                                            | apkg:Link                                | xsd:string                               | dcat:mediaType                           | 0-1         | https://w3id.org/spar/mediatype/ |                                                            |
+| __Secrets__                                                         |                                          |                                          | apkg:Secrets                             |             |                                 |  rdfs:subClassOf cwl:Secrets                                |
+| The ID of the Input parameters considered secret                    | apkg:Secrets                             | xsd:string                               | cwltool:secrets                          | 0-M         |                                 |                                                             |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+&copy; INESC TEC, 2026
