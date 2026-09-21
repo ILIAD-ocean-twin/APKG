@@ -1,4 +1,4 @@
-# The __Application Package__ Metadata Application Profile V1.0 - APKG-MAP
+# The __Application Package__ Metadata Application Profile V2.0 - APKG-MAP
 
 # NameSpaces
 | Prefix     | URI                                                  |
@@ -24,11 +24,11 @@ Table 1 - Core properties related to the catalogue record
 |----------------|------------------------------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |  | __ApplicationPackage__  | apkg:ApplicationPackage                            |                                          |                                   |             |     |      |
 | id             | A unique record identifier assigned by the server.                                       | schema:identifier                        | apkg:ApplicationPackage                             | xsd:anyURI                        | 1-1         |     |      |
-| created        | The date this record was created in the server.                                          | dct:issued                               | apkg:ApplicationPackage                             | xsd:date                          | 0-1         |     |      |
+| created        | The date this record was created in the server.                                          | dct:issued                               | apkg:ApplicationPackage                             | xsd:date                      | 0-1         |     |      |
 | updated        | The most recent date on which the record was changed.                                    | dct:modified                             | apkg:ApplicationPackage                             | xsd:date                          | 0-1         |     |      |
 | conformsTo     | The extensions/conformance classes used in this record                                   | dct:conformsTo                           | apkg:ApplicationPackage                             | dct:Standard                      | 0-1         |     |      |
-| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record.  | dct:language                             | apkg:ApplicationPackage                             | dct:LinguisticSystem              | 0-M         |     |      |
-| links          | A link related to this record                                                            | dct:relation                             | apkg:ApplicationPackage                             | xsd:anyURI                        | 0-M         |     |      |
+| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | dct:language                              | apkg:ApplicationPackage                             | dct:LinguisticSystem          | 0-M         |     |      |
+| links          | A link related to this record                                                            | dcterms:relation                         | apkg:ApplicationPackage                             | xsd:anyURI                        | 0-M         |     |      |
 | linkTemplates  | A link template related to this record                                                   | schema:urlTemplate                       | apkg:ApplicationPackage                             | schema:URL                        | 0-M         |     |      |
 
 
@@ -38,16 +38,16 @@ Table 2 - Core properties related to the resource
 |      type        |          The nature or genre of the resource described by this record.                                                           |                                          |                                          |                  | | |
 |          title    | A human-readable name given to the resource described by this record.                                   | dct:title                                | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
 |  description            | 	A free-text description of the resource described by this record.                              | dct:description                          | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-1         |     |      |
-|   geometry           | A spatial extent associated with the resource described by this record. | apkg:hasGeometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
+|   geometry           | A spatial extent associated with the resource described by this record. | gj:geometry                     | apkg:ApplicationPackage                  | apkg:Geometry                     | 1-1         |     |      |
 | time | A temporal extent associated with the resource described by this record.                         |         apkg:hasTemporalCoverage           |    apkg:ApplicationPackage                  |   apkg:TemporalCoverage              | 0-1         |                                 |                                                             |
-|      keywords        | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
+|      keywowrds        | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg:ApplicationPackage                  | rdfs:Literal                      | 0-M         |     |      |
 | themes | A knowledge organization system (KOS) used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI | 0-1|
 | concept |The classification of the KOS defined on theme | |apkg:ApplicationPackage  | | 0-M |
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | schema:inLanguage                              | apkg:ApplicationPackage                             | dct:LinguisticSystem     | 0-M|
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. |  dct:identifier                           | apkg:ApplicationPackage                  | xsd:anyURI                        |     1-M     |     |      |
 | formats | | | | | |
 | contacts | | | | | |
-| license| | | | | |
+| licence| | | | | |
 | rights| | | | | |
 
 
@@ -103,10 +103,10 @@ Table 3 - APKG extension properties related to the resource
 | Start date-time                                                     | apkg:TemporalCoverage                    | apkg:Instant                             | time:hasBeginning                        | 0-1         |                                 |                                                             |
 | End date-time                                                       | apkg:TemporalCoverage                    | apkg:Instant                             | time:hasEnd                              | 0-1         |                                 |                                                             |                                                      
 | __TimeInstant__                                                     |                                          |                                          | apkg:Instant                             |             |                                 | rdfs:subClassOf time:Instant                                |
-| Date-time                                                           | apkg:Instant                             | xsd:dateTimeStamp                        | time:inXSDDateTimeStamp                  | 1-1         |                                 |                                                             |
+| Date-time                                                           | apkg:Instant                             | **xsd:dateTimeStamp**                    | **time:inXSDDateTimeStamp  **            | 1-1         |                                 |                                                             |
 | __Spatial validity of the model__                                   |                                          |                                          | apkg:Geometry                            |             |                                 |  rdfs:subClassOf gj:Geometry                                |
 | Coordinates                                                         | apkg:Geometry                            | gj:coordinates                           | gj:coordinates                           | 1-M         |                                 |                                                             |
-| Type                                                                | apkg:Geometry                            | xsd:Literal                              | dct:type                                 | 1-1         | ["Polygon"]                     |                                                             |
+| Type                                                                | apkg:Geometry                            | xsd:anyURI                              | gj:type                                 | 1-1         | gj:Polygon                    |                                                             |
 | __Link of the application package__                                 |                                          |                                          | apkg:Link                                |             |                                 |                                                             |
 | Title of the destination                                            | apkg:Link                                | xsd:string                               | dct:title                                | 0-1         |                                 |                                                             |
 | Type or semantics of the relation                                   | apkg:Link                                | xsd:string                               | dct:type                                 | 0-1         | ["root", "self", "alternate", "collection"]  |                                                |
