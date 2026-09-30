@@ -1,15 +1,15 @@
-# OGC Linked Data Application Profile
+# APKG Linked Data Application Profile
 
 # 1. NameSpaces
-| Prefix     | URI                                                  |
-| ---------- | -----------------------------------------------------|
-| ogc        | http://w3id.org/ogc/terms#                           |
-| ogc-process| http://w3id.org/ogc/process/terms#                   |
-| xsd        | http://www.w3.org/2001/XMLSchema#                    |
-| rdf        | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
-| dct        | http://purl.org/dc/terms/                            |
-| lexvo      | http://lexvo.org/id/                                 |
-| geo        | http://www.opengis.net/ont/geosparql#                |
+| Prefix     | URI                                                   |
+| ----------  | -----------------------------------------------------|
+| rec         | http://w3id.org/tobedefined                          |
+| apkg-rec  | http://w3id.org/apkg/records#                 |
+| xsd         | http://www.w3.org/2001/XMLSchema#                    |
+| rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
+| dct         | http://purl.org/dc/terms/                            |
+| lexvo       | http://lexvo.org/id/                                 |
+| geo         | http://www.opengis.net/ont/geosparql#                |
 
 
 
