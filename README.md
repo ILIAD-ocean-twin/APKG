@@ -9,6 +9,8 @@
 | dct         | http://purl.org/dc/terms/                            |
 | lexvo       | http://lexvo.org/id/                                 |
 | geo         | http://www.opengis.net/ont/geosparql#                |
+| gj          | http://purl.org/geojson/vocab#                       |
+| rec         | https://www.opengis.net/def/ogc-api/records/         |  |
 
 
 
@@ -22,7 +24,6 @@ a ver se precisamos
 | schema     | http://schema.org/                                   |
 | cwl        | https://w3id.org/cwl/cwl#                            |
 | cwltool    | http://commonwl.org/cwltool#                         |
-| gj         | http://purl.org/geojson/vocab#                       |
 | time       | http://www.w3.org/2006/time#                         |
 
 
@@ -34,7 +35,7 @@ Table 1 - Core properties related to the catalogue record
 
 | OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|  | __Core__  | apkg-rec:Core                              |                                          |                                          |             |     | rdfs:subClassOf bfo:process (BFO_0000015)    |
+|  | Record  | apkg-rec:Record                              |                                          |                                          |             |     | rdfs:subClassOf rec:????    |
 | id             | A unique record identifier assigned by the server.                                       | apkg-rec:recordId                        | apkg-rec:Core                       | xsd:anyURI                        | 1-1         |     |   Declare it owl:DatatypeProperty and owl:FunctionalProperty (FunctionalProperty guarantees a single creation date per record. ), and make it a rdfs:subPropertyOf dcterms:identifier. That gives interoperability plus reasoning. Add owl:hasKey (process:recordId) on the record class, which is how OWL 2 DL expresses uniqueness for datatype properties, since InverseFunctional is only allowed on object properties.
 | created        | The date this record was created in the server.                                          | apkg-rec:createdAt                               | apkg-rec:Core                             | xsd:dateTimeStamp                      | 0-1         |     |   Declare it owl:DatatypeProperty and owl:FunctionalProperty, with range xsd:dateTimeStamp (requires a time zone, which suits server timestamps.), and make it a rdfs:subPropertyOf dcterms:created.  |
 | updated        | The most recent date on which the record was changed.                                    | apkg-rec:updatedAt                             | apkg-rec:Core                             | xsd:dateTimeStamp                          | 0-1         |     |     Declare it owl:DatatypeProperty and owl:FunctionalProperty, with range xsd:dateTimeStamp, and make it a rdfs:subPropertyOf dcterms:modified.  |
