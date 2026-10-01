@@ -59,14 +59,14 @@ Table 2 - Core properties related to the resource.
 |   geometry           | A spatial extent associated with the resource described by this record. | 🟢geo:hasGeometry                  | apkg-rec:Record                | geo:Geometry                     | 0-1         |     |   geo:hasGeometry pointing to a geo:Geometry individual with geo:asWKT "POLYGON(...)"^^geo:wktLiteral. Um exemplo: ex:record123 a apkg-rec:Record, geo:hasGeometry ex:record123-geom . ex:record123-geom a geo:Geometry,    geo:asWKT "POLYGON((-8.63 41.15, -8.60 41.15, -8.60 41.18, -8.63 41.18, -8.63 41.15))"^^geo:wktLiteral.|  
  | time | A temporal extent associated with the resource described by this record.                         |          🟢 time:hasTime           |    apkg-rec:Record                   | time:Interval                              |
 |      keywords        | Free-form keyword or tag associated with the resource described by this record.                                | dcat:keyword                             | apkg-rec:Record                     | rdfs:Literal                      | 0-M         |     |      |
-| themes | A knowledge organization system (KOS) used to classify the resource described by this resource. |apkg:ApplicationPackage | | xsd:anyURI | 0-1|
-| concept |The classification of the KOS defined on theme | |apkg:ApplicationPackage  | | 0-M |
+| themes | A knowledge organization system (KOS) used to classify the resource described by this resource. |     |apkg-rec:Record   | xsd:anyURI | 0-1| um KOS| Não se entende o que é
+| concept |The classification of the KOS defined on theme | |apkg-rec:Record    | | 0-M |
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | schema:inLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M|
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. |  dct:identifier                           | apkg-rec:Record                     | xsd:anyURI                        |     1-M     |     |      |
-| formats | | | | | |
-| contacts | | | | | |
-| licence| | | | | |
-| rights| | | | | |
+| formats | | |apkg-rec:Record   | | |
+| contacts | | |apkg-rec:Record   | | |
+| licence| | | apkg-rec:Record  |   | |
+| rights| | | apkg-rec:Record  | | |
 
 
 
