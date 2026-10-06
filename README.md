@@ -76,10 +76,16 @@ Table 3 - Process-extension properties related to the resource-process . SE AQUI
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|     none         | Unique identifier of the process????                        
-|      none        | Family of this application package (identifier without version)     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
-|    none          | Software version of the application package                         | doap:Version                   | apkg-rec:Process                  | schema:Text                       | 1-1         |     |      |
-|  none            | This is the latest version of the application package               | apkg:latest                              | apkg-rec:Process                  | xsd:boolean                       | 1-1         |     |      |
+| | A Process Application package??? | apkg-rec:Process| | | |  | rdfs:subClassOf apkg-rec:Resource |
+|     none         | Unique identifier of the process. Pensar nisto....       |      |apkg-rec:Process          
+|      none        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
+|    none          | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
+| none | A version of the Application Process | 🟢doap:Version |
+| none | The date of creation of the version | 🟢doap:creation | doap:Version | xsd:date| 0-1 | 
+| none | The major revision | apkg-rec:majorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
+| none | The minor revision | apkg-rec:minorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
+| none | The patch revision | apkg-rec:patchVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty
+|  none            | This is the latest version of the application package  NãO É PRECI RETIRAR!             | apkg:latest                              | apkg-rec:Process                  | xsd:boolean                       | 1-1         |     |      |
 |    none          | Registry where the application package is registered in             | schema:sdPublisher                       | apkg-rec:Process                   | apkg:Registry                     | 1-1         |     |      |
 |    none          | Date and time the application package was registered                | schema:sdDatePublished                   | apkg-rec:Process                  | xsd:date                          | 1-1         |     |      |
 |   none           | URL of the application package's CWL                                | schema:url                               | apkg-rec:Process                  | schema:URL                        | 0-1         |     |      |
