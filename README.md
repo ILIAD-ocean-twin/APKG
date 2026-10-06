@@ -8,17 +8,17 @@
 | xsd         | http://www.w3.org/2001/XMLSchema#                    |
 | rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
 | dct         | http://purl.org/dc/terms/                            |
-| lexvo       | http://lexvo.org/id/                                 |
 | geo         | http://www.opengis.net/ont/geosparql#                |
 | gj          | http://purl.org/geojson/vocab#                       |
 | dcat        | http://www.w3.org/ns/dcat#                           |
-| time       | http://www.w3.org/2006/time#                          |
- | adms      | http://www.w3.org/ns/adms#                            |
+| time        | http://www.w3.org/2006/time#                          |
+ | adms       | http://www.w3.org/ns/adms#                            |
+ | doap       | http://usefulinc.com/ns/doap#                         |
  
 
 
 
-
+tenos de ver a hydra.
 
 a ver se precisamos
 
@@ -34,7 +34,7 @@ a ver se precisamos
 
 ## 2. Module Core
 
-🟢  -- means a term from another ontology.
+🟢  -- a term from another ontology.
 
 Table 1 - Core properties related to the catalogue record
 
@@ -50,7 +50,7 @@ Table 1 - Core properties related to the catalogue record
 | links          | A link related to this record                                                            |          🟢  rdfs:seeAlso             | apkg-rec:Record                            | xsd:anyURI                        | 0-M         |     |  Como no language, aqui a ambiguidade está em saber se "link" é mesmo uma relação semântica não tipada (então rdfs:seeAlso chega) ou se, na prática, vai sempre apontar para tipos específicos de recursos relacionados (versão anterior, documento fonte, registo duplicado), caso em que valeria a pena partir logo para sub-propriedades de dcterms:relation.    |
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-M         |     |   Dado que já escolhemos  rdfs:seeAlso para links, o par natural aqui é distinguir claramente as duas classes de objeto: links aponta para um recurso real (algo resolvido e navegável), enquanto linkTemplates aponta para um hydra:IriTemplate (algo que precisa de substituição de variáveis antes de ser navegável). Misturar os dois na mesma propriedade perderia essa distinção semântica, que é justamente o tipo de coisa que um reasoner consegue detetar como erro (maior precisão)   --> preciso de ver isto melhor,exemplo no excel, passar por criar uma classe? O hydra nao tem URI para Semantic Web,parece ser so uma coisa para XML
 
-Table 2 - Core properties related to the resource.						
+Table 2 - Core properties related to the resource.		SE AQUI É RESOURCE....PODEMOS CRIAR UMA CLASSE RESOURCE. DISCUTIR COM MARCO				
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
@@ -62,40 +62,40 @@ Table 2 - Core properties related to the resource.
 |      keywords        | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | rdfs:Literal                      | 0-M         |     |      |
 | themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 dcat:theme    |apkg-rec:Record   | skos:Concept| 0-M| | 
 | concept |The classification of the KOS defined on theme | |    | |  | | |
-| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | apkg-rec:recordLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| |rdfs:subPropertyOf dct:language.
+| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| |rdfs:subPropertyOf dct:language.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | xsd:anyURI   |     0-M     |     |      |
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M|
-| contacts | | |apkg-rec:Record   | | |
-| licence| | | apkg-rec:Record  |   | |
-| rights| | | apkg-rec:Record  | | |
+| contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | |
+| licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | |
+| rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | |
 
 
 
 
-Table 3 - Process-extension properties related to the resource
+Table 3 - Process-extension properties related to the resource-process . SE AQUI SÂO ESPECIFICAS PARA O PROCESSO, PODEMOS CRIAR UMA CLASSE PROCESSO, SUB-CLASS THE RESOURCE
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|              | Unique identifier of the application package                        
-|              | Family of this application package (identifier without version)     | apkg:family                              | apkg:ApplicationPackage                  | xsd:anyURI                        | 1-1         |     |      |
-|              | Software version of the application package                         | schema:softwareVersion                   | apkg:ApplicationPackage                  | schema:Text                       | 1-1         |     |      |
-|              | This is the latest version of the application package               | apkg:latest                              | apkg:ApplicationPackage                  | xsd:boolean                       | 1-1         |     |      |
-|              | Registry where the application package is registered in             | schema:sdPublisher                       | apkg:ApplicationPackage                  | apkg:Registry                     | 1-1         |     |      |
-|              | Date and time the application package was registered                | schema:sdDatePublished                   | apkg:ApplicationPackage                  | xsd:date                          | 1-1         |     |      |
-|              | URL of the application package's CWL                                | schema:url                               | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
-|              | Citation of a work related to the application package               | schema:citation                          | apkg:ApplicationPackage                  | schema:Text                       | 0-1         |     |      |
-|              | License of the application package                                  | dct:license                              | apkg:ApplicationPackage                  | dct:LicenseDocument               | 0-1         |     |      |
-|              | Author of the application package                                   | schema:author                            | apkg:ApplicationPackage                  | apkg:Person                       | 1-M         |     |      |
-|              | Contributor of the application package                              | schema:contributor                       | apkg:ApplicationPackage                  | apkg:Person                       | 0-M         |     |      |
-|              | Maintainer of the application package                               | schema:maintainer                        | apkg:ApplicationPackage                  | apkg:Person                       | 0-M         |     |      |
-|              | Publisher of the application package                                | schema:publisher                         | apkg:ApplicationPackage                  | apkg:Person                       | 0-1         |     |      |
-|              | Organisations involved in the application package                   | schema:sourceOrganization                | apkg:ApplicationPackage                  | apkg:Organisation                 | 1-M         |     |      |
-|              | Organisation that produced the application package                  | schema:author                            | apkg:ApplicationPackage                  | apkg:Organisation                 | 1-1         |     |      |
-|              | Spatial coverage of the application package                         | schema:spatialCoverage                   | apkg:ApplicationPackage                  | schema:Place                      | 1-1         |     |      |
-|              | URL of the application package code repository                      | schema:codeRepository                    | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
-|              | Programming language of the application package                     | schema:programmingLanguage               | apkg:ApplicationPackage                  | schema:Text                       | 0-1         |     |      |
-|              | Original URL of the application package when registered             | apkg:originalURL                         | apkg:ApplicationPackage                  | schema:URL                        | 0-1         |     |      |
-| Link of the application package                                     | apkg:ApplicationPackage                   | apkg:Link                               | apkg:hasLink                             | 1-M         |                                 |                                                             |
+|     none         | Unique identifier of the process????                        
+|      none        | Family of this application package (identifier without version)     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
+|    none          | Software version of the application package                         | doap:Version                   | apkg-rec:Process                  | schema:Text                       | 1-1         |     |      |
+|  none            | This is the latest version of the application package               | apkg:latest                              | apkg-rec:Process                  | xsd:boolean                       | 1-1         |     |      |
+|    none          | Registry where the application package is registered in             | schema:sdPublisher                       | apkg-rec:Process                   | apkg:Registry                     | 1-1         |     |      |
+|    none          | Date and time the application package was registered                | schema:sdDatePublished                   | apkg-rec:Process                  | xsd:date                          | 1-1         |     |      |
+|   none           | URL of the application package's CWL                                | schema:url                               | apkg-rec:Process                  | schema:URL                        | 0-1         |     |      |
+|    none          | Citation of a work related to the application package               | schema:citation                          | apkg-rec:Process                  | schema:Text                       | 0-1         |     |      |
+|     none         | License of the application package                                  | dct:license                              | apkg-rec:Process                  | dct:LicenseDocument               | 0-1         |     |      |
+|    none          | Author of the application package                                   | schema:author                            | apkg-rec:Process                  | apkg:Person                       | 1-M         |     |      |
+|    none          | Contributor of the application package                              | schema:contributor                       | apkg-rec:Process                  | apkg:Person                       | 0-M         |     |      |
+|    none          | Maintainer of the application package                               | schema:maintainer                        | apkg-rec:Process                  | apkg:Person                       | 0-M         |     |      |
+|    none          | Publisher of the application package                                | schema:publisher                         | apkg-rec:Process                  | apkg:Person                       | 0-1         |     |      |
+|     none         | Organisations involved in the application package                   | schema:sourceOrganization                | apkg-rec:Process                  | apkg:Organisation                 | 1-M         |     |      |
+|     none         | Organisation that produced the application package                  | schema:author                            | apkg-rec:Process                  | apkg:Organisation                 | 1-1         |     |      |
+|     none         | Spatial coverage of the application package                         | schema:spatialCoverage                   | apkg-rec:Process                  | schema:Place                      | 1-1         |     |      |
+|     none         | URL of the application package code repository                      | schema:codeRepository                    | apkg-rec:Process                  | schema:URL                        | 0-1         |     |      |
+|              | Programming language of the application package                     | schema:programmingLanguage               | apkg-rec:Process                  | schema:Text                       | 0-1         |     |      |
+|              | Original URL of the application package when registered             | apkg:originalURL                         | apkg-rec:Process                  | schema:URL                        | 0-1         |     |      |
+| Link of the application package                                     | apkg-rec:Process                   | apkg:Link                               | apkg:hasLink                             | 1-M         |                                 |                                                             |
 | __Person__                                                          |                                          |                                          | apkg:Person                              |             |                                 | rdfs:subClassOf schema:Person                               |
 | Name(s) of the Person                                               | apkg:Person                              | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
 | Email address of the person                                         | apkg:Person                              | xsd:string                               | schema:email                             | 1-1         |                                 |                                                             |                                                    
