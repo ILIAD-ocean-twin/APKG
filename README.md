@@ -1,20 +1,21 @@
 # APKG Linked Data Application Profile
 
 # 1. NameSpaces
-| Prefix     | URI                                                   |
+| Prefix      | URI                                                  |
 | ----------  | -----------------------------------------------------|
-| apkg-rec    | http://w3id.org/apkg/records#                 ||
-| rec         | https://www.opengis.net/def/ogc-api/records/         | 
 | xsd         | http://www.w3.org/2001/XMLSchema#                    |
 | rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
-| dct         | http://purl.org/dc/terms/                            |
-| geo         | http://www.opengis.net/ont/geosparql#                |
-| gj          | http://purl.org/geojson/vocab#                       |
+| adms        | http://www.w3.org/ns/adms#                           |
+| apkg-rec    | http://w3id.org/apkg/records#                        |                       
 | dcat        | http://www.w3.org/ns/dcat#                           |
-| time        | http://www.w3.org/2006/time#                          |
- | adms       | http://www.w3.org/ns/adms#                            |
- | doap       | http://usefulinc.com/ns/doap#                         |
- 
+| dct         | http://purl.org/dc/terms/                            |
+| doap        | http://usefulinc.com/ns/doap#                        |
+| geo         | http://www.opengis.net/ont/geosparql#                |
+| gj          | http://purl.org/geojson/vocab#                       | 
+| prov        | http://www.w3.org/ns/prov#                           |
+| rec         | https://www.opengis.net/def/ogc-api/records/         | 
+| time        | http://www.w3.org/2006/time#                         
+|
 
 
 
@@ -47,7 +48,7 @@ Table 1 - Core properties related to the catalogue record
 | updated        | The most recent date on which the record was changed.                                    | 🔴 apkg-rec:updatedAt                             | apkg-rec:Record                             | xsd:dateTimeStamp                          | 0-1         |     |     owl:DatatypeProperty and owl:FunctionalProperty, with range xsd:dateTimeStamp, and make it a rdfs:subPropertyOf dcterms:modified.  |
 | conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo 
 | language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | apkg-rec:primaryLanguage                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         |     |  ISTO NAO FAZ SENTIDO EM RDF!!! Se o objetivo é etiquetar cada campo: a abordagem mais correta em RDF é simplesmente usar a tag de idioma no próprio literal (dcterms:title "Processo"@pt), não uma propriedade separada. Mas se querem colocar, rdfs:subPropertyOf dct:language e owl:FunctionalProperty  |
-| languages       | The list of other languages in which this record is available. | apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         |  lexvo   |  rdfs:subPropertyOf dct:language. Se "the list of other languages" for mesmo distinto do campo language anterior (isto é, "idioma principal" vs. "também disponível em"), a forma OWL-correta de o expressar não é definir um segundo termo semanticamente diferente, mas usar dcterms:language de forma multi-valor e, se for preciso uma distinção "principal", introduzir sub-propriedades funcionais/não-funcionais. Isto mantém as duas coisas no mesmo eixo semântico (idioma do registo) em vez de as espalhar por vocabulários diferentes.    |
+| languages       | The list of other languages in which this record is available. | apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         |     |  rdfs:subPropertyOf dct:language. Se "the list of other languages" for mesmo distinto do campo language anterior (isto é, "idioma principal" vs. "também disponível em"), a forma OWL-correta de o expressar não é definir um segundo termo semanticamente diferente, mas usar dcterms:language de forma multi-valor e, se for preciso uma distinção "principal", introduzir sub-propriedades funcionais/não-funcionais. Isto mantém as duas coisas no mesmo eixo semântico (idioma do registo) em vez de as espalhar por vocabulários diferentes.    |
 | links          | A link related to this record                                                            |          🟢  rdfs:seeAlso             | apkg-rec:Record                            | xsd:anyURI                        | 0-M         |     |  Como no language, aqui a ambiguidade está em saber se "link" é mesmo uma relação semântica não tipada (então rdfs:seeAlso chega) ou se, na prática, vai sempre apontar para tipos específicos de recursos relacionados (versão anterior, documento fonte, registo duplicado), caso em que valeria a pena partir logo para sub-propriedades de dcterms:relation.    |
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-M         |     |   Dado que já escolhemos  rdfs:seeAlso para links, o par natural aqui é distinguir claramente as duas classes de objeto: links aponta para um recurso real (algo resolvido e navegável), enquanto linkTemplates aponta para um hydra:IriTemplate (algo que precisa de substituição de variáveis antes de ser navegável). Misturar os dois na mesma propriedade perderia essa distinção semântica, que é justamente o tipo de coisa que um reasoner consegue detetar como erro (maior precisão)   --> preciso de ver isto melhor,exemplo no excel, passar por criar uma classe? O hydra nao tem URI para Semantic Web,parece ser so uma coisa para XML
 
@@ -65,7 +66,6 @@ Table 2 - Core properties related to the resource.		SE AQUI É RESOURCE....PODEM
 | concept |The classification of the KOS defined on theme | |    | |  | | |
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| |rdfs:subPropertyOf dct:language.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M     
-
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M|
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | |
@@ -78,23 +78,26 @@ Table 3 - Process-extension properties related to the resource-process . SE AQUI
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-| | A Process Application package??? | 🔴 apkg-rec:Process| | | |  | rdfs:subClassOf apkg-rec:Resource |
+| __Process__| A Process Application package??? | 🔴 apkg-rec:Process| | | |  | rdfs:subClassOf apkg-rec:Resource |
 |     none         | Unique identifier of the process. Pensar nisto....       |      |apkg-rec:Process          
 |      none        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
 |    none          | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
-| none | A version of the Application Process | 🟢doap:Version |
+| __Version__ | A version of the Application Process | 🟢doap:Version |
 | none | The date of creation of the version | 🟢doap:creation | doap:Version | xsd:date| 0-1 | 
 | none | The major revision | 🔴 apkg-rec:majorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
 | none | The minor revision | 🔴 apkg-rec:minorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
 | none | The patch revision | 🔴 apkg-rec:patchVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty
 | none | The registration of the application package | 🟢 prov:wasGeneratedBy | apkg-rec:Process | prov:Activity
-|  none            | This is the latest version of the application package  NãO É PRECI RETIRAR!              |
-|    none          | Registry where the application package is registered in. | 🟢prov:Activity |
+|  none            | This is the latest version of the application package  NãO É PRECISO RETIRAR!              |
+| __Registry__          | Registry where the application package is registered in. | 🟢prov:Activity |
 | none |  The agent where you reistered |🟢 prov:wasAssociatedWith | prov:Activity
 | none | Date and time of registration | 🟢 prov:atTime | prov:Activity | xsd:dateTimeStamp |       
 | none | URL of the registration | 🟢 rdfs:seeAlso | prov:Activity  | | | | Force in SHACL :sh:property [  sh:path rdfs:seeAlso ; sh:nodeKind sh:IRI ;  sh:pattern^https://" ; sh:maxCount 1 ; ] .
-|   none           | URL of the application package's CWL                                | schema:url                               | apkg-rec:Process                  | schema:URL                        | 0-1         |     |      |
-|    none          | Citation of a work related to the application package               | schema:citation                          | apkg-rec:Process                  | schema:Text                       | 0-1         |     |      |
+|   none           | The Application Package has a CWL                                | 🔴 apkg-rec:hasCWLDescriptor                            | apkg-rec:Process                  | dcat:Distribution                      | 0-1         |     |  apkg-rec:hasCWLDescriptor  rdfs:subPropertyOf dcat:distribution    |
+| __CWL-URL__       | The CWL Application Package definition |   🟢 dcat:Distribution|
+|   | THe CWL URL | 🟢 dcat:accessURL |  dcat:Distribution | xsd:anyURI | 1-1 |
+|   | THe CWL format | 🟢 dct:format |  dcat:Distribution |<https://www.iana.org/assignments/media-types/application/x-cwl> |1-1||Force on SHACL (sh:hasValue <https://www.iana.org/assignments/media-types/application/x-cwl>; sh:minCount 1 ; sh:maxCount 1 ; )|
+|    none          | Citation of a work related to the application package               | schema:citation                          | apkg-rec:Process                  | schema:Text                       | 0-1         |   _
 |     none         | License of the application package                                  | dct:license                              | apkg-rec:Process                  | dct:LicenseDocument               | 0-1         |     |      |
 |    none          | Author of the application package                                   | schema:author                            | apkg-rec:Process                  | apkg:Person                       | 1-M         |     |      |
 |    none          | Contributor of the application package                              | schema:contributor                       | apkg-rec:Process                  | apkg:Person                       | 0-M         |     |      |
@@ -109,11 +112,7 @@ Table 3 - Process-extension properties related to the resource-process . SE AQUI
 | Link of the application package                                     | apkg-rec:Process                   | apkg:Link                               | apkg:hasLink                             | 1-M         |                                 |                                                             |
 | __Person__                                                          |                                          |                                          | apkg:Person                              |             |                                 | rdfs:subClassOf schema:Person                               |
 | Name(s) of the Person                                               | apkg:Person                              | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
-| Email address of the person                                         | apkg:Person                              | xsd:string                               | schema:email                             | 1-1         |                                 |                                                             |                                                    
-| __Registry__                                                        |                                          |                                          | apkg:Registry                            |             |                                 | rdfs:subClassOf schema:Organization                         |
-| Name of the Application Package Registry                            | apkg:Registry                            | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
-| URL of the webpage of the registry                                  | apkg:Registry                            | schema:URL                               | schema:url                               | 1-1         |                                 |                                                             |                                   
-| __Organisation__                                                    |                                          |                                          | apkg:Organisation                        |             |                                 | rdfs:subClassOf schema:Organization                         |
+| Email address of the person                                         | apkg:Person                              | xsd:string                               | schema:email                             | 1-1         |                                 |                    |                                                    | __Organisation__                                                    |                                          |                                          | apkg:Organisation                        |             |                                 | rdfs:subClassOf schema:Organization                         |
 | Name of the Organisation                                            | apkg:Organisation                        | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
 | URL of the webpage of Organisation                                  | apkg:Organisation                        |  schema:URL                              | schema:url                               | 1-1         |                                 |                                                             |                                   
 | Address of the Organisation                                         | apkg:Organisation                        | apkg:PostalAddress                       | schema:address                           | 1-1         |                                 |                                                             |  
