@@ -14,8 +14,9 @@
 | gj          | http://purl.org/geojson/vocab#                       | 
 | prov        | http://www.w3.org/ns/prov#                           |
 | rec         | https://www.opengis.net/def/ogc-api/records/         | 
-| time        | http://www.w3.org/2006/time#                         
-|
+| time        | http://www.w3.org/2006/time#                         |
+| cito        | http://purl.org/spar/cito/                           |
+| fabio       | http://purl.org/spar/fabio/                          |
 
 
 
@@ -97,7 +98,7 @@ Table 3 - Process-extension properties related to the resource-process . SE AQUI
 | __CWL-URL__       | The CWL Application Package definition |   🟢 dcat:Distribution|
 |   | THe CWL URL | 🟢 dcat:accessURL |  dcat:Distribution | xsd:anyURI | 1-1 |
 |   | THe CWL format | 🟢 dct:format |  dcat:Distribution |<https://www.iana.org/assignments/media-types/application/x-cwl> |1-1||Force on SHACL (sh:hasValue <https://www.iana.org/assignments/media-types/application/x-cwl>; sh:minCount 1 ; sh:maxCount 1 ; )|
-|    none          | Citation of a work related to the application package               | schema:citation                          | apkg-rec:Process                  | schema:Text                       | 0-1         |   _
+|    none          | Citation of a work related to the application package               | 🟢 cito:cites                         | apkg-rec:Process                  | fabio:ResearchPaper                       | 0-M         |   _
 |     none         | License of the application package                                  | dct:license                              | apkg-rec:Process                  | dct:LicenseDocument               | 0-1         |     |      |
 |    none          | Author of the application package                                   | schema:author                            | apkg-rec:Process                  | apkg:Person                       | 1-M         |     |      |
 |    none          | Contributor of the application package                              | schema:contributor                       | apkg-rec:Process                  | apkg:Person                       | 0-M         |     |      |
