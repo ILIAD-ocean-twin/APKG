@@ -13,7 +13,8 @@
 | geo         | http://www.opengis.net/ont/geosparql#                |
 | gj          | http://purl.org/geojson/vocab#                       | 
 | hydra       | https://www.w3.org/ns/hydra/core#                    |
-| iana        | http://www.iana.org/assignments/relation/            |
+| ianaRelation        | http://www.iana.org/assignments/relation/            |
+| ianaMediaType        | https://www.iana.org/assignments/media-types/            |
 | prov        | http://www.w3.org/ns/prov#                           |
 | rec         | https://www.opengis.net/def/ogc-api/records/         | 
 | time        | http://www.w3.org/2006/time#                         |
@@ -43,18 +44,19 @@ Table 1 - Core properties related to the catalogue record
 | OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |  | Record  | 🔴 apkg-rec:Record                              |                                          |                                          |             |     | rdfs:subClassOf rdfs:Resource    |
-| id             | A unique record identifier assigned by the server.                                       |🔴  apkg-rec:recordId                        | apkg-rec:Record                       | xsd:string                       | 1-1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf rec:value
+| id             | A unique record identifier assigned by the server.                                       |🔴  apkg-rec:recordId                        | apkg-rec:Record                       | xsd:string                       | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf rec:value
 | created        | The date this record was created in the server.                                          | 🔴 apkg-rec:createdAt                               | apkg-rec:Record                             | xsd:dateTimeStamp                      | 0-1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:created  |
 | updated        | The most recent date on which the record was changed.                                    | 🔴 apkg-rec:updatedAt                             | apkg-rec:Record                             | xsd:dateTimeStamp                          | 0-1         |     |     owl:DatatypeProperty , rdfs:subPropertyOf dcterms:modified.  |
 | conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo 
 | language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:primaryLanguage                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         |     |   rdfs:subPropertyOf dct:language |
 | languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         |     |  rdfs:subPropertyOf dct:language.     |
-| links          | A related link of the record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | hydra:Link                      | 0-M         |     |    |
+| links          | A related link of the record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | hydra:Link                      | 0-1         |     |    |
 | __Link__          | A link related to this record    |🟢 hydra:Link
 | title          | A title of the related link   |          🟢  dct:title             | apkg-rec:Link                            | xsd:string                     | 0-1        |     |    |
 | href          | A URL related to this record    |          🟢  dct:             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         |     |    |
-| rel          | The type of relation of this record    |          🟢  dct:relation            | apkg-rec:Link                            | xsd:anyURI | 1 | iana    |    |
-| linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-M         |     |   Dado que já escolhemos  rdfs:seeAlso para links, o par natural aqui é distinguir claramente as duas classes de objeto: links aponta para um recurso real (algo resolvido e navegável), enquanto linkTemplates aponta para um hydra:IriTemplate (algo que precisa de substituição de variáveis antes de ser navegável). Misturar os dois na mesma propriedade perderia essa distinção semântica, que é justamente o tipo de coisa que um reasoner consegue detetar como erro (maior precisão)   --> preciso de ver isto melhor,exemplo no excel, passar por criar uma classe? O hydra nao tem URI para Semantic Web,parece ser so uma coisa para XML
+| rel          | The type of relation of this record    |          🟢  dct:relation            | apkg-rec:Link                            | xsd:anyURI | 1 | ianaRelation    |    |
+| type | Media type of the relation of this record | 🟢 dct:format | apkg-rec:Link | dct:MediaType| 0-1  | ianaMediaType
+| linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-1         |     |   
 
 Table 2 - Core properties related to the resource.		SE AQUI É RESOURCE....PODEMOS CRIAR UMA CLASSE RESOURCE. DISCUTIR COM MARCO				
 
