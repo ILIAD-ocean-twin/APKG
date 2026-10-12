@@ -52,6 +52,7 @@ Table 1 - Core properties related to the catalogue record
 | __Link__          | A link related to this record    |🟢 hydra:Link
 | title          | A title of the related link   |          🟢  dct:title             | apkg-rec:Link                            | xsd:string                     | 0-1        |     |    |
 | href          | A URL related to this record    |          🟢  dct:             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         |     |    |
+| askdjahkdajhd
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-M         |     |   Dado que já escolhemos  rdfs:seeAlso para links, o par natural aqui é distinguir claramente as duas classes de objeto: links aponta para um recurso real (algo resolvido e navegável), enquanto linkTemplates aponta para um hydra:IriTemplate (algo que precisa de substituição de variáveis antes de ser navegável). Misturar os dois na mesma propriedade perderia essa distinção semântica, que é justamente o tipo de coisa que um reasoner consegue detetar como erro (maior precisão)   --> preciso de ver isto melhor,exemplo no excel, passar por criar uma classe? O hydra nao tem URI para Semantic Web,parece ser so uma coisa para XML
 
 Table 2 - Core properties related to the resource.		SE AQUI É RESOURCE....PODEMOS CRIAR UMA CLASSE RESOURCE. DISCUTIR COM MARCO				
