@@ -12,15 +12,13 @@
 | doap        | http://usefulinc.com/ns/doap#                        |
 | geo         | http://www.opengis.net/ont/geosparql#                |
 | gj          | http://purl.org/geojson/vocab#                       | 
+| hydra       | https://www.w3.org/ns/hydra/core#                    |
 | prov        | http://www.w3.org/ns/prov#                           |
 | rec         | https://www.opengis.net/def/ogc-api/records/         | 
 | time        | http://www.w3.org/2006/time#                         |
 | cito        | http://purl.org/spar/cito/                           |
 | fabio       | http://purl.org/spar/fabio/                          |
 
-
-
-tenos de ver a hydra.
 
 a ver se precisamos
 
@@ -50,7 +48,10 @@ Table 1 - Core properties related to the catalogue record
 | conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo 
 | language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:primaryLanguage                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         |     |   rdfs:subPropertyOf dct:language |
 | languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         |     |  rdfs:subPropertyOf dct:language.     |
-| links          | A link related to this record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | xsd:anyURI                        | 0-M         |     |    |
+| links          | A related link of the record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | hydra:Link                      | 0-M         |     |    |
+| __Link__          | A link related to this record    |🟢 hydra:Link
+| title          | A title of the related link   |          🟢  dct:title             | apkg-rec:Link                            | xsd:string                     | 0-1        |     |    |
+| href          | A URL related to this record    |          🟢  dct:             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         |     |    |
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-M         |     |   Dado que já escolhemos  rdfs:seeAlso para links, o par natural aqui é distinguir claramente as duas classes de objeto: links aponta para um recurso real (algo resolvido e navegável), enquanto linkTemplates aponta para um hydra:IriTemplate (algo que precisa de substituição de variáveis antes de ser navegável). Misturar os dois na mesma propriedade perderia essa distinção semântica, que é justamente o tipo de coisa que um reasoner consegue detetar como erro (maior precisão)   --> preciso de ver isto melhor,exemplo no excel, passar por criar uma classe? O hydra nao tem URI para Semantic Web,parece ser so uma coisa para XML
 
 Table 2 - Core properties related to the resource.		SE AQUI É RESOURCE....PODEMOS CRIAR UMA CLASSE RESOURCE. DISCUTIR COM MARCO				
