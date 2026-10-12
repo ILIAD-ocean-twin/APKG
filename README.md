@@ -58,7 +58,7 @@ Table 1 - Core properties related to the catalogue record
 | type | Media type of the relation of this record | 🟢 dct:format | apkg-rec:Link | dct:MediaType| 0-1  | ianaMediaType
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-1         |     |   
 
-Table 2 - Core properties related to the resource.		SE AQUI É RESOURCE....PODEMOS CRIAR UMA CLASSE RESOURCE. DISCUTIR COM MARCO				
+Table 2 - Core properties related to the resource.
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
