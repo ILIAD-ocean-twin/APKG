@@ -38,11 +38,17 @@ a ver se precisamos
 🟢 $\color{green}{\rightarrow}$ a term from another ontology.
 🔴 $\color{red}{\rightarrow}$ apkg-rec ontology
 
-Table 1 - Core properties related to the catalogue record
+Table 1 - Core classes related to the catalogue record
 
+
+|Class | Description | Term | Notes|
+|---|---|---|--|
+| Record | aksdjhaksdhaskd | 🔴 apkg-rec:Record  | rdfs:subClassOf rdfs:Resource|
+  Link    | A link related to this record    |🟢 hydra:Link | |
+
+Table 2 - Core properrties related to the catalogue record
 | OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
-|  | __Record__  | 🔴 apkg-rec:Record                              |                                          |                                          |        |    |     | rdfs:subClassOf rdfs:Resource    |
 | id             | A unique record identifier assigned by the server.                                       |🔴  apkg-rec:recordId                        | apkg-rec:Record                       | xsd:string                       | 1         | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf rec:value |
 | created        | The date this record was created in the server.                                          | 🔴 apkg-rec:createdAt                               | apkg-rec:Record                             | xsd:dateTimeStamp                      | 0-1         | 0-1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:created  |
 | updated        | The most recent date on which the record was changed.                                    | 🔴 apkg-rec:updatedAt                             | apkg-rec:Record                             | xsd:dateTimeStamp                          | 0-1         | 0-1         |     |     owl:DatatypeProperty , rdfs:subPropertyOf dcterms:modified.  |
@@ -50,26 +56,32 @@ Table 1 - Core properties related to the catalogue record
 | language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:primaryLanguage                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         | 0-1         |     |   rdfs:subPropertyOf dct:language |
 | languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         | 0-M         |     |  rdfs:subPropertyOf dct:language.     |
 | links          | A related link of the record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | hydra:Link                      | 0-M         | 0-M         |     |    |
-| __Link__          | A link related to this record    |🟢 hydra:Link | | | | | | |
 | title          | A title of the related link   |          🟢  dct:title             | apkg-rec:Link                            | xsd:string                     | 0-1        | 0-1        |     | |
 | href          | A URL related to this record    |          🟢  dct:             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         | 0-M         |     |    |
 | rel          | The type of relation of this record    |          🟢  dct:relation            | apkg-rec:Link                            | xsd:anyURI | 1 | 1 | ianaRelation    |    |
 | type | Media type of the relation of this record | 🟢 dct:format | apkg-rec:Link | dct:MediaType| 0-1  | 0-1  | ianaMediaType | |
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-1         | 0-1         |     |   |
 
-Table 2 - Core properties related to the resource.
+Table 3- Core classes related to the resource
+|Class | Description | Term | Notes|
+|---|---|---|--|
+| Geometry | The geometry of the object | 🟢geo:Geometry |
+
+
+
+
+Table 4 - Core properties related to the resource.
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
 |      type        |          The nature or genre of the resource described by this record. |   🔴 apkg-rec:resourceType  |  apkg-rec:Record        | dct:DCMIType |  0-1             |  0-1             | |owl:ObjectProperty, rdfs:subPropertyOf dcterms:type . Não precisamos de redeclarar rdfs:range dcterms:DCMIType em process:recordType. Pela cadeia de regras RDFS (subpropriedade → propriedade base → range).    .
 |          title    | A human-readable name given to the resource described by this record.                                   | 🔴 apkg-rec:title                                | apkg-rec:Record                  | xsd:string                      | 0-1         | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:title |
 |  description            | 	A free-text description of the resource described by this record.                              | 🔴 apkg-rec:description                          | apkg-rec:Record                     | xsd:string                 | 0-1   | 0-1   |     |   rdfs:subPropertyOf dcterms:description   |
-|   has geometry           | A spatial extent associated with the resource described by this record. | 🟢 geo:hasGeometry                  | apkg-rec:Record                | geo:Geometry                     | 0-1         | 0-1         |     |   geo:hasGeometry pointing to a geo:Geometry individual with geo:asWKT "POLYGON(...)"^^geo:wktLiteral. Um exemplo: ex:record123 a apkg-rec:Record, geo:hasGeometry ex:record123-geom . ex:record123-geom a geo:Geometry,    geo:asWKT "POLYGON((-8.63 41.15, -8.60 41.15, -8.60 41.18, -8.63 41.18, -8.63 41.15))"^^geo:wktLiteral.|  
-| __Geometry__| The geometry of the object | 🟢geo:Geometry |
+|   has geometry           | A spatial extent associated with the resource described by this record. | 🟢 geo:hasGeometry                  | apkg-rec:Record                | geo:Geometry                     | 0-1         | 0-1         |     |   |  
 | type | The type of the object  |🟢 geojson:type | geo:Geometry | xsd:anyURI | 1 | 1 | geojson concept scheme | O concept scheme tem de ser defnido em skos.
 | coordinates | The coordinates of the  object |🟢 geojson:coordinates | geo:Geometry | xsd:string | 1-M | 1-M
 | time | A temporal extent associated with the resource described by this record.                         |          🟢 time:hasTime           |    apkg-rec:Record                   | time:Interval   or time:Instant      | 0-1 | 0-1 | | ex:record123 a apkg-rec:Record, time:hasTime ex:record123-time. ex:record123-time a time:Interval, time:hasBeginning ex:record123-start time:hasEnd  ex:record123-end . ex:record123-start a time:Instant, time:inXSDDateTimeStamp "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp . ex:record123-end a time:Instant, time:inXSDDateTimeStamp "2026-06-30T23:59:59Z"^^xsd:dateTimeStamp . o time:Instant é para o caso de ser somente "date" ou "timestamp".
-|      keywords        | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | rdfs:Literal                      | 0-M         | 0-M         |     |      |
+|      keywords AQUI       | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | rdfs:Literal                      | 0-M         | 0-M         |     |      |
 | themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 dcat:theme    |apkg-rec:Record   | skos:Concept| 0-M| 0-M| | Aqui usamos um URI que aponta para uma entrada de um vocabulario controlado (ou taxonomia)
 | concept |The classification of the KOS defined on theme | |    | | | | | Este termo nao faz sentido, porque em cima o URI já informa qual o KOS usado.|
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| 0-M| |rdfs:subPropertyOf dct:language.
