@@ -101,7 +101,7 @@ Table 4 - Core properties related to the resource.
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | apkg-rec:hasContact |apkg-rec:Record   | apkg-rec:Contact| 0-M|0-M |
 | identifier | The identifier of the contact | 🔴apkg-rec:contactIdentifier | apkg-rec:Contact| xsd:string | 0-1 |0-1| |rdfs:subPropertyOf dct:identifier
 | name | The name of the contact | 🟢 foaf:name | apkg-rec:Contact| xsd:string | 0-1 |0-1| 
-| position | THe position of the contac | org:holds | apkg-rec:Contact| xsd:string |0-1 | 0-1 |
+| position | THe position of the contac | 🟢 org:holds | apkg-rec:Contact| xsd:string |0-1 | 0-1 |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
 
