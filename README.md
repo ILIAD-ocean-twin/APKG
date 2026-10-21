@@ -5,7 +5,7 @@
 | ----------  | -----------------------------------------------------|
 | xsd         | http://www.w3.org/2001/XMLSchema#                    |
 | rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
-| adms        | http://www.w3.org/ns/adms#                           |
+| adms        | http://www.w3.org/ns/adms#         ????              |
 | apkg-rec    | http://w3id.org/apkg/records#                        |                       
 | dcat        | http://www.w3.org/ns/dcat#                           |
 | dct         | http://purl.org/dc/terms/                            |
@@ -51,7 +51,7 @@ Table 1 - Core classes related to the catalogue record
 Table 2 - Core properrties related to the catalogue record
 | OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
-| id             | A unique record identifier assigned by the server.                                       |🔴  apkg-rec:recordId                        | apkg-rec:Record                       | xsd:string                       | 1         | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf rec:value |
+| id             | A unique record identifier assigned by the server.                                       |🔴  apkg-rec:recordId                        | apkg-rec:Record                       | xsd:string                       | 1         | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier |
 | created        | The date this record was created in the server.                                          | 🔴 apkg-rec:createdAt                               | apkg-rec:Record                             | xsd:dateTimeStamp                      | 0-1         | 0-1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:created  |
 | updated        | The most recent date on which the record was changed.                                    | 🔴 apkg-rec:updatedAt                             | apkg-rec:Record                             | xsd:dateTimeStamp                          | 0-1         | 0-1         |     |     owl:DatatypeProperty , rdfs:subPropertyOf dcterms:modified.  |
 | conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo |
@@ -86,10 +86,10 @@ Table 4 - Core properties related to the resource.
 | themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 apkg-rec:hasTheme    |apkg-rec:Record   | 🔴 apkg:Theme| 0-M| 0-M|
 | concepts |The classification of the KOS defined on theme | 🔴apkg-rec:hasConcept | apkg-rec:Theme |  apkg-rec:Concept    | 0-M |0-M | | Listing 22 and Listing 38 at https://docs.ogc.org/is/20-004r1/20-004r1.html show divergent uses of hasConcept term of the Themes Class. In the first it is a Class with _id_ and _url_ and at the second  a list of xsd:String. | 
 | scheme | THe KOS scheme  of the Concepts in the specific theme | skos:inScheme | apkg-rec:Theme | xsd:anyURI | 1 | 1 |
-| id | The id of the concept | dct:identifier | apkg-rec:Concept | xsd:string | 0-1| 0-1|
+| id | The id of the concept | apkg-rec:schemaIdentifier | apkg-rec:Concept | xsd:string | 0-1| 0-1| owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier
 | uri | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | apkg-rec:Record     | dct:LinguisticSystem     | 0-M| 0-M| ISO639-2 |rdfs:subPropertyOf dct:language.
-| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M|     0-M     
+| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 apkg-rec:externalIdentifier    | apkg-rec:Record                     | xsd:string   |     0-M|     0-M   | owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier  
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M| 0-M|
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | | |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
