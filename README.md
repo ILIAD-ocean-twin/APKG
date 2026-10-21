@@ -70,7 +70,7 @@ Table 3- Core classes related to the resource
 | Geometry | The geometry of the object | 🟢geo:Geometry |
 | Theme | A theme of the Record | 🔴 apkg-rec:Theme |
 | Concept | A concept of the theme | 🔴 apkg-rec:Concept |
-| Format | A format of file | 🔴 apkg-rec:Format | See It can include both physical and digital distribution formats. |
+| Format | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
 
 
 Table 4 - Core properties related to the resource.
