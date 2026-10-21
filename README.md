@@ -88,10 +88,8 @@ Table 4 - Core properties related to the resource.
 | scheme | THe KOS scheme  of the Concepts in the specific theme | skos:inScheme | apkg-rec:Theme | xsd:anyURI | 1 | 1 |
 | id | The id of the concept | apkg-rec:schemaIdentifier | apkg-rec:Concept | xsd:string | 0-1| 0-1| owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier
 | uri | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
-| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | apkg-rec:Record     | dct:LinguisticSystem     | 0-M| 0-M| ISO639-2 |rdfs:subPropertyOf dct:language.
-| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 apkg-rec:externalIdentifier    | apkg-rec:Record                     | xsd:string   |     0-M|     0-M   | owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier  
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | apkg-rec:Record     | dct:LinguisticSystem     | 0-M| 0-M| ISO639-2 |rdfs:subPropertyOf dct:language. See note in _language_.
-| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. |  adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M|     0-M     
+| externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🔴 apkg-rec:externalIdentifier    | apkg-rec:Record                     | xsd:string   |     0-M|     0-M |  | owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier   
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M| 0-M|
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | | |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
