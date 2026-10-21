@@ -1,3 +1,5 @@
+# APKG Linked Data Application Profile
+
 [<- main](README.md)
 
 ## Core properties related to the Record Class 
