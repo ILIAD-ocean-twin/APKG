@@ -70,7 +70,7 @@ Table 3- Core classes related to the resource
 | Geometry | The geometry of the object | 🟢geo:Geometry |
 | Theme | A theme of the Record | 🔴 apkg-rec:Theme |
 | Concept | A concept of the theme | 🔴 apkg-rec:Concept |
-| Format | A format of file | 🔴 apkg-rec:Format |
+| Format | A format of file | 🔴 apkg-rec:Format | See It can include both physical and digital distribution formats. |
 
 
 Table 4 - Core properties related to the resource.
@@ -92,9 +92,9 @@ Table 4 - Core properties related to the resource.
 | uri | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | apkg-rec:Record     | dct:LinguisticSystem     | 0-M| 0-M| ISO639-2 |rdfs:subPropertyOf dct:language. See note in _language_.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🔴 apkg-rec:externalIdentifier    | apkg-rec:Record                     | xsd:string   |     0-M|     0-M |  | owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier   
-| formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:hasFormat |apkg-rec:Record   | apkg-rec:Format| 0-M| 0-M|
-| name | The name of the format the resource that the record describes. It can include both physical and digital distribution formats.| 🟢 dct:title |apkg-rec:Format   | xsd:string| 0-1| 0-1|
-| mediatype | The media of the format the resource that the record describes. It can include both physical and digital distribution formats.| 🟢 dct:format |apkg-rec:Format   | dct::MediaTypeOrExtent| 0-1| 0-1|
+| formats | The list of available distribution formats for the resource that a record describes. It can include both physical and digital distribution formats.| 🟢 dct:hasFormat |apkg-rec:Record   | apkg-rec:Format| 0-M| 0-M|
+| name | The name of the format the resource that the record describes. | 🟢 dct:title |apkg-rec:Format   | xsd:string| 0-1| 0-1|
+| mediatype | The media of the format the resource that the record describes.| 🟢 dct:format |apkg-rec:Format   | dct:MediaTypeOrExtent| 0-1| 0-1|
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | | |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
