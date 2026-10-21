@@ -71,6 +71,7 @@ Table 3- Core classes related to the resource
 | Theme | A theme of the Record | 🔴 apkg-rec:Theme |
 | Concept | A concept of the theme | 🔴 apkg-rec:Concept |
 | Format | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
+| Contact | A contact of the record | apkg-rec:Contact |
 
 
 Table 4 - Core properties related to the resource.
@@ -95,7 +96,7 @@ Table 4 - Core properties related to the resource.
 | formats | The list of available distribution formats for the resource that a record describes. It can include both physical and digital distribution formats.| 🟢 dct:hasFormat |apkg-rec:Record   | apkg-rec:Format| 0-M| 0-M|
 | name | The name of the format the resource that the record describes. | 🟢 dct:title |apkg-rec:Format   | xsd:string| 0-1| 0-1|
 | mediatype | The media of the format the resource that the record describes.| 🟢 dct:format |apkg-rec:Format   | dct:MediaTypeOrExtent| 0-1| 0-1|
-| contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | | |
+| contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | apkg-rec:hasContact |apkg-rec:Record   | apkg-rec:Contact| 0-M|0-M |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
 
