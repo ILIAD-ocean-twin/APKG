@@ -52,7 +52,7 @@ Table 1 - Core classes related to the catalogue record
   [Link](LinkClass.md)    | A link related to this record    | 🔴apkg-rec:Link|  | |
 
 
-Table 3- Core classes related to the resource
+Table 2 - Core classes related to the resource
 |Class | Description | Term | Notes|
 |---|---|---|--|
 | Geometry | The geometry of the object | 🟢geo:Geometry |
