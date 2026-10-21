@@ -90,7 +90,7 @@ Table 4 - Core properties related to the resource.
 | concepts |The classification of the KOS defined on theme | 🔴apkg-rec:hasConcept | apkg-rec:Theme |  apkg-rec:Concept    | 0-M |0-M | | Listing 22 and Listing 38 at https://docs.ogc.org/is/20-004r1/20-004r1.html show divergent uses of hasConcept term of the Themes Class. In the first it is a Class with _id_ and _url_ and at the second  a list of xsd:String. | 
 | scheme | THe KOS scheme  of the Concepts in the specific theme | skos:inScheme | apkg-rec:Theme | xsd:anyURI | 1 | 1 |
 | ID | The id of the concept | dct:identifier | apkg-rec:Concept | xsd:string | 0-1| 0-1|
-| URI | The URI of the concept | dct:identifier | apkg-rec:Concept | xsd:string | 0-1| 0-1|| 
+| URI | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| 0-M| |rdfs:subPropertyOf dct:language.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M|     0-M     
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M| 0-M|
