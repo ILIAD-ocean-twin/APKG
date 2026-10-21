@@ -5,6 +5,7 @@
 | ----------  | -----------------------------------------------------|
 | xsd         | http://www.w3.org/2001/XMLSchema#                    |
 | rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
+| rdfs        | FALTA |
 | adms        | http://www.w3.org/ns/adms#         ????              |
 | apkg-rec    | http://w3id.org/apkg/records#                        |                       
 | dcat        | http://www.w3.org/ns/dcat#                           |
@@ -48,7 +49,7 @@ Table 1 - Core classes related to the catalogue record
 |Class | Description | Term | Notes|
 |---|---|---|--|
 | Record | A record in the catalogue | 🔴 apkg-rec:Record  | rdfs:subClassOf rdfs:Resource|
-  Link    | A link related to this record    |🟢 hydra:Link | |
+  Link    | A link related to this record    | 🔴apkg-rec:Link|  | |
 
 Table 2 - Core properrties related to the catalogue record
 | OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
@@ -59,9 +60,9 @@ Table 2 - Core properrties related to the catalogue record
 | conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo |
 | language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:language                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         | 0-1  | ISO639-2    |   rdfs:subPropertyOf dct:language; It migth require to match with https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/language.yaml in Version 2 (TODO) |
 | languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:alternateLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         | 0-M         |   ISO639-2  |  rdfs:subPropertyOf dct:language; See note in _language_.     |
-| links          | A related link of the record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | hydra:Link                      | 0-M         | 0-M         |     |    |
+| links          | A related link of the record                      |          🟢  dct:relation             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         | 0-M         |     |    |
 | title          | A title of the related link   |          🟢  dct:title             | apkg-rec:Link                            | xsd:string                     | 0-1        | 0-1        |     | |
-| href          | A URL related to this record    |          🟢  dct:             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         | 0-M         |     |    |
+| href          | A URL related to this record    |          🟢  dct: ????            | apkg-rec:Link        |                      | 0-M         | 0-M         |     |    |
 | rel          | The type of relation of this record    |          🟢  dct:relation            | apkg-rec:Link                            | xsd:anyURI | 1 | 1 | ianaRelation    |    |
 | type | Media type of the relation of this record | 🟢 dct:format | apkg-rec:Link | dct:MediaType| 0-1  | 0-1  | ianaMediaType | |
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-1         | 0-1         |     |   |
@@ -103,6 +104,7 @@ Table 4 - Core properties related to the resource.
 | name | The name of the responsible person. | 🔴 apkg-rec:contactName | apkg-rec:Contact| xsd:string | 0-1 |0-1| | rdfs:subPropertyOf foaf:name
 | position |  The name of the role or position of the responsible person taken from the organization's formal organizational hierarchy or chart. | 🟢 org:holds | apkg-rec:Contact| xsd:string |0-1 | 0-1 |
 | organisation | Organization/affiliation of the contact. | 🔴 apkg-rec:contactOrganisationName | apkg-rec:Contact| xsd:string | 0-1 |0-1| | rdfs:subPropertyOf foaf:name
+| logo | Graphic identifying a contact. The link relation should be icon  and the media type should be an image media type.| 🔴 apkg-rec:hasLogo | apkg-rec:Contact | apkg-rec:Link ||
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
 
