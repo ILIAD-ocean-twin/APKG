@@ -20,8 +20,7 @@
 | time        | http://www.w3.org/2006/time#                         |
 | cito        | http://purl.org/spar/cito/                           |
 | fabio       | http://purl.org/spar/fabio/                          |
-| ISO639-2 |    http://purl.org/dc/terms/ISO639-2    |
-LCSH        | http://id.loc.gov/authorities/subjects/              
+| ISO639-2    | http://purl.org/dc/terms/ISO639-2    |         
 
 
 
@@ -69,6 +68,7 @@ Table 3- Core classes related to the resource
 |Class | Description | Term | Notes|
 |---|---|---|--|
 | Geometry | The geometry of the object | 🟢geo:Geometry |
+| Theme | A theme of the Record | apkg:Theme | |
 
 
 
@@ -84,9 +84,9 @@ Table 4 - Core properties related to the resource.
 | type | The type of the object  |🟢 geojson:type | geo:Geometry | xsd:anyURI | 1 | 1 | geojson concept scheme | O concept scheme tem de ser defnido em skos.
 | coordinates | The coordinates of the  object |🟢 geojson:coordinates | geo:Geometry | xsd:string | 1-M | 1-M
 | time | A temporal extent associated with the resource described by this record.                         |          🟢 time:hasTime           |    apkg-rec:Record                   | time:Interval   or time:Instant      | 0-1 | 0-1 | | ex:record123 a apkg-rec:Record, time:hasTime ex:record123-time. ex:record123-time a time:Interval, time:hasBeginning ex:record123-start time:hasEnd  ex:record123-end . ex:record123-start a time:Instant, time:inXSDDateTimeStamp "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp . ex:record123-end a time:Instant, time:inXSDDateTimeStamp "2026-06-30T23:59:59Z"^^xsd:dateTimeStamp . o time:Instant é para o caso de ser somente "date" ou "timestamp".
-|      keywords      | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | xsd:anyURI                      | 0-M         | 0-M         | LCSH    |      |
-| themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 dcat:theme    |apkg-rec:Record   | skos:Concept| 0-M| 0-M| | Aqui usamos um URI que aponta para uma entrada de um vocabulario controlado (ou taxonomia)
-| concept |The classification of the KOS defined on theme | |    | | | | | Este termo nao faz sentido, porque em cima o URI já informa qual o KOS usado.|
+|      keywords      | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | xsd:string                       | 0-M         | 0-M         |     |      |
+| themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 apkg-rec:hasTheme    |apkg-rec:Record   | apkg:Theme| 0-M| 0-M| | 
+| concepts |The classification of the KOS defined on theme | apkg-rec:hasConcept |     | | | | | Este termo nao faz sentido, porque em cima o URI já informa qual o KOS usado.|
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| 0-M| |rdfs:subPropertyOf dct:language.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M|     0-M     
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M| 0-M|
