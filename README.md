@@ -20,6 +20,8 @@
 | time        | http://www.w3.org/2006/time#                         |
 | cito        | http://purl.org/spar/cito/                           |
 | fabio       | http://purl.org/spar/fabio/                          |
+| ISO639-2 |    http://purl.org/dc/terms/ISO639-2    |
+
 
 
 a ver se precisamos
@@ -53,8 +55,8 @@ Table 2 - Core properrties related to the catalogue record
 | created        | The date this record was created in the server.                                          | 🔴 apkg-rec:createdAt                               | apkg-rec:Record                             | xsd:dateTimeStamp                      | 0-1         | 0-1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:created  |
 | updated        | The most recent date on which the record was changed.                                    | 🔴 apkg-rec:updatedAt                             | apkg-rec:Record                             | xsd:dateTimeStamp                          | 0-1         | 0-1         |     |     owl:DatatypeProperty , rdfs:subPropertyOf dcterms:modified.  |
 | conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo |
-| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:primaryLanguage                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         | 0-1         |     |   rdfs:subPropertyOf dct:language |
-| languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         | 0-M         |     |  rdfs:subPropertyOf dct:language.     |
+| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:primaryLanguage                              | apkg-rec:Record                            | dct:LinguisticSystem          | 0-1         | 0-1  | ISO639-2    |   rdfs:subPropertyOf dct:language |
+| languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:recordLanguage                         | apkg-rec:Record                            | dct:LinguisticSystem         | 0-M         | 0-M         |   ISO639-2  |  rdfs:subPropertyOf dct:language.     |
 | links          | A related link of the record                                                            |          🟢  dct:relation             | apkg-rec:Record                            | hydra:Link                      | 0-M         | 0-M         |     |    |
 | title          | A title of the related link   |          🟢  dct:title             | apkg-rec:Link                            | xsd:string                     | 0-1        | 0-1        |     | |
 | href          | A URL related to this record    |          🟢  dct:             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         | 0-M         |     |    |
@@ -81,7 +83,7 @@ Table 4 - Core properties related to the resource.
 | type | The type of the object  |🟢 geojson:type | geo:Geometry | xsd:anyURI | 1 | 1 | geojson concept scheme | O concept scheme tem de ser defnido em skos.
 | coordinates | The coordinates of the  object |🟢 geojson:coordinates | geo:Geometry | xsd:string | 1-M | 1-M
 | time | A temporal extent associated with the resource described by this record.                         |          🟢 time:hasTime           |    apkg-rec:Record                   | time:Interval   or time:Instant      | 0-1 | 0-1 | | ex:record123 a apkg-rec:Record, time:hasTime ex:record123-time. ex:record123-time a time:Interval, time:hasBeginning ex:record123-start time:hasEnd  ex:record123-end . ex:record123-start a time:Instant, time:inXSDDateTimeStamp "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp . ex:record123-end a time:Instant, time:inXSDDateTimeStamp "2026-06-30T23:59:59Z"^^xsd:dateTimeStamp . o time:Instant é para o caso de ser somente "date" ou "timestamp".
-|      keywords AQUI       | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | rdfs:Literal                      | 0-M         | 0-M         |     |      |
+|      keywords      | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | rdfs:Literal                      | 0-M         | 0-M         |     |      |
 | themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 dcat:theme    |apkg-rec:Record   | skos:Concept| 0-M| 0-M| | Aqui usamos um URI que aponta para uma entrada de um vocabulario controlado (ou taxonomia)
 | concept |The classification of the KOS defined on theme | |    | | | | | Este termo nao faz sentido, porque em cima o URI já informa qual o KOS usado.|
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| 0-M| |rdfs:subPropertyOf dct:language.
