@@ -68,7 +68,8 @@ Table 3- Core classes related to the resource
 |Class | Description | Term | Notes|
 |---|---|---|--|
 | Geometry | The geometry of the object | 🟢geo:Geometry |
-| Theme | A theme of the Record | apkg:Theme | |
+| Theme | A theme of the Record | 🔴 apkg-rec:Theme |
+| Concept | A concept of the theme | 🔴 apkg-rec:Concept |
 
 
 
@@ -85,8 +86,9 @@ Table 4 - Core properties related to the resource.
 | coordinates | The coordinates of the  object |🟢 geojson:coordinates | geo:Geometry | xsd:string | 1-M | 1-M
 | time | A temporal extent associated with the resource described by this record.                         |          🟢 time:hasTime           |    apkg-rec:Record                   | time:Interval   or time:Instant      | 0-1 | 0-1 | | ex:record123 a apkg-rec:Record, time:hasTime ex:record123-time. ex:record123-time a time:Interval, time:hasBeginning ex:record123-start time:hasEnd  ex:record123-end . ex:record123-start a time:Instant, time:inXSDDateTimeStamp "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp . ex:record123-end a time:Instant, time:inXSDDateTimeStamp "2026-06-30T23:59:59Z"^^xsd:dateTimeStamp . o time:Instant é para o caso de ser somente "date" ou "timestamp".
 |      keywords      | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | xsd:string                       | 0-M         | 0-M         |     |      |
-| themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 apkg-rec:hasTheme    |apkg-rec:Record   | apkg:Theme| 0-M| 0-M| | 
-| concepts |The classification of the KOS defined on theme | apkg-rec:hasConcept | apkg-rec:Concept    | 0-M |0-M |
+| themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 apkg-rec:hasTheme    |apkg-rec:Record   | 🔴 apkg:Theme| 0-M| 0-M|
+| concepts |The classification of the KOS defined on theme | 🔴apkg-rec:hasConcept | apkg-ec:Theme |  apkg-rec:Concept    | 0-M |0-M |
+| scheme | THe scheme KOS of the Concept | 
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| 0-M| |rdfs:subPropertyOf dct:language.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M|     0-M     
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M| 0-M|
