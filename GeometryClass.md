@@ -1,6 +1,10 @@
+# APKG Linked Data Application Profile
+
+[<- main](README.md)
+
 ## Resource properties related to the Geometry Class 
 
-- Table 3.1
+- Table B.3.1
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

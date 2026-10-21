@@ -43,32 +43,34 @@ a ver se precisamos
 🟢 $\color{green}{\rightarrow}$ a term from another ontology.
 🔴 $\color{red}{\rightarrow}$ apkg-rec ontology
 
-Table 1 - Core classes related to the catalogue record
+Table A - Core classes related to the catalogue record
 
 
-|Class | Description | Term | Notes|
-|---|---|---|--|
-| [Record](RecordClass.md) | A record in the catalogue | 🔴 apkg-rec:Record  | rdfs:subClassOf rdfs:Resource|
-  [Link](LinkClass.md)    | A link related to this record    | 🔴apkg-rec:Link|  | |
+| id |Class | Description | Term | Notes| Table(s) |
+|---|---|---|---|--|- | 
+| 1 | [Record](RecordClass.md) | A record in the catalogue | 🔴 apkg-rec:Record  | rdfs:subClassOf rdfs:Resource | Table A.1.1; Table A.1.2 |
+| 2 | [Link](LinkClass.md)    | A link related to this record    | 🔴apkg-rec:Link|  | Table A.2.1 | 
 
 
-Table 2 - Core classes related to the resource
-|Class | Description | Term | Notes|
-|---|---|---|--|
-| [Geometry](GeometryClass.md) | The geometry of the object | apkg-rec:Geometry | rdfs:subClassOf geo:Geometry |
-| [Theme](ThemeClass.md) | A theme of the Record | 🔴 apkg-rec:Theme | |
-| [Concept](ConceptClass.md) | A concept of the theme | 🔴 apkg-rec:Concept | |
-| [Format](FormatClass.md) | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
-| [Contact](ContactClass.md) | A contact of the record | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |
+Table B - Core classes related to the resource
+
+| id |Class | Description | Term | Notes| Table(s) |
+|---|---|---|---|--|- | 
+| 3 | [Geometry](GeometryClass.md) | The geometry of the object | 🔴 apkg-rec:Geometry | rdfs:subClassOf geo:Geometry |
+| 4 | [Theme](ThemeClass.md) | A theme of the Record | 🔴 apkg-rec:Theme | |
+| 5 | [Concept](ConceptClass.md) | A concept of the theme | 🔴 apkg-rec:Concept | |
+| 6 | [Format](FormatClass.md) | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
+| 7 | [Contact](ContactClass.md) | A contact of the record | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |
+| 8 | [Language](LanguageClass.md) | The language used for textual values in this record | 🔴 apkg-rec:Language |  |
 
 
 
 
 Table 5 - Extension classes related to the Process .
 
-|Class | Description | Term | Notes|
-|---|---|---|--|
-| Process | A Process | 🔴 apkg-rec:Process |
+| id |Class | Description | Term | Notes| Table(s) |
+|---|---|---|---|--|- | 
+| 7 | Process | A Process | 🔴 apkg-rec:Process |
 
 Table 6 - Extension properties related to the Process .
 

@@ -4,7 +4,7 @@
 
 ## Core properties related to the Record Class 
 
-- Table 1.1
+- Table A.1.1
 
 | OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
 |----------------|------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
@@ -20,7 +20,7 @@
 
 ## Resource properties related to the Record Class 
 
-- Table 1.2
+- Table A.1.2
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
