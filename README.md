@@ -45,7 +45,7 @@ Table 1 - Core classes related to the catalogue record
 
 |Class | Description | Term | Notes|
 |---|---|---|--|
-| Record | aksdjhaksdhaskd | 🔴 apkg-rec:Record  | rdfs:subClassOf rdfs:Resource|
+| Record | A record in the catalogue | 🔴 apkg-rec:Record  | rdfs:subClassOf rdfs:Resource|
   Link    | A link related to this record    |🟢 hydra:Link | |
 
 Table 2 - Core properrties related to the catalogue record
@@ -71,9 +71,6 @@ Table 3- Core classes related to the resource
 | Theme | A theme of the Record | 🔴 apkg-rec:Theme |
 | Concept | A concept of the theme | 🔴 apkg-rec:Concept |
 
-
-
-
 Table 4 - Core properties related to the resource.
 
 | Property OGC | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
@@ -89,9 +86,9 @@ Table 4 - Core properties related to the resource.
 | themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 apkg-rec:hasTheme    |apkg-rec:Record   | 🔴 apkg:Theme| 0-M| 0-M|
 | concepts |The classification of the KOS defined on theme | 🔴apkg-rec:hasConcept | apkg-rec:Theme |  apkg-rec:Concept    | 0-M |0-M | | Listing 22 and Listing 38 at https://docs.ogc.org/is/20-004r1/20-004r1.html show divergent uses of hasConcept term of the Themes Class. In the first it is a Class with _id_ and _url_ and at the second  a list of xsd:String. | 
 | scheme | THe KOS scheme  of the Concepts in the specific theme | skos:inScheme | apkg-rec:Theme | xsd:anyURI | 1 | 1 |
-| ID | The id of the concept | dct:identifier | apkg-rec:Concept | xsd:string | 0-1| 0-1|
-| URI | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
-| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage                              | apkg-rec:Record                                | dct:LinguisticSystem     | 0-M| 0-M| |rdfs:subPropertyOf dct:language.
+| id | The id of the concept | dct:identifier | apkg-rec:Concept | xsd:string | 0-1| 0-1|
+| uri | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
+| resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | apkg-rec:Record     | dct:LinguisticSystem     | 0-M| 0-M| ISO639-2 |rdfs:subPropertyOf dct:language.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier    | apkg-rec:Record                     | adms:Identifier   |     0-M|     0-M     
 | formats | The formats property indicates the list of available distribution formats for the resource that a record describes. These can include both physical and digital distribution formats.| 🟢 dct:formats |apkg-rec:Record   | dct::MediaTypeOrExtent| 0-M| 0-M|
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | |apkg-rec:Record   | | | |
