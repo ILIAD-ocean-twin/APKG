@@ -10,6 +10,7 @@
 | dcat        | http://www.w3.org/ns/dcat#                           |
 | dct         | http://purl.org/dc/terms/                            |
 | doap        | http://usefulinc.com/ns/doap#                        |
+| foaf        | http://xmlns.com/foaf/0.1/                           |
 | geo         | http://www.opengis.net/ont/geosparql#                |
 | geojson     | http://purl.org/geojson/vocab#                   |
 | hydra       | https://www.w3.org/ns/hydra/core#                    |
@@ -18,6 +19,7 @@
 | prov        | http://www.w3.org/ns/prov#                           |
 | rec         | https://www.opengis.net/def/ogc-api/records/         | 
 | time        | http://www.w3.org/2006/time#                         |
+| org         | http://www.w3.org/ns/org#                            |
 | cito        | http://purl.org/spar/cito/                           |
 | fabio       | http://purl.org/spar/fabio/                          |
 | ISO639-2    | http://purl.org/dc/terms/ISO639-2    |         
@@ -71,7 +73,7 @@ Table 3- Core classes related to the resource
 | Theme | A theme of the Record | 🔴 apkg-rec:Theme |
 | Concept | A concept of the theme | 🔴 apkg-rec:Concept |
 | Format | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
-| Contact | A contact of the record | apkg-rec:Contact | subClassOf dct:Agent
+| Contact | A contact of the record | 🔴 apkg-rec:Contact | subClassOf dct:Agent
 
 
 Table 4 - Core properties related to the resource.
@@ -80,7 +82,7 @@ Table 4 - Core properties related to the resource.
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
 |      type        |          The nature or genre of the resource described by this record. |   🔴 apkg-rec:resourceType  |  apkg-rec:Record        | dct:DCMIType |  0-1             |  0-1             | |owl:ObjectProperty, rdfs:subPropertyOf dcterms:type . Não precisamos de redeclarar rdfs:range dcterms:DCMIType em process:recordType. Pela cadeia de regras RDFS (subpropriedade → propriedade base → range).    .
 |          title    | A human-readable name given to the resource described by this record.                                   | 🔴 apkg-rec:title                                | apkg-rec:Record                  | xsd:string                      | 0-1         | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:title |
-|  description            | 	A free-text description of the resource described by this record.                              | 🔴 apkg-rec:description                          | apkg-rec:Record                     | xsd:string                 | 0-1   | 0-1   |     |   rdfs:subPropertyOf dcterms:description   |
+|  description            | 	A free-text description of the resource described by this record.                              | 🔴 apkg-rec:description                          | apkg-rec:Record                     | xsd:string                 | 0-1   | 0-1   |     |   rdfs:subPropertyOf dct:description   |
 |   has geometry           | A spatial extent associated with the resource described by this record. | 🟢 geo:hasGeometry                  | apkg-rec:Record                | geo:Geometry                     | 0-1         | 0-1         |     |   |  
 | type | The type of the object  |🟢 geojson:type | geo:Geometry | xsd:anyURI | 1 | 1 | geojson concept scheme | O concept scheme tem de ser defnido em skos.
 | coordinates | The coordinates of the  object |🟢 geojson:coordinates | geo:Geometry | xsd:string | 1-M | 1-M
@@ -97,6 +99,9 @@ Table 4 - Core properties related to the resource.
 | name | The name of the format the resource that the record describes. | 🟢 dct:title |apkg-rec:Format   | xsd:string| 0-1| 0-1|
 | mediatype | The media of the format the resource that the record describes.| 🟢 dct:format |apkg-rec:Format   | dct:MediaTypeOrExtent| 0-1| 0-1|
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | apkg-rec:hasContact |apkg-rec:Record   | apkg-rec:Contact| 0-M|0-M |
+| identifier | The identifier of the contact | 🔴apkg-rec:contactIdentifier | apkg-rec:Contact| xsd:string | 0-1 |0-1| rdfs:subPropertyOf dct:identifier
+| name | The name of the contact | 🟢 foaf:name | apkg-rec:Contact| xsd:string | 0-1 |0-1| rdfs:subPropertyOf dct:identifier
+| position | THe position of the contac | org:holds | apkg-rec:Contact| xsd:string |0-1 | 0-1 |
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
 
