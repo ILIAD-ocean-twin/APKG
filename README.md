@@ -56,10 +56,10 @@ Table 2 - Core classes related to the resource
 |Class | Description | Term | Notes|
 |---|---|---|--|
 | [Geometry](GeometryClass.md) | The geometry of the object | apkg-rec:Geometry | rdfs:subClassOf geo:Geometry |
-| Theme | A theme of the Record | 🔴 apkg-rec:Theme | |
-| Concept | A concept of the theme | 🔴 apkg-rec:Concept | |
-| Format | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
-| Contact | A contact of the record | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |
+| [Theme](ThemeClass.md) | A theme of the Record | 🔴 apkg-rec:Theme | |
+| [Concept](ConceptClass.md) | A concept of the theme | 🔴 apkg-rec:Concept | |
+| [Format](FormatClass.md) | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
+| [Contact](ContactClass.md) | A contact of the record | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |
 
 
 
