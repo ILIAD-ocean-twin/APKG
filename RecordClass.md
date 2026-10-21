@@ -1,3 +1,5 @@
+# APKG Linked Data Application Profile
+
 [<- main](README.md)
 
 ## Core properties related to the Record Class 
@@ -40,11 +42,11 @@
 | formats | The list of available distribution formats for the resource that a record describes. It can include both physical and digital distribution formats.| 🟢 dct:hasFormat |apkg-rec:Record   | apkg-rec:Format| 0-M| 0-M|
 | name | The name of the format the resource that the record describes. | 🟢 dct:title |apkg-rec:Format   | xsd:string| 0-1| 0-1|
 | mediatype | The media of the format the resource that the record describes.| 🟢 dct:format |apkg-rec:Format   | dct:MediaTypeOrExtent| 0-1| 0-1|
-| contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | apkg-rec:hasContact |apkg-rec:Record   | apkg-rec:Contact| 0-M|0-M |
+| contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | 🔴 apkg-rec:hasContact |apkg-rec:Record   | apkg-rec:Contact| 0-M|0-M |
 | identifier | The identifier of the contact. | 🔴apkg-rec:contactIdentifier | apkg-rec:Contact| xsd:string | 0-1 |0-1| |rdfs:subPropertyOf dct:identifier
 | name | The name of the responsible person. | 🔴 apkg-rec:contactName | apkg-rec:Contact| xsd:string | 0-1 |0-1| | rdfs:subPropertyOf foaf:name
 | position |  The name of the role or position of the responsible person taken from the organization's formal organizational hierarchy or chart. | 🟢 org:holds | apkg-rec:Contact| xsd:string |0-1 | 0-1 |
 | organisation | Organization/affiliation of the contact. | 🔴 apkg-rec:contactOrganisationName | apkg-rec:Contact| xsd:string | 0-1 |0-1| | rdfs:subPropertyOf foaf:name
-| logo | Graphic identifying a contact. The link relation should be icon  and the media type should be an image media type.| 🔴 apkg-rec:hasLogo | apkg-rec:Contact | apkg-rec:Link ||
-| licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
-| rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
+| logo | Graphic identifying a contact. | 🔴 apkg-rec:hasLogo | apkg-rec:Contact | apkg-rec:Link | 0-1|0-1| |The 'rel' property of the  Link Class must be 'icon', and the 'type' property a mime type.
+| licence| The legal provisions under which the resource described by this record is made available. | 🟢 dct:license | apkg-rec:Record  | dct:LicenseDocument  | 0-1|0-1 |
+| rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| 🟢 dct:rights | apkg-rec:Record  | dct:RightsStatement | 0-1 | 0-1 |
