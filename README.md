@@ -71,7 +71,7 @@ Table 3- Core classes related to the resource
 | Theme | A theme of the Record | 🔴 apkg-rec:Theme |
 | Concept | A concept of the theme | 🔴 apkg-rec:Concept |
 | Format | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
-| Contact | A contact of the record | apkg-rec:Contact |
+| Contact | A contact of the record | apkg-rec:Contact | subClassOf dct:Agent
 
 
 Table 4 - Core properties related to the resource.
