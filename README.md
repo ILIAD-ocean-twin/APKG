@@ -98,14 +98,16 @@ Table 4 - Core properties related to the resource.
 | licence| The legal provisions under which the resource described by this record is made available. | | apkg-rec:Record  |   | | |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| | apkg-rec:Record  | | | |
 
+Table 5 - Extension classes related to the Process .
 
+|Class | Description | Term | Notes|
+|---|---|---|--|
+| Process | A Provcess | 🔴 apkg-rec:Process |
 
-
-Table 3 - Extension properties related to the Process .
+Table 6 - Extension properties related to the Process .
 
 | Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-| __Process__| A Process | 🔴 apkg-rec:Process| | | |  | rdfs:subClassOf rdfs:Resource |
 |     Identifier         | Unique identifier of the process. Pensar nisto....       |      |apkg-rec:Process          
 |      none        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
 |    none          | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
