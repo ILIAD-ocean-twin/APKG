@@ -7,23 +7,27 @@
 | rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
 | rdfs        | FALTA |
 | adms        | http://www.w3.org/ns/adms#         ????              |
-| apkg-rec    | http://w3id.org/apkg/records#                        |                       
+| apkg-rec    | http://w3id.org/apkg/records#                        |
+| cito        | http://purl.org/spar/cito/                           |
 | dcat        | http://www.w3.org/ns/dcat#                           |
 | dct         | http://purl.org/dc/terms/                            |
-| doap        | http://usefulinc.com/ns/doap#                        |
-| foaf        | http://xmlns.com/foaf/0.1/                           |
-| geo         | http://www.opengis.net/ont/geosparql#                |
-| geojson     | http://purl.org/geojson/vocab#                   |
-| hydra       | https://www.w3.org/ns/hydra/core#                    |
+| doap           | http://usefulinc.com/ns/doap#                        |
+| fabio          | http://purl.org/spar/fabio/                          |
+| foaf           | http://xmlns.com/foaf/0.1/                           |
+| geo            | http://www.opengis.net/ont/geosparql#                |
+| geojson        | http://purl.org/geojson/vocab#                       |
+| hydra          | https://www.w3.org/ns/hydra/core#                    |
 | ianaRelation   | http://www.iana.org/assignments/relation/         |
-| ianaMediaType | https://www.iana.org/assignments/media-types/      |
-| prov        | http://www.w3.org/ns/prov#                           |
-| rec         | https://www.opengis.net/def/ogc-api/records/         | 
-| time        | http://www.w3.org/2006/time#                         |
+| ianaMediaType  | https://www.iana.org/assignments/media-types/     |
+| ISO639-2       | http://purl.org/dc/terms/ISO639-2                 |
 | org         | http://www.w3.org/ns/org#                            |
-| cito        | http://purl.org/spar/cito/                           |
-| fabio       | http://purl.org/spar/fabio/                          |
-| ISO639-2    | http://purl.org/dc/terms/ISO639-2    |         
+| prov        | http://www.w3.org/ns/prov#                           |
+| rec         | https://www.opengis.net/def/ogc-api/records/         |
+| time        | http://www.w3.org/2006/time#                         |
+|vcard        | http://www.w3.org/2006/vcard/ns#                     |
+
+
+        
 
 
 
