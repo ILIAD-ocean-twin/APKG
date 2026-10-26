@@ -8,8 +8,6 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-|  |  | 🟢 |  | | | | | |
-|  |  | 🔴 |  | | | | | |
 | deliveryPoint | Address lines for the location. | 🔴 | 🔴apkg-rec:Address | (?) xsd:string | 0-M | 0-M | | |
 | city | City for the location. | 🔴 | 🔴apkg-rec:Address | (?) | 0-M | 0-M | | |
 | administrativeArea | State or province of the location. | 🔴 | 🔴apkg-rec:Address | (?) | 0-1 | 0-1 | | |

@@ -22,6 +22,5 @@ Note Constraint: at least one of name or organization is required.
 | links | On-line information about the contact. | 🔴apkg-rec:hasLink | apkg-rec:Contact  | 🔴apkg-rec:[Link](./LinkClass.md) | 0-M| 0-M|
 | hoursOfService | Time period when the contact can be contacted. | 🟢🔴apkg-rec:hoursOfService | apkg-rec:Contact | xsd:string  | 0-1| 0-1|
 | contactInstructions | Supplemental instructions on how or when to contact the responsible party. | 🔴 apkg-rec:contactInstructions(?) | apkg-rec:Contact  | xsd:string| 0-1| 0-1|
-| 🔴roles (Deprecated) | The list of duties, job functions or permissions assigned by the system and associated with the context of this member. | 🔴 apkg-rec:🔴apkg-rec:hasRole |  apkg-rec:Contact | apkg-rec:Role | 0-M | 0-M || apkg-rec:Contact  | 🔴apkg-rec:[Role](./RoleClass.md) | 0-1 | 0-1 | | The Roles property is just an array of strings (see next line) https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/roles.yaml|
-|  roles | The list of duties, job functions or permissions assigned by the system and associated with the context of this member. | 🔴apkg-rec:roleItem | apkg-rec:Contact  | xsd:string | 0-M | 0-M | | 🔴🔴🔴List of terms????|
+|  roles | The list of duties, job functions or permissions assigned by the system and associated with the context of this member. | vcard:role | apkg-rec:Contact  | xsd:string | 0-M | 0-M | | VCARD Individuals |
 
