@@ -80,13 +80,13 @@ Table 5 - Extension classes related to the Process .
 |---|---|---|---|--|- | 
 | 7 | Process | A Process | 🔴 apkg-rec:Process |
 
-Table 6 - Extension properties related to the Process .
+Table C - Extension Classes and properties related to the Process .
 
 | Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|     Identifier         | Unique identifier of the process. Pensar nisto....       |      |apkg-rec:Process          
-|      none        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
-|    none          | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
+|     identifier         | Unique identifier of the process. Pensar nisto....       |      |apkg-rec:Process          
+|      family        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
+|    none      | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
 | __Version__ | A version of the Application Process | 🟢doap:Version |
 | none | The date of creation of the version | 🟢doap:creation | doap:Version | xsd:date| 0-1 | 
 | none | The major revision | 🔴 apkg-rec:majorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
