@@ -69,7 +69,6 @@ Table B - Core classes related to the resource
 | 9  | [Address](AddressClass.md) | The Physical location at which contact can be made.| 🔴apkg-rec:Address | rdfs:subClassOf vcard:Address |
 | 10 | [Email](EmailClass.md) | Email addresses at which contact can be made. |🔴 apkg-rec:Email |
 | 11 | [Phone](PhoneClass.md) | Telephone numbers at which contact can be made | 🔴apkg-rec:Phone |
-| 12 | [Role](RoleClass.md) | The set of named duties, job functions and/or permissions associated with this contact. (e.g. developer, administrator, etc.).| 🔴 apkg-rec:Role |
 
 
 
@@ -78,7 +77,7 @@ Table 5 - Extension classes related to the Process .
 
 | id |Class | Description | Term | Notes| Table(s) |
 |---|---|---|---|--|- | 
-| 7 | Process | A Process | 🔴 apkg-rec:[Process](ProcessClass.md) |
+| 12 | Process | A Process | 🔴 apkg-rec:[Process](ProcessClass.md) |
 
 Table C - Extension Classes and properties related to the Process .
 
