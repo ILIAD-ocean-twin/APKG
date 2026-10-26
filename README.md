@@ -5,7 +5,7 @@
 | ----------  | -----------------------------------------------------|
 | xsd         | http://www.w3.org/2001/XMLSchema#                    |
 | rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
-| rdfs        | FALTA |
+| rdfs        | http://www.w3.org/2000/01/rdf-schema# |
 | adms        | http://www.w3.org/ns/adms#         ????              |
 | apkg-rec    | http://w3id.org/apkg/records#                        |
 | cito        | http://purl.org/spar/cito/                           |
