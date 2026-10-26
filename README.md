@@ -78,7 +78,7 @@ Table 5 - Extension classes related to the Process .
 
 | id |Class | Description | Term | Notes| Table(s) |
 |---|---|---|---|--|- | 
-| 7 | Process | A Process | 🔴 apkg-rec:Process |
+| 7 | Process | A Process | 🔴 apkg-rec:[Process](ProcessClass.md) |
 
 Table C - Extension Classes and properties related to the Process .
 

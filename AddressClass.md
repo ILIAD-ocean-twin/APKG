@@ -2,7 +2,7 @@
 
 [<- main](README.md)
 
-## Resource properties related to the Adress Class 
+## Resource properties related to the Address Class 
 
 - Table B.3.2
 

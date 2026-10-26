@@ -2,7 +2,7 @@
 
 [<- main](README.md)
 
-## Resource properties related to the Adress Class (TO DELETE)
+## Resource properties related to the Role Class (TO DELETE)
 
 - Table B.3.2
 
