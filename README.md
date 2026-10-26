@@ -66,10 +66,10 @@ Table B - Core classes related to the resource
 | 6 | [Format](FormatClass.md) | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |
 | 7 | [Contact](ContactClass.md) | A contact of the record | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |
 | 8 | [Language](LanguageClass.md) | The language used for textual values in this record | 🔴 apkg-rec:Language |  |
-| 9  | [Address](AddressClass.md) | The .....| 🔴apkg-rec:Address | rdfs:subClassOf vcard:Address |
-| 10 | [Email](EmailClass.md) | ...|🔴 apkg-rec:Email |
-| 11 | [Phone](PhoneClass.md) | ...| 🔴apkg-rec:Phone |
-| 12 | [Role](RoleClass.md) | ...| 🔴 apkg-rec:Role |
+| 9  | [Address](AddressClass.md) | The Physical location at which contact can be made.| 🔴apkg-rec:Address | rdfs:subClassOf vcard:Address |
+| 10 | [Email](EmailClass.md) | Email addresses at which contact can be made. |🔴 apkg-rec:Email |
+| 11 | [Phone](PhoneClass.md) | Telephone numbers at which contact can be made | 🔴apkg-rec:Phone |
+| 12 | [Role](RoleClass.md) | The set of named duties, job functions and/or permissions associated with this contact. (e.g. developer, administrator, etc.).| 🔴 apkg-rec:Role |
 
 
 
