@@ -17,6 +17,7 @@
 | geo            | http://www.opengis.net/ont/geosparql#                |
 | geojson        | http://purl.org/geojson/vocab#                       |
 | hydra          | https://www.w3.org/ns/hydra/core#                    |
+| its            | ttp://www.w3.org/2005/11/its/rdf#                    |
 | ianaRelation   | http://www.iana.org/assignments/relation/   ???      |
 | ianaMediaType  | https://www.iana.org/assignments/media-types/  ???   |
 | ISO639-2       | http://purl.org/dc/terms/ISO639-2              ???   |
