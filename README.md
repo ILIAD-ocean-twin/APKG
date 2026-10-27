@@ -17,9 +17,9 @@
 | geo            | http://www.opengis.net/ont/geosparql#                |
 | geojson        | http://purl.org/geojson/vocab#                       |
 | hydra          | https://www.w3.org/ns/hydra/core#                    |
-| ianaRelation   | http://www.iana.org/assignments/relation/         |
-| ianaMediaType  | https://www.iana.org/assignments/media-types/     |
-| ISO639-2       | http://purl.org/dc/terms/ISO639-2                 |
+| ianaRelation   | http://www.iana.org/assignments/relation/   ???      |
+| ianaMediaType  | https://www.iana.org/assignments/media-types/  ???   |
+| ISO639-2       | http://purl.org/dc/terms/ISO639-2              ???   |
 | org         | http://www.w3.org/ns/org#                            |
 | prov        | http://www.w3.org/ns/prov#                           |
 | rec         | https://www.opengis.net/def/ogc-api/records/         |
