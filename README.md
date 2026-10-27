@@ -17,7 +17,7 @@
 | geo            | http://www.opengis.net/ont/geosparql#                |
 | geojson        | http://purl.org/geojson/vocab#                       |
 | hydra          | https://www.w3.org/ns/hydra/core#                    |
-| its            | ttp://www.w3.org/2005/11/its/rdf#                    |
+| its            | http://www.w3.org/2005/11/its/rdf#                    |
 | ianaRelation   | http://www.iana.org/assignments/relation/   ???      |
 | ianaMediaType  | https://www.iana.org/assignments/media-types/  ???   |
 | ISO639-2       | http://purl.org/dc/terms/ISO639-2              ???   |
@@ -27,16 +27,10 @@
 | time        | http://www.w3.org/2006/time#                         |
 |vcard        | http://www.w3.org/2006/vcard/ns#                     |
 
-
-        
-
-
-
 a ver se precisamos
 
 | Prefix     | URI                                                  |
 |------------|------------------------------------------------------|
-| schema     | http://schema.org/                                   |
 | cwl        | https://w3id.org/cwl/cwl#                            |
 | cwltool    | http://commonwl.org/cwltool#                         |
 
@@ -79,19 +73,22 @@ Table 5 - Extension classes related to the Process .
 | id |Class | Description | Term | Notes| Table(s) |
 |---|---|---|---|--|- | 
 | 12 | [Process](ProcessClass.md) | A Process | 🔴 apkg-rec:Process |
+| 13 | [Version](VersionClass.md) | A version of the Application Process | 🔴 apkg-rec:Version| rdfs:subClassOf doap:Version |
+| 14 | [Registry](RegistryClass.md)  | The Registry where the application package is registered in. | 🔴 apkg-rec:Registry | rdfs:subClassOf prov:Activity |
+| 15 | [CWLDescriptor](CWLDescriptor) | THe CWL descriptor of the Application package | 🔴 apkg-rec:CWLDescriptor | rdfs:subClassOf dcat:Distribution| 
 
 Table C - Extension Classes and properties related to the Process .
 
 | Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|     identifier         | Unique identifier of the process. Pensar nisto....       |      |apkg-rec:Process          
+|     identifier         | Unique identifier of the process.       |  apkg-re:processIdentifier    |apkg-rec:Process          
 |      family        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
 |    none      | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
 | __Version__ | A version of the Application Process | 🟢doap:Version |
 | none | The date of creation of the version | 🟢doap:creation | doap:Version | xsd:date| 0-1 | 
-| none | The major revision | 🔴 apkg-rec:majorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
-| none | The minor revision | 🔴 apkg-rec:minorVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty |
-| none | The patch revision | 🔴 apkg-rec:patchVersion | doap:Version | xsd:integer | 1-1 | | owl:FunctionalProperty
+| none | The major revision | 🔴 apkg-rec:majorVersion | doap:Version | xsd:integer | 1-1 | |  |
+| none | The minor revision | 🔴 apkg-rec:minorVersion | doap:Version | xsd:integer | 1-1 | |  |
+| none | The patch revision | 🔴 apkg-rec:patchVersion | doap:Version | xsd:integer | 1-1 | | 
 | none | The registration of the application package | 🟢 prov:wasGeneratedBy | apkg-rec:Process | prov:Activity
 |  none            | This is the latest version of the application package  NãO É PRECISO RETIRAR!              |
 | __Registry__          | Registry where the application package is registered in. | 🟢prov:Activity |

@@ -17,6 +17,7 @@
 | links          | A related link of the record                      |          🟢  dct:relation             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         | 0-M         |     |    |
 | linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-1         | 0-1         |     |   |
 
+[<- main](README.md)
 
 ## Resource properties related to the Record Class 
 
@@ -48,3 +49,5 @@
 | logo | Graphic identifying a contact. | 🔴 apkg-rec:hasLogo | apkg-rec:Contact | apkg-rec:Link | 0-1|0-1| |The 'rel' property of the  Link Class must be 'icon', and the 'type' property a mime type.
 | licence| The legal provisions under which the resource described by this record is made available. | 🟢 dct:license | apkg-rec:Record  | dct:LicenseDocument  | 0-1|0-1 |
 | rights| A statement that concerns all rights not addressed by the license such as a copyright statement.| 🟢 dct:rights | apkg-rec:Record  | dct:RightsStatement | 0-1 | 0-1 |
+
+[<- main](README.md)

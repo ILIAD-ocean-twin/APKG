@@ -17,3 +17,5 @@
 | profile     | One or more identifiers that provide information about additional semantics (constraints, conventions, extensions), in addition to those defined by the media type, that are associated with the target resource. | 🟢   | apkg-rec:Link | xsd:string | 0-1 | 0-1 |  |  |
 | created     | Date of creation of the resource pointed to by the link. | 🟢   | apkg-rec:Link |  | 0-1 | 0-1 |  | date-time |
 | updated     | Most recent date on which the resource pointed to by the link was changed. | 🟢   | apkg-rec:Link |  | 0-1 | 0-1 |  | date-time |
+
+[<- main](README.md)

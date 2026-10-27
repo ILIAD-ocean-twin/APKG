@@ -24,3 +24,4 @@ Note Constraint: at least one of name or organization is required.
 | contactInstructions | Supplemental instructions on how or when to contact the responsible party. | 🔴 apkg-rec:contactInstructions | apkg-rec:Contact  | xsd:string| 0-1| 0-1|
 |  roles | The list of duties, job functions or permissions assigned by the system and associated with the context of this member. | vcard:role | apkg-rec:Contact  | xsd:string | 0-M | 0-M | | |
 
+[<- main](README.md)
