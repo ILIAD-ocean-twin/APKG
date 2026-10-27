@@ -33,9 +33,9 @@
 |      keywords      | Free-form keyword or tag associated with the resource described by this record.                                | 🟢 dcat:keyword                             | apkg-rec:Record                     | xsd:string                       | 0-M         | 0-M         |     |      |
 | themes |   The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus.    | 🟢 apkg-rec:hasTheme    |apkg-rec:Record   | 🔴 apkg:Theme| 0-M| 0-M|
 | concepts |The classification of the KOS defined on theme | 🔴apkg-rec:hasConcept | apkg-rec:Theme |  apkg-rec:Concept    | 0-M |0-M | | Listing 22 and Listing 38 at https://docs.ogc.org/is/20-004r1/20-004r1.html show divergent uses of hasConcept term of the Themes Class. In the first it is a Class with _id_ and _url_ and at the second  a list of xsd:String. | 
-| scheme | THe KOS scheme  of the Concepts in the specific theme | skos:inScheme | apkg-rec:Theme | xsd:anyURI | 1 | 1 |
-| id | The id of the concept | apkg-rec:schemaIdentifier | apkg-rec:Concept | xsd:string | 0-1| 0-1| owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier
-| uri | The URI of the concept | skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
+| scheme | THe KOS scheme  of the Concepts in the specific theme | 🟢 skos:inScheme | apkg-rec:Theme | xsd:anyURI | 1 | 1 |
+| id | The id of the concept | 🔴 apkg-rec:schemaIdentifier | apkg-rec:Concept | xsd:string | 0-1| 0-1| owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier
+| uri | The URI of the concept | 🟢skos:Concept | apkg-rec:Concept | xsd:anyURI | 0-1| 0-1|| 
 | resourceLanguages| The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | apkg-rec:Record     | dct:LinguisticSystem     | 0-M| 0-M| ISO639-2 |rdfs:subPropertyOf dct:language. See note in _language_.
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🔴 apkg-rec:externalIdentifier    | apkg-rec:Record                     | xsd:string   |     0-M|     0-M |  | owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier   
 | formats | The list of available distribution formats for the resource that a record describes. It can include both physical and digital distribution formats.| 🟢 dct:hasFormat |apkg-rec:Record   | apkg-rec:Format| 0-M| 0-M|

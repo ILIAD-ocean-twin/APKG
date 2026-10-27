@@ -37,7 +37,7 @@ a ver se precisamos
 
 -----------------------------------------------------------------------
 
-## 2. Module Core
+# 2. Module Core
 
 🟢 $\color{green}{\rightarrow}$ a term from another ontology.
 🔴 $\color{red}{\rightarrow}$ apkg-rec ontology
@@ -66,7 +66,7 @@ Table B - Core classes related to the resource
 | 11 | [Phone](PhoneClass.md) | Telephone numbers at which contact can be made | 🔴apkg-rec:Phone |
 
 
-
+# 3. Module Process
 
 Table 5 - Extension classes related to the Process .
 
