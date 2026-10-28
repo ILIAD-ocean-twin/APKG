@@ -9,6 +9,7 @@
 | adms        | http://www.w3.org/ns/adms#         ????              |
 | apkg-rec    | http://w3id.org/apkg/records#                        |
 | cito        | http://purl.org/spar/cito/                           |
+| cwl        | https://w3id.org/cwl/cwl#                            |
 | dcat        | http://www.w3.org/ns/dcat#                           |
 | dct         | http://purl.org/dc/terms/                            |
 | doap           | http://usefulinc.com/ns/doap#                        |
@@ -31,7 +32,7 @@ a ver se precisamos
 
 | Prefix     | URI                                                  |
 |------------|------------------------------------------------------|
-| cwl        | https://w3id.org/cwl/cwl#                            |
+
 | cwltool    | http://commonwl.org/cwltool#                         |
 
 
@@ -72,10 +73,12 @@ Table 5 - Extension classes related to the Process .
 
 | id |Class | Description | Term | Notes| Table(s) |
 |---|---|---|---|--|- | 
-| 12 | [Process](ProcessClass.md) | A Process | 🔴 apkg-rec:Process |
+| 12 | [Process](ProcessClass.md) | A Process | 🔴 apkg-rec:Process | rdfs:subClassOf cwl:Process   
 | 13 | [Version](VersionClass.md) | A version of the Application Process | 🔴 apkg-rec:Version| rdfs:subClassOf doap:Version |
 | 14 | [Registry](RegistryClass.md)  | The Registry where the application package is registered in. | 🔴 apkg-rec:Registry | rdfs:subClassOf prov:Activity |
-| 15 | [CWLDescriptor](CWLDescriptor) | THe CWL descriptor of the Application package | 🔴 apkg-rec:CWLDescriptor | rdfs:subClassOf dcat:Distribution| 
+| 15 | [CWLDescriptor](CWLDescriptorClass.md) | THe CWL descriptor of the Application package | 🔴 apkg-rec:CWLDescriptor | rdfs:subClassOf dcat:Distribution| 
+| 16 | [Parameter](ParameterClass.md) | The Parameter of the Input or Output of the Process |  🔴 apkg-rec:Parameter | rdfs:subClassOf cwl:Parameter ; cwl:Parameter a owl:Class . --> We need to define as a OWL class because in the CWL ttl it is a rdfs:Class|
+
 
 Table C - Extension Classes and properties related to the Process .
 
