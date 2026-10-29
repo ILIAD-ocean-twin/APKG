@@ -11,9 +11,9 @@
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |     identifier         | Unique identifier of the process. |  🔴 apkg-rec:processID |apkg-rec:Process |xsd:anyURI | 1-1| |owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier| 
 |     family        | Family of this application package (identifier without version)     | 🔴 apkg-rec:familyID   | apkg-rec:Process     | xsd:string                     | 0-1         |    |   owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier    |
-|    software_version      | The application package has software versions   | 🟢doap:release    | apkg-rec:Process                  | 🔴 apkg-rec:Version                    | 1-M         |     |      |
+|    software_version      | The application package has software versions   | (?) 🟢pav:version    | apkg-rec:Process                  |  xsd:string                    | 1 |     |      |
 | none | The registration of the application package | 🟢 prov:wasGeneratedBy | apkg-rec:Process | 🔴 apkg-rec:Activity
-|  none            | This is the latest version of the application package  NãO É PRECISO --> RETIRAR!              | | |  |
+|  latest | True if this is the latest version of the application package | pav:(?) | apkg-rec:Process | xsd:boolean | 1 | | |
 |   none           | The Application Package has a CWL                                | 🔴 apkg-rec:hasCWLDescriptor                            | apkg-rec:Process                  | apkg-rec:CWLDescriptor                      | 0-1         |     |    |
 |    none          | Citation of a work related to the application package               | 🟢 cito:cites                         | apkg-rec:Process                  | fabio:ResearchPaper                       | 0-M         |  
 |     none         | License of the application package                                  | 🟢 dct:license                              | apkg-rec:Process                  | dct:LicenseDocument               | 0-1         |     |      |
