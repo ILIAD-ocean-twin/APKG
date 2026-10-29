@@ -73,7 +73,7 @@ Table 5 - Extension classes related to the Process .
 
 | id |Class | Description | Term | Notes| Table(s) |
 |---|---|---|---|--|- | 
-| 12 | [Process](ProcessClass.md) | A Process | 🔴 apkg-rec:Process | rdfs:subClassOf cwl:Process   
+| 12 | [Process](ProcessClass.md) | A Process | 🔴 apkg-rec:Process | rdfs:subClassOf cwl:Process ; rdfs:subClassOf apkg-rec:Record .  
 | 13 | [Version](VersionClass.md) | A version of the Application Process | 🔴 apkg-rec:Version| rdfs:subClassOf doap:Version |
 | 14 | [Registry](RegistryClass.md)  | The Registry where the application package is registered in. | 🔴 apkg-rec:Registry | rdfs:subClassOf prov:Activity |
 | 15 | [CWLDescriptor](CWLDescriptorClass.md) | THe CWL descriptor of the Application package | 🔴 apkg-rec:CWLDescriptor | rdfs:subClassOf dcat:Distribution| 
