@@ -10,7 +10,7 @@
 | Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |     identifier         | Unique identifier of the process. |  🔴 apkg-rec:processID |apkg-rec:Process |xsd:anyURI | 1-1| |owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier| 
-|     family        | Family of this application package (identifier without version)???REVER     | 🔴 apkg:family   | apkg-rec:Process     | xsd:string                     | 1-1         |     |      |
+|     family        | Family of this application package (identifier without version)     | 🔴 apkg-rec:familyID   | apkg-rec:Process     | xsd:string                     | 0-1         |    |   owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier    |
 |    none      | The application package has software versions   | 🟢doap:release    | apkg-rec:Process                  | 🔴 apkg-rec:Version                    | 1-M         |     |      |
 | none | The registration of the application package | 🟢 prov:wasGeneratedBy | apkg-rec:Process | 🔴 apkg-rec:Activity
 |  none            | This is the latest version of the application package  NãO É PRECISO --> RETIRAR!              | | |  |
