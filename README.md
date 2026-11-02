@@ -13,6 +13,7 @@
 | dcat        | http://www.w3.org/ns/dcat#                           |
 | dct         | http://purl.org/dc/terms/                            |
 | doap           | http://usefulinc.com/ns/doap#                        |
+| edam           | hhttp://edamontology.org/	                     |
 | fabio          | http://purl.org/spar/fabio/                          |
 | foaf           | http://xmlns.com/foaf/0.1/                           |
 | geo            | http://www.opengis.net/ont/geosparql#                |
@@ -20,7 +21,7 @@
 | hydra          | https://www.w3.org/ns/hydra/core#                    |
 | its            | http://www.w3.org/2005/11/its/rdf#                    |
 | ianaRelation   | http://www.iana.org/assignments/relation/   ???      |
-| ianaMediaType  | https://www.iana.org/assignments/media-types/  ???   |
+| ianaMediaType  | https://www.iana.org/assignments/media-types/   |
 | ISO639-2       | http://purl.org/dc/terms/ISO639-2              ???   |
 | org         | http://www.w3.org/ns/org#                            |
 | prov        | http://www.w3.org/ns/prov#                           |
