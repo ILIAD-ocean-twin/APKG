@@ -1,33 +1,34 @@
 # APKG Linked Data Application Profile
 
 # 1. NameSpaces
-| Prefix      | URI                                                  |
-| ----------  | -----------------------------------------------------|
-| xsd         | http://www.w3.org/2001/XMLSchema#                    |
-| rdf         | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
-| rdfs        | http://www.w3.org/2000/01/rdf-schema# |
-| adms        | http://www.w3.org/ns/adms#         ????              |
-| apkg-rec    | http://w3id.org/apkg/records#                        |
-| cito        | http://purl.org/spar/cito/                           |
-| cwl        | https://w3id.org/cwl/cwl#                            |
-| dcat        | http://www.w3.org/ns/dcat#                           |
-| dct         | http://purl.org/dc/terms/                            |
+| Prefix         | URI                                                  |
+| -------------  | -----------------------------------------------------|
+| xsd            | http://www.w3.org/2001/XMLSchema#                    |
+| rdf            | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
+| rdfs           | http://www.w3.org/2000/01/rdf-schema# |
+| adms           | http://www.w3.org/ns/adms#         ????              |
+| apkg-rec       | http://w3id.org/apkg/records#                        |
+| bf             | http://id.loc.gov/ontologies/bibframe/               |
+| cito           | http://purl.org/spar/cito/                           |
+| cwl            | https://w3id.org/cwl/cwl#                            |
+| dcat           | http://www.w3.org/ns/dcat#                           |
+| dct            | http://purl.org/dc/terms/                            |
 | doap           | http://usefulinc.com/ns/doap#                        |
-| edam           | hhttp://edamontology.org/	                     |
+| edam           | http://edamontology.org/                             |
 | fabio          | http://purl.org/spar/fabio/                          |
 | foaf           | http://xmlns.com/foaf/0.1/                           |
 | geo            | http://www.opengis.net/ont/geosparql#                |
 | geojson        | http://purl.org/geojson/vocab#                       |
 | hydra          | https://www.w3.org/ns/hydra/core#                    |
-| its            | http://www.w3.org/2005/11/its/rdf#                    |
+| its            | http://www.w3.org/2005/11/its/rdf#                   |
 | ianaRelation   | http://www.iana.org/assignments/relation/   ???      |
-| ianaMediaType  | https://www.iana.org/assignments/media-types/   |
+| ianaMediaType  | https://www.iana.org/assignments/media-types/        |
 | ISO639-2       | http://purl.org/dc/terms/ISO639-2              ???   |
-| org         | http://www.w3.org/ns/org#                            |
-| prov        | http://www.w3.org/ns/prov#                           |
-| rec         | https://www.opengis.net/def/ogc-api/records/         |
-| time        | http://www.w3.org/2006/time#                         |
-|vcard        | http://www.w3.org/2006/vcard/ns#                     |
+| org            | http://www.w3.org/ns/org#                            |
+| prov           | http://www.w3.org/ns/prov#                           |
+| rec            | https://www.opengis.net/def/ogc-api/records/         |
+| time           | http://www.w3.org/2006/time#                         |
+|vcard           | http://www.w3.org/2006/vcard/ns#                     |
 
 a ver se precisamos
 
@@ -78,6 +79,8 @@ Table 5 - Extension classes related to the Process .
 | 13 | [Registry](RegistryClass.md)  | The Registry where the application package is registered in. | 🔴 apkg-rec:Registry | rdfs:subClassOf prov:Activity |
 | 14 | [CWLDescriptor](CWLDescriptorClass.md) | THe CWL descriptor of the Application package | 🔴 apkg-rec:CWLDescriptor | rdfs:subClassOf dcat:Distribution| 
 | 15 | [Parameter](ParameterClass.md) | The Parameter of the Input or Output of the Process |  🔴 apkg-rec:Parameter | rdfs:subClassOf cwl:Parameter ; cwl:Parameter a owl:Class . --> We need to define as a OWL class because in the CWL ttl it is a rdfs:Class|
+| 16 | [Spatialcoverage](SpatialcoverageClass.md) | The Spatial Coverage of the Process |  🔴 apkg-rec:Spatialcoverage | |
+| 17 | [Geo](GeoClass.md) | A Bounding Box |  🔴 apkg-rec:Geo | |
 
 
 Table C - Extension Classes and properties related to the Process .
@@ -85,7 +88,7 @@ Table C - Extension Classes and properties related to the Process .
 | Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
 |--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
 |     identifier         | Unique identifier of the process.       |  apkg-re:processIdentifier    |apkg-rec:Process          
-|      family        | Family of this application package (identifier without version)???REVER     | apkg:family                              | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
+|      family        | Family of this application package (identifier without version)???REVER     | apkg:family | apkg-rec:Process                  | xsd:anyURI                        | 1-1         |     |      |
 |    none      | The application package has several software versions                         | 🟢doap:release                   | apkg-rec:Process                  | doap:Version                    | 1-M         |     |      |
 | __Version__ | A version of the Application Process | 🟢doap:Version |
 | none | The date of creation of the version | 🟢doap:creation | doap:Version | xsd:date| 0-1 | 
