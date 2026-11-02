@@ -15,7 +15,7 @@
 | sdDatePublished | The registration date of the application package | 🟢 apkg-rec:registrationDate | apkg-rec:Process | 🔴 xsd:dateTime | 0-1 |ISO 8601 | rdfs:seeAlso dct:dateSubmitted |
 |  latest | This is the latest version of the application package | 🔴 apkg-rec:isLatestVersion | apkg-rec:Process | xsd:boolean | 0-1 | | |
 |   url           | The Application Package as a CWL                                | 🔴 apkg-rec:cwlDescriptor                            | apkg-rec:Process                  | xsd:anyURI                      | 0-1         |     |    |
-|    citation      | Citation of a work related to the application package               | 🟢 cito:cites                         | apkg-rec:Process                  | fabio:ResearchPaper                       | 0-M         |  
+|    citation      | Citation of a work related to the application package | 🔴 apkg-rec:cites | apkg-rec:Process | xsd:string | 0-1 |  
 |     license         | License of the application package                                  | 🟢 dct:license                              | apkg-rec:Process                  | dct:LicenseDocument               | 0-1         |     |      |
 |    author          | Author of the application package                                   | 🔴 apkg-rec:creator   | apkg-rec:Process  |  foaf:Agent   | 1-M  |     |   rdfs:subPropertyOf dct:creator    |
 |    none          | Contributor of the application package                              | 🔴 apkg-contributor   | apkg-rec:Process  |  foaf:Agent   | 0-M         |     |  rdfs:subPropertyOf  dct:contributor    |
