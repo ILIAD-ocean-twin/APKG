@@ -32,7 +32,7 @@
 |    class | Class of the Process (CommandLineTool or Workflow)                  | 🟢 dct:type |apkg:Process |      xsd:string  |     1-1  |        | ["CommandLineTool", "Workflow"] | 
 |    inputs | Input of the Process   |🔴 apkg-rec:hasInput | 🔴 apkg-rec:Parameter |  apkg-rc:Process  | 0-M |    | apkg-rec:hasInput skos:exactMatch cwl:inputs  ; apkg-rec:input owl:propertyDisjointWith apkg-rec:output .  | 
 |    outputs | Output of the Process    | 🔴 apkg-rec:hasOutput  | 🔴 apkg-rec:Parameter   | apkg-rec:Process   | 0-M |    |    apkg-rec:hasOutput skos:exactMatch cwl:outputs |
-|    secrets | The Input parameter IDs considered secret    | 🔴 apkg-rec:hasSecret  | 🔴 apkg-rec:Secret   | apkg-rec:Process   | 0-M |  |  |
+|    secrets | The Input parameter IDs considered secret    | 🔴 apkg-rec:hasSecret  |  apkg-rec:Process |🔴 apkg-rec:Secret    | 0-M |  |  |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -46,8 +46,7 @@ __Organisation__                                                    |           
 | Name of the Organisation                                            | apkg:Organisation                        | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
 | URL of the webpage of Organisation                                  | apkg:Organisation                        |                                | schema:url                               | 1-1         |                                 |                                                             |                                   
 | Address of the Organisation                                         | apkg:Organisation                        | apkg:PostalAddress                       | schema:address                           | 1-1         |                                 |                                                             |  
-| __Secrets__                                                         |                                          |                                          | apkg:Secrets                             |             |                                 |  rdfs:subClassOf cwl:Secrets                                |
-| The ID of the Input parameters considered secret                    | apkg:Secrets                             | xsd:string                               | cwltool:secrets                          | 0-M         |                                 |                                                             |
+                                                             |
                                                      
 
 &copy; INESC TEC, 2026

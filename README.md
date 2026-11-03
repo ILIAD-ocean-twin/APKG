@@ -83,6 +83,9 @@ Table 5 - Extension classes related to the Process .
 | 17 | [Geo](GeoClass.md) | A Bounding Box |  🔴 apkg-rec:Geo | |
 | 18 | [Person](PersonClass.md) | A Person |  🔴 apkg-rec:Person | rdfs:subClassOf foaf:Person |
 | 19 | [Organisation](OrganisationClass.md) | An Organisation |  🔴 apkg-rec:Organisation |rdfs:subClassOf org:Organization  |
+| 19 | [Secret](SecretClass.md) | The items of the input that need to keep safe, secret |  🔴 apkg-rec:Secret |rdfs:subClassOf cwl:secrets  |
+| 19 | [Organisation](OrganisationClass.md) | An Organisation |  🔴 apkg-rec:Organisation |rdfs:subClassOf org:Organization  |
+
 
 
 Table C - Extension Classes and properties related to the Process .
