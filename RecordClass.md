@@ -6,17 +6,26 @@
 
 - Table A.1.1
 
-| OGC Property   | Description                                                                              | Vocabulary Term                          | Domain                                   | Range                             | Cardinality OGC | Cardinality APKG | VES | Note |
-|----------------|------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|--|
-| id             | A unique record identifier assigned by the server.                                       |🔴  apkg-rec:recordId                        | apkg-rec:Record                       | xsd:string                       | 1         | 1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dct:identifier |
-| created        | The date this record was created in the server.                                          | 🔴 apkg-rec:createdAt                               | apkg-rec:Record                             | xsd:dateTimeStamp                      | 0-1         | 0-1         |     |   owl:DatatypeProperty, rdfs:subPropertyOf dcterms:created  |
-| updated        | The most recent date on which the record was changed.                                    | 🔴 apkg-rec:updatedAt                             | apkg-rec:Record                             | xsd:dateTimeStamp                          | 0-1         | 0-1         |     |     owl:DatatypeProperty , rdfs:subPropertyOf dcterms:modified.  |
-| conformsTo     | The extensions/conformance classes used in this record                                   | 🔴 apkg-rec:conformsTo                           | apkg-rec:Record                            | dct:Standard                      | 0-M         | 0-M         |     |   owl:ObjectProperty, rdfs:subPropertyOf dcterms:conformsTo |
-| language       | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🔴 apkg-rec:hasLanguage                              | apkg-rec:Record                            | apkg-rec:Language         | 0-1         | 0-1  |    |   rdfs:subPropertyOf dct:language; It migth require to match with https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/language.yaml in Version 2 (TODO) |
-| languages       | The list of other languages in which this record is available. | 🔴 apkg-rec:hasAlternateLanguage                         | apkg-rec:Record                            | apkg-rec:Language         | 0-M         | 0-M         |    |  rdfs:subPropertyOf dct:language; See note in _language_.     |
-| links          | A related link of the record                      |          🟢  dct:relation             | apkg-rec:Record                            | apkg-rec:Link                      | 0-M         | 0-M         |     |    |
-| linkTemplates  | A link template related to this record                                                   |            🟢 hydra:IriTemplate         | apkg-rec:Record                           |                       | 0-1         | 0-1         |     |   |
+| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
+|---|---|---|---|---|---|---|---|---|
+| id | A unique record identifier assigned by the server. | 🟢 dct:identifier | 🔴 apkg-rec:Record | xsd:string | 1 | 1 |  |  |
+| created | The date this record was created in the server. | 🟢 dct:created | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 |  | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp |
+| updated | The most recent date on which the record was changed. | 🟢 dct:modified | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 |  |  |
+| conformsTo | The extensions/conformance classes used in this record | 🟢 dct:conformsTo | 🔴 apkg-rec:Record | 🟢 dct:Standard (IRI) | 0-M | 0-M |  | Values are OGC conformance class IRIs |
+| language | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🟢 dct:language | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-1 | 0-1 |  | apkg-rec:Language rdfs:subClassOf dct:LinguisticSystem |
+| languages | The list of other languages in which this record is available. | 🔴 apkg-rec:hasAlternateLanguage | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-M | 0-M |  | owl:ObjectProperty; rdfs:seeAlso dct:language. No existing term distinguishes primary vs other languages |
+| links | A related link of the record | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M |  | apkg-rec:Link rdfs:subClassOf dcat:Relationship |
+| linkTemplates | A link template related to this record | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M |  | owl:ObjectProperty; apkg-rec:LinkTemplate rdfs:subClassOf hydra:IriTemplate |
 
+
+NOTA
+1. Não modela LinkTemplate de todo. Não há qualquer problema com a tabela do Link. Mas tem de retirar a linha linkTemplates da tabela do Record, porque o range dela (apkg-rec:LinkTemplate) ficaria a apontar para uma classe que não existe no perfil.
+
+2. Modela LinkTemplate sem LinkBase. Também funciona. Como o “domínio” das propriedades DCTerms é só uma restrição do perfil (tabela + SHACL) e não um axioma OWL, não há inferências erradas. O custo é a duplicação: a tabela do LinkTemplate tem de repetir rel, type, hreflang, title, length, profile, created e updated com domínio apkg-rec:LinkTemplate, e no SHACL as restrições ficam em duas shapes. Qualquer alteração futura (por exemplo, mudar um range) tem de ser feita nos dois sítios.
+
+3. Modela com LinkBase. Define as propriedades comuns uma só vez, espelha o linkBase do OGC e herda o alinhamento dcat:Relationship. É mais elegante, mas acrescenta uma classe.
+
+O que não deve fazer é LinkTemplate rdfs:subClassOf Link: os templates herdariam a obrigação de href (1) e falhariam todos a validação SHACL.
 [<- main](README.md)
 
 ## Resource properties related to the Record Class 
