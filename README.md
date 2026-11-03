@@ -81,6 +81,8 @@ Table 5 - Extension classes related to the Process .
 | 15 | [Parameter](ParameterClass.md) | The Parameter of the Input or Output of the Process |  🔴 apkg-rec:Parameter | rdfs:subClassOf cwl:Parameter ; cwl:Parameter a owl:Class . --> We need to define as a OWL class because in the CWL ttl it is a rdfs:Class|
 | 16 | [Spatialcoverage](SpatialcoverageClass.md) | The Spatial Coverage of the Process |  🔴 apkg-rec:Spatialcoverage | |
 | 17 | [Geo](GeoClass.md) | A Bounding Box |  🔴 apkg-rec:Geo | |
+| 18 | [Person](PersonClass.md) | A Person |  🔴 apkg-rec:Person | rdfs:subClassOf foaf:Person |
+| 19 | [Organisation](OrganisationClass.md) | An Organisation |  🔴 apkg-rec:Organisation |rdfs:subClassOf org:Organization  |
 
 
 Table C - Extension Classes and properties related to the Process .
