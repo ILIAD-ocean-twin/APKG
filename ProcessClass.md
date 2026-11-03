@@ -30,9 +30,9 @@
 |    programming_language | Programming language of the application package                     |      🔴apkg-rec:programmingLanguage          | apkg-rec:Process     |   xsd:string   | 0-1         ||apkg-rec:programmingLanguage a owl:ObjectProperty ;  rdfs:domain apkg-rec:Process ;  rdfs:range skos:Concept ;  skos:closeMatch doap:programming-language, schema:programmingLanguage ;  --> Definir um SKOS com programming languages!      |
 |    original_url | Original URL of the application package when registered    |    🟢 pav:retrievedFrom    | apkg-rec:Process    |     prov:Entity | 0-1 |     |  sh:property [sh:path pav:retrievedFrom ;     sh:nodeKind sh:IRI ;     sh:maxCount 1 ] .    |
 |    class | Class of the Process (CommandLineTool or Workflow)                  | 🟢 dct:type |apkg:Process |      xsd:string  |     1-1  |        | ["CommandLineTool", "Workflow"] | 
-|    inputs | Input of the Process   |🔴 apkg-rec:hasInput | 🔴 apkg-rec:Parameter |  apkg-rc:Process  | 0-M |    | apkg-rec:hasInput skos:exactMatch cwl:inputs  ; apkg-rec:input owl:propertyDisjointWith apkg-rec:output .  | 
-|    outputs | Output of the Process    | 🔴 apkg-rec:hasOutput  | 🔴 apkg-rec:Parameter   | apkg-rec:Process   | 0-M |    |    apkg-rec:hasOutput skos:exactMatch cwl:outputs |
-|    secrets | The Input parameter IDs considered secret    | 🔴 apkg-rec:hasSecret  |  apkg-rec:Process |🔴 apkg-rec:Secret    | 0-M |  |  |
+|    inputs | Input of the Process   |🔴 apkg-rec:hasInput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter  | 0-M |    | apkg-rec:hasInput skos:exactMatch cwl:inputs  ; apkg-rec:input owl:propertyDisjointWith apkg-rec:output .  | 
+|    outputs | Output of the Process    | 🔴 apkg-rec:hasOutput  | 🔴 apkg-rec:Process   | 🔴 apkg-rec:Parameter   | 0-M |    |    apkg-rec:hasOutput skos:exactMatch cwl:outputs |
+|    secrets | The Input parameter IDs considered secret    | 🔴 apkg-rec:hasSecret  | 🔴 apkg-rec:Process |🔴 apkg-rec:Secret    | 0-M |  |  |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
