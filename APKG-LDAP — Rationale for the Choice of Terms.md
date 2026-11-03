@@ -25,3 +25,25 @@ Because the profile must support automated reasoning, only terms with formal OWL
 ## Respect for namespace ownership
 
 Terms from external namespaces are used as their owners define them and are never redeclared locally. The profile does not add domains, ranges or other axioms to a term it does not own. When a more specific meaning is needed, a new term is created in the profile's own namespace (`apkg-rec:`) and related to the external term through `rdfs:subClassOf` or `rdfs:subPropertyOf`. For example, `apkg-rec:Process` is declared a subclass of `cwl:Process` and of `apkg-rec:Record`, rather than altering either external definition.
+
+## APKG-LDAP as a prof:Profile
+APKG-LDAP itself can be described as a prof:Profile, with prof:isProfileOf pointing to the OGC specification and prof:hasResource pointing to the SHACL shapes. This gives you a formal, reusable description of the profile.
+
+For example:
+
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+<https://example.org/apkg-ldap> a prof:Profile ;
+    dct:title "APKG-LDAP Application Profile"@en ;
+    prof:isProfileOf <https://www.ogc.org/standard/ogcapi-records/> ;
+    prof:hasToken "apkg-ldap" ;
+    prof:hasResource [
+        a prof:ResourceDescriptor ;
+        prof:hasRole role:validation ;
+        dct:format <https://w3id.org/mediatype/text/turtle> ;
+        prof:hasArtifact <https://example.org/apkg-ldap/shapes.ttl>
+    ] .
+
+Replace the example.org IRIs with the profile’s actual IRIs, and check the exact OGC API Records specification IRI you want to reference.

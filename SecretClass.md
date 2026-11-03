@@ -8,4 +8,4 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| | The ID of the Input parameters considered secret                    | apkg:Secrets                             | xsd:string                               | cwltool:secrets                          | 1-M ???         |                                 |
+| | The ID of the Input parameters considered secret   | apkg:Secrets    | xsd:string  | cwltool:secrets  | 1-M ???         |                                 |

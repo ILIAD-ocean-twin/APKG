@@ -9,5 +9,5 @@
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
 | name | Name of the Person | foaf:name | 🔴 apkg-rec:Person | xsd:string | 1 | 1 | | |               
-| email | Email address of the person | foaf:mbox | 🔴 apkg-rec:Person | xsd:string | 1 | 1 | mailto: |
+| email | Email address of the person | 🟢 vcard:hasEmail| 🔴 apkg-rec:Person | 🔴 apkg-rec:Email | 1 | 1 |  |
 
