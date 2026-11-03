@@ -17,15 +17,6 @@
 | links | A related link of the record | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M |  | apkg-rec:Link rdfs:subClassOf dcat:Relationship |
 | linkTemplates | A link template related to this record | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M |  | owl:ObjectProperty; apkg-rec:LinkTemplate rdfs:subClassOf hydra:IriTemplate |
 
-
-NOTA
-1. Não modela LinkTemplate de todo. Não há qualquer problema com a tabela do Link. Mas tem de retirar a linha linkTemplates da tabela do Record, porque o range dela (apkg-rec:LinkTemplate) ficaria a apontar para uma classe que não existe no perfil.
-
-2. Modela LinkTemplate sem LinkBase. Também funciona. Como o “domínio” das propriedades DCTerms é só uma restrição do perfil (tabela + SHACL) e não um axioma OWL, não há inferências erradas. O custo é a duplicação: a tabela do LinkTemplate tem de repetir rel, type, hreflang, title, length, profile, created e updated com domínio apkg-rec:LinkTemplate, e no SHACL as restrições ficam em duas shapes. Qualquer alteração futura (por exemplo, mudar um range) tem de ser feita nos dois sítios.
-
-3. Modela com LinkBase. Define as propriedades comuns uma só vez, espelha o linkBase do OGC e herda o alinhamento dcat:Relationship. É mais elegante, mas acrescenta uma classe.
-
-O que não deve fazer é LinkTemplate rdfs:subClassOf Link: os templates herdariam a obrigação de href (1) e falhariam todos a validação SHACL.
 [<- main](README.md)
 
 ## Resource properties related to the Record Class 
