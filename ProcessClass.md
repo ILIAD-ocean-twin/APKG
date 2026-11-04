@@ -35,20 +35,5 @@
 |    secrets | The Input parameter IDs considered secret    | 🔴 apkg-rec:hasSecret  | 🔴 apkg-rec:Secret   | apkg-rec:Process   | 0-M |  |  |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-A partir de agora nao sei o que são estas coisas, como se ligam ao Process. Sao precisas object properties. A ver com o MARCO
-
-
-| Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES | Note |
-|--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-__Organisation__                                                    |                                          |                                          | apkg:Organisation                        |             |                                 | rdfs:subClassOf schema:Organization                         |
-| Name of the Organisation                                            | apkg:Organisation                        | xsd:string                               | schema:name                              | 1-1         |                                 |                                                             |
-| URL of the webpage of Organisation                                  | apkg:Organisation                        |                                | schema:url                               | 1-1         |                                 |                                                             |                                   
-| Address of the Organisation                                         | apkg:Organisation                        | apkg:PostalAddress                       | schema:address                           | 1-1         |                                 |                                                             |  
-| __Secrets__                                                         |                                          |                                          | apkg:Secrets                             |             |                                 |  rdfs:subClassOf cwl:Secrets                                |
-| The ID of the Input parameters considered secret                    | apkg:Secrets                             | xsd:string                               | cwltool:secrets                          | 0-M         |                                 |                                                             |
-                                                     
-
 &copy; INESC TEC, 2026
 
