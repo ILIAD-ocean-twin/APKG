@@ -8,5 +8,5 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| box | a bounding box | 🔴apkg-rec:box | apkg-rec:Geo | xsd:string | 1-1 | 1-1 | | | 
+| box | a bounding box | 🔴apkg-rec:box | 🔴 apkg-rec:Geo | xsd:string | 1-1 | 1-1 | | | 
 
