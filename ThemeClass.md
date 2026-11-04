@@ -8,5 +8,5 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| concepts |The classification of the KOS defined on theme | 🔴apkg-rec:hasConcept | 🔴apkg-rec:Theme |  apkg-rec:Concept    | 0-M |0-M | | Listing 22 and Listing 38 at https://docs.ogc.org/is/20-004r1/20-004r1.html show divergent uses of hasConcept term of the Themes Class. In the first it is a Class with _id_ and _url_ and at the second  a list of xsd:String. | 
-| scheme | THe KOS scheme  of the Concepts in the specific theme | 🟢skos:inScheme | 🔴apkg-rec:Theme | IRI| 1 | 1 |
+| concepts | The classification of the KOS defined on theme | 🔴 apkg-rec:hasConcept | 🔴 apkg-rec:Theme | 🔴 apkg-rec:Concept | 1-M | 1-M |  | owl:ObjectProperty. apkg-rec:Concept rdfs:subClassOf skos:Concept. Listing 22 and Listing 38 at https://docs.ogc.org/is/20-004r1/20-004r1.html show divergent uses: object with id and url vs list of strings |
+| scheme | The KOS scheme of the concepts in the specific theme | 🟢 skos:inScheme | 🔴 apkg-rec:Theme | IRI (skos:ConceptScheme) | 1 | 1 |  | SKOS intends skos:inScheme on concepts; applied here to the Theme to mirror the OGC structure |
