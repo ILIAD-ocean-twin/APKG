@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Language Class 
 
-- Table B.3.2
+- Table B8
 
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |

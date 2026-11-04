@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Format Class 
 
-- Table B.3.2
+- Table B6
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

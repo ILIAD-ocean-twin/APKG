@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Contact Class 
 
-- Table B.3.2
+- Table B4
 
 [!NOTE]
 Note Constraint: at least one of name or organization is required.

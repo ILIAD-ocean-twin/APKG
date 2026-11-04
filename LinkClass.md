@@ -4,7 +4,7 @@
 
 ## Core properties related to the Link Class
 
-- Table A.2.1
+- Table B9
 
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |

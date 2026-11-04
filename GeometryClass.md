@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Geometry Class 
 
-- Table B.3.1
+- Table B7
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

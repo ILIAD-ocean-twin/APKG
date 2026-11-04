@@ -4,37 +4,34 @@
 
 ## Resource properties related to the Process Class
 
-- Table B.3.2
+- Table C13
 
-
-| Property | Description                                                               | Vocabulary Term                          | Domain                                   | Range                             | Cardinality | VES/SES | Note |
-|--------------|---------------------------------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------|-------------|-----|------|
-|     identifier | Unique identifier of the process. |  🔴 apkg-rec:processID |🔴apkg-rec:Process |xsd:anyURI | 1| |owl:DatatypeProperty, rdfs:seeAlso dct:identifier| 
-|     family | Family of this application package (identifier without version)     | 🔴 apkg-rec:familyID   |🔴 apkg-rec:Process     | xsd:string                     | 0-1         |    |   owl:DatatypeProperty, rdfs:seeAlso dct:identifier    |
-|    software_version | The software version of the application package | 🟢pav:version    | 🔴apkg-rec:Process  |  xsd:string                    | 1 |     |      |
-|    sdDatePublished | The registration date of the application package | 🟢 apkg-rec:registrationDate | 🔴apkg-rec:Process | xsd:dateTime | 0-1 |ISO 8601 | rdfs:seeAlso dct:dateSubmitted |
-|  latest | This is the latest version of the application package | 🔴 apkg-rec:isLatestVersion | 🔴apkg-rec:Process | xsd:boolean | 0-1 | | |
-|    url | The Application Package as a CWL     | 🔴 apkg-rec:cwlDescriptor     | 🔴apkg-rec:Process    | xsd:anyURI   | 0-1         |     |    |
-|    citation | Citation of a work related to the application package | 🔴 apkg-rec:cites | apkg-rec:Process | xsd:string | 0-1 |  
-|    license | License of the application package                                  | 🟢 dct:license                              |🔴 apkg-rec:Process     | 🟢 dct:LicenseDocument               | 0-1         |     |      |
-|    author | Author of the application package                                   | 🔴 apkg-rec:hasCreator   | 🔴apkg-rec:Process  | 🔴 apkg-rec:Person   | 1-M  |     |   rdfs:seeAlso dct:creator    |
-|    contributor | Contributor of the application package                              | 🔴 apkg-hasContributor   | 🔴apkg-rec:Process  |  🔴apkg-rec:Person   | 0-M         |     |  rdfs:seeAlso  dct:contributor    |
-|    maintainer | Maintainer of the application package                               | 🔴 apkg-rec:hasMaintainer    | 🔴apkg-rec:Process            | 🔴 apkg-rec:Person   | 0-M    |     |   rdfs:seeAlso  dct:contributor   |
-|    sdPublisher | Publisher of the application package                                | 🔴apkg-rec:hasPublisher      | 🔴apkg-rec:Process                  |🔴 apkg-rec:Person        | 0-1         |     |   rdfs:seeAlso  dct:publisher     |
-|    sourceOrganization | Organisations responsible for creating or maintaining the tool. It helps establish the origin and credibility of the tool | 🔴 apkg-rec:hasSourceOrganisation | 🔴apkg-rec:Process | 🔴 apkg-rec:Organisation | 1-M | |  |
-|    provider | The service provider. The organisation(s) providing the Process as a service. | 🔴apkg-rec:hasProviderOrganisation | 🔴apkg-rec:Process                  |🔴 apkg-rec:Organisation | 0-M | |  |
-|    producer | Main organisation responsible for the tool. It helps establish the origin and credibility of the tool. | 🔴 apkg-rec:hasProducerOrganisation | 🔴 apkg-rec:Process | 🔴 apkg-rec:Organisation | 1 | | |
-|    spatial_coverage | Spatial coverage of the application package | 🟢 bf:geographicCoverage   | 🔴apkg-rec:Process     |  🔴 apkg-rec:SpatialCoverage | 0-1 | | |
-|    temporal_coverage | Indicates the period that the content applies; should be defined by a textual string indicating a time (single date or a date range). |    🔴 apkg-rec:temporalCoverage   | 🔴apkg-rec:Process | 🟢 time:Interval | 0-1 | ISO 8601 | rdfs:subPropertyOf time:hasTime |
-|    code_repository | URL of the application package code repository | 🔴 apkg-rec:codeRepository | 🔴apkg-rec:Process |    🟢 doap:Repository    | 0-1 | | apkg-rec:codeRepository a owl:ObjectProperty ;     rdfs:domain apkg-rec:Process ;     rdfs:range doap:Repository ;     skos:closeMatch doap:repository, schema:codeRepository ;  --> Permite tipar o repositório com subclasses. O DOAP tem doap:GitRepository, doap:SVNRepository, doap:HgRepository   |
-|    programming_language | Programming language of the application package                     |      🔴apkg-rec:programmingLanguage          | 🔴apkg-rec:Process     |   xsd:string   | 0-1         ||apkg-rec:programmingLanguage a owl:ObjectProperty ;  rdfs:domain apkg-rec:Process ;  rdfs:range skos:Concept ;  skos:closeMatch doap:programming-language, schema:programmingLanguage ;  --> Definir um SKOS com programming languages!      |
-|    original_url | Original URL of the application package when registered    |    🟢 pav:retrievedFrom    | apkg-rec:Process    |  🟢   prov:Entity | 0-1 |     |  sh:property [sh:path pav:retrievedFrom ;     sh:nodeKind sh:IRI ;     sh:maxCount 1 ] .    |
-|    class | Class of the Process (CommandLineTool or Workflow)                  | 🟢 dct:type | 🔴 apkg:Process |      xsd:string  |     1-1  |        | ["CommandLineTool", "Workflow"] | 
-|    inputs | Input of the Process   |🔴 apkg-rec:hasInput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter  | 0-M |    | apkg-rec:hasInput skos:exactMatch cwl:inputs  ; apkg-rec:input owl:propertyDisjointWith apkg-rec:output .  | 
-|    outputs | Output of the Process    | 🔴 apkg-rec:hasOutput  | 🔴 apkg-rec:Process   | 🔴 apkg-rec:Parameter   | 0-M |    |    apkg-rec:hasOutput rdfs:seeAlso cwl:outputs |
-|    secrets | The Input parameter IDs considered secret    | 🔴 apkg-rec:hasSecret  | 🔴 apkg-rec:Process |🔴 apkg-rec:Secret    | 0-M |  |  |
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                                     
+| Property | Description | Vocabulary Term | Domain | Range | Cardinality | VES/SES | Note |
+|----------|-------------|-----------------|--------|-------|-------------|---------|------|
+| identifier | Unique identifier of the process. | 🔴 apkg-rec:processID | 🔴 apkg-rec:Process | xsd:string | 1 |  | owl:DatatypeProperty; rdfs:seeAlso dct:identifier. dct:identifier is already used for the record id (apkg-rec:Process rdfs:subClassOf apkg-rec:Record) |
+| family | Family of this application package (identifier without version) | 🔴 apkg-rec:familyID | 🔴 apkg-rec:Process | xsd:string | 0-1 |  | owl:DatatypeProperty; rdfs:seeAlso dct:identifier |
+| software_version | The software version of the application package | 🟢 pav:version | 🔴 apkg-rec:Process | xsd:string | 1 |  |  |
+| sdDatePublished | The registration date of the application package | 🔴 apkg-rec:registrationDate | 🔴 apkg-rec:Process | xsd:dateTimeStamp | 0-1 |  | owl:DatatypeProperty; rdfs:seeAlso dct:dateSubmitted. Alternative: prov:endedAtTime on the apkg-rec:Registry activity |
+| latest | This is the latest version of the application package | 🔴 apkg-rec:isLatestVersion | 🔴 apkg-rec:Process | xsd:boolean | 0-1 |  | owl:DatatypeProperty |
+| url | The Application Package as a CWL | 🔴 apkg-rec:cwlDescriptor | 🔴 apkg-rec:Process | IRI (foaf:Document) | 0-1 |  | owl:ObjectProperty |
+| citation | Citation of a work related to the application package | 🟢 cito:cites | 🔴 apkg-rec:Process | IRI | 0-M |  | For DOI/URI values. If free text is needed, use a local owl:DatatypeProperty instead |
+| license | License of the application package | 🟢 dct:license | 🔴 apkg-rec:Process | 🟢 dct:LicenseDocument (IRI) | 0-1 | SPDX |  |
+| author | Author of the application package | 🟢 dct:creator | 🔴 apkg-rec:Process | 🔴 apkg-rec:Person | 1-M |  | DCMI range dct:Agent. Consider an agent range (persons or organisations) |
+| contributor | Contributor of the application package | 🟢 dct:contributor | 🔴 apkg-rec:Process | 🔴 apkg-rec:Person | 0-M |  |  |
+| maintainer | Maintainer of the application package | 🔴 apkg-rec:hasMaintainer | 🔴 apkg-rec:Process | 🔴 apkg-rec:Person | 0-M |  | owl:ObjectProperty; rdfs:seeAlso dct:contributor, doap:maintainer (domain doap:Project, not reused) |
+| sdPublisher | Publisher of the application package | 🟢 dct:publisher | 🔴 apkg-rec:Process | 🔴 apkg-rec:Person | 0-1 |  | |
+| sourceOrganization | Organisations responsible for creating or maintaining the tool. It helps establish the origin and credibility of the tool | 🔴 apkg-rec:hasSourceOrganisation | 🔴 apkg-rec:Process | 🔴 apkg-rec:Organisation | 1-M |  | owl:ObjectProperty |
+| provider | The service provider. The organisation(s) providing the Process as a service. | 🔴 apkg-rec:hasProviderOrganisation | 🔴 apkg-rec:Process | 🔴 apkg-rec:Organisation | 0-M |  | owl:ObjectProperty |
+| producer | Main organisation responsible for the tool. It helps establish the origin and credibility of the tool. | 🔴 apkg-rec:hasProducerOrganisation | 🔴 apkg-rec:Process | 🔴 apkg-rec:Organisation | 1 |  | owl:ObjectProperty; rdfs:subPropertyOf apkg-rec:hasSourceOrganisation |
+| spatial_coverage | Spatial coverage of the application package | 🟢 bf:geographicCoverage | 🔴 apkg-rec:Process | 🔴 apkg-rec:SpatialCoverage | 0-1 |  | Bounding box following the schema.org box syntax |
+| temporal_coverage | Indicates the period that the content applies; should be defined by a textual string indicating a time (single date or a date range). | 🔴 apkg-rec:temporalCoverage | 🔴 apkg-rec:Process | 🟢 time:TemporalEntity | 0-1 |  | owl:ObjectProperty; rdfs:subPropertyOf time:hasTime (time:hasTime is already used for the record temporal extent). time:Interval or time:Instant |
+| code_repository | URL of the application package code repository | 🔴 apkg-rec:codeRepository | 🔴 apkg-rec:Process | 🟢 doap:Repository | 0-1 |  | owl:ObjectProperty; rdfs:seeAlso doap:repository, schema:codeRepository. Allows doap:GitRepository, doap:SVNRepository, doap:HgRepository |
+| programming_language | Programming language of the application package | 🔴 apkg-rec:programmingLanguage | 🔴 apkg-rec:Process | IRI (skos:Concept) | 0-M | Programming languages SKOS (TODO) | owl:ObjectProperty; rdfs:seeAlso doap:programming-language, schema:programmingLanguage |
+| original_url | Original URL of the application package when registered | 🟢 pav:retrievedFrom | 🔴 apkg-rec:Process | IRI (prov:Entity) | 0-1 |  | PAV domain/range prov:Entity: apkg-rec:Process is inferred as prov:Entity (disjoint with prov:Activity) |
+| class | Class of the Process (CommandLineTool or Workflow) | 🟢 rdf:type | 🔴 apkg-rec:Process | cwl:CommandLineTool or cwl:Workflow | 1 | CWL classes | Both are subclasses of cwl:Process. dct:type is already used for the record type |
+| inputs | Input of the Process | 🔴 apkg-rec:hasInput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:inputs; owl:propertyDisjointWith apkg-rec:hasOutput |
+| outputs | Output of the Process | 🔴 apkg-rec:hasOutput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:outputs |
+| secrets | The Input parameter IDs considered secret | 🔴 apkg-rec:hasSecret | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:subPropertyOf apkg-rec:hasInput (secrets are inferred as inputs, hence never outputs) |
 
 &copy; INESC TEC, 2026
 

@@ -4,7 +4,7 @@
 
 ## Core properties related to the LinkTemplate Class 
 
-- Table A.3.1
+- Table B10
 
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
