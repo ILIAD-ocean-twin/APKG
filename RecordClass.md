@@ -2,7 +2,7 @@
 
 [<- main](README.md)
 
-## Core properties related to the Record Class 
+## Properties related to the Catalogue Record  
 
 - Table A.1.1
 
@@ -19,7 +19,7 @@
 
 [<- main](README.md)
 
-## Resource properties related to the Record Class 
+## Properties related to the Resource
 
 - Table A.1.2
 
@@ -36,11 +36,6 @@
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier | 🔴 apkg-rec:Record | 🟢 adms:Identifier | 0-M | 0-M |  | OGC externalId = {scheme, value}: value → skos:notation; scheme → TODO (dct:creator or adms:schemaAgency) |
 | formats | The list of available distribution formats for the resource that a record describes. It can include both physical and digital distribution formats. | 🔴 apkg-rec:hasFormat | 🔴 apkg-rec:Record | 🔴 apkg-rec:Format | 0-M | 0-M |  | owl:ObjectProperty. dct:hasFormat links to another version of the resource, not to a format description |
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | 🟢 dcat:contactPoint | 🔴 apkg-rec:Record | 🔴 apkg-rec:Contact | 0-M | 0-M |  | apkg-rec:Contact rdfs:subClassOf vcard:Kind (DCAT range of dcat:contactPoint). Roles: TODO |
-| identifier | The identifier of the contact. | 🟢 dct:identifier | 🔴 apkg-rec:Contact | xsd:string | 0-1 | 0-1 |  |  |
-| name | The name of the responsible person. | 🟢 vcard:fn | 🔴 apkg-rec:Contact | xsd:string | 0-1 | 0-1 |  |  |
-| position | The name of the role or position of the responsible person taken from the organization's formal organizational hierarchy or chart. | 🟢 vcard:title | 🔴 apkg-rec:Contact | xsd:string | 0-1 | 0-1 |  | vCard TITLE = position or job of the contact |
-| organisation | Organization/affiliation of the contact. | 🟢 vcard:organization-name | 🔴 apkg-rec:Contact | xsd:string | 0-1 | 0-1 |  | vCard ORG = organisation the contact belongs to |
-| logo | Graphic identifying a contact. | 🟢 vcard:hasLogo | 🔴 apkg-rec:Contact | 🔴 apkg-rec:Link | 0-1 | 0-1 |  | The rel property of the Link must be 'icon' and the type property a media type |
 | licence | The legal provisions under which the resource described by this record is made available. | 🟢 dct:license | 🔴 apkg-rec:Record | 🟢 dct:LicenseDocument (IRI) | 0-1 | 0-1 | SPDX | OGC value is a string (e.g. SPDX id): use the SPDX licence IRI |
 | rights | A statement that concerns all rights not addressed by the license such as a copyright statement. | 🟢 dct:rights | 🔴 apkg-rec:Record | 🟢 dct:RightsStatement | 0-1 | 0-1 |  | Statement text as rdfs:label of the dct:RightsStatement node |
 
