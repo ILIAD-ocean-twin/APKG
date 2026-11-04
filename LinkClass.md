@@ -10,7 +10,7 @@
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|---------|------|
 | href | A URL related to this record | 🟢 foaf:page | 🔴 apkg-rec:Link | 🟢 foaf:Document | 1 | 1 |  |  |
-| rel | The type of relation of this record | 🟢 dct:type | 🔴 apkg-rec:Link | IRI | 1 | 1 | ianaRelation | DCMI range of dct:type is rdfs:Class: IANA relation terms are inferred as classes of links |
+| rel | The type of relation of this record | 🟢 dct:type | 🔴 apkg-rec:Link | xsd:string | 1 | 1 | ianaRelation | DCMI range of dct:type is rdfs:Class: IANA relation terms are inferred as classes of links |
 | type | Media type of the relation of this record | 🟢 dct:format | 🔴 apkg-rec:Link | 🟢 dct:MediaType | 0-1 | 0-1 | ianaMediaType |  |
 | hreflang | A hint indicating what the language of the result of dereferencing the link should be. | 🟢 dct:language | 🔴 apkg-rec:Link | 🔴 apkg-rec:Language | 0-1 | 0-1 |  | apkg-rec:Language rdfs:subClassOf dct:LinguisticSystem. Language code (RFC 5646) defined in the Language class |
 | title | A title of the related link | 🟢 dct:title | 🔴 apkg-rec:Link | rdf:langString | 0-1 | 0-1 |  |  |
