@@ -6,7 +6,7 @@
 
 ## Resource properties related to the Registry Class 
 
-- Table
+- Table D19
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

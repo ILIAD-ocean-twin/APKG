@@ -8,8 +8,4 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| | The ID of the Input parameters considered secret   | apkg:Secrets    | xsd:string  | cwltool:secrets  | 1-M  |
-
-| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
-|--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| secrets | The ID of the Input parameters considered secret | 🔴 apkg-rec:hasSecret | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M | 0-M |  | owl:ObjectProperty; rdfs:subPropertyOf apkg-rec:hasInput; rdfs:seeAlso cwltool:secrets. Each ID in the cwltool:Secrets hint is resolved to the IRI of the referenced input parameter |
+| secrets | The ID of the Input parameters considered secret | 🔴 apkg-rec:hasSecret | 🔴 apkg-rec:Process | xsd:string | 0-M | 0-M |  |  rdfs:seeAlso cwltool:secrets.  |

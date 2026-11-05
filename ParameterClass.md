@@ -6,7 +6,7 @@
 
 ## Resource properties related to the Parameter Class 
 
-- Table
+- Table D17
 
 | OGC Property | Description | Vocabulary Term | Domain | Range |  Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|-----|------|

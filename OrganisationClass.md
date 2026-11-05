@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Organisation Class 
 
-- Table B.3.2
+- Table D16
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

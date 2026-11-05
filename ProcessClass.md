@@ -33,5 +33,7 @@
 | outputs | Output of the Process | 🔴 apkg-rec:hasOutput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:outputs |
 | secrets | The Input parameter IDs considered secret | 🔴 apkg-rec:hasSecret | 🔴 apkg-rec:Process | 🔴 apkg-rec:Secret | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:hints.  |
 
+[<- main](README.md)
+
 &copy; INESC TEC, 2026
 

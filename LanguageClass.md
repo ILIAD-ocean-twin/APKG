@@ -14,6 +14,8 @@
 | alternate | The name of the language in another well-understood language, usually English. | 🟢 skos:prefLabel | 🔴 apkg-rec:Language | rdf:langString | 0-1 | 0-1 |  | prefLabel with a language tag different from code (e.g. "Portuguese"@en). SKOS allows one prefLabel per language. |
 | dir | The direction for text in this language. (…) | 🔴 apkg-rec:textDirection | 🔴 apkg-rec:Language | xsd:string | 0-1 | 0-1 |  | Values: ltr; rtl; ttb; btt; default: ltr (SHACL sh:in). rdfs:seeAlso its:dir (ITS 2.0 XML attribute; no RDF term covers ttb/btt) |
 
+[<- main](README.md)
+
 ### Note on Validation.
 
 The SHACL core cannot compare the label with another value of the node (sh:languageIn only accepts a fixed list), so a SHACL-SPARQL constraint is required. For example, to ensure a maximum of one alternate:
