@@ -25,13 +25,13 @@ Table B - Classes related to the Record
 | 2 | [Address](AddressClass.md) | Physical location at which contact can be made.| 🔴apkg-rec:Address | rdfs:subClassOf vcard:Address |  B2
 | 3 | [Concept](ConceptClass.md) | A concept of a theme | 🔴 apkg-rec:Concept | | B3
 | 4 | [Contact](ContactClass.md) | Identification of, and means of communication with, the responsible for a resource. | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |  B4
-| 5 | [Email](EmailClass.md) | Email addresses at which contact can be made. |🔴 apkg-rec:Email |  B5
+| 5 | [Email](EmailClass.md) | Email addresses at which contact can be made. |🔴 apkg-rec:Email | | B5
 | 6 | [Format](FormatClass.md) | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |  B6
 | 7 | [Geometry](GeometryClass.md) | The geometry of a object | 🔴 apkg-rec:Geometry | rdfs:subClassOf geo:Geometry |  B7
 | 8 | [Language](LanguageClass.md) | Language used for textual values. | 🔴 apkg-rec:Language | apkg-rec:Language rdfs:subClassOf dct:LinguisticSystem  |  B8
-| 9 | [Link](LinkClass.md)    | Link related to a record    | 🔴apkg-rec:Link| apkg-rec:Link rdfs:subClassOf dcat:Relationship | | Table B9
+| 9 | [Link](LinkClass.md)    | Link related to a record    | 🔴apkg-rec:Link| apkg-rec:Link rdfs:subClassOf dcat:Relationship |  B9
 | 10 | [LinkTemplate](LinkTemplateClass.md)    | Link template related to a record    | 🔴apkg-rec:LinkTemplate|  apkg-rec:LinkTemplate rdfs:subClassOf hydra:IriTemplate , dcat:Relationship |   B10
-| 11 | [Phone](PhoneClass.md) | Telephone numbers at which contact can be made | 🔴apkg-rec:Phone |  B11
+| 11 | [Phone](PhoneClass.md) | Telephone numbers at which contact can be made | 🔴apkg-rec:Phone | | B11
 | 12 | [Theme](ThemeClass.md) | A theme of the Record | 🔴 apkg-rec:Theme | |  B12
 
 
@@ -54,7 +54,7 @@ Table D - Classes related to the Process .
 | 18 | [Person](PersonClass.md) | A Person |  🔴 apkg-rec:Person | rdfs:subClassOf foaf:Person | D18
 | 19 | [Registry](RegistryClass.md)  | The Registry where the application package is registered in. | 🔴 apkg-rec:Registry | rdfs:subClassOf prov:Activity | D19
 | 20 | [SpatialCoverage](SpatialCoverageClass.md) | The Spatial Coverage of the Process |  🔴 apkg-rec:Spatialcoverage | | D20
-| 21 | [Secret](SecretClass.md) | The items of the input that need to keep safe, secret |  🔴 apkg-rec:Secret |rdfs:subClassOf cwl:secrets  | D21
+| 21 | [Secret](SecretClass.md) | The items of the input that need to keep safe, secret |  🔴 apkg-rec:Secret |rdfs:subClassOf cwl:Secrets  | D21 
 
 
 &copy; INESC TEC, 2026

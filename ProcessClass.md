@@ -26,12 +26,12 @@
 | spatial_coverage | Spatial coverage of the application package | 🟢 bf:geographicCoverage | 🔴 apkg-rec:Process | 🔴 apkg-rec:SpatialCoverage | 0-1 |  | Bounding box following the schema.org box syntax |
 | temporal_coverage | Indicates the period that the content applies; should be defined by a textual string indicating a time (single date or a date range). | 🔴 apkg-rec:temporalCoverage | 🔴 apkg-rec:Process | 🟢 time:TemporalEntity | 0-1 |  | owl:ObjectProperty; rdfs:subPropertyOf time:hasTime (time:hasTime is already used for the record temporal extent). time:Interval or time:Instant |
 | code_repository | URL of the application package code repository | 🔴 apkg-rec:codeRepository | 🔴 apkg-rec:Process | 🟢 doap:Repository | 0-1 |  | owl:ObjectProperty; rdfs:seeAlso doap:repository, schema:codeRepository. Allows doap:GitRepository, doap:SVNRepository, doap:HgRepository |
-| programming_language | Programming language of the application package | 🔴 apkg-rec:programmingLanguage | 🔴 apkg-rec:Process | IRI (skos:Concept) | 0-M | Programming languages SKOS (TODO) | owl:ObjectProperty; rdfs:seeAlso doap:programming-language, schema:programmingLanguage |
+| programming_language | Programming language of the application package | 🔴 apkg-rec:programmingLanguage | 🔴 apkg-rec:Process | xsd:string | 0-M |  | owl:ObjectProperty; rdfs:seeAlso doap:programming-language, schema:programmingLanguage |
 | original_url | Original URL of the application package when registered | 🟢 pav:retrievedFrom | 🔴 apkg-rec:Process | IRI (prov:Entity) | 0-1 |  | PAV domain/range prov:Entity: apkg-rec:Process is inferred as prov:Entity (disjoint with prov:Activity) |
 | class | Class of the Process (CommandLineTool or Workflow) | 🟢 rdf:type | 🔴 apkg-rec:Process | cwl:CommandLineTool or cwl:Workflow | 1 | CWL classes | Both are subclasses of cwl:Process. dct:type is already used for the record type |
 | inputs | Input of the Process | 🔴 apkg-rec:hasInput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:inputs; owl:propertyDisjointWith apkg-rec:hasOutput |
 | outputs | Output of the Process | 🔴 apkg-rec:hasOutput | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:outputs |
-| secrets | The Input parameter IDs considered secret | 🔴 apkg-rec:hasSecret | 🔴 apkg-rec:Process | 🔴 apkg-rec:Parameter | 0-M |  | owl:ObjectProperty; rdfs:subPropertyOf apkg-rec:hasInput (secrets are inferred as inputs, hence never outputs) |
+| secrets | The Input parameter IDs considered secret | 🔴 apkg-rec:hasSecret | 🔴 apkg-rec:Process | 🔴 apkg-rec:Secret | 0-M |  | owl:ObjectProperty; rdfs:seeAlso cwl:hints.  |
 
 &copy; INESC TEC, 2026
 
