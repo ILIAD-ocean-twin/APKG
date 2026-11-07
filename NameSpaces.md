@@ -6,11 +6,12 @@
 | xsd            | http://www.w3.org/2001/XMLSchema#                    |
 | rdf            | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
 | rdfs           | http://www.w3.org/2000/01/rdf-schema# |
-| adms           | http://www.w3.org/ns/adms#         ????              |
+| adms           | http://www.w3.org/ns/adms#                 |
 | apkg-rec       | http://w3id.org/apkg/records#                        |
 | bf             | http://id.loc.gov/ontologies/bibframe/               |
 | cito           | http://purl.org/spar/cito/                           |
 | cwl            | https://w3id.org/cwl/cwl#                            |
+| cwltool        | http://commonwl.org/cwltool#                         |
 | dcat           | http://www.w3.org/ns/dcat#                           |
 | dct            | http://purl.org/dc/terms/                            |
 | doap           | http://usefulinc.com/ns/doap#                        |
@@ -30,6 +31,5 @@
 | rov            | http://www.w3.org/ns/regorg#                         |
 | time           | http://www.w3.org/2006/time#                         |
 |vcard           | http://www.w3.org/2006/vcard/ns#                     |
-| cwltool        | http://commonwl.org/cwltool#                         |
 
 [<- main](README.md)
