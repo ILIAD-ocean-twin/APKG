@@ -14,7 +14,7 @@
 | sdDatePublished | The registration date of the application package | 🔴 apkg-rec:registrationDate | 🔴 apkg-rec:Process | xsd:dateTimeStamp | 0-1 |  | owl:DatatypeProperty; rdfs:seeAlso dct:dateSubmitted. Alternative: prov:endedAtTime on the apkg-rec:Registry activity |
 | latest | This is the latest version of the application package | 🔴 apkg-rec:isLatestVersion | 🔴 apkg-rec:Process | xsd:boolean | 0-1 |  | owl:DatatypeProperty |
 | url | The Application Package as a CWL | 🔴 apkg-rec:cwlDescriptor | 🔴 apkg-rec:Process | IRI (foaf:Document) | 0-1 |  | owl:ObjectProperty |
-| citation | Citation of a work related to the application package | 🟢 cito:cites | 🔴 apkg-rec:Process | IRI | 0-M |  | For DOI/URI values. If free text is needed, use a local owl:DatatypeProperty instead |
+| citation | Citation of a work related to the application package | 🔴 apkg-rec: cites | 🔴 apkg-rec:Process | xsd:string | 0-M |  |  |
 | license | License of the application package | 🟢 dct:license | 🔴 apkg-rec:Process | 🟢 dct:LicenseDocument (IRI) | 0-1 | SPDX |  |
 | author | Author of the application package | 🟢 dct:creator | 🔴 apkg-rec:Process | 🔴 apkg-rec:Person | 1-M |  | DCMI range dct:Agent. Consider an agent range (persons or organisations) |
 | contributor | Contributor of the application package | 🟢 dct:contributor | 🔴 apkg-rec:Process | 🔴 apkg-rec:Person | 0-M |  |  |
