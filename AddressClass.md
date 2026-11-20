@@ -12,5 +12,5 @@
 | address_locality | City for the location. | 🟢vcard:locality | 🔴apkg-rec:Address | xsd:string | 0-M | 0-M | | |
 | administrative_area | State or province of the location. | 🟢vcard:region | 🔴apkg-rec:Address | xsd:string | 0-1 | 0-1 | | |
 | postal_code | ZIP or other postal code. | 🟢vcard:postal-code | 🔴apkg-rec:Address | xsd:string  | 0-1 | 0-1 | | |
-| address_country | Country of the address.   | 🟢vcard:country-name | 🔴apkg-rec:Address | xsd:string  | 0-1 | 0-1 | ISO 3166-1 alpha 2 | |
+| address_country | Country of the address.   | 🟢vcard:country-name | 🔴apkg-rec:Address | xsd:string  | 0-1 | 0-1 | ISO 3166-1 alpha 2 (SES) |Se os dados legados trazem códigos: manter vcard:country-name por falta de melhor termo OWL, mas registar a tensão na coluna Note.É um SES (codificação de literal) validado com sh:pattern "^[A-Z]{2}$". |
 | roles | The type of address.   | 🔴 apkg-rec:addressType | 🔴apkg-rec:Address | xsd:string | 0-M | 0-M | enum:  private, work, billing, delivery |

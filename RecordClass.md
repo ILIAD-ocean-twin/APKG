@@ -3,7 +3,7 @@
 [<- main](README.md)
 
 ## Properties related to the Catalogue Record  
-
+<!-->
 - Table A.1.1
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
@@ -12,10 +12,23 @@
 | created | The date this record was created in the server. | 🟢 dct:created | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 |  | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp |
 | updated | The most recent date on which the record was changed. | 🟢 dct:modified | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 |  |  |
 | conformsTo | The extensions/conformance classes used in this record | 🟢 dct:conformsTo | 🔴 apkg-rec:Record | 🟢 dct:Standard (IRI) | 0-M | 0-M |  | Values are OGC conformance class IRIs |
-| language | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🟢 dct:language | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-1 | 0-1 |  | apkg-rec:Language rdfs:subClassOf dct:LinguisticSystem |
+| language | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🟢 dct:language | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-1 | 0-1 |  | owl:ObjectProperty |
 | languages | The list of other languages in which this record is available. | 🔴 apkg-rec:hasAlternateLanguage | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-M | 0-M |  | owl:ObjectProperty; rdfs:seeAlso dct:language. No existing term distinguishes primary vs other languages |
-| links | A related link of the record | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M |  | apkg-rec:Link rdfs:subClassOf dcat:Relationship |
-| linkTemplates | A link template related to this record | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M |  | owl:ObjectProperty; apkg-rec:LinkTemplate rdfs:subClassOf hydra:IriTemplate |
+| links | A related link of the record | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M |  | owl:ObjectProperty |
+| linkTemplates | A link template related to this record | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M |  | owl:ObjectProperty |
+-->
+- Table A.1.1
+
+| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
+|---|---|---|---|---|---|---|---|---|
+| id | A unique record identifier assigned by the server. | 🟢 dct:identifier | 🔴 apkg-rec:Record | xsd:string | 1 | 1 | | |
+| created | The date this record was created in the server. | 🟢 dct:created | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 | RFC 3339 (SES) | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp. |
+| updated | The most recent date on which the record was changed. | 🟢 dct:modified | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 | RFC 3339 (SES) | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp. |
+| conformsTo | The extensions/conformance classes used in this record. | 🔴 apkg-rec:conformsTo | 🔴 apkg-rec:Record | xsd:anyURI | 0-M | 0-M | RFC 3986 (SES) | owl:DatatypeProperty. Values are OGC conformance class URIs, stored as strings in v1 data. Same treatment as the Link profile property (Table B9). In v3 it becomes dct:conformsTo (dct:Standard). |
+| language | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🟢 dct:language | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-1 | 0-1 | |  |
+| languages | The list of other languages in which this record is available. | 🔴 apkg-rec:hasAlternateLanguage | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-M | 0-M | | owl:ObjectProperty; rdfs:seeAlso dct:language. Not rdfs:subPropertyOf dct:language, which would infer alternate languages as the record language. No existing term distinguishes primary vs other languages. |
+| links | A related link of the record. | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M | | owl:ObjectProperty; DCAT domain dcat:Resource: apkg-rec:Record is inferred as dcat:Resource. Sub-property of prov:qualifiedInfluence: apkg-rec:Link is inferred as prov:Influence. v3 mapping of rel/href in Table B9. |
+| linkTemplates | A link template related to this record. | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M | | owl:ObjectProperty |
 
 [<- main](README.md)
 

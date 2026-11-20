@@ -23,14 +23,14 @@ Table B - Classes related to the Record
 | id |Class | Description | Term | Notes| Table(s) |
 |---|---|---|---|--|- | 
 | 2 | [Address](AddressClass.md) | Physical location at which contact can be made.| 🔴apkg-rec:Address | rdfs:subClassOf vcard:Address |  B2
-| 3 | [Concept](ConceptClass.md) | A concept of a theme | 🔴 apkg-rec:Concept | | B3
-| 4 | [Contact](ContactClass.md) | Identification of, and means of communication with, the responsible for a resource. | 🔴 apkg-rec:Contact | rdfs:subClassOf dct:Agent |  B4
+| 3 | [Concept](ConceptClass.md) | A concept of a theme | 🔴 apkg-rec:Concept | apkg-rec:Concept rdfs:subClassOf skos:Concept | B3
+| 4 | [Contact](ContactClass.md) | Identification of, and means of communication with, the responsible for a resource. | 🔴 apkg-rec:Contact | apkg-rec:Contact rdfs:subClassOf prov:Agent; apkg-rec:Contact rdfs:subClassOf vcard:Kind |  B4
 | 5 | [Email](EmailClass.md) | Email addresses at which contact can be made. |🔴 apkg-rec:Email | | B5
 | 6 | [Format](FormatClass.md) | A format of file | 🔴 apkg-rec:Format | https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/format.yaml . |  B6
-| 7 | [Geometry](GeometryClass.md) | The geometry of a object | 🔴 apkg-rec:Geometry | rdfs:subClassOf geo:Geometry |  B7
+| 7 | [Geometry](GeometryClass.md) | The geometry of a object | 🔴 apkg-rec:Geometry | rdfs:subClassOf geo:Geometry  |  B7
 | 8 | [Language](LanguageClass.md) | Language used for textual values. | 🔴 apkg-rec:Language | apkg-rec:Language rdfs:subClassOf dct:LinguisticSystem  |  B8
 | 9 | [Link](LinkClass.md)    | Link related to a record    | 🔴apkg-rec:Link| apkg-rec:Link rdfs:subClassOf dcat:Relationship |  B9
-| 10 | [LinkTemplate](LinkTemplateClass.md)    | Link template related to a record    | 🔴apkg-rec:LinkTemplate|  apkg-rec:LinkTemplate rdfs:subClassOf hydra:IriTemplate , dcat:Relationship |   B10
+| 10 | [LinkTemplate](LinkTemplateClass.md)    | Link template related to a record    | 🔴apkg-rec:LinkTemplate|  apkg-rec:LinkTemplate rdfs:subClassOf hydra:IriTemplate |   B10
 | 11 | [Phone](PhoneClass.md) | Telephone numbers at which contact can be made | 🔴apkg-rec:Phone | | B11
 | 12 | [Theme](ThemeClass.md) | A theme of the Record | 🔴 apkg-rec:Theme | |  B12
 

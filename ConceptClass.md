@@ -8,5 +8,5 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| id | The id of the concept | 🟢 dct:identifier | 🔴 apkg-rec:Concept | xsd:string | 1 | 1 |  |  |
-| url | The URI of the concept | 🟢 skos:Concept | 🔴 apkg-rec:Concept | xsd:anyURI | 0-1| 0-1| | 
+| id | The id of the concept | 🟢 skos:notation | 🔴 apkg-rec:Concept | xsd:string | 1 | 1 |  |  |
+| url | The URI of the concept |  | 🔴 apkg-rec:Concept | xsd:anyURI | 0-1| 0-1| | usar o valor de url como IRI do recurso (<url> a apkg-rec:Concept), sem propriedade nenhuma.|
