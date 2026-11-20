@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Theme Class 
 
-- Table B12
+- Table B13
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

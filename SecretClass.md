@@ -4,7 +4,7 @@
 
 ## Resource properties related to the Secret Class 
 
-- Table D21
+- Table D22
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|

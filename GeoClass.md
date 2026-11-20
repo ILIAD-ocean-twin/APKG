@@ -4,9 +4,9 @@
 
 ## Resource properties related to the Geo Class 
 
-- Table D15
+- Table D16
 
-| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
-|--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| box | a bounding box | 🔴apkg-rec:box | 🔴 apkg-rec:Geo | xsd:string | 1-1 | 1-1 | | | 
 
+| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
+|--------------|-------------|-----------------|--------|-------|-----------------|------------------|---------|------|
+| box | The bounding box (two lat/long pairs: lower-left and upper-right corners). | 🔴 apkg-rec:box | 🔴 apkg-rec:Geo | xsd:string | 1 | 1 | schema.org box syntax (SES) | owl:DatatypeProperty. Not schema:box (rdf:Property only). Validated with sh:pattern "^-?\\d+(\\.\\d+)?( -?\\d+(\\.\\d+)?){3}$" (lat/long ranges need a sh:sparql constraint). apkg-rec:Geo rdfs:subClassOf geo:Geometry. Dropped in v3: replaced by apkg-rec:Geometry with geo:asWKT or geo:asGeoJSON; conversion must swap to lon-lat order. |

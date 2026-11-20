@@ -4,15 +4,7 @@
 
 ## Resource properties related to the Organisation Class 
 
-- Table D16
-
-| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES | Note |
-|--------------|-------------|-----------------|--------|-------|-----------------|------------------|-----|------|
-| name | Name of the Organisation | 🟢 rov:legalName | 🔴 apkg-rec:Organisation | xsd:string | 1 | 1 | | |
-| url | URL of the webpage of Organisation | 🟢 foaf:homepage | 🔴 apkg-rec:Organisation | 🟢 foaf:Document | 1 | 1 | |                                   
-| address | Postal address of the Organisation | 🟢 vcard:hasAddress| 🔴 apkg-rec:Organisation | 🔴 apkg-rec:Address | 1 | 1 |  |                                                             |  
-
-- Table D16
+- Table D17
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|---------|------|
