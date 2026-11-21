@@ -3,20 +3,7 @@
 [<- main](README.md)
 
 ## Properties related to the Catalogue Record  
-<!-->
-- Table A.1.1
 
-| OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
-|---|---|---|---|---|---|---|---|---|
-| id | A unique record identifier assigned by the server. | 🟢 dct:identifier | 🔴 apkg-rec:Record | xsd:string | 1 | 1 |  |  |
-| created | The date this record was created in the server. | 🟢 dct:created | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 |  | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp |
-| updated | The most recent date on which the record was changed. | 🟢 dct:modified | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 |  |  |
-| conformsTo | The extensions/conformance classes used in this record | 🟢 dct:conformsTo | 🔴 apkg-rec:Record | 🟢 dct:Standard (IRI) | 0-M | 0-M |  | Values are OGC conformance class IRIs |
-| language | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🟢 dct:language | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-1 | 0-1 |  | owl:ObjectProperty |
-| languages | The list of other languages in which this record is available. | 🔴 apkg-rec:hasAlternateLanguage | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-M | 0-M |  | owl:ObjectProperty; rdfs:seeAlso dct:language. No existing term distinguishes primary vs other languages |
-| links | A related link of the record | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M |  | owl:ObjectProperty |
-| linkTemplates | A link template related to this record | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M |  | owl:ObjectProperty |
--->
 - Table A.1.1
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
@@ -24,10 +11,10 @@
 | id | A unique record identifier assigned by the server. | 🟢 dct:identifier | 🔴 apkg-rec:Record | xsd:string | 1 | 1 | | |
 | created | The date this record was created in the server. | 🟢 dct:created | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 | RFC 3339 (SES) | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp. |
 | updated | The most recent date on which the record was changed. | 🟢 dct:modified | 🔴 apkg-rec:Record | xsd:dateTimeStamp | 0-1 | 0-1 | RFC 3339 (SES) | RFC 3339 date-time requires a time offset → xsd:dateTimeStamp. |
-| conformsTo | The extensions/conformance classes used in this record. | 🔴 apkg-rec:conformsTo | 🔴 apkg-rec:Record | xsd:anyURI | 0-M | 0-M | RFC 3986 (SES) | owl:DatatypeProperty. Values are OGC conformance class URIs, stored as strings in v1 data. Same treatment as the Link profile property (Table B9). In v3 it becomes dct:conformsTo (dct:Standard). |
+| conformsTo | The extensions/conformance classes used in this record. | 🔴 apkg-rec:conformsTo | 🔴 apkg-rec:Record | xsd:anyURI | 0-M | 0-M | RFC 3986 (SES) | owl:DatatypeProperty. Values are OGC conformance class URIs, stored as strings in v1 data. Same treatment as the Link profile property (Table B10). In v3 it becomes dct:conformsTo (dct:Standard). |
 | language | The language used for textual values (i.e., titles, descriptions, etc.) of this record. | 🟢 dct:language | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-1 | 0-1 | |  |
 | languages | The list of other languages in which this record is available. | 🔴 apkg-rec:hasAlternateLanguage | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-M | 0-M | | owl:ObjectProperty; rdfs:seeAlso dct:language. Not rdfs:subPropertyOf dct:language, which would infer alternate languages as the record language. No existing term distinguishes primary vs other languages. |
-| links | A related link of the record. | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M | | owl:ObjectProperty; DCAT domain dcat:Resource: apkg-rec:Record is inferred as dcat:Resource. Sub-property of prov:qualifiedInfluence: apkg-rec:Link is inferred as prov:Influence. v3 mapping of rel/href in Table B9. |
+| links | A related link of the record. | 🟢 dcat:qualifiedRelation | 🔴 apkg-rec:Record | 🔴 apkg-rec:Link | 0-M | 0-M | | owl:ObjectProperty; DCAT domain dcat:Resource: apkg-rec:Record is inferred as dcat:Resource. Sub-property of prov:qualifiedInfluence: apkg-rec:Link is inferred as prov:Influence. |
 | linkTemplates | A link template related to this record. | 🔴 apkg-rec:hasLinkTemplate | 🔴 apkg-rec:Record | 🔴 apkg-rec:LinkTemplate | 0-M | 0-M | | owl:ObjectProperty |
 
 [<- main](README.md)
@@ -38,18 +25,18 @@
 
 | OGC Property | Description | Vocabulary Term | Domain | Range | Cardinality OGC | Cardinality APKG | VES/SES | Note |
 |--------------|-------------|-----------------|--------|-------|-----------------|------------------|---------|------|
-| type | The nature or genre of the resource described by this record. | 🟢 dct:type | 🔴 apkg-rec:Record | rdfs:Class | 0-1 | 0-1 | dct:DCMIType | DCMI range of dct:type is rdfs:Class; dct:DCMIType is a VES, not a range. Non-DCMI values need a local VES (TODO) |
-| title | A human-readable name given to the resource described by this record. | 🟢 dct:title | 🔴 apkg-rec:Record | xsd:string | 0-1 | 1 |  | xsd:string (not rdf:langString) because of legacy data; to be revised in a later version |
+| type | The nature or genre of the resource described by this record. | 🔴 apkg-rec:resourceType | 🔴 apkg-rec:Record | xsd:string | 0-1 | 0-1 | |owl:DatatypeProperty. Not dct:type, whose range rdfs:Class would turn the literal value into a class.|
+| title | A human-readable name given to the resource described by this record. | 🟢 dct:title | 🔴 apkg-rec:Record | xsd:string | 0-1 | 1 |  | xsd:string (not rdf:langString) because of legacy data; to be revised in a later version. In the data title is "name". |
 | description | A free-text description of the resource described by this record. | 🟢 dct:description | 🔴 apkg-rec:Record | xsd:string | 0-1 | 0-1 |  | xsd:string (not rdf:langString) because of legacy data; to be revised in a later version |
 | geometry | A spatial extent associated with the resource described by this record. | 🟢 geo:hasGeometry | 🔴 apkg-rec:Record | 🔴 apkg-rec:Geometry | 0-1 | 0-1 |  | GeoSPARQL owl:ObjectProperty; domain geo:Feature, so apkg-rec:Record is inferred as geo:Feature. GeoJSON geometry (Table B7) |
 | time | A temporal extent associated with the resource described by this record. | 🟢 time:hasTime | 🔴 apkg-rec:Record | 🟢 time:TemporalEntity | 0-1 | 0-1 |  | time:Interval (time:hasBeginning / time:hasEnd) or time:Instant (time:inXSDDateTimeStamp, or time:inXSDDate for dates). Open-ended interval: omit time:hasEnd |
-| keywords | Free-form keyword or tag associated with the resource described by this record. | 🟢 dcat:keyword | 🔴 apkg-rec:Record | rdf:langString | 0-M | 0-M |  | DCAT domain dcat:Resource: apkg-rec:Record is inferred as dcat:Resource |
+| keywords | Free-form keyword or tag associated with the resource described by this record. | 🟢 dcat:keyword | 🔴 apkg-rec:Record | xsd:string | 0-M | 0-M |  | DCAT domain dcat:Resource: apkg-rec:Record is inferred as dcat:Resource |
 | themes | The subject areas, topics or categories that the record falls under, drawn from a recognised classification system or thesaurus. | 🔴 apkg-rec:hasTheme | 🔴 apkg-rec:Record | 🔴 apkg-rec:Theme | 0-M | 0-M |  | owl:ObjectProperty. A Theme groups concepts from one scheme (dcat:theme points to a single concept). apkg-rec:Theme rdfs:subClassOf bf:Topic |
 | resourceLanguages | The list of languages in which the resource described by this record can be retrieved. | 🔴 apkg-rec:resourceLanguage | 🔴 apkg-rec:Record | 🔴 apkg-rec:Language | 0-M | 0-M |  | owl:ObjectProperty; rdfs:seeAlso dct:language. dct:language is already used for the language of the record. apkg-rec:Language rdfs:subClassOf dct:LinguisticSystem |
 | externalIds | One or more identifiers, assigned by an external entity, for the resource described by this record. | 🟢 adms:identifier | 🔴 apkg-rec:Record | 🟢 adms:Identifier | 0-M | 0-M |  | OGC externalId = {scheme, value}: value → skos:notation (xsd:string); scheme → adms:schemaAgency (xsd:string). Legacy data: scheme kept as free string, no VES; to be revised in a later version (scheme as datatype of skos:notation) |
 | formats | The list of available distribution formats for the resource that a record describes. It can include both physical and digital distribution formats. | 🟢 dct:format | 🔴 apkg-rec:Record | 🔴 apkg-rec:Format | 0-M | 0-M |  | dct:format covers file format, physical medium or dimensions. apkg-rec:Format rdfs:subClassOf dct:MediaTypeOrExtent (DCMI range). Not dct:hasFormat, which links to another version of the resource |
 | contacts | A list of contacts qualified by their role(s) in association to the record or the resource described by this record. | 🟢 dcat:contactPoint | 🔴 apkg-rec:Record | 🔴 apkg-rec:Contact | 0-M | 0-M |  | apkg-rec:Contact rdfs:subClassOf vcard:Kind (DCAT range of dcat:contactPoint). Roles: TODO |
-| license | The legal provisions under which the resource described by this record is made available. | 🔴 apkg-rec:license | 🔴 apkg-rec:Record | xsd:string | 0-1 | 0-1 | SPDX licence identifier (VES) | owl:DatatypeProperty. Plain string because of v1 data (e.g. "MIT"). Not dct:license, whose range dct:LicenseDocument requires an IRI. In v3 it becomes dct:license with the SPDX licence IRI (https://spdx.org/licenses/{id}). |
+| license | The legal provisions under which the resource described by this record is made available. | 🔴 apkg-rec:license | 🔴 apkg-rec:Record | xsd:anyURI | 0-1 | 0-1 | RFC 3986 (SES)| owl:DatatypeProperty. v1 data holds a licence URL (e.g. "https://opensource.org/licenses/MIT"). Not dct:license, whose range dct:LicenseDocument requires an IRI. In v3 it becomes dct:license with the licence as an IRI. |
 | rights | A statement that concerns all rights not addressed by the license such as a copyright statement. | 🟢 dct:rights | 🔴 apkg-rec:Record | 🟢 dct:RightsStatement | 0-1 | 0-1 |  | Statement text as rdfs:label of the dct:RightsStatement node |
 
 [<- main](README.md)

@@ -44,5 +44,13 @@ apkg-rec:LanguageShape a sh:NodeShape ;
         sh:prefixes apkg-rec: ;
         sh:select """
           SELECT $this ?value WHERE {
-            $this skos:notation ?code ; 
+            $this skos:notation ?code ;
+                  skos:prefLabel ?value .
+            FILTER (LCASE(LANG(?value)) != LCASE(STR(?code)))
+          }
+        """ ] .
 
+apkg-rec: sh:declare [
+    sh:prefix "skos" ;
+    sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ] .
+```

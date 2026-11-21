@@ -1,0 +1,236 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://w3id.org/apkg/v2/process/shapes> a owl:Ontology ;
+    dct:title "APKG-LDAP v2 - SHACL shapes for the Process module (apkg-pro)"@en ;
+    owl:imports <http://w3id.org/apkg/v2/process>, <http://w3id.org/apkg/v2/records/shapes> .
+
+#################################################################
+# Shapes
+#################################################################
+
+apkg-pro:ProcessShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:Process ;
+    sh:node apkg-rec:RecordShape ;
+    sh:property [
+        sh:path apkg-pro:processID;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:familyID;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path pav:version;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:dateCreated;
+        sh:maxCount 1;
+        sh:or ( [
+            sh:datatype xsd:date
+        ] [
+            sh:datatype xsd:dateTimeStamp
+        ] )
+    ], [
+        sh:path apkg-pro:registrationDate;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ], [
+        sh:path apkg-pro:isLatestVersion;
+        sh:maxCount 1;
+        sh:datatype xsd:boolean
+    ], [
+        sh:path apkg-pro:cwlDescriptor;
+        sh:maxCount 1;
+        sh:class apkg-pro:CWLDescriptor
+    ], [
+        sh:path apkg-pro:citation;
+        sh:datatype xsd:string
+    ], [
+        sh:path dct:creator;
+        sh:minCount 1;
+        sh:class apkg-pro:Person
+    ], [
+        sh:path dct:contributor;
+        sh:class apkg-pro:Person
+    ], [
+        sh:path apkg-pro:hasMaintainer;
+        sh:class apkg-pro:Person
+    ], [
+        sh:path dct:publisher;
+        sh:maxCount 1;
+        sh:class apkg-pro:Organisation
+    ], [
+        sh:path apkg-pro:hasSourceOrganisation;
+        sh:class apkg-pro:Organisation
+    ], [
+        sh:path [
+            sh:alternativePath ( apkg-pro:hasSourceOrganisation apkg-pro:hasProducerOrganisation )
+        ];
+        sh:minCount 1;
+        sh:message "A Process needs at least one source organisation (the producer counts as one)."@en
+    ], [
+        sh:path apkg-pro:hasProviderOrganisation;
+        sh:class apkg-pro:Organisation
+    ], [
+        sh:path apkg-pro:hasProducerOrganisation;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:class apkg-pro:Organisation
+    ], [
+        sh:path bf:geographicCoverage;
+        sh:maxCount 1;
+        sh:class apkg-pro:SpatialCoverage
+    ], [
+        sh:path apkg-pro:temporalCoverage;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^(\\.\\.|[0-9]{4}[^/]*)?(/(\\.\\.|[0-9]{4}[^/]*)?)?$"
+    ], [
+        sh:path apkg-pro:codeRepository;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path apkg-pro:programmingLanguage;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:originalURL;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path apkg-pro:processClass;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:in ( "CommandLineTool" "Workflow" )
+    ], [
+        sh:path apkg-pro:hasInput;
+        sh:class apkg-pro:Parameter
+    ], [
+        sh:path apkg-pro:hasOutput;
+        sh:class apkg-pro:Parameter
+    ], [
+        sh:path apkg-pro:hasSecret;
+        sh:class apkg-pro:Secret
+    ] .
+
+apkg-pro:CWLDescriptorShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:CWLDescriptor ;
+    sh:property [
+        sh:path apkg-pro:descriptorURL;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path apkg-rec:mediaType;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:hasValue "application/cwl+yaml"
+    ] .
+
+apkg-pro:GeoShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:Geo ;
+    sh:property [
+        sh:path apkg-pro:box;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^-?\\d+(\\.\\d+)? -?\\d+(\\.\\d+)? -?\\d+(\\.\\d+)? -?\\d+(\\.\\d+)?$"
+    ] .
+
+apkg-pro:OrganisationShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:Organisation ;
+    sh:property [
+        sh:path skos:prefLabel;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:homepage;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path vcard:hasAddress;
+        sh:maxCount 1;
+        sh:class apkg-rec:Address
+    ] .
+
+apkg-pro:ParameterShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:Parameter ;
+    sh:property [
+        sh:path dct:identifier;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:parameterType;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^(null|boolean|int|long|float|double|string|File|Directory)\\??$"
+    ], [
+        sh:path dct:description;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:defaultValue;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:format;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ] .
+
+apkg-pro:PersonShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:Person ;
+    sh:property [
+        sh:path foaf:name;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:hasEmail;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:class apkg-rec:Email
+    ] .
+
+apkg-pro:SpatialCoverageShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:SpatialCoverage ;
+    sh:property [
+        sh:path geo:hasGeometry;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:class apkg-pro:Geo
+    ], [
+        sh:path apkg-pro:geoClass;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:hasValue "schema:GeoShape"
+    ] .
+
+apkg-pro:SecretShape a sh:NodeShape ;
+    sh:targetClass apkg-pro:Secret ;
+    sh:property [
+        sh:path apkg-pro:secretInputID;
+        sh:minCount 1;
+        sh:datatype xsd:string
+    ] .
+

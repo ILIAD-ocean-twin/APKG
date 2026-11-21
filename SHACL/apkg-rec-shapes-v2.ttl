@@ -1,0 +1,443 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://w3id.org/apkg/v2/records/shapes> a owl:Ontology ;
+    dct:title "APKG-LDAP v2 - SHACL shapes for the Record module (apkg-rec)"@en ;
+    owl:imports <http://w3id.org/apkg/v2/records> ;
+    sh:declare [
+        sh:prefix "skos";
+        sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI
+    ] .
+
+#################################################################
+# Shapes
+#################################################################
+
+apkg-rec:RecordShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Record ;
+    sh:property [
+        sh:path dct:identifier;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path dct:created;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ], [
+        sh:path dct:modified;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ], [
+        sh:path apkg-rec:conformsTo;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path dct:language;
+        sh:maxCount 1;
+        sh:class apkg-rec:Language
+    ], [
+        sh:path apkg-rec:hasAlternateLanguage;
+        sh:class apkg-rec:Language
+    ], [
+        sh:path dcat:qualifiedRelation;
+        sh:class apkg-rec:Link
+    ], [
+        sh:path apkg-rec:hasLinkTemplate;
+        sh:class apkg-rec:LinkTemplate
+    ], [
+        sh:path apkg-rec:resourceType;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path dct:title;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path dct:description;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path geo:hasGeometry;
+        sh:maxCount 1;
+        sh:class apkg-rec:Geometry
+    ], [
+        sh:path time:hasTime;
+        sh:maxCount 1;
+        sh:or ( [
+            sh:class time:Interval
+        ] [
+            sh:class time:Instant
+        ] )
+    ], [
+        sh:path dcat:keyword;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-rec:hasTheme;
+        sh:class apkg-rec:Theme
+    ], [
+        sh:path apkg-rec:resourceLanguage;
+        sh:class apkg-rec:Language
+    ], [
+        sh:path adms:identifier;
+        sh:class adms:Identifier;
+        sh:node apkg-rec:ExternalIdentifierShape
+    ], [
+        sh:path dct:format;
+        sh:class apkg-rec:Format
+    ], [
+        sh:path dcat:contactPoint;
+        sh:class apkg-rec:Contact
+    ], [
+        sh:path apkg-rec:license;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path dct:rights;
+        sh:maxCount 1;
+        sh:class dct:RightsStatement;
+        sh:node apkg-rec:RightsStatementShape
+    ] .
+
+apkg-rec:ExternalIdentifierShape a sh:NodeShape ;
+    sh:property [
+        sh:path skos:notation;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path adms:schemaAgency;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ] .
+
+apkg-rec:RightsStatementShape a sh:NodeShape ;
+    sh:property [
+        sh:path rdfs:label;
+        sh:minCount 1;
+        sh:datatype xsd:string
+    ] .
+
+apkg-rec:AddressShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Address ;
+    sh:property [
+        sh:path vcard:street-address;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:locality;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:region;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:postal-code;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:country-name;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^[A-Z]{2}$"
+    ], [
+        sh:path apkg-rec:contactPointType;
+        sh:datatype xsd:string;
+        sh:in ( "private" "work" "billing" "delivery" )
+    ] .
+
+apkg-rec:ConceptShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Concept ;
+    sh:property [
+        sh:path skos:notation;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ] .
+
+apkg-rec:ContactShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Contact ;
+    sh:or ( [
+        sh:path vcard:fn;
+        sh:minCount 1
+    ] [
+        sh:path vcard:organization-name;
+        sh:minCount 1
+    ] ) ;
+    sh:message "A contact needs at least a name (vcard:fn) or an organisation (vcard:organization-name)."@en ;
+    sh:property [
+        sh:path dct:identifier;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:fn;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:title;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:organization-name;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:hasLogo;
+        sh:maxCount 1;
+        sh:class apkg-rec:Link;
+        sh:node apkg-rec:LogoLinkShape
+    ], [
+        sh:path vcard:hasTelephone;
+        sh:class apkg-rec:Phone
+    ], [
+        sh:path vcard:hasEmail;
+        sh:class apkg-rec:Email
+    ], [
+        sh:path vcard:hasAddress;
+        sh:class apkg-rec:Address
+    ], [
+        sh:path apkg-rec:hasLink;
+        sh:class apkg-rec:Link
+    ], [
+        sh:path apkg-rec:hoursOfService;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-rec:contactInstructions;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path vcard:role;
+        sh:datatype xsd:string;
+        sh:in ( "resourceProvider" "custodian" "owner" "user" "distributor" "originator" "pointOfContact" "principalInvestigator" "processor" "publisher" "author" "sponsor" "coAuthor" "collaborator" "editor" "mediator" "rightsHolder" "contributor" "funder" "stakeholder" )
+    ] .
+
+apkg-rec:LogoLinkShape a sh:NodeShape ;
+    sh:property [
+        sh:path apkg-rec:rel;
+        sh:hasValue "icon"
+    ], [
+        sh:path apkg-rec:mediaType;
+        sh:minCount 1
+    ] .
+
+apkg-rec:EmailShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Email ;
+    sh:property [
+        sh:path vcard:value;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    ], [
+        sh:path apkg-rec:contactPointType;
+        sh:datatype xsd:string;
+        sh:in ( "private" "work" )
+    ] .
+
+apkg-rec:FormatShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Format ;
+    sh:property [
+        sh:path dct:title;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-rec:mediaType;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^[A-Za-z0-9!#$&^_.+-]+/[A-Za-z0-9!#$&^_.+-]+(\\s*;.*)?$"
+    ] .
+
+apkg-rec:GeometryShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Geometry ;
+    sh:property [
+        sh:path apkg-rec:geometryType;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:in ( "Point" "MultiPoint" "LineString" "MultiLineString" "Polygon" "MultiPolygon" "GeometryCollection" )
+    ], [
+        sh:path apkg-rec:coordinates;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^\\[.*\\]$"
+    ] .
+
+apkg-rec:IriTemplateMappingShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:IriTemplateMapping ;
+    sh:property [
+        sh:path hydra:variable;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path dct:description;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ] .
+
+apkg-rec:LanguageShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Language ;
+    sh:property [
+        sh:path skos:notation;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:language
+    ], [
+        sh:path skos:prefLabel;
+        sh:maxCount 1;
+        sh:datatype rdf:langString
+    ], [
+        sh:path apkg-rec:alternateName;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-rec:textDirection;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:in ( "ltr" "rtl" "ttb" "btt" )
+    ] ;
+    sh:sparql [
+        sh:message "The language tag of name (skos:prefLabel) must equal code (skos:notation)."@en;
+        sh:prefixes <http://w3id.org/apkg/v2/records/shapes>;
+        sh:select """
+        SELECT $this ?value WHERE {
+            $this skos:notation ?code ;
+                  skos:prefLabel ?value .
+            FILTER (LCASE(LANG(?value)) != LCASE(STR(?code)))
+        }
+        """
+    ] .
+
+apkg-rec:LinkShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Link ;
+    sh:property [
+        sh:path apkg-rec:href;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path apkg-rec:rel;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^([a-z][a-z0-9.-]*|[A-Za-z][A-Za-z0-9+.-]*:.+)$"
+    ], [
+        sh:path apkg-rec:mediaType;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^[A-Za-z0-9!#$&^_.+-]+/[A-Za-z0-9!#$&^_.+-]+(\\s*;.*)?$"
+    ], [
+        sh:path apkg-rec:hreflang;
+        sh:maxCount 1;
+        sh:class apkg-rec:Language
+    ], [
+        sh:path dct:title;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-rec:length;
+        sh:maxCount 1;
+        sh:datatype xsd:nonNegativeInteger
+    ], [
+        sh:path apkg-rec:profile;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path dct:created;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ], [
+        sh:path dct:modified;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ] .
+
+apkg-rec:LinkTemplateShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:LinkTemplate ;
+    sh:property [
+        sh:path hydra:template;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype hydra:Rfc6570Template
+    ], [
+        sh:path hydra:mapping;
+        sh:class apkg-rec:IriTemplateMapping
+    ], [
+        sh:path apkg-rec:varBase;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path apkg-rec:rel;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^([a-z][a-z0-9.-]*|[A-Za-z][A-Za-z0-9+.-]*:.+)$"
+    ], [
+        sh:path apkg-rec:mediaType;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^[A-Za-z0-9!#$&^_.+-]+/[A-Za-z0-9!#$&^_.+-]+(\\s*;.*)?$"
+    ], [
+        sh:path apkg-rec:hreflang;
+        sh:maxCount 1;
+        sh:class apkg-rec:Language
+    ], [
+        sh:path dct:title;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-rec:length;
+        sh:maxCount 1;
+        sh:datatype xsd:nonNegativeInteger
+    ], [
+        sh:path apkg-rec:profile;
+        sh:datatype xsd:anyURI
+    ], [
+        sh:path dct:created;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ], [
+        sh:path dct:modified;
+        sh:maxCount 1;
+        sh:datatype xsd:dateTimeStamp
+    ] .
+
+apkg-rec:PhoneShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Phone ;
+    sh:property [
+        sh:path vcard:value;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:string;
+        sh:pattern "^\\+[1-9][0-9]{3,14}$"
+    ], [
+        sh:path apkg-rec:contactPointType;
+        sh:datatype xsd:string;
+        sh:in ( "private" "work" )
+    ] .
+
+apkg-rec:ThemeShape a sh:NodeShape ;
+    sh:targetClass apkg-rec:Theme ;
+    sh:property [
+        sh:path apkg-rec:hasConcept;
+        sh:minCount 1;
+        sh:class apkg-rec:Concept
+    ], [
+        sh:path apkg-rec:scheme;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:datatype xsd:anyURI
+    ] .
+

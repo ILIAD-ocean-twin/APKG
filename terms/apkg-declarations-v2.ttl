@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix cwltool: <http://commonwl.org/cwltool#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+
+<http://w3id.org/apkg/v2/declarations> a owl:Ontology ;
+    dct:title "APKG-LDAP - declarations for non-OWL superclasses"@en ;
+    dct:description "Reused classes that are declared only as rdfs:Class in their source vocabularies, declared here as owl:Class so that the APKG modules are OWL 2 DL. Kept apart from the apkg-rec and apkg-pro ontologies."@en ;
+    owl:versionInfo "2.0" ;
+    owl:versionIRI <http://w3id.org/apkg/v2/declarations/2.0> ;
+    dct:rightsHolder "INESC TEC" ;
+    dct:created "2026-11-21"^^xsd:date .
+
+#################################################################
+# Declarations
+#################################################################
+
+cwl:Process a owl:Class .
+
+cwl:Parameter a owl:Class .
+
+cwltool:Secrets a owl:Class .
+
+hydra:IriTemplate a owl:Class .
+
+hydra:IriTemplateMapping a owl:Class .
+
+dct:LinguisticSystem a owl:Class .
+
+dct:MediaTypeOrExtent a owl:Class .
