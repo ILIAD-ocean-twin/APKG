@@ -1,9 +1,37 @@
 """Validate APKG-LDAP v2 example data against the SHACL shapes with pyshacl.
 
-Usage (from the APKG folder):
-    pip install pyshacl
-    python validate.py                      # validates every .ttl in examples/
-    python validate.py path/to/data.ttl     # validates one or more given files
+REQUIREMENTS
+    - Python 3.9 or later (check with:  python --version)
+    - pyshacl, which also installs rdflib. Install it once with:
+          pip install pyshacl
+      If "pip" is not found, use:
+          python -m pip install pyshacl
+
+HOW TO RUN
+    Open a terminal (Command Prompt, PowerShell or the VS Code terminal)
+    in the APKG folder, for example:
+          cd C:\\Users\\dei\\GitHub\\APKG
+
+    Then run one of:
+          python validate.py
+              -> validates every .ttl file in the examples/ folder
+          python validate.py examples\\my-record.ttl
+              -> validates one file
+          python validate.py file1.ttl file2.ttl
+              -> validates several files
+
+WHAT IT DOES
+    1. Reads the ontology (terms/apkg-declarations-v2.ttl, terms/apkg-rec-v2.ttl,
+       terms/apkg-pro-v2.ttl) and the shapes (SHACL/apkg-rec-shapes-v2.ttl,
+       SHACL/apkg-pro-shapes-v2.ttl). A Turtle syntax error in any of them
+       stops the script with the file and line of the error.
+    2. Validates each data file without inference (the shapes are designed
+       for that), passing the ontology so that sh:class sees rdfs:subClassOf.
+    3. Prints CONFORMS or DOES NOT CONFORM for each file, and the SHACL
+       report with the violations when a file does not conform.
+
+EXIT CODE
+    0 if every file conforms, 1 otherwise (useful in scripts or CI).
 """
 import sys
 from pathlib import Path

@@ -7,8 +7,8 @@
 | rdf            | http://www.w3.org/1999/02/22-rdf-syntax-ns#          |
 | rdfs           | http://www.w3.org/2000/01/rdf-schema#                |
 | adms           | http://www.w3.org/ns/adms#                           |
-| apkg-rec       | http://w3id.org/apkg/v2/records#                     |
 | apkg-pro       | http://w3id.org/apkg/v2/process#                     |
+| apkg-rec       | http://w3id.org/apkg/v2/records#                     |
 | bf             | http://id.loc.gov/ontologies/bibframe/               |
 | cito           | http://purl.org/spar/cito/                           |
 | cwl            | https://w3id.org/cwl/cwl#                            |
@@ -22,15 +22,21 @@
 | geo            | http://www.opengis.net/ont/geosparql#                |
 | geojson        | http://purl.org/geojson/vocab#                       |
 | hydra          | http://www.w3.org/ns/hydra/core#                     |
-| its            | http://www.w3.org/2005/11/its/rdf#                   |
 | ianaMediaType  | https://www.iana.org/assignments/media-types/        |
-| ianaRelatio    | http://www.iana.org/assignments/relation/            |
+| ianaRelation   | http://www.iana.org/assignments/relation/            |
+| its            | http://www.w3.org/2005/11/its/rdf#                   |
 | org            | http://www.w3.org/ns/org#                            |
+| owl            | http://www.w3.org/2002/07/owl#                       |
+| pav            | http://purl.org/pav/                                 |
 | prof           | http://www.w3.org/ns/dx/prof/                        |
 | prov           | http://www.w3.org/ns/prov#                           |
 | rec            | https://www.opengis.net/def/ogc-api/records/         |
 | rov            | http://www.w3.org/ns/regorg#                         |
+| schema         | https://schema.org/                                  |
+| sh             | http://www.w3.org/ns/shacl#                          |
+| skos           | http://www.w3.org/2004/02/skos/core#                 |
+| sld            | https://w3id.org/cwl/salad#                          |
 | time           | http://www.w3.org/2006/time#                         |
-|vcard           | http://www.w3.org/2006/vcard/ns#                     |
+| vcard          | http://www.w3.org/2006/vcard/ns#                     |
 
 [<- main](README.md)
