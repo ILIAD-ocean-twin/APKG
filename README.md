@@ -52,9 +52,11 @@ Table D - Classes related to the Process
 | 17 | [Organisation](OrganisationClass.md) | An Organisation. | 🔴 apkg-rec:Organisation | rdfs:subClassOf org:Organization | D17 |
 | 18 | [Parameter](ParameterClass.md) | The Parameter of the Input or Output of the Process. | 🔴 apkg-rec:Parameter | rdfs:subClassOf cwl:Parameter | D18 |
 | 19 | [Person](PersonClass.md) | A Person. | 🔴 apkg-rec:Person | rdfs:subClassOf foaf:Person | D19 |
+<!--
 | 20 | [Registry](RegistryClass.md) | The Registry where the application package is registered. | 🔴 apkg-rec:Registry | rdfs:subClassOf prov:Activity | D20 |
-| 21 | [SpatialCoverage](SpatialCoverageClass.md) | The Spatial Coverage of the Process. | 🔴 apkg-rec:SpatialCoverage | rdfs:subClassOf bf:GeographicCoverage. Inferred as geo:Feature (domain of geo:hasGeometry). | D21 |
-| 22 | [Secret](SecretClass.md) | The input items that must be kept secret. | 🔴 apkg-rec:Secret | rdfs:subClassOf cwl:Secrets | D22 |
+-->
+| 20 | [SpatialCoverage](SpatialCoverageClass.md) | The Spatial Coverage of the Process. | 🔴 apkg-rec:SpatialCoverage | rdfs:subClassOf bf:GeographicCoverage. Inferred as geo:Feature (domain of geo:hasGeometry). | D20 |
+| 20 | [Secret](SecretClass.md) | The input items that must be kept secret. | 🔴 apkg-rec:Secret | rdfs:subClassOf cwl:Secrets | D21 |
 
 ## Declarations for non-OWL superclasses
 
