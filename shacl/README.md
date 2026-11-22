@@ -16,15 +16,15 @@ The two files follow the two modules of the ontology (folder `terms/`):
 - `apkg-rec-shapes-v2.ttl` imports the Record ontology (`terms/apkg-rec-v2.ttl`) and does not depend on the Process module.
 - `apkg-pro-shapes-v2.ttl` imports the Process ontology (`terms/apkg-pro-v2.ttl`) and the Record shapes, because a Process is also a Record.
 
-To validate data, load **both** files as one shapes graph. The script `SCRIPTS/validate.py` does this for you.
+To validate data, load **both** files as one shapes graph. The script `scripts/validate.py` does this for you.
 
 ## How to validate
 
-The easiest way is the validation script (see [SCRIPTS/README.md](../SCRIPTS/README.md)). Open a terminal and position yourself in the root folder of the repository (the folder that contains `SHACL`, `terms`, `examples` and `SCRIPTS`), then run:
+The easiest way is the validation script (see [scripts/README.md](../scripts/README.md)). Open a terminal and position yourself in the root folder of the repository (the folder that contains `shacl`, `terms`, `examples` and `scripts`), then run:
 
 ```
-python SCRIPTS\validate.py                      (every .ttl and .jsonld in examples\)
-python SCRIPTS\validate.py examples\my-record.ttl
+python scripts\validate.py                      (every .ttl and .jsonld in examples\)
+python scripts\validate.py examples\my-record.ttl
 ```
 
 It loads the two shapes files and the ontology, validates without inference, and prints `CONFORMS` or the SHACL report for each file.
@@ -73,7 +73,7 @@ Any other SHACL processor can be used, as long as it supports SHACL Core and SHA
 - **No inference needed.** The shapes are meant to be run without a reasoner:
   - `apkg-pro:ProcessShape` applies `apkg-rec:RecordShape` with `sh:node`, so a Process is checked as a Record even if the data does not state `rdf:type apkg-rec:Record`.
   - The producer of a Process counts as a source organisation through `sh:alternativePath` (`hasSourceOrganisation` or `hasProducerOrganisation`), instead of relying on `rdfs:subPropertyOf`.
-- **Node types must be explicit.** `sh:class` checks the `rdf:type` of related nodes (for example a link must be typed `apkg-rec:Link`). `SCRIPTS/json2rdf.py` writes these types.
+- **Node types must be explicit.** `sh:class` checks the `rdf:type` of related nodes (for example a link must be typed `apkg-rec:Link`). `scripts/json2rdf.py` writes these types.
 - **v1 data as literals.** Following the profile, values that v1 data holds as strings stay literals (`xsd:string` or `xsd:anyURI`), and value lists are checked with `sh:in`, `sh:pattern` or `sh:hasValue`. The notes "In v3 it becomes ..." in the tables say how each one will change.
 - **Link relations.** `rel` accepts the 134 relation types of the IANA Link Relation Types registry (last updated 2026-06-12), plus "root" (used by OGC API - Records, not registered at IANA), or any URI (extension relation types, RFC 8288).
 - **URI values.** Every `xsd:anyURI` value is also checked with `` sh:pattern "^[^\\s\"<>{}|\\\\^`]*$" ``: no spaces, quotes or other characters that are not allowed in a URI. Some SHACL processors accept such values, but OWL reasoners (e.g. HermiT) reject them as malformed literals.
@@ -90,4 +90,4 @@ Any other SHACL processor can be used, as long as it supports SHACL Core and SHA
 
 - `terms/`: the ontology modules (`apkg-rec-v2.ttl`, `apkg-pro-v2.ttl`) and the declarations module (`apkg-declarations-v2.ttl`).
 - `examples/`: example records (Turtle, and JSON-LD when generated with `--format jsonld` or `both`), valid against these shapes.
-- `SCRIPTS/`: conversion from JSON (`json2rdf.py`) and validation (`validate.py`).
+- `scripts/`: conversion from JSON (`json2rdf.py`) and validation (`validate.py`).

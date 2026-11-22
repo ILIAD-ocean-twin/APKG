@@ -395,7 +395,7 @@ EXTRA = []
 def to_turtle(main, source):
     EXTRA.clear()
     out_head = "".join(f"@prefix {p}: <{u}> .\n" for p, u in PREFIXES.items())
-    body = f"\n# Converted from {source}\n# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).\n\n"
+    body = f"\n# Converted from {source}\n# following the APKG-LDAP v2 application profile (scripts/json2rdf.py).\n\n"
     parts = [f"a {', '.join(main.types)}"] + [f"{p} " + ", ".join(value_ttl(v, 4) for v in vs) for p, vs in grouped(main.props)]
     body += main.iri + " " + " ;\n    ".join(parts) + " .\n"
     while EXTRA:

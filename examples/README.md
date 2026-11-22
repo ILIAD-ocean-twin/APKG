@@ -7,7 +7,7 @@ This folder contains records of the [APKG registry](https://iliad-registry.inesc
 - Turtle (`.ttl`)
 - JSON-LD (`.jsonld`)
 
-All files conform to the SHACL shapes of the profile (folder `SHACL/`), except one record with an error in its source data (see [Known issues](#known-issues)).
+All files conform to the SHACL shapes of the profile (folder `shacl/`), except one record with an error in its source data (see [Known issues](#known-issues)).
 
 ## Contents
 
@@ -17,7 +17,7 @@ The folder holds every record of the registry. Two of them are described below a
 |------|--------|------|
 | `tool_inesctec_pt_virtual-choreographies-transformer-plugin-unity_0.2.1.ttl` / `.jsonld` | `urn:apkg:tool:inesctec:pt:virtual-choreographies-transformer-plugin-unity:0.2.1` | CommandLineTool |
 | `workflow_forth_gr_oilspill_pipeline_medslik_146_1.0.0.ttl` / `.jsonld` | `urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0` | Workflow (with secrets) |
-| `json/` | the source records in JSON, as returned by the registry (`?f=json`), when downloaded with `SCRIPTS/download_registry.py` | |
+| `json/` | the source records in JSON, as returned by the registry (`?f=json`), when downloaded with `scripts/download_registry.py` | |
 
 **File names** are built from the record id without the `urn:apkg:` prefix, with `:` replaced by `_`. The record id (URN) is also the IRI of the main node in each file.
 
@@ -30,12 +30,12 @@ Both records have the Record part (identifier, title, description, keywords, Geo
 
 ## How to regenerate the examples
 
-Open a terminal and position yourself in the root folder of the repository (the folder that contains `examples`, `SCRIPTS`, `SHACL` and `terms`). See [SCRIPTS/README.md](../SCRIPTS/README.md) for the requirements.
+Open a terminal and position yourself in the root folder of the repository (the folder that contains `examples`, `scripts`, `shacl` and `terms`). See [scripts/README.md](../scripts/README.md) for the requirements.
 
 **All records of the registry**, downloaded, converted to Turtle and JSON-LD, and validated:
 
 ```
-python SCRIPTS\download_registry.py --with-cwl --convert
+python scripts\download_registry.py --with-cwl --convert
 ```
 
 This saves the JSON files in `examples\json\` and the `.ttl` and `.jsonld` files in `examples\`. The option `--with-cwl` also downloads the CWL of each record, so that the secrets can be extracted.
@@ -43,13 +43,13 @@ This saves the JSON files in `examples\json\` and the `.ttl` and `.jsonld` files
 **One record**, from a JSON file:
 
 ```
-python SCRIPTS\json2rdf.py examples\json\<file>.json --format both
+python scripts\json2rdf.py examples\json\<file>.json --format both
 ```
 
 **Validate** every file in this folder:
 
 ```
-python SCRIPTS\validate.py
+python scripts\validate.py
 ```
 
 ## Notes

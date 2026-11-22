@@ -32,30 +32,30 @@ The conversion itself (`json2rdf.py`) needs nothing besides Python. Without `pys
 
 ## How to run
 
-Open a terminal (Command Prompt, PowerShell or the VS Code terminal) and position yourself in the root folder of the repository, that is, the folder that contains `SCRIPTS`, `SHACL`, `terms` and `examples`:
+Open a terminal (Command Prompt, PowerShell or the VS Code terminal) and position yourself in the root folder of the repository, that is, the folder that contains `scripts`, `shacl`, `terms` and `examples`:
 
 ```
 cd <path-to-the-repository>
 ```
 
-All the commands below are run from that folder. On macOS or Linux, use `/` instead of `\` in the paths (e.g. `python SCRIPTS/json2rdf.py`).
+All the commands below are run from that folder. On macOS or Linux, use `/` instead of `\` in the paths (e.g. `python scripts/json2rdf.py`).
 
 ### json2rdf.py: convert JSON to RDF
 
 | Command | Result |
 |---------|--------|
-| `python SCRIPTS\json2rdf.py record.json` | Converts one record and writes `examples\<name>.ttl` |
-| `python SCRIPTS\json2rdf.py rec1.json rec2.json` | Converts several records |
-| `python SCRIPTS\json2rdf.py some\folder` | Converts every `.json` file in the folder |
-| `python SCRIPTS\json2rdf.py record.json --format jsonld` | Writes JSON-LD (`examples\<name>.jsonld`) instead of Turtle |
-| `python SCRIPTS\json2rdf.py record.json --format both` | Writes both `<name>.ttl` and `<name>.jsonld` |
-| `python SCRIPTS\json2rdf.py record.json -o out` | Writes the files to the folder `out` instead of `examples\` |
-| `python SCRIPTS\json2rdf.py record.json --no-validate` | Converts only, without the SHACL validation |
+| `python scripts\json2rdf.py record.json` | Converts one record and writes `examples\<name>.ttl` |
+| `python scripts\json2rdf.py rec1.json rec2.json` | Converts several records |
+| `python scripts\json2rdf.py some\folder` | Converts every `.json` file in the folder |
+| `python scripts\json2rdf.py record.json --format jsonld` | Writes JSON-LD (`examples\<name>.jsonld`) instead of Turtle |
+| `python scripts\json2rdf.py record.json --format both` | Writes both `<name>.ttl` and `<name>.jsonld` |
+| `python scripts\json2rdf.py record.json -o out` | Writes the files to the folder `out` instead of `examples\` |
+| `python scripts\json2rdf.py record.json --no-validate` | Converts only, without the SHACL validation |
 
 The options can be combined, for example:
 
 ```
-python SCRIPTS\json2rdf.py some\folder --format both -o out
+python scripts\json2rdf.py some\folder --format both -o out
 ```
 
 **Input.** A record as returned by the registry with `?f=json`, for example
@@ -70,13 +70,13 @@ At the end, `json2rdf.py` calls `validate.py` on the files it has just written.
 
 | Command | Result |
 |---------|--------|
-| `python SCRIPTS\validate.py` | Validates every `.ttl` and `.jsonld` file in the `examples\` folder |
-| `python SCRIPTS\validate.py examples\my-record.ttl` | Validates one file (`.ttl` or `.jsonld`) |
-| `python SCRIPTS\validate.py file1.ttl file2.jsonld` | Validates several files |
+| `python scripts\validate.py` | Validates every `.ttl` and `.jsonld` file in the `examples\` folder |
+| `python scripts\validate.py examples\my-record.ttl` | Validates one file (`.ttl` or `.jsonld`) |
+| `python scripts\validate.py file1.ttl file2.jsonld` | Validates several files |
 
 What it does:
 
-1. Reads the ontology (`terms/apkg-declarations-v2.ttl`, `terms/apkg-rec-v2.ttl`, `terms/apkg-pro-v2.ttl`) and the shapes (`SHACL/apkg-rec-shapes-v2.ttl`, `SHACL/apkg-pro-shapes-v2.ttl`). A syntax error in any of them stops the script with the file and line of the error.
+1. Reads the ontology (`terms/apkg-declarations-v2.ttl`, `terms/apkg-rec-v2.ttl`, `terms/apkg-pro-v2.ttl`) and the shapes (`shacl/apkg-rec-shapes-v2.ttl`, `shacl/apkg-pro-shapes-v2.ttl`). A syntax error in any of them stops the script with the file and line of the error.
 2. Validates each data file without inference (the shapes are designed for that), passing the ontology so that `sh:class` sees `rdfs:subClassOf`.
 3. Prints `CONFORMS` or `DOES NOT CONFORM` for each file, and the SHACL report with the violations when a file does not conform.
 
@@ -84,12 +84,12 @@ What it does:
 
 | Command | Result |
 |---------|--------|
-| `python SCRIPTS\download_registry.py` | Downloads every record as JSON into `examples\json\` (one file per record) |
-| `python SCRIPTS\download_registry.py --with-cwl` | Also downloads each record's CWL (`?f=cwl`) and stores it in the field `cwl`, so that `json2rdf.py` can extract the secrets |
-| `python SCRIPTS\download_registry.py --with-cwl --convert` | Downloads, then converts every record to Turtle and JSON-LD in `examples\` and validates them |
-| `python SCRIPTS\download_registry.py -o some\folder` | Saves the JSON files in another folder |
-| `python SCRIPTS\download_registry.py --fast` | Keeps the records as given in the listing pages, without downloading each record (faster, but without the records' links) |
-| `python SCRIPTS\download_registry.py --rdf-output out --convert` | Writes the converted files to `out` instead of `examples\` |
+| `python scripts\download_registry.py` | Downloads every record as JSON into `examples\json\` (one file per record) |
+| `python scripts\download_registry.py --with-cwl` | Also downloads each record's CWL (`?f=cwl`) and stores it in the field `cwl`, so that `json2rdf.py` can extract the secrets |
+| `python scripts\download_registry.py --with-cwl --convert` | Downloads, then converts every record to Turtle and JSON-LD in `examples\` and validates them |
+| `python scripts\download_registry.py -o some\folder` | Saves the JSON files in another folder |
+| `python scripts\download_registry.py --fast` | Keeps the records as given in the listing pages, without downloading each record (faster, but without the records' links) |
+| `python scripts\download_registry.py --rdf-output out --convert` | Writes the converted files to `out` instead of `examples\` |
 
 By default it reads `https://iliad-registry.inesctec.pt/collections/apkg/items`; another collection can be given with `--url`. Each record is downloaded from its own URL (`.../items/<id>?f=json`), because the listing pages do not include the records' `links`; this takes one request per record (use `--fast` to skip it). It pages through the collection (following the `next` links, or by offset) until it has read the number of records the registry reports (`numberMatched`), and warns if the counts differ. It needs nothing besides Python; `--convert` uses `pyshacl` for the validation, as above.
 

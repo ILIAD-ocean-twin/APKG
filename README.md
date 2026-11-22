@@ -11,20 +11,20 @@ This is **version 2** of the profile. It keeps the current registry data (v1) un
 | This README and the `*Class.md` files | The profile: one table per class, with the OGC/CWL property, the vocabulary term, domain, range, cardinalities, value encoding schemes and notes |
 | [NameSpaces.md](NameSpaces.md) | The prefixes and namespaces used in the profile |
 | [terms/](terms/README.md) | The OWL ontology: Record module (`apkg-rec`), Process module (`apkg-pro`) and declarations module |
-| [SHACL/](SHACL/README.md) | The SHACL shapes to validate data against the profile |
+| [shacl/](shacl/README.md) | The SHACL shapes to validate data against the profile |
 | [examples/](examples/README.md) | Registry records converted to Turtle and JSON-LD, and the source JSON |
-| [SCRIPTS/](SCRIPTS/README.md) | Scripts to download the registry, convert JSON to RDF (Turtle, JSON-LD) and validate |
+| [scripts/](scripts/README.md) | Scripts to download the registry, convert JSON to RDF (Turtle, JSON-LD) and validate |
 | [skos/](skos/) | The RFC 5646 language subtag registry as a SKOS concept scheme |
 | [APKG-LDAP — Rationale for the Choice of Terms.md](APKG-LDAP%20—%20Rationale%20for%20the%20Choice%20of%20Terms.md) | Rationale for the choice of terms |
 
 ## Quick start
 
-Open a terminal in the root folder of the repository (see [SCRIPTS/README.md](SCRIPTS/README.md) for the requirements):
+Open a terminal in the root folder of the repository (see [scripts/README.md](scripts/README.md) for the requirements):
 
 ```
-python SCRIPTS\download_registry.py --with-cwl --convert    download all records, convert and validate
-python SCRIPTS\json2rdf.py record.json --format both        convert one record to Turtle and JSON-LD
-python SCRIPTS\validate.py                                  validate the files in examples\
+python scripts\download_registry.py --with-cwl --convert    download all records, convert and validate
+python scripts\json2rdf.py record.json --format both        convert one record to Turtle and JSON-LD
+python scripts\validate.py                                  validate the files in examples\
 ```
 
 ## Legend

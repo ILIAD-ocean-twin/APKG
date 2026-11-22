@@ -5,11 +5,11 @@ Instructions (requirements, how to run, mapping): see README.md in this folder.
 import sys
 from pathlib import Path
 
-# The APKG folder is the parent of SCRIPTS/.
+# The APKG folder is the parent of scripts/.
 ROOT = Path(__file__).resolve().parent.parent
 
 ONTOLOGY = ["terms/apkg-declarations-v2.ttl", "terms/apkg-rec-v2.ttl", "terms/apkg-pro-v2.ttl"]
-SHAPES = ["SHACL/apkg-rec-shapes-v2.ttl", "SHACL/apkg-pro-shapes-v2.ttl"]
+SHAPES = ["shacl/apkg-rec-shapes-v2.ttl", "shacl/apkg-pro-shapes-v2.ttl"]
 
 
 def _load(paths):

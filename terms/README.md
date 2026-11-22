@@ -50,6 +50,6 @@ And the logical axioms: `rdfs:subClassOf` (alignment with the reused vocabularie
 ## Using the ontology
 
 - **Protégé**: open `apkg-pro-v2.ttl` (it imports the Record and declarations modules), or `apkg-rec-v2.ttl` for the Record module alone. The three files can also be opened from this folder in the same session.
-- **Python (rdflib)**: load the three files into one graph, as `SCRIPTS/validate.py` does.
+- **Python (rdflib)**: load the three files into one graph, as `scripts/validate.py` does.
 
-The SHACL shapes that use this ontology are in [SHACL/](../SHACL/README.md); the namespaces of all prefixes are listed in [NameSpaces.md](../NameSpaces.md).
+The SHACL shapes that use this ontology are in [shacl/](../shacl/README.md); the namespaces of all prefixes are listed in [NameSpaces.md](../NameSpaces.md).
