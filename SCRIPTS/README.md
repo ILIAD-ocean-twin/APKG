@@ -2,12 +2,13 @@
 
 [<- main](../README.md)
 
-Two scripts for the APKG Linked Data Application Profile v2:
+Three scripts for the APKG Linked Data Application Profile v2:
 
 | Script | What it does |
 |--------|--------------|
 | `json2rdf.py` | Converts APKG registry records (v1 JSON) to RDF following the profile, as Turtle (`.ttl`), JSON-LD (`.jsonld`) or both, and validates the result at the end. |
 | `validate.py` | Validates RDF data (`.ttl` or `.jsonld`) against the SHACL shapes of the profile. |
+| `download_registry.py` | Downloads every record of the APKG registry as JSON (optionally with its CWL) and can convert them all with `json2rdf.py`. |
 
 The `RFC5646` folder holds a separate script (`registry_to_skos.py`) for the language subtag registry.
 
@@ -79,9 +80,22 @@ What it does:
 2. Validates each data file without inference (the shapes are designed for that), passing the ontology so that `sh:class` sees `rdfs:subClassOf`.
 3. Prints `CONFORMS` or `DOES NOT CONFORM` for each file, and the SHACL report with the violations when a file does not conform.
 
+### download_registry.py: download all records of the registry
+
+| Command | Result |
+|---------|--------|
+| `python SCRIPTS\download_registry.py` | Downloads every record as JSON into `examples\json\` (one file per record) |
+| `python SCRIPTS\download_registry.py --with-cwl` | Also downloads each record's CWL (`?f=cwl`) and stores it in the field `cwl`, so that `json2rdf.py` can extract the secrets |
+| `python SCRIPTS\download_registry.py --with-cwl --convert` | Downloads, then converts every record to Turtle and JSON-LD in `examples\` and validates them |
+| `python SCRIPTS\download_registry.py -o some\folder` | Saves the JSON files in another folder |
+| `python SCRIPTS\download_registry.py --fast` | Keeps the records as given in the listing pages, without downloading each record (faster, but without the records' links) |
+| `python SCRIPTS\download_registry.py --rdf-output out --convert` | Writes the converted files to `out` instead of `examples\` |
+
+By default it reads `https://iliad-registry.inesctec.pt/collections/apkg/items`; another collection can be given with `--url`. Each record is downloaded from its own URL (`.../items/<id>?f=json`), because the listing pages do not include the records' `links`; this takes one request per record (use `--fast` to skip it). It pages through the collection (following the `next` links, or by offset) until it has read the number of records the registry reports (`numberMatched`), and warns if the counts differ. It needs nothing besides Python; `--convert` uses `pyshacl` for the validation, as above.
+
 ### Exit code
 
-Both scripts return `0` when everything was converted and conforms, and `1` otherwise (useful in other scripts or CI).
+`json2rdf.py` and `validate.py` return `0` when everything was converted and conforms, and `1` otherwise (useful in other scripts or CI). `download_registry.py --convert` returns the result of the conversion.
 
 ## Mapping (json2rdf.py)
 
@@ -89,10 +103,12 @@ The mapping follows the tables of the profile (see the [main README](../README.m
 
 - The record id (URN) is the IRI of the main node, typed `apkg-rec:Record` and, when `properties.class` is present, also `apkg-pro:Process`.
 - All other nodes (links, persons, organisations, parameters, ...) are blank nodes.
-- Secrets are taken from the `cwltool:Secrets` hint of the embedded CWL (field `cwl`), when the JSON includes it.
+- Secrets are taken from the field `Secrets` (`{"secrets": [...]}`) when present, otherwise from the `cwltool:Secrets` hints of the embedded CWL (field `cwl`, added by `download_registry.py --with-cwl`).
+- `registration_url` is mapped to `apkg-pro:originalURL`.
+- CWL parameter types are written as one string: `File?` (optional), `File[]` (array), and union types (a JSON list such as `["string?", "File?"]`) joined with `|` (`string?|File?`).
 - Empty values (`null`, `""`, `[]`) are not mapped.
 - The short CWL id (`properties.id`) is not mapped in v2.
-- Fields that the script does not map are listed as warnings, so that nothing is lost silently. The OGC fields `time`, `language`, `languages`, `resourceLanguages`, `externalIds` and `linkTemplates` are reported as warnings when present.
+- Fields that the script does not map are listed as warnings, so that nothing is lost silently. This includes the parameter fields `label` and `keywords`, which the profile does not cover yet. The OGC fields `time`, `language`, `languages`, `resourceLanguages`, `externalIds` and `linkTemplates` are reported as warnings when present.
 
 ## JSON-LD output
 

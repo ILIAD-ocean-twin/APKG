@@ -1,0 +1,209 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "result",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "wp6-tools",
+      "extract",
+      "particles"
+    ],
+    "inputs": [
+      {
+        "id": "input-file",
+        "type": "File"
+      },
+      {
+        "id": "output-format",
+        "type": "string"
+      },
+      {
+        "id": "projection-function",
+        "type": "string"
+      },
+      {
+        "id": "projection-resolution",
+        "type": "string"
+      },
+      {
+        "id": "latitude-variable",
+        "type": "string"
+      },
+      {
+        "id": "longitude-variable",
+        "type": "string"
+      },
+      {
+        "id": "time-variable",
+        "type": "string"
+      }
+    ],
+    "description": "extract particles frames from wp6-tools",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "extract-particles",
+    "software_version": "0.1.2",
+    "class": "CommandLineTool",
+    "latest": false,
+    "identifier": "urn:apkg:tool:inesctec:pt:extract-particles:0.1.2",
+    "citation": null,
+    "date_created": "2025-05-20T17:09:37Z",
+    "author": [
+      {
+        "name": "Alexandre Valle",
+        "email": "alexandre.valle@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:01.714852Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-extract-particles/wp6tools_extract_particles_0_1_2.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "extract-particles",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:extract-particles",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n$graph:\n- class: CommandLineTool\n  id: extract-particles\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - extract-particles\n  - --input-url\n  - valueFrom: $( inputs['input-file'] )\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --projection-function\n  - valueFrom: $( inputs['projection-function'] )\n  - --projection-resolution\n  - valueFrom: $( inputs['projection-resolution'] )\n  - --latitude-variable\n  - valueFrom: $( inputs['latitude-variable'] )\n  - --longitude-variable\n  - valueFrom: $( inputs[\"longitude-variable\"] )\n  - --time-variable\n  - valueFrom: $( inputs[\"time-variable\"] )\n  - --output-url\n  - output/particles\n  inputs:\n    input-file:\n      type: File\n    output-format:\n      type: string\n    projection-function:\n      type: string\n    projection-resolution:\n      type: string\n    latitude-variable:\n      type: string\n    longitude-variable:\n      type: string\n    time-variable:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/particles\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.2\n  s:name: extract-particles\n  s:description: extract particles frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - extract\n  - particles\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.2\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-extract-particles/wp6tools_extract_particles_0_1_2.cwl\n  s:dateCreated: '2025-05-20T17:09:37Z'\n  s:sdDatePublished: '2025-06-11T14:23:01.714852Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:tool:inesctec:pt:extract-particles:0.1.2\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:extract-particles:0.1.2",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:extract-particles:0.1.2?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:extract-particles\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:extract-particles\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:extract-particles\"&sortby=-software_version"
+    }
+  ]
+}

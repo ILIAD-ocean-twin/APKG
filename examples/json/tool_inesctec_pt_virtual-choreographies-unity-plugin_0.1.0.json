@@ -1,0 +1,204 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "format": "edam:format_3464",
+        "id": "platform_choreography",
+        "type": "File"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "wp6-tools",
+      "choreographies",
+      "virtual-choreographies",
+      "unity"
+    ],
+    "inputs": [
+      {
+        "id": "vc",
+        "type": "File"
+      },
+      {
+        "id": "mappings",
+        "type": "File?"
+      },
+      {
+        "id": "mappings_url",
+        "type": "string?"
+      }
+    ],
+    "description": "Generator of unity inputs to virtual choreographies",
+    "maintainer": [
+      {
+        "name": "Vitor Cavaleiro",
+        "email": "vitor.cavaleiro@inesctec.pt"
+      }
+    ],
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "virtual-choreographies-unity-plugin",
+    "software_version": "0.1.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0",
+    "citation": null,
+    "date_created": "2025-05-09T16:01:05Z",
+    "author": [
+      {
+        "name": "Fernando Cassola",
+        "email": "fernando.c.marques@inesctec.pt"
+      },
+      {
+        "name": "Vitor Cavaleiro",
+        "email": "vitor.cavaleiro@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:16.609563Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "virtual-choreographies-unity-plugin",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: virtual-choreographies-unity-plugin\n  baseCommand: python\n  arguments:\n  - /opt/src/converter_unity.py\n  - valueFrom: $( inputs.vc )\n  - valueFrom: $( inputs.mappings || inputs.mappings_url )\n  inputs:\n    vc:\n      type: File\n    mappings:\n      type: File?\n    mappings_url:\n      type: string?\n  outputs:\n    platform_choreography:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: platform_choreography.json\n        outputEval: ${self[0].basename=\"platform_choreography_unity.json\"; return\n          self;}\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-unity-plugin:0.1.0\n  s:name: virtual-choreographies-unity-plugin\n  s:description: Generator of unity inputs to virtual choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  - unity\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: null\n  s:dateCreated: '2025-05-09T16:01:05Z'\n  s:sdDatePublished: '2025-06-11T14:23:16.609563Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:virtual-choreographies-unity-plugin\"&sortby=-software_version"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "format": "edam:format_2330",
+        "doc": "Text file containing the words in alphabetical order.",
+        "id": "sorted_words",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://github.com/pastilhas/example-workflow/raw/refs/heads/main/workflow.cwl",
+    "programming_language": "Python",
+    "keywords": [
+      "word sorting",
+      "text processing"
+    ],
+    "inputs": [
+      {
+        "doc": "String to split into words and sort alphabetically.",
+        "id": "text",
+        "type": "string"
+      }
+    ],
+    "description": "This workflow sorts the words in a string and returns them in a text file.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "word_sorter_pipeline",
+    "software_version": "0.1.0",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0",
+    "citation": null,
+    "date_created": "2026-11-06",
+    "author": [
+      {
+        "name": "João Campos",
+        "email": "joao.campos@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2026-11-06T12:01:26.285614Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": "https://github.com/pastilhas/example-workflow/tree/main/",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "word_sorter_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:word_sorter_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: word_sorter_pipeline\n  inputs:\n    text:\n      type: string\n      doc: String to split into words and sort alphabetically.\n  steps:\n    step_word_sorter:\n      run: '#word_sorter'\n      in:\n        text: text\n      out:\n      - sorted_words_file\n  outputs:\n  - id: sorted_words\n    outputSource: step_word_sorter/sorted_words_file\n    type: File\n    format: edam:format_2330\n    doc: Text file containing the words in alphabetical order.\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: word_sorter_pipeline\n  s:description: 'This workflow sorts the words in a string and returns them in a\n    text file.\n\n    '\n  s:keywords:\n  - word sorting\n  - text processing\n  s:programmingLanguage: Python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: \"Jo\\xE3o Campos\"\n    s:email: joao.campos@inesctec.pt\n  s:codeRepository: https://github.com/pastilhas/example-workflow/tree/main/\n  s:dateCreated: '2026-11-06'\n  s:identifier: urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0\n  s:sdDatePublished: '2026-11-06T12:01:26.285614Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: word_sorter\n  inputs:\n    text:\n      type: string\n      doc: String to split into words and sort alphabetically.\n    output_file:\n      type: string\n      default: sorted_words.txt\n      doc: Name of the text file to write the sorted words to.\n  outputs:\n    sorted_words_file:\n      label: Sorted words text file\n      doc: Words from the input string sorted alphabetically, separated by spaces.\n      type: File\n      format: edam:format_2330\n      outputBinding:\n        glob: $(inputs.output_file)\n  requirements:\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/word-sorter:0.1.0\n  s:name: word_sorter\n  s:description: Sorts the words in a string without regard to case and writes them\n    to a text file.\n  s:keywords:\n  - word sorting\n  - text processing\n  - Python\n  s:programmingLanguage: Python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: \"Jo\\xE3o Campos\"\n    s:email: joao.campos@inesctec.pt\n  s:codeRepository: https://github.com/pastilhas/example-workflow/tree/main\n  s:dateCreated: '2026-10-30T18:00:00Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:word_sorter_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:word_sorter_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:word_sorter_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

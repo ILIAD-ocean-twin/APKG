@@ -1,0 +1,191 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "stac_result",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "stac",
+      "metadata"
+    ],
+    "inputs": [
+      {
+        "doc": "file 1",
+        "id": "file_1",
+        "type": "File"
+      },
+      {
+        "doc": "file 2",
+        "id": "file_2",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3464",
+        "doc": "metadata file",
+        "id": "metadata",
+        "type": "File"
+      }
+    ],
+    "description": "Transform and array of files into a STAC",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "2stac2",
+    "software_version": "0.1.3",
+    "class": "CommandLineTool",
+    "latest": false,
+    "identifier": "urn:apkg:tool:inesctec:pt:2stac2:0.1.3",
+    "citation": null,
+    "date_created": "2025-05-21T15:08:53Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:36.249696Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/tools/2stac2/2stac2_0_1_3.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "2stac2",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:2stac2",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: 2stac2\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - valueFrom: '$( function () { var files_array = [];\n\n      Object.keys(inputs).forEach(element => { if(element != ''metadata'') { files_array.push(''--file'');\n      files_array.push(inputs[element]); } else { files_array.push(''--metadata'');\n      files_array.push(inputs[element]); } });\n\n      return files_array; }())'\n  inputs:\n    file_1:\n      doc: file 1\n      type: File\n    file_2:\n      doc: file 2\n      type: File\n    metadata:\n      format: edam:format_3464\n      doc: metadata file\n      type: File\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.1.3\n  s:name: 2stac2\n  s:softwareVersion: 0.1.3\n  s:description: Transform and array of files into a STAC\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2stac2/2stac2_0_1_3.cwl\n  s:dateCreated: '2025-05-21T15:08:53Z'\n  s:sdDatePublished: '2025-06-11T14:23:36.249696Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:tool:inesctec:pt:2stac2:0.1.3\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:2stac2:0.1.3",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2:0.1.3?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:2stac2\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:2stac2\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:2stac2\"&sortby=-software_version"
+    }
+  ]
+}

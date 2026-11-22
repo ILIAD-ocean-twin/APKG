@@ -1,0 +1,3 @@
+# Python cache, recreated automatically when the scripts run
+__pycache__/
+*.pyc

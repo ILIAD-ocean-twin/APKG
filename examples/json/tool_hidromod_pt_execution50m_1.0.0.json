@@ -1,0 +1,195 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "swan_result",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "swan",
+      "Heraklion",
+      "wave",
+      "hidromod",
+      "execution"
+    ],
+    "inputs": [
+      {
+        "id": "forecast",
+        "type": "int"
+      },
+      {
+        "id": "hindcast",
+        "type": "int"
+      },
+      {
+        "id": "swan_directory",
+        "type": "Directory"
+      }
+    ],
+    "description": "Execution of SWAN 50m wave model with data from the preparation and the execution of 500m",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "execution50m",
+    "software_version": "1.0.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:hidromod:pt:execution50m:1.0.0",
+    "citation": null,
+    "date_created": null,
+    "author": [
+      {
+        "name": "JoÃ£o Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:20.325968Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "name": "Execution of SWAN wave Model",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "family": "urn:apkg:tool:hidromod:pt:execution50m",
+    "cwl": "$graph:\n- class: CommandLineTool\n  requirements:\n  - class: InitialWorkDirRequirement\n    listing: '$(inputs.swan_directory.listing.map(function(item) { return {entry:\n      item, writable: true}; }))'\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_heraklion_500m_50m:1.0.0\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  inputs:\n    forecast:\n      type: int\n    hindcast:\n      type: int\n    swan_directory:\n      type: Directory\n  outputs:\n    swan_result:\n      type: Directory\n      outputBinding:\n        glob: $(\"results\")\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: '\"/home/heraklionport_500m/50m.sh $(runtime.outdir) $(inputs.forecast)\n      $(inputs.hindcast)\"\n\n      '\n    shellQuote: false\n  id: execution50m\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xC3\\xA3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:description: Execution of SWAN 50m wave model with data from the preparation and\n    the execution of 500m\n  s:keywords:\n  - swan\n  - Heraklion\n  - wave\n  - hidromod\n  - execution\n  s:name: Execution of SWAN wave Model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sdDatePublished: '2025-06-11T14:23:20.325968Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:tool:hidromod:pt:execution50m:1.0.0\n"
+  },
+  "id": "urn:apkg:tool:hidromod:pt:execution50m:1.0.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:execution50m:1.0.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:hidromod:pt:execution50m\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:hidromod:pt:execution50m\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:hidromod:pt:execution50m\"&sortby=-software_version"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+# Converted from urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0
+# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).
+
+<urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0> a apkg-pro:Process, apkg-rec:Record ;
+    dct:identifier "urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0" ;
+    dcat:qualifiedRelation [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "The landing page of this server as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "The landing page of this server as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "self" ;
+        apkg-rec:mediaType "application/geo+json" ;
+        dct:title "This document as GeoJSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=jsonld"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=jsonld_v2"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD) APKG V2"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "This document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+yaml" ;
+        dct:title "This document as CWL (YAML)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=cwljson"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+json" ;
+        dct:title "This document as CWL (JSON)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg"^^xsd:anyURI ;
+        apkg-rec:rel "collection" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "Application Packages"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:meeo_srl:it:segmentation_tool\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "All versions of this document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:meeo_srl:it:segmentation_tool\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:meeo_srl:it:segmentation_tool\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as RDF (JSON-LD)"
+    ] ;
+    dct:title "Sentinel-1 Oil Spill Detection and Segmentation Pipeline" ;
+    dct:description "Deep learning model for detection and segmentation oil spills in Sentinel-1 SAR images." ;
+    geo:hasGeometry [
+        a apkg-rec:Geometry ;
+        apkg-rec:geometryType "Polygon" ;
+        apkg-rec:coordinates "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+    ] ;
+    dcat:keyword "oil spill", "SAR", "Sentinel-1", "deep learning", "segmentation" ;
+    apkg-rec:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    apkg-pro:processID "urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0" ;
+    apkg-pro:familyID "urn:apkg:tool:meeo_srl:it:segmentation_tool" ;
+    pav:version "1.0.0" ;
+    apkg-pro:dateCreated "2024-12-01"^^xsd:date ;
+    apkg-pro:registrationDate "2025-07-30T14:38:50.041678Z"^^xsd:dateTimeStamp ;
+    apkg-pro:isLatestVersion "true"^^xsd:boolean ;
+    apkg-pro:cwlDescriptor [
+        a apkg-pro:CWLDescriptor ;
+        apkg-pro:descriptorURL "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:segmentation_tool:1.0.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:mediaType "application/cwl+yaml"
+    ] ;
+    dct:creator [
+        a apkg-pro:Person ;
+        foaf:name "Sabrina Outmani" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "outmani@meeo.it"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Noemi Fazzini" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "fazzini@meeo.it"
+        ]
+    ] ;
+    dct:publisher [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "Application Package Registry" ;
+        apkg-pro:homepage "https://iliad-registry.inesctec.pt"^^xsd:anyURI
+    ] ;
+    apkg-pro:hasSourceOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "MEEO SRL" ;
+        apkg-pro:homepage "https://meeo.it/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "IT"
+        ]
+    ], [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "FORTH" ;
+        apkg-pro:homepage "https://www.forth.gr/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "GR"
+        ]
+    ], [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "INESCTEC" ;
+        apkg-pro:homepage "https://inesctec.pt"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    apkg-pro:hasProducerOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "MEEO SRL" ;
+        apkg-pro:homepage "https://meeo.it/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "IT"
+        ]
+    ] ;
+    bf:geographicCoverage [
+        a apkg-pro:SpatialCoverage ;
+        geo:hasGeometry [
+            a apkg-pro:Geo ;
+            apkg-pro:box "-90 -180 90 180"
+        ] ;
+        apkg-pro:geoClass "schema:GeoShape"
+    ] ;
+    apkg-pro:temporalCoverage "2014-01-01T00:00:00Z/" ;
+    apkg-pro:programmingLanguage "python" ;
+    apkg-pro:processClass "CommandLineTool" ;
+    apkg-pro:hasInput [
+        a apkg-pro:Parameter ;
+        dct:identifier "use_case_directory" ;
+        apkg-pro:parameterType "Directory" ;
+        dct:description "Directory where to find input files and store outputs"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "sentinel_list" ;
+        apkg-pro:parameterType "File" ;
+        dct:description ".txt file containing sentinel data paths (output from application package 1) - sentinel_paths.txt"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "png_output_path" ;
+        apkg-pro:parameterType "File" ;
+        dct:description ".txt file containing png data paths (output from application package 3) - png_paths.txt"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "csv_output_path" ;
+        apkg-pro:parameterType "File" ;
+        dct:description ".txt file containing csv data paths (output from application package 3) - csv_paths.txt"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "delete" ;
+        apkg-pro:parameterType "boolean?" ;
+        dct:description "Enable deletion of generated auxiliary files"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "verbose" ;
+        apkg-pro:parameterType "boolean?" ;
+        dct:description "Enable verbose logging"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "debug" ;
+        apkg-pro:parameterType "boolean?" ;
+        dct:description "Enable debug mode"
+    ] ;
+    apkg-pro:hasOutput [
+        a apkg-pro:Parameter ;
+        dct:identifier "results" ;
+        apkg-pro:parameterType "Directory" ;
+        dct:description "Directory containing the results"
+    ] .

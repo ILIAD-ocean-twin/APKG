@@ -1,0 +1,210 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+# Converted from urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0
+# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).
+
+<urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0> a apkg-pro:Process, apkg-rec:Record ;
+    dct:identifier "urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0" ;
+    dcat:qualifiedRelation [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "The landing page of this server as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "The landing page of this server as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "self" ;
+        apkg-rec:mediaType "application/geo+json" ;
+        dct:title "This document as GeoJSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=jsonld"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=jsonld_v2"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD) APKG V2"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "This document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+yaml" ;
+        dct:title "This document as CWL (YAML)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=cwljson"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+json" ;
+        dct:title "This document as CWL (JSON)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg"^^xsd:anyURI ;
+        apkg-rec:rel "collection" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "Application Packages"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "All versions of this document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as RDF (JSON-LD)"
+    ] ;
+    dct:title "netcdf_visualization_pipeline" ;
+    dct:description "netcdf visualization pipeline" ;
+    geo:hasGeometry [
+        a apkg-rec:Geometry ;
+        apkg-rec:geometryType "Polygon" ;
+        apkg-rec:coordinates "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+    ] ;
+    dcat:keyword "oil spill", "netcdf", "choreographies", "virtual choreographies", "wp6", "tools" ;
+    apkg-pro:processID "urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0" ;
+    apkg-pro:familyID "urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline" ;
+    pav:version "0.1.0" ;
+    apkg-pro:dateCreated "2025-11-17T17:06:25Z"^^xsd:dateTimeStamp ;
+    apkg-pro:registrationDate "2025-11-17T17:08:24.812695Z"^^xsd:dateTimeStamp ;
+    apkg-pro:isLatestVersion "false"^^xsd:boolean ;
+    apkg-pro:cwlDescriptor [
+        a apkg-pro:CWLDescriptor ;
+        apkg-pro:descriptorURL "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:mediaType "application/cwl+yaml"
+    ] ;
+    dct:creator [
+        a apkg-pro:Person ;
+        foaf:name "Miguel Correia" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "miguel.r.correia@inesctec.pt"
+        ]
+    ] ;
+    dct:publisher [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "Application Package Registry" ;
+        apkg-pro:homepage "https://iliad-registry.inesctec.pt"^^xsd:anyURI
+    ] ;
+    apkg-pro:hasSourceOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "INESCTEC" ;
+        apkg-pro:homepage "https://inesctec.pt"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    apkg-pro:hasProducerOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "INESCTEC" ;
+        apkg-pro:homepage "https://inesctec.pt"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    bf:geographicCoverage [
+        a apkg-pro:SpatialCoverage ;
+        geo:hasGeometry [
+            a apkg-pro:Geo ;
+            apkg-pro:box "-90 -180 90 180"
+        ] ;
+        apkg-pro:geoClass "schema:GeoShape"
+    ] ;
+    apkg-pro:originalURL "https://pipe-drive.inesctec.pt/application-packages/workflows/netcdf-visualization/netcdf_visualization_0_1_0.cwl"^^xsd:anyURI ;
+    apkg-pro:processClass "Workflow" ;
+    apkg-pro:hasInput [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_endpoint" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 storage endpoint"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_region" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 storage region"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_access_key" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 storage access_key"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_secret_key" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 storage secret_key"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_session_token" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 storage region"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_bucket_name" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 storage bucket"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "s3_path" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "S3 path to file"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "netcdf_file" ;
+        apkg-pro:parameterType "File?|string?" ;
+        apkg-pro:format "edam:format_3650"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "frames" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "density" ;
+        apkg-pro:parameterType "string"
+    ] ;
+    apkg-pro:hasOutput [
+        a apkg-pro:Parameter ;
+        dct:identifier "openoil" ;
+        apkg-pro:parameterType "Directory"
+    ] ;
+    apkg-pro:hasSecret [
+        a apkg-pro:Secret ;
+        apkg-pro:secretInputID "access_key", "secret_key", "session_token"
+    ] .

@@ -1,0 +1,218 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "format": "edam:format_3650",
+        "id": "simulation",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/mpa-ditto-summit-lundy/mpa_ditto_summit_lundy_0_1_1.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "opendrift",
+      "mpa"
+    ],
+    "Secrets": {
+      "secrets": [
+        "password"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "The start time of the simulation",
+        "id": "startdate",
+        "type": "string"
+      },
+      {
+        "doc": "The simulation duration",
+        "id": "duration",
+        "type": "int"
+      },
+      {
+        "doc": "The CMEMS username",
+        "id": "username",
+        "type": "string"
+      },
+      {
+        "doc": "The CMEMS password",
+        "id": "password",
+        "type": "string"
+      }
+    ],
+    "description": "Runs (i) OpenDrift for Marine Protected Areas (MPAs).",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "mpa_ditto_summit_lundy",
+    "software_version": "0.1.1",
+    "class": "CommandLineTool",
+    "latest": false,
+    "identifier": "urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1",
+    "citation": null,
+    "date_created": "2026-10-31T03:35:19Z",
+    "author": [
+      {
+        "name": "Arne Berre",
+        "email": "arne.j.berre@sintef.no"
+      },
+      {
+        "name": "Volker Hoffmann",
+        "email": "volker.hoffmann@sintef.no"
+      }
+    ],
+    "sdDatePublished": "2026-10-31T03:37:25.934677Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=cwl",
+    "license": null,
+    "code_repository": "https://github.com/ILIAD-ocean-twin/application_package/tree/main/ditto-summut/mpa",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      },
+      {
+        "address": {
+          "address_country": "NO"
+        },
+        "name": "SINTEF OCEAN",
+        "url": "https://sintef.no/en/ocean/"
+      }
+    ],
+    "name": "mpa_ditto_summit_lundy",
+    "producer": [
+      {
+        "address": {
+          "address_country": "NO"
+        },
+        "name": "SINTEF OCEAN",
+        "url": "https://sintef.no/en/ocean/"
+      }
+    ],
+    "family": "urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n  cwltool: http://commonwl.org/cwltool#\n$graph:\n- class: CommandLineTool\n  id: mpa_ditto_summit_lundy\n  baseCommand: python\n  arguments:\n  - /simulation/mpa.py\n  - --startdate\n  - valueFrom: $( inputs.startdate )\n  - --duration\n  - valueFrom: $( inputs.duration )\n  - --username\n  - valueFrom: $( inputs.username )\n  - --password\n  - valueFrom: $( inputs.password )\n  inputs:\n    startdate:\n      type: string\n      doc: The start time of the simulation\n    duration:\n      type: int\n      doc: The simulation duration\n    username:\n      type: string\n      doc: The CMEMS username\n    password:\n      type: string\n      doc: The CMEMS password\n  outputs:\n    simulation:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: modeloutput/result.nc\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/mpa-ditto-summit-lundy:0.1.1\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - password\n  s:name: mpa_ditto_summit_lundy\n  s:description: Runs (i) OpenDrift for Marine Protected Areas (MPAs).\n  s:keywords:\n  - opendrift\n  - mpa\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.1\n  s:producer:\n    class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:author:\n  - class: s:Person\n    s:name: Arne Berre\n    s:email: arne.j.berre@sintef.no\n  - class: s:Person\n    s:name: Volker Hoffmann\n    s:email: volker.hoffmann@sintef.no\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/ILIAD-ocean-twin/application_package/tree/main/ditto-summut/mpa\n  s:dateCreated: '2026-10-31T03:35:19Z'\n  s:identifier: urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1\n  s:sdDatePublished: '2026-10-31T03:37:25.934677Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy:0.1.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit_lundy\"&sortby=-software_version"
+    }
+  ]
+}

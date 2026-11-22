@@ -1,0 +1,240 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          23.0,
+          40.25
+        ],
+        [
+          25.8,
+          40.25
+        ],
+        [
+          25.8,
+          41.0
+        ],
+        [
+          23.0,
+          41.0
+        ],
+        [
+          23.0,
+          40.25
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://raw.githubusercontent.com/ILIAD-ocean-twin/application_package/refs/heads/main/inesctec_apkgs/d52.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "oil spill",
+      "openoil",
+      "opendrift"
+    ],
+    "Secrets": {
+      "secrets": [
+        "password"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "The latitude of the study area",
+        "label": "openoil",
+        "id": "lat",
+        "type": "float"
+      },
+      {
+        "doc": "The longitude of the study area",
+        "label": "openoil",
+        "id": "lon",
+        "type": "float"
+      },
+      {
+        "doc": "The start time of the simulation",
+        "label": "openoil",
+        "id": "time",
+        "type": "string"
+      },
+      {
+        "doc": "The type of the oil to run the simulation",
+        "label": "openoil",
+        "id": "oiltype",
+        "type": "string"
+      },
+      {
+        "doc": "The simulation duration",
+        "label": "openoil",
+        "id": "duration",
+        "type": "int"
+      },
+      {
+        "doc": "The CMEMS username",
+        "label": "cmems",
+        "id": "username",
+        "type": "string"
+      },
+      {
+        "doc": "The CMEMS password",
+        "label": "cmems",
+        "id": "password",
+        "type": "string"
+      }
+    ],
+    "description": "This pipeline runs an oil spill simulation with openoil.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": "2024-01-01T00:00:00Z/2024-12-31T23:59:59Z",
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "40.25 23.00 41.0 25.80"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "d52_openoil_pipeline",
+    "software_version": "0.1.0",
+    "class": "Workflow",
+    "latest": false,
+    "identifier": "urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0",
+    "citation": null,
+    "date_created": null,
+    "author": [
+      {
+        "name": "Georgios Sylaios",
+        "email": "gsylaios@env.duth.gr"
+      },
+      {
+        "name": "Nikolaos Kokkos",
+        "email": "nikolaoskokkos@gmail.com"
+      }
+    ],
+    "sdDatePublished": "2025-06-25T10:26:22.274102Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=cwl",
+    "license": "https://opensource.org/licenses/MIT",
+    "code_repository": "https://pipe-drive.inesctec.pt/cwl/deliberable/openoil_pipeline.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      },
+      {
+        "address": {
+          "address_country": "GR"
+        },
+        "name": "D.U.TH",
+        "url": "https://env.duth.gr"
+      }
+    ],
+    "name": "openOil pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "GR"
+        },
+        "name": "D.U.TH",
+        "url": "https://env.duth.gr"
+      }
+    ],
+    "family": "urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: d52_openoil_pipeline\n  doc: This pipeline runs an oil spill simulation with openoil, creates an animation\n    of the simulation and stores it in S3.\n  inputs:\n    lat:\n      label: openoil\n      type: float\n      doc: The latitude of the study area\n    lon:\n      label: openoil\n      type: float\n      doc: The longitude of the study area\n    time:\n      label: openoil\n      type: string\n      doc: The start time of the simulation\n    oiltype:\n      label: openoil\n      type: string\n      doc: The type of the oil to run the simulation\n    duration:\n      label: openoil\n      type: int\n      doc: The simulation duration\n    username:\n      label: cmems\n      type: string\n      doc: The CMEMS username\n    password:\n      label: cmems\n      type: string\n      doc: The CMEMS password\n  steps:\n    step_simulation:\n      run: '#openoil_simulation'\n      in:\n        lat: lat\n        lon: lon\n        time: time\n        oiltype: oiltype\n        duration: duration\n        username: username\n        password: password\n      out:\n      - simulation\n      - metadata\n    step_2stac:\n      run: '#2stac'\n      in:\n        result: step_simulation/simulation\n        metadata: step_simulation/metadata\n      out:\n      - results\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac/results\n    type: Directory\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - password\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:identifier: urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0\n  s:name: openOil pipeline\n  s:description: 'This pipeline runs an oil spill simulation with openoil.\n\n    '\n  s:keywords:\n  - oil spill\n  - openoil\n  - opendrift\n  s:softwareVersion: 0.1.0\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: D.U.TH\n    s:url: https://env.duth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: D.U.TH\n    s:url: https://env.duth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:author:\n  - class: s:Person\n    s:name: Georgios Sylaios\n    s:email: gsylaios@env.duth.gr\n  - class: s:Person\n    s:name: Nikolaos Kokkos\n    s:email: nikolaoskokkos@gmail.com\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/cwl/deliberable/openoil_pipeline.cwl\n  s:license: https://opensource.org/licenses/MIT\n  s:temporalCoverage: 2024-01-01T00:00:00Z/2024-12-31T23:59:59Z\n  s:spatialCoverage:\n    class: s:geo\n    s:box: 40.25 23.00 41.0 25.80\n  s:sdDatePublished: '2025-06-25T10:26:22.274102Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: openoil_simulation\n  baseCommand: python\n  arguments:\n  - /opt/openoil.py\n  - --lat\n  - valueFrom: $( inputs.lat )\n  - --lon\n  - valueFrom: $( inputs.lon )\n  - --time\n  - valueFrom: $( inputs.time )\n  - --oiltype\n  - valueFrom: $( inputs.oiltype )\n  - --duration\n  - valueFrom: $( inputs.duration )\n  - --username\n  - valueFrom: $( inputs.username )\n  - --password\n  - valueFrom: $( inputs.password )\n  inputs:\n    lat:\n      type: float\n      doc: The latitude of the study area\n    lon:\n      type: float\n      doc: The longitude of the study area\n    time:\n      type: string\n      doc: The start time of the simulation\n    oiltype:\n      type: string\n      doc: The type of the oil to run the simulation\n    duration:\n      type: int\n      doc: The simulation duration\n    username:\n      type: string\n      doc: The CMEMS username\n    password:\n      type: string\n      doc: The CMEMS password\n  outputs:\n    simulation:\n      type: File\n      format: edam:format_3650\n      outputBinding:\n        glob: result/simulation.nc\n    metadata:\n      type: File\n      format: edam:format_3464\n      outputBinding:\n        glob: result/metadata.json\n      doc: metadata description\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/openoil-simulation-duth:0.1.0\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - username\n      - password\n  s:name: openOil model\n  s:description: Simulation of oil spill\n  s:keywords:\n  - oil spill\n  - openoil\n  - opendrift\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: D.U.TH\n    s:url: https://env.duth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: D.U.TH\n    s:url: https://env.duth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:author:\n  - class: s:Person\n    s:name: Georgios Sylaios\n    s:email: gsylaios@env.duth.gr\n  - class: s:Person\n    s:name: Nikolaos Kokkos\n    s:email: nikolaoskokkos@gmail.com\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:identifier: urn:apkg:tool:d.u.th:gr:openoil_simulation:0.1.0\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/openoil-simulation-duth/openoil_simulation_duth_0_2_0.cwl\n  s:dateCreated: '2024-12-02T17:02:10Z'\n  s:license: https://opensource.org/licenses/MIT\n  s:citation: doi:1-234-5678799.00\n  s:temporalCoverage: 2024-01-01T00:00:00Z/2024-12-31T23:59:59Z\n  s:spatialCoverage:\n    class: s:geo\n    s:box: 40.25 23.00 41.0 25.80\n- class: CommandLineTool\n  id: 2stac\n  baseCommand: python\n  arguments:\n  - /opt/2stac.py\n  - --result\n  - valueFrom: $( inputs.result )\n  - --metadata\n  - valueFrom: $( inputs.metadata )\n  inputs:\n    result:\n      type: File\n      format: edam:format_3650\n      doc: The resulting file of the previous model to insert in STAC\n    metadata:\n      type: File\n      format: edam:format_3464\n      doc: The resulting metadata of the previous model to insert in STAC\n  outputs:\n    results:\n      outputBinding:\n        glob: .\n      type: Directory\n      doc: STAC output\n  requirements:\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac:0.1.0\n  s:name: 2Stac\n  s:softwareVersion: 0.1.0\n  s:description: Transform the result into a STAC\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2stac/2stac_0_2_0.cwl\n  s:dateCreated: '2024-11-17T20:07:17Z'\n"
+  },
+  "id": "urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:d.u.th:gr:d52_openoil_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

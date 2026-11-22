@@ -37,7 +37,7 @@ PROP_KEYS = {
     "identifier", "family", "software_version", "date_created", "sdDatePublished", "latest", "url",
     "citation", "author", "contributor", "maintainer", "sdPublisher", "source_organization",
     "provider", "producer", "spatial_coverage", "temporal_coverage", "code_repository",
-    "programming_language", "original_url", "class", "inputs", "outputs", "cwl",
+    "programming_language", "original_url", "registration_url", "class", "inputs", "outputs", "cwl", "Secrets",
 }
 IGNORED_PROP_KEYS = {"id"}  # short CWL id: not mapped in v2 (to be decided)
 
@@ -53,8 +53,14 @@ class Node:
         self.iri, self.types, self.props = iri, list(types), []
 
     def add(self, prop, value):
-        if value is None or value == "" or value == []:
+        if value is None or value == "" or value == [] or value == {}:
             return self
+        if isinstance(value, list):  # a list of values: one triple per value
+            for v in value:
+                self.add(prop, v)
+            return self
+        if isinstance(value, dict):  # an object where a value is expected: keep it as JSON text
+            value = json.dumps(value, ensure_ascii=False)
         if isinstance(value, (str, int, float)) and not isinstance(value, bool):
             value = Lit(value)
         self.props.append((prop, value))
@@ -125,8 +131,35 @@ def link(l):
     return n
 
 
-def parameter(p):
-    n = Node(["apkg-pro:Parameter"]).add("dct:identifier", p.get("id")).add("apkg-pro:parameterType", p.get("type"))
+PARAM_KEYS = {"id", "type", "doc", "default", "format"}
+
+
+def cwl_type(t):
+    """CWL type as one string: 'File?', 'File[]?', or a union such as 'string?|File?'."""
+    if t is None or t == "":  # missing type: write nothing (the SHACL minCount then reports it)
+        return None
+    if isinstance(t, str):
+        return t
+    if isinstance(t, list):  # union type
+        parts = [cwl_type(x) for x in t]
+        optional = "null" in parts
+        parts = [x for x in parts if x != "null"]
+        if optional:
+            parts = [x if x.endswith("?") else x + "?" for x in parts]
+        return "|".join(parts)
+    if isinstance(t, dict):  # e.g. {"type": "array", "items": "File"}
+        if t.get("type") == "array" and t.get("items") is not None:
+            return cwl_type(t["items"]) + "[]"
+        return str(t.get("type", "record"))
+    return str(t)
+
+
+def parameter(p, warnings=None):
+    if warnings is not None:
+        for k in p:
+            if k not in PARAM_KEYS:
+                warnings.append(f"parameter field '{k}' not mapped (parameter '{p.get('id')}')")
+    n = Node(["apkg-pro:Parameter"]).add("dct:identifier", p.get("id")).add("apkg-pro:parameterType", cwl_type(p.get("type")))
     n.add("dct:description", p.get("doc"))
     if "default" in p and p["default"] is not None:
         d = p["default"]
@@ -290,13 +323,15 @@ def convert(record, warnings):
     main.add("apkg-pro:codeRepository", uri(props.get("code_repository")))
     for pl in as_list(props.get("programming_language")):
         main.add("apkg-pro:programmingLanguage", pl)
-    main.add("apkg-pro:originalURL", uri(props.get("original_url")))
+    main.add("apkg-pro:originalURL", uri(props.get("registration_url") or props.get("original_url")))
     main.add("apkg-pro:processClass", props.get("class"))
     for p in as_list(props.get("inputs")):
-        main.add("apkg-pro:hasInput", parameter(p))
+        main.add("apkg-pro:hasInput", parameter(p, warnings))
     for p in as_list(props.get("outputs")):
-        main.add("apkg-pro:hasOutput", parameter(p))
-    for ids in secrets_from_cwl(props.get("cwl")):
+        main.add("apkg-pro:hasOutput", parameter(p, warnings))
+    # Secrets: the JSON field "Secrets" when present, otherwise the cwltool:Secrets hints of the CWL
+    json_secrets = (props.get("Secrets") or {}).get("secrets") if isinstance(props.get("Secrets"), dict) else None
+    for ids in ([as_list(json_secrets)] if json_secrets else secrets_from_cwl(props.get("cwl"))):
         s = Node(["apkg-pro:Secret"])
         for i in ids:
             s.add("apkg-pro:secretInputID", i)
@@ -429,14 +464,19 @@ def main():
                 continue
             rid = rec.get("id") or rec["properties"]["identifier"]
             outputs = []
-            if args.format in ("ttl", "both"):
-                target = out_dir / f"{safe_name(rid)}.ttl"
-                target.write_text(to_turtle(node, rid), encoding="utf-8")
-                outputs.append(target)
-            if args.format in ("jsonld", "both"):
-                target = out_dir / f"{safe_name(rid)}.jsonld"
-                target.write_text(to_jsonld(node, rid), encoding="utf-8")
-                outputs.append(target)
+            try:
+                if args.format in ("ttl", "both"):
+                    target = out_dir / f"{safe_name(rid)}.ttl"
+                    target.write_text(to_turtle(node, rid), encoding="utf-8")
+                    outputs.append(target)
+                if args.format in ("jsonld", "both"):
+                    target = out_dir / f"{safe_name(rid)}.jsonld"
+                    target.write_text(to_jsonld(node, rid), encoding="utf-8")
+                    outputs.append(target)
+            except Exception as e:
+                print(f"ERROR writing {rid} (from {f.name}): {e!r}")
+                ok = False
+                continue
             written += outputs
             print(f"{f.name} -> " + ", ".join(str(t) for t in outputs))
             for w in warnings:

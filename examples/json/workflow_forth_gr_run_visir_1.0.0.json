@@ -1,0 +1,306 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "visir_output",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "hidromod",
+      "visir",
+      "VISIR",
+      "least CO2 emissions",
+      "optimal ship routes",
+      "least distance",
+      "least time",
+      "regional",
+      "high resolution",
+      "global",
+      "FORTH",
+      "CMRL"
+    ],
+    "Secrets": {
+      "secrets": [
+        "wrf_username",
+        "wrf_password",
+        "cmems_username",
+        "cmems_password"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "FTP Server for WRF Download",
+        "id": "wrf_ftpserver",
+        "type": "string"
+      },
+      {
+        "doc": "Password for WRF Download",
+        "id": "wrf_password",
+        "type": "string"
+      },
+      {
+        "doc": "Username for WRF Download",
+        "id": "wrf_username",
+        "type": "string"
+      },
+      {
+        "doc": "Remote dir path from root for WRF Download",
+        "id": "wrf_remotedir",
+        "type": "string"
+      },
+      {
+        "doc": "Vessel Type (sail or motor)",
+        "id": "vessel_type",
+        "type": "string"
+      },
+      {
+        "doc": "CMEMS Username",
+        "id": "cmems_username",
+        "type": "string"
+      },
+      {
+        "doc": "CMEMS Password",
+        "id": "cmems_password",
+        "type": "string"
+      },
+      {
+        "doc": "Departure Date (%Y-%m-%dT%H:%M:00Z)",
+        "id": "departure_date",
+        "type": "string"
+      },
+      {
+        "doc": "Starting Latitude",
+        "id": "start_lat",
+        "type": "float"
+      },
+      {
+        "doc": "Starting Longitude",
+        "id": "start_lon",
+        "type": "float"
+      },
+      {
+        "doc": "Ending Latitude",
+        "id": "end_lat",
+        "type": "float"
+      },
+      {
+        "doc": "Ending Longitude",
+        "id": "end_lon",
+        "type": "float"
+      },
+      {
+        "doc": "Max Draught",
+        "id": "maxDraught",
+        "type": "float"
+      },
+      {
+        "doc": "Optional Bathymetry File",
+        "id": "bathymetry_file",
+        "type": "File?"
+      }
+    ],
+    "description": "Solving Dijkstra's optimization algorithm to find optimal ship routes that minimize CO2 emissions, trip time and distance. Using VISIR II software (https://zenodo.org/records/10960842 created by CMCC), that runs using forcing from either CMRL's (https://crl.iacm.forth.gr/en/) high resolution models in the southern Greece region forecasting atmospheric state (WRF 3km x 3km), hydrodynamics (NEMO 1km x 1km) and waves (Wavewatch III 1km x 1km), or the GFS/CMEMS lower resolution forecasts to be able to generalize to routes globally.",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Vassiliki Metheniti",
+        "email": "vasmeth@iacm.forth.gr"
+      },
+      {
+        "name": "Antonios Parasyris",
+        "email": "antonisparasyris@iacm.forth.gr"
+      },
+      {
+        "name": "João Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      },
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "run_visir",
+    "software_version": "1.0.0",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:forth:gr:run_visir:1.0.0",
+    "citation": null,
+    "date_created": null,
+    "author": [
+      {
+        "name": "Vassiliki Metheniti",
+        "email": "vasmeth@iacm.forth.gr"
+      },
+      {
+        "name": "Antonios Parasyris",
+        "email": "antonisparasyris@iacm.forth.gr"
+      },
+      {
+        "name": "João Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      },
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:17.001124Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "GR"
+        },
+        "name": "FORTH",
+        "url": "https://www.iacm.forth.gr/"
+      },
+      {
+        "address": {
+          "address_country": "GR"
+        },
+        "name": "CMRL",
+        "url": "https://crl.iacm.forth.gr/en/"
+      },
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "name": "Execution of VISIR model",
+    "producer": [
+      {
+        "address": {
+          "address_country": "GR"
+        },
+        "name": "FORTH",
+        "url": "https://www.iacm.forth.gr/"
+      }
+    ],
+    "family": "urn:apkg:workflow:forth:gr:run_visir",
+    "cwl": "$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n$graph:\n- class: Workflow\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - wrf_username\n      - wrf_password\n      - cmems_username\n      - cmems_password\n  inputs:\n    wrf_ftpserver:\n      doc: FTP Server for WRF Download\n      type: string\n    wrf_password:\n      doc: Password for WRF Download\n      type: string\n    wrf_username:\n      doc: Username for WRF Download\n      type: string\n    wrf_remotedir:\n      doc: Remote dir path from root for WRF Download\n      type: string\n    vessel_type:\n      type: string\n      doc: Vessel Type (sail or motor)\n    cmems_username:\n      type: string\n      doc: CMEMS Username\n    cmems_password:\n      type: string\n      doc: CMEMS Password\n    departure_date:\n      type: string\n      doc: Departure Date (%Y-%m-%dT%H:%M:00Z)\n    start_lat:\n      type: float\n      doc: Starting Latitude\n    start_lon:\n      type: float\n      doc: Starting Longitude\n    end_lat:\n      type: float\n      doc: Ending Latitude\n    end_lon:\n      type: float\n      doc: Ending Longitude\n    maxDraught:\n      type: float\n      doc: Max Draught\n    bathymetry_file:\n      type: File?\n      doc: Optional Bathymetry File\n  outputs:\n    visir_output:\n      type: Directory\n      outputSource: running/visir_output\n  steps:\n    running:\n      in:\n        wrf_ftpserver: wrf_ftpserver\n        wrf_username: wrf_username\n        wrf_password: wrf_password\n        wrf_remotedir: wrf_remotedir\n        vessel_type: vessel_type\n        cmems_username: cmems_username\n        cmems_password: cmems_password\n        departure_date: departure_date\n        start_lat: start_lat\n        start_lon: start_lon\n        end_lat: end_lat\n        end_lon: end_lon\n        maxDraught: maxDraught\n        bathymetry_file: bathymetry_file\n      run: '#running'\n      out:\n      - visir_output\n  id: run_visir\n  s:author:\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:contributor:\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:description: Solving Dijkstra's optimization algorithm to find optimal ship routes\n    that minimize CO2 emissions, trip time and distance. Using VISIR II software (https://zenodo.org/records/10960842\n    created by CMCC), that runs using forcing from either CMRL's (https://crl.iacm.forth.gr/en/)\n    high resolution models in the southern Greece region forecasting atmospheric state\n    (WRF 3km x 3km), hydrodynamics (NEMO 1km x 1km) and waves (Wavewatch III 1km x\n    1km), or the GFS/CMEMS lower resolution forecasts to be able to generalize to\n    routes globally.\n  s:keywords:\n  - hidromod\n  - visir\n  - VISIR\n  - least CO2 emissions\n  - optimal ship routes\n  - least distance\n  - least time\n  - regional\n  - high resolution\n  - global\n  - FORTH\n  - CMRL\n  s:name: Execution of VISIR model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:producer:\n    class: s:Organization\n    s:name: FORTH\n    s:url: https://www.iacm.forth.gr/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: FORTH\n    s:url: https://www.iacm.forth.gr/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  - class: s:Organization\n    s:name: CMRL\n    s:url: https://crl.iacm.forth.gr/en/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sdDatePublished: '2025-06-11T14:23:17.001124Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:workflow:forth:gr:run_visir:1.0.0\n- class: CommandLineTool\n  requirements:\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: antonisparasyris/iliad:ship_routing\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  - class: InitialWorkDirRequirement\n    listing:\n    - entryname: /VISIR/__data/bathymetry/GEBCO_2024_sub_ice_topo.nc\n      entry: $(inputs.bathymetry_file)\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - wrf_username\n      - wrf_password\n      - cmems_username\n      - cmems_password\n  inputs:\n    wrf_ftpserver:\n      type: string\n    wrf_password:\n      type: string\n    wrf_username:\n      type: string\n    wrf_remotedir:\n      type: string\n    vessel_type:\n      type: string\n    cmems_username:\n      type: string\n    cmems_password:\n      type: string\n    departure_date:\n      type: string\n    start_lat:\n      type: float\n    start_lon:\n      type: float\n    end_lat:\n      type: float\n    end_lon:\n      type: float\n    maxDraught:\n      type: float?\n    bathymetry_file:\n      type: File?\n  outputs:\n    visir_output:\n      type: Directory\n      outputBinding:\n        glob: ./OUTPUT\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: '\"/VISIR/run.sh ''$(inputs.wrf_ftpserver)'' ''$(inputs.wrf_username)''\n      ''$(inputs.wrf_password)'' ''$(inputs.wrf_remotedir)'' \\\n\n      ''$(inputs.vessel_type)'' ''$(inputs.cmems_username)'' ''$(inputs.cmems_password)''\n      ''$(inputs.departure_date)'' $(inputs.start_lat) \\\n\n      $(inputs.start_lon) $(inputs.end_lat) $(inputs.end_lon)$(inputs.maxDraught ?\n      '' '' + inputs.maxDraught : '''')\"\n\n      '\n    shellQuote: false\n  id: running\n  s:author:\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:contributor:\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:description: Solving Dijkstra's optimization algorithm to find optimal ship routes\n    that minimize CO2 emissions, trip time and distance. Using VISIR II software (https://zenodo.org/records/10960842\n    created by CMCC), that runs using forcing from either CMRL's (https://crl.iacm.forth.gr/en/)\n    high resolution models in the southern Greece region forecasting atmospheric state\n    (WRF 3km x 3km), hydrodynamics (NEMO 1km x 1km) and waves (Wavewatch III 1km x\n    1km), or the GFS/CMEMS lower resolution forecasts to be able to generalize to\n    routes globally.\n  s:keywords:\n  - hidromod\n  - visir\n  - VISIR\n  - least CO2 emissions\n  - optimal ship routes\n  - least distance\n  - least time\n  - regional\n  - high resolution\n  - global\n  s:name: Execution of VISIR model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:producer:\n    class: s:Organization\n    s:name: FORTH\n    s:url: https://www.iacm.forth.gr/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: FORTH\n    s:url: https://www.iacm.forth.gr/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  - class: s:Organization\n    s:name: CMRL\n    s:url: https://crl.iacm.forth.gr/en/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\ncwlVersion: v1.2\n"
+  },
+  "id": "urn:apkg:workflow:forth:gr:run_visir:1.0.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version"
+    }
+  ]
+}

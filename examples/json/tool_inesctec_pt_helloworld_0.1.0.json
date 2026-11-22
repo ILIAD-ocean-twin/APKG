@@ -1,0 +1,183 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "doc": "result file",
+        "id": "result",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/hello-world/hello_world_0_1_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "helloworld",
+      "example",
+      "simple"
+    ],
+    "inputs": [
+      {
+        "doc": "Some keyword",
+        "id": "name",
+        "type": "string"
+      }
+    ],
+    "description": "Hello World example",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "helloworld",
+    "software_version": "0.1.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:inesctec:pt:helloworld:0.1.0",
+    "citation": null,
+    "date_created": "2025-11-13T17:24:46Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-13T17:28:46.878181Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "helloworld",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:helloworld",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n$graph:\n- class: CommandLineTool\n  id: helloworld\n  baseCommand: python\n  arguments:\n  - /opt/helloworld.py\n  - valueFrom: $( inputs.name )\n  inputs:\n    name:\n      type: string\n      doc: Some keyword\n  outputs:\n    result:\n      type: File\n      outputBinding:\n        glob: result.txt\n      doc: result file\n  requirements:\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/hello-world:0.1.0\n  s:name: helloworld\n  s:description: Hello World example\n  s:keywords:\n  - helloworld\n  - example\n  - simple\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:24:46Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:helloworld:0.1.0\n  s:sdDatePublished: '2025-11-13T17:28:46.878181Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:helloworld:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:helloworld:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:helloworld\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:helloworld\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:helloworld\"&sortby=-software_version"
+    }
+  ]
+}

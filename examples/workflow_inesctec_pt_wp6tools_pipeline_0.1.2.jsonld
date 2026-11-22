@@ -1,0 +1,392 @@
+{
+  "@context": {
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "dct": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "apkg-rec": "http://w3id.org/apkg/v2/records#",
+    "apkg-pro": "http://w3id.org/apkg/v2/process#",
+    "bf": "http://id.loc.gov/ontologies/bibframe/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "pav": "http://purl.org/pav/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#"
+  },
+  "@id": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2",
+  "@type": [
+    "apkg-pro:Process",
+    "apkg-rec:Record"
+  ],
+  "dct:identifier": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2",
+  "dcat:qualifiedRelation": [
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt?f=json",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "root",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "The landing page of this server as JSON"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt?f=html",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "root",
+      "apkg-rec:mediaType": "text/html",
+      "dct:title": "The landing page of this server as HTML"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=json",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "self",
+      "apkg-rec:mediaType": "application/geo+json",
+      "dct:title": "This document as GeoJSON"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=jsonld",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/ld+json",
+      "dct:title": "This document as RDF (JSON-LD)"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=jsonld_v2",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/ld+json",
+      "dct:title": "This document as RDF (JSON-LD) APKG V2"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=html",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "text/html",
+      "dct:title": "This document as HTML"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=cwl",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/cwl+yaml",
+      "dct:title": "This document as CWL (YAML)"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=cwljson",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/cwl+json",
+      "dct:title": "This document as CWL (JSON)"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "collection",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "Application Packages"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:wp6tools_pipeline\"&sortby=-software_version",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "text/html",
+      "dct:title": "All versions of this document as HTML"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:wp6tools_pipeline\"&sortby=-software_version",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "All versions of this document as JSON"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:wp6tools_pipeline\"&sortby=-software_version",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "All versions of this document as RDF (JSON-LD)"
+    }
+  ],
+  "dct:title": "wp6tools_pipeline",
+  "dct:description": "wp6 tools workflow to generate contours",
+  "geo:hasGeometry": {
+    "@type": "apkg-rec:Geometry",
+    "apkg-rec:geometryType": "Polygon",
+    "apkg-rec:coordinates": "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+  },
+  "dcat:keyword": [
+    "oil spill",
+    "opendrift",
+    "choreographies",
+    "virtual choreographies",
+    "2s3",
+    "wp6",
+    "tools"
+  ],
+  "apkg-pro:processID": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2",
+  "apkg-pro:familyID": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline",
+  "pav:version": "0.1.2",
+  "apkg-pro:dateCreated": {
+    "@value": "2025-05-30T13:34:36Z",
+    "@type": "xsd:dateTimeStamp"
+  },
+  "apkg-pro:registrationDate": {
+    "@value": "2025-06-11T14:23:26.610452Z",
+    "@type": "xsd:dateTimeStamp"
+  },
+  "apkg-pro:isLatestVersion": {
+    "@value": "false",
+    "@type": "xsd:boolean"
+  },
+  "apkg-pro:cwlDescriptor": {
+    "@type": "apkg-pro:CWLDescriptor",
+    "apkg-pro:descriptorURL": {
+      "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.2?f=cwl",
+      "@type": "xsd:anyURI"
+    },
+    "apkg-rec:mediaType": "application/cwl+yaml"
+  },
+  "dct:creator": {
+    "@type": "apkg-pro:Person",
+    "foaf:name": "Miguel Correia",
+    "vcard:hasEmail": {
+      "@type": "apkg-rec:Email",
+      "vcard:value": "miguel.r.correia@inesctec.pt"
+    }
+  },
+  "dct:publisher": {
+    "@type": "apkg-pro:Organisation",
+    "skos:prefLabel": "Application Package Registry",
+    "apkg-pro:homepage": {
+      "@value": "https://iliad-registry.inesctec.pt",
+      "@type": "xsd:anyURI"
+    }
+  },
+  "apkg-pro:hasSourceOrganisation": {
+    "@type": "apkg-pro:Organisation",
+    "skos:prefLabel": "INESCTEC",
+    "apkg-pro:homepage": {
+      "@value": "https://inesctec.pt",
+      "@type": "xsd:anyURI"
+    },
+    "vcard:hasAddress": {
+      "@type": "apkg-rec:Address",
+      "vcard:country-name": "PT"
+    }
+  },
+  "apkg-pro:hasProducerOrganisation": {
+    "@type": "apkg-pro:Organisation",
+    "skos:prefLabel": "INESCTEC",
+    "apkg-pro:homepage": {
+      "@value": "https://inesctec.pt",
+      "@type": "xsd:anyURI"
+    },
+    "vcard:hasAddress": {
+      "@type": "apkg-rec:Address",
+      "vcard:country-name": "PT"
+    }
+  },
+  "bf:geographicCoverage": {
+    "@type": "apkg-pro:SpatialCoverage",
+    "geo:hasGeometry": {
+      "@type": "apkg-pro:Geo",
+      "apkg-pro:box": "-90 -180 90 180"
+    },
+    "apkg-pro:geoClass": "schema:GeoShape"
+  },
+  "apkg-pro:codeRepository": {
+    "@value": "https://pipe-drive.inesctec.pt/application-packages/workflows/wp6tools-inesctec/wp6tools_inesctec_0_1_2.cwl",
+    "@type": "xsd:anyURI"
+  },
+  "apkg-pro:processClass": "Workflow",
+  "apkg-pro:hasInput": [
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "bathymetry",
+      "apkg-pro:parameterType": "boolean?",
+      "dct:description": "If want to generate bathymetry"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "latitude",
+      "apkg-pro:parameterType": "float",
+      "dct:description": "The latitude of the study area"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "longitude",
+      "apkg-pro:parameterType": "float",
+      "dct:description": "The longitude of the study area"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "radius",
+      "apkg-pro:parameterType": "float",
+      "dct:description": "The radius of the study area"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "type",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "url",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "samples",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "time",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "minutes",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "frames",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "density",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "output-format",
+      "apkg-pro:parameterType": "string?",
+      "apkg-pro:defaultValue": "stac"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "depth",
+      "apkg-pro:parameterType": "float?"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "output-animation",
+      "apkg-pro:parameterType": "boolean?"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "endpoint",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage endpoint"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "region",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage region"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "access_key",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage access_key"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "secret_key",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage secret_key"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "session_token",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage region"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "bucket",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage bucket"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "base_path",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "S3 storage final directory name",
+      "apkg-pro:defaultValue": "wp6tools_virtual_choreographies_pipeline"
+    }
+  ],
+  "apkg-pro:hasOutput": [
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "openoil",
+      "apkg-pro:parameterType": "Directory"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "contours",
+      "apkg-pro:parameterType": "Directory"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "dataset",
+      "apkg-pro:parameterType": "File"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "vc",
+      "apkg-pro:parameterType": "File"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "recipe",
+      "apkg-pro:parameterType": "File"
+    }
+  ],
+  "apkg-pro:hasSecret": {
+    "@type": "apkg-pro:Secret",
+    "apkg-pro:secretInputID": [
+      "access_key",
+      "secret_key",
+      "session_token"
+    ]
+  }
+}

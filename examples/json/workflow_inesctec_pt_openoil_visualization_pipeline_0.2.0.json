@@ -1,0 +1,240 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/workflows/openoil-visualization/openoil_visualization_0_2_0.cwl",
+    "programming_language": null,
+    "keywords": [
+      "oil spill",
+      "openoil",
+      "opendrift",
+      "visualization"
+    ],
+    "Secrets": {
+      "secrets": [
+        "access_key",
+        "secret_key",
+        "session_token",
+        "password"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "The latitude of the study area",
+        "label": "openoil",
+        "id": "lat",
+        "type": "float"
+      },
+      {
+        "doc": "The longitude of the study area",
+        "label": "openoil",
+        "id": "lon",
+        "type": "float"
+      },
+      {
+        "doc": "The start time of the simulation",
+        "label": "openoil",
+        "id": "time",
+        "type": "string"
+      },
+      {
+        "doc": "The type of the oil to run the simulation",
+        "label": "openoil",
+        "id": "oiltype",
+        "type": "string"
+      },
+      {
+        "doc": "The simulation duration",
+        "label": "openoil",
+        "id": "duration",
+        "type": "int"
+      },
+      {
+        "doc": "The CMEMS username",
+        "label": "cmems_credentials",
+        "id": "username",
+        "type": "string"
+      },
+      {
+        "doc": "The CMEMS password",
+        "label": "cmems_credentials",
+        "id": "password",
+        "type": "string"
+      },
+      {
+        "default": "0,1,2,3,4,5,6,7,8,9,10",
+        "label": "narratives",
+        "id": "frames",
+        "type": "string?"
+      },
+      {
+        "default": "0.01, 0.05, 0.10, 0.50, 1.00",
+        "label": "narratives",
+        "id": "density",
+        "type": "string?"
+      }
+    ],
+    "description": "This pipeline runs an oil spill pipeline with openoil and creates visualizations of the simulation results.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "openoil_visualization_pipeline",
+    "software_version": "0.2.0",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0",
+    "citation": null,
+    "date_created": "2025-11-24T23:30:45Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-24T23:34:39.575868Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "openoil_visualization_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: openoil_visualization_pipeline\n  doc: This pipeline runs an oil spill simulation pipeline with openoil, and creates\n    visualizations of the simulation results.\n  inputs:\n    lat:\n      type: float\n      doc: The latitude of the study area\n      label: openoil\n    lon:\n      type: float\n      doc: The longitude of the study area\n      label: openoil\n    time:\n      type: string\n      doc: The start time of the simulation\n      label: openoil\n    oiltype:\n      type: string\n      doc: The type of the oil to run the simulation\n      label: openoil\n    duration:\n      type: int\n      doc: The simulation duration\n      label: openoil\n    username:\n      type: string\n      doc: The CMEMS username\n      label: cmems_credentials\n    password:\n      type: string\n      doc: The CMEMS password\n      label: cmems_credentials\n    frames:\n      type: string?\n      label: narratives\n      default: 0,1,2,3,4,5,6,7,8,9,10\n    density:\n      type: string?\n      label: narratives\n      default: 0.01, 0.05, 0.10, 0.50, 1.00\n  steps:\n    step_simulation:\n      run: '#openoil_simulation'\n      in:\n        lat: lat\n        lon: lon\n        time: time\n        oiltype: oiltype\n        duration: duration\n        username: username\n        password: password\n      out:\n      - simulation\n      - metadata\n    step_extract_particles:\n      run: '#extract_particles'\n      in:\n        input-file: step_simulation/simulation\n        output-format:\n          default: stac\n        projection-function:\n          default: none\n        projection-resolution:\n          default: none\n        latitude-variable:\n          default: lat\n        longitude-variable:\n          default: lon\n        time-variable:\n          default: time\n      out:\n      - result\n    step_crop_frames:\n      run: '#crop_frames'\n      in:\n        particles: step_extract_particles/result\n        frames: frames\n      out:\n      - result\n    step_generate_contours:\n      run: '#generate_contours'\n      in:\n        cropped: step_crop_frames/result\n        density: density\n        output-format:\n          default: json\n      out:\n      - result\n    dir2files:\n      run: '#dir2files'\n      in:\n        input_dir: step_generate_contours/result\n      out:\n      - output_files\n    json_append:\n      run: '#json_append_wp6tools_pipeline'\n      in:\n        files: dir2files/output_files\n      out:\n      - result\n    step_2stac2:\n      run: '#2stac2_wp6tools_pipeline'\n      in:\n        simulation: step_simulation/simulation\n        contours: json_append/result\n        metadata: step_simulation/metadata\n      out:\n      - stac_result\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - access_key\n      - secret_key\n      - session_token\n      - password\n  requirements:\n    InlineJavascriptRequirement: {}\n    SubworkflowFeatureRequirement: {}\n  s:name: openoil_visualization_pipeline\n  s:description: 'This pipeline runs an oil spill pipeline with openoil and creates\n    visualizations of the simulation results.\n\n    '\n  s:keywords:\n  - oil spill\n  - openoil\n  - opendrift\n  - visualization\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-24T23:30:45Z'\n  s:identifier: urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0\n  s:sdDatePublished: '2025-11-24T23:34:39.575868Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: openoil_simulation\n  baseCommand: python\n  arguments:\n  - /opt/openoil.py\n  - --lat\n  - valueFrom: $( inputs.lat )\n  - --lon\n  - valueFrom: $( inputs.lon )\n  - --time\n  - valueFrom: $( inputs.time )\n  - --oiltype\n  - valueFrom: $( inputs.oiltype )\n  - --duration\n  - valueFrom: $( inputs.duration )\n  - --username\n  - valueFrom: $( inputs.username )\n  - --password\n  - valueFrom: $( inputs.password )\n  inputs:\n    lat:\n      type: float\n      doc: The latitude of the study area\n    lon:\n      type: float\n      doc: The longitude of the study area\n    time:\n      type: string\n      doc: The start time of the simulation\n    oiltype:\n      type: string\n      doc: The type of the oil to run the simulation\n    duration:\n      type: int\n      doc: The simulation duration\n    username:\n      type: string\n      doc: The CMEMS username\n    password:\n      type: string\n      doc: The CMEMS password\n  outputs:\n    simulation:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: result/simulation.nc\n    metadata:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: result/metadata.json\n      doc: metadata description\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/openoil-simulation-duth:0.2.0\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - password\n  s:name: openoil_simulation\n  s:description: Simulation of oil spill\n  s:keywords:\n  - oil spill\n  - openoil\n  - opendrift\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: D.U.TH\n    s:url: https://env.duth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: D.U.TH\n    s:url: https://env.duth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:author:\n  - class: s:Person\n    s:name: Georgios Sylaios\n    s:email: gsylaios@env.duth.gr\n  - class: s:Person\n    s:name: Nikolaos Kokkos\n    s:email: nikolaoskokkos@gmail.com\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-17T11:38:11Z'\n- class: CommandLineTool\n  id: extract_particles\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - extract-particles\n  - --input-url\n  - valueFrom: $( inputs['input-file'] )\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --projection-function\n  - valueFrom: $( inputs['projection-function'] )\n  - --projection-resolution\n  - valueFrom: $( inputs['projection-resolution'] )\n  - --latitude-variable\n  - valueFrom: $( inputs['latitude-variable'] )\n  - --longitude-variable\n  - valueFrom: $( inputs[\"longitude-variable\"] )\n  - --time-variable\n  - valueFrom: $( inputs[\"time-variable\"] )\n  - --output-url\n  - output/particles\n  inputs:\n    input-file:\n      type: File\n    output-format:\n      type: string\n    projection-function:\n      type: string\n    projection-resolution:\n      type: string\n    latitude-variable:\n      type: string\n    longitude-variable:\n      type: string\n    time-variable:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/particles\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: extract_particles\n  s:description: extract particles frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - extract\n  - particles\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: crop_frames\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - crop-frames\n  - --input-url\n  - valueFrom: $( inputs['particles'])\n  - --input-format\n  - stac\n  - --frames\n  - valueFrom: $( inputs['frames'] )\n  - --output-url\n  - output/cropped\n  inputs:\n    particles:\n      type: Directory\n    frames:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/cropped\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: crop_frames\n  s:description: crop frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - crop\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: generate_contours\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - generate-contours-at-density\n  - --input-url\n  - valueFrom: $( inputs['cropped'])\n  - --input-format\n  - stac\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --density\n  - valueFrom: $( inputs['density'] )\n  - --output-url\n  - output/contours\n  inputs:\n    cropped:\n      type: Directory\n    output-format:\n      type: string\n      default: json\n    density:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/contours\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: generate_contours\n  s:description: generate contours frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - contours\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: dir2files\n  baseCommand: python\n  arguments:\n  - /opt/dir2files.py\n  - --directory\n  - valueFrom: $(inputs.input_dir)\n  inputs:\n    input_dir:\n      type: Directory\n  outputs:\n    output_files:\n      type: File[]\n      outputBinding:\n        glob: ./*\n  requirements:\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/dir2files:0.1.0\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n  s:name: dir2files\n  s:description: Converts a directory to a list of files\n  s:keywords:\n  - directory\n  - files\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:08:43Z'\n- class: CommandLineTool\n  id: json_append_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/append.py\n  - valueFrom: '$( function () {\n\n      var files_array = []; Object.keys(inputs.files).forEach(function (element) {\n      console.log(inputs.files[element]); if(inputs.files[element].basename !== ''contour-header.json'')\n      files_array.push(''--file''); files_array.push(inputs.files[element]); }); return\n      files_array;\n\n      }())'\n  inputs:\n    files:\n      type: File[]?\n      doc: files\n  outputs:\n    result:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: appended.json\n      doc: json file appended\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/json-append:0.1.0\n  s:name: json_append\n  s:description: Append json files, objects and array of objects, to an array of objects\n  s:keywords:\n  - json\n  - merge\n  - append\n  - metadata\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:32:08Z'\n- class: CommandLineTool\n  id: 2stac2_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - valueFrom: $( function () { if (inputs[\"unity_choreography\"]) { return [\"--file\",\n      inputs[\"unity_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"cesium_choreography\"]) { return [\"--file\",\n      inputs[\"cesium_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"simulation\"]) { return [\"--file\", inputs[\"simulation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"animation\"]) { return [\"--file\", inputs[\"animation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"bathymetry\"]) { return [\"--file\", inputs[\"bathymetry\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"contours\"]) { return [\"--file\", inputs[\"contours\"]];\n      } else { return []; } }())\n  - --metadata\n  - valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  inputs:\n    unity_choreography:\n      format: edam:format_3464\n      doc: unity choreography json file\n      type: File?\n    cesium_choreography:\n      format: edam:format_3464\n      doc: cesium choreography json file\n      type: File?\n    simulation:\n      format: edam:format_3650\n      doc: NetCDF simulation file\n      type: File?\n    animation:\n      format: edam:format_3467\n      doc: Animation GIF file\n      type: File?\n    bathymetry:\n      format: edam:format_3650\n      doc: Bathymetry NetCDF file\n      type: File?\n    contours:\n      format: edam:format_3464\n      doc: Contours file\n      type: File?\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.1\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  if(inputs.unity_choreography) metadata.push({...content,\\\n        \\ filename: inputs.unity_choreography.basename});\\n  if(inputs.cesium_choreography)\\\n        \\ metadata.push({...content, filename: inputs.cesium_choreography.basename});\\n\\\n        \\  if(inputs.simulation) metadata.push({...content, filename: inputs.simulation.basename});\\n\\\n        \\  if(inputs.animation) metadata.push({...content, filename: inputs.animation.basename});\\n\\\n        \\  if(inputs.bathymetry) metadata.push({...content, filename: inputs.bathymetry.basename});\\n\\\n        \\  if(inputs.contours) metadata.push({...content, filename: inputs.contours.basename});\\n\\\n        \\  return [{\\\"class\\\": \\\"File\\\", \\\"basename\\\": \\\"multiple_metadata.json\\\"\\\n        , \\\"contents\\\": JSON.stringify(metadata) }];\\n}\\n\"\n  s:name: 2stac2_wp6tools_pipeline\n  s:softwareVersion: 0.3.1\n  s:description: 2stac2 for WP6 tools pipeline\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-17T16:08:31Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline:0.2.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:openoil_visualization_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

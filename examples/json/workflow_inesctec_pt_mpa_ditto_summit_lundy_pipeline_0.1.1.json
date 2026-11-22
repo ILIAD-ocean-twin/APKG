@@ -1,0 +1,202 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/workflows/mpa-ditto-summit-lundy/mpa_ditto_summit_lundy_0_1_1.cwl",
+    "programming_language": null,
+    "keywords": [
+      "mpa",
+      "opendrift",
+      "simulation"
+    ],
+    "Secrets": {
+      "secrets": [
+        "password"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "The start time of the simulation",
+        "id": "startdate",
+        "type": "string"
+      },
+      {
+        "doc": "The duration of the simulation",
+        "id": "duration",
+        "type": "int"
+      },
+      {
+        "doc": "The CMEMS username",
+        "id": "username",
+        "type": "string"
+      },
+      {
+        "doc": "The CMEMS password",
+        "id": "password",
+        "type": "string"
+      }
+    ],
+    "description": "This pipeline runs an mpa simulation with Opendrift.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "mpa_ditto_summit_lundy_pipeline",
+    "software_version": "0.1.1",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1",
+    "citation": null,
+    "date_created": "2026-10-31T03:48:14Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2026-10-31T03:50:20.020740Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=cwl",
+    "license": null,
+    "code_repository": "https://github.com/ILIAD-ocean-twin/application_package/tree/main/mpa-norway",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "mpa_ditto_summit_lundy_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: mpa_ditto_summit_lundy_pipeline\n  doc: This pipeline runs the mpa simulation.\n  inputs:\n    startdate:\n      type: string\n      doc: The start time of the simulation\n    duration:\n      type: int\n      doc: The duration of the simulation\n    username:\n      type: string\n      doc: The CMEMS username\n    password:\n      type: string\n      doc: The CMEMS password\n  steps:\n    step_simulation:\n      run: '#mpa_ditto_summit_lundy'\n      in:\n        startdate: startdate\n        duration: duration\n        username: username\n        password: password\n      out:\n      - simulation\n    step_metadata:\n      run: '#netcdf_metadata'\n      in:\n        netcdf_file: step_simulation/simulation\n      out:\n      - metadata\n    step_2stac2:\n      run: '#2stac2_mpa_pipeline'\n      in:\n        simulation: step_simulation/simulation\n        metadata: step_metadata/metadata\n      out:\n      - stac_result\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - password\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: mpa_ditto_summit_lundy_pipeline\n  s:description: 'This pipeline runs an mpa simulation with Opendrift.\n\n    '\n  s:keywords:\n  - mpa\n  - opendrift\n  - simulation\n  s:softwareVersion: 0.1.1\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/ILIAD-ocean-twin/application_package/tree/main/mpa-norway\n  s:dateCreated: '2026-10-31T03:48:14Z'\n  s:identifier: urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1\n  s:sdDatePublished: '2026-10-31T03:50:20.020740Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: mpa_ditto_summit_lundy\n  baseCommand: python\n  arguments:\n  - /simulation/mpa.py\n  - --startdate\n  - valueFrom: $( inputs.startdate )\n  - --duration\n  - valueFrom: $( inputs.duration )\n  - --username\n  - valueFrom: $( inputs.username )\n  - --password\n  - valueFrom: $( inputs.password )\n  inputs:\n    startdate:\n      type: string\n      doc: The start time of the simulation\n    duration:\n      type: int\n      doc: The simulation duration\n    username:\n      type: string\n      doc: The CMEMS username\n    password:\n      type: string\n      doc: The CMEMS password\n  outputs:\n    simulation:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: modeloutput/result.nc\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/mpa-ditto-summit-lundy:0.1.1\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - password\n  s:name: mpa_ditto_summit_lundy\n  s:description: Runs (i) OpenDrift for Marine Protected Areas (MPAs).\n  s:keywords:\n  - opendrift\n  - mpa\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.1\n  s:producer:\n    class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:author:\n  - class: s:Person\n    s:name: Arne Berre\n    s:email: arne.j.berre@sintef.no\n  - class: s:Person\n    s:name: Volker Hoffmann\n    s:email: volker.hoffmann@sintef.no\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/ILIAD-ocean-twin/application_package/tree/main/ditto-summut/mpa\n  s:dateCreated: '2026-10-31T03:35:19Z'\n- class: CommandLineTool\n  id: netcdf_metadata\n  baseCommand: python\n  arguments:\n  - /opt/parse.py\n  - --netcdf_file\n  - valueFrom: $(inputs.netcdf_file)\n  - valueFrom: $(inputs.extra_props ? ['--extra_props', inputs.extra_props] :[])\n  inputs:\n    netcdf_file:\n      type: File\n    extra_props:\n      type: File?\n  outputs:\n    metadata:\n      outputBinding:\n        glob: ./metadata.json\n      type: File\n      format: edam:format_3464\n  requirements:\n    MultipleInputFeatureRequirement: {}\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/netcdf-metadata:0.1.0\n  s:name: netcdf_metadata\n  s:softwareVersion: 0.1.0\n  s:description: Extract metadata from NetCDF file\n  s:keywords:\n  - netcdf\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:39:29Z'\n- class: CommandLineTool\n  id: 2stac2_mpa_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  inputs:\n    simulation:\n      format: edam:format_3650\n      doc: simulation NetCDF file\n      type: File\n      inputBinding:\n        prefix: --file\n    connectivity:\n      format: edam:format_3620\n      doc: connectivity file\n      type: File?\n      inputBinding:\n        prefix: --file\n    connectivity_with_locality_id:\n      format: edam:format_3620\n      doc: connectivity with locality id\n      type: File?\n      inputBinding:\n        prefix: --file\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n      inputBinding:\n        prefix: --metadata\n        valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.2\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  metadata.push({...content, filename:inputs[\\\"simulation\\\"\\\n        ].basename});\\n  if(inputs[\\\"connectivity\\\"] && inputs[\\\"connectivity\\\"].basename)\\n\\\n        \\    metadata.push({...content, filename:inputs[\\\"connectivity\\\"].basename\\\n        \\ , media_type:\\\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\\\"\\\n        });\\n  if(inputs[\\\"connectivity_with_locality_id\\\"] && inputs[\\\"connectivity_with_locality_id\\\"\\\n        ].basename)\\n    metadata.push({...content, filename:inputs[\\\"connectivity_with_locality_id\\\"\\\n        ].basename , media_type:\\\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\\\"\\\n        });\\n  return [{\\\"class\\\": \\\"File\\\", \\\"basename\\\": \\\"multiple_metadata.json\\\"\\\n        , \\\"contents\\\": JSON.stringify(metadata) }];\\n}\\n\"\n  s:name: 2stac2_mpa_pipeline\n  s:softwareVersion: 0.3.2\n  s:description: 2stac2 tool to transform MPA simulation files into a STAC\n  s:keywords:\n  - stac\n  - metadata\n  - mpa\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2026-10-30T16:34:27Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline:0.1.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:mpa_ditto_summit_lundy_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

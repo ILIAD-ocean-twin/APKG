@@ -1,0 +1,283 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "doc": null,
+        "id": "map",
+        "type": "File"
+      },
+      {
+        "doc": null,
+        "id": "result",
+        "type": "File"
+      },
+      {
+        "doc": null,
+        "id": "simulation",
+        "type": "File"
+      },
+      {
+        "doc": null,
+        "id": "simulation_currents",
+        "type": "File"
+      },
+      {
+        "doc": null,
+        "id": "statistics",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/openoil-booms/openoil_booms_0_1_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "opendrift",
+      "openoil",
+      "booms"
+    ],
+    "inputs": [
+      {
+        "doc": null,
+        "id": "lat",
+        "type": "float"
+      },
+      {
+        "doc": null,
+        "id": "lon",
+        "type": "float"
+      },
+      {
+        "doc": null,
+        "id": "radius",
+        "type": "int"
+      },
+      {
+        "doc": null,
+        "id": "start_time",
+        "type": "string"
+      },
+      {
+        "doc": null,
+        "id": "duration_hours",
+        "type": "int"
+      },
+      {
+        "doc": null,
+        "id": "number",
+        "type": "int?"
+      },
+      {
+        "doc": null,
+        "id": "oil_type",
+        "type": "string?"
+      },
+      {
+        "doc": null,
+        "id": "total_mass_kg",
+        "type": "int?"
+      },
+      {
+        "doc": null,
+        "id": "density",
+        "type": "float?"
+      },
+      {
+        "doc": null,
+        "id": "viscosity",
+        "type": "float?"
+      },
+      {
+        "doc": null,
+        "id": "oil_source",
+        "type": "string?"
+      },
+      {
+        "doc": null,
+        "id": "reader_ocean",
+        "type": "string?"
+      },
+      {
+        "doc": null,
+        "id": "reader_wave",
+        "type": "string?"
+      },
+      {
+        "doc": null,
+        "id": "reader_wind",
+        "type": "string?"
+      },
+      {
+        "doc": null,
+        "id": "time_step",
+        "type": "int?"
+      },
+      {
+        "doc": null,
+        "id": "time_step_output",
+        "type": "int?"
+      },
+      {
+        "doc": null,
+        "id": "boom",
+        "type": "string[]?"
+      }
+    ],
+    "description": "OpenOil with Booms",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "openoil_booms",
+    "software_version": "0.1.0",
+    "class": "CommandLineTool",
+    "latest": false,
+    "identifier": "urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0",
+    "citation": null,
+    "date_created": "2025-11-26T15:20:09Z",
+    "author": [
+      {
+        "name": "Joao Campos",
+        "email": "joao.campos@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-26T15:23:13.818593Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "openoil_booms",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:openoil_booms",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n$graph:\n- class: CommandLineTool\n  id: openoil_booms\n  baseCommand:\n  - python\n  - /opt/headless.py\n  inputs:\n    lat:\n      type: float\n      doc: null\n      inputBinding:\n        prefix: --lat\n    lon:\n      type: float\n      doc: null\n      inputBinding:\n        prefix: --lon\n    radius:\n      type: int\n      doc: null\n      inputBinding:\n        prefix: --radius\n    start_time:\n      type: string\n      doc: null\n      inputBinding:\n        prefix: --start_time\n    duration_hours:\n      type: int\n      doc: null\n      inputBinding:\n        prefix: --duration_hours\n    number:\n      type: int?\n      doc: null\n      inputBinding:\n        prefix: --number\n    oil_type:\n      type: string?\n      doc: null\n      inputBinding:\n        prefix: --oil_type\n    total_mass_kg:\n      type: int?\n      doc: null\n      inputBinding:\n        prefix: --total_mass_kg\n    density:\n      type: float?\n      doc: null\n      inputBinding:\n        prefix: --density\n    viscosity:\n      type: float?\n      doc: null\n      inputBinding:\n        prefix: --viscosity\n    oil_source:\n      type: string?\n      doc: null\n      inputBinding:\n        prefix: --oil_source\n    reader_ocean:\n      type: string?\n      doc: null\n      inputBinding:\n        prefix: --reader_ocean\n    reader_wave:\n      type: string?\n      doc: null\n      inputBinding:\n        prefix: --reader_wave\n    reader_wind:\n      type: string?\n      doc: null\n      inputBinding:\n        prefix: --reader_wind\n    time_step:\n      type: int?\n      doc: null\n      inputBinding:\n        prefix: --time_step\n    time_step_output:\n      type: int?\n      doc: null\n      inputBinding:\n        prefix: --time_step_output\n    boom:\n      type: string[]?\n      doc: null\n      inputBinding:\n        prefix: --boom\n  outputs:\n    map:\n      type: File\n      doc: null\n      outputBinding:\n        glob: map.png\n    result:\n      type: File\n      doc: null\n      outputBinding:\n        glob: results.nc\n    simulation:\n      type: File\n      doc: null\n      outputBinding:\n        glob: simulation.mp4\n    simulation_currents:\n      type: File\n      doc: null\n      outputBinding:\n        glob: initial_simulation_with_currents.mp4\n    statistics:\n      type: File\n      doc: null\n      outputBinding:\n        glob: statistics.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/openoil-booms:0.1.0\n  s:name: openoil_booms\n  s:description: OpenOil with Booms\n  s:keywords:\n  - opendrift\n  - openoil\n  - booms\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Joao Campos\n    s:email: joao.campos@inesctec.pt\n  s:dateCreated: '2025-11-26T15:20:09Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0\n  s:sdDatePublished: '2025-11-26T15:23:13.818593Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:openoil_booms\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:openoil_booms\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:openoil_booms\"&sortby=-software_version"
+    }
+  ]
+}

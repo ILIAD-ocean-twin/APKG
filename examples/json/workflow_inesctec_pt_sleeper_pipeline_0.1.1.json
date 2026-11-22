@@ -1,0 +1,180 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": null,
+    "keywords": [
+      "sleeper"
+    ],
+    "inputs": [
+      {
+        "default": 60,
+        "doc": "Seconds to sleep",
+        "id": "seconds",
+        "type": "int"
+      }
+    ],
+    "description": "This pipeline sleeps for a given number of seconds and then simulates metadata for 2stac.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "sleeper_pipeline",
+    "software_version": "0.1.1",
+    "class": "Workflow",
+    "latest": false,
+    "identifier": "urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1",
+    "citation": null,
+    "date_created": "2025-06-05T17:40:32Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:38.265411Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/workflows/sleeper/sleeper_0_1_1.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "sleeper_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:sleeper_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: sleeper_pipeline\n  inputs:\n    seconds:\n      type: int\n      doc: Seconds to sleep\n      default: 60\n  steps:\n    step_sleep:\n      run: '#sleep'\n      in:\n        seconds: seconds\n      out:\n      - res\n    step_simulate_metadata:\n      run: '#simulate_metadata_2stac'\n      in: []\n      out:\n      - metadata\n    step_2stac2:\n      run: '#2stac2_sleeper_pipeline'\n      in:\n        result: step_sleep/res\n        metadata: step_simulate_metadata/metadata\n      out:\n      - stac_result\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: sleeper_pipeline\n  s:description: 'This pipeline sleeps for a given number of seconds and then simulates\n    metadata for 2stac.\n\n    '\n  s:keywords:\n  - sleeper\n  s:softwareVersion: 0.1.1\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/workflows/sleeper/sleeper_0_1_1.cwl\n  s:dateCreated: '2025-06-05T17:40:32Z'\n  s:sdDatePublished: '2025-06-11T14:23:38.265411Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1\n- class: ExpressionTool\n  id: simulate_metadata_2stac\n  inputs: []\n  outputs:\n    metadata:\n      type: File\n  expression: \"${\\n  return {\\n    metadata: {\\n      \\\"class\\\": \\\"File\\\",\\n     \\\n    \\ \\\"basename\\\": \\\"metadata.json\\\",\\n      \\\"nameroot\\\": \\\"metadata\\\",\\n      \\\"\\\n    nameext\\\": \\\".json\\\",\\n      \\\"format\\\": \\\"http://edamontology.org/format_3464\\\"\\\n    , // JSON\\n      \\\"contents\\\": JSON.stringify(\\n        [{\\n          \\\"filename\\\"\\\n    : \\\"res.json\\\",\\n          \\\"description\\\": \\\"This is an example metadata file\\\n    \\ for 2stac2.\\\",\\n          \\\"keywords\\\": [\\\"example\\\", \\\"metadata\\\", \\\"sleeper\\\"\\\n    ],\\n          \\\"bbox\\\": [-180, -90, 180, 90],\\n          \\\"datetime\\\": new Date().toISOString(),\\n\\\n    \\          \\\"media_type\\\": \\\"application/json\\\",\\n          \\\"geometry\\\": {\\n\\\n    \\            \\\"type\\\": \\\"Polygon\\\",\\n            \\\"coordinates\\\": [\\n        \\\n    \\      [\\n                [-180, -90],\\n                [-180, 90],\\n        \\\n    \\        [180, 90],\\n                [180, -90],\\n                [-180, -90]\\n\\\n    \\              ]\\n            ]\\n          },\\n        }]\\n      )\\n    }\\n  }\\n\\\n    }\\n\"\n- class: CommandLineTool\n  id: sleep\n  baseCommand: app-sleep\n  arguments:\n  - --seconds\n  - valueFrom: $( inputs.seconds )\n  inputs:\n    seconds:\n      type: int\n      doc: seconds to sleep\n      default: 12\n  outputs:\n    res:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: result/res.json\n      doc: tree list\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/sleep:0.1.0\n  s:name: sleep\n  s:description: sleep time in seconds\n  s:keywords:\n  - sleep\n  - simulation\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/sleep/sleep_0_1_0.cwl\n  s:dateCreated: '2025-05-12T12:39:43Z'\n- class: CommandLineTool\n  id: 2stac2_sleeper_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - --file\n  - valueFrom: $(inputs.result)\n  - --metadata\n  - valueFrom: $(inputs.metadata)\n  inputs:\n    result:\n      format: edam:format_3464\n      doc: result\n      type: File\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.2.0\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n  s:name: 2stac2_sleeper_pipeline\n  s:softwareVersion: 0.2.0\n  s:description: 2stac2 for the sleeper pipeline\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:sourceOrganization:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n    class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2stac2/2stac2_sleeper_pipeline_0_2_0.cwl\n  s:dateCreated: '2025-06-04T17:02:42Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:sleeper_pipeline:0.1.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:sleeper_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:sleeper_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:sleeper_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

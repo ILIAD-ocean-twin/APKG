@@ -1,0 +1,175 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/workflows/pyopia-sintef-demo/pyopia_sintef_demo_0_1_0.cwl",
+    "programming_language": null,
+    "keywords": [
+      "pyopia",
+      "simulation"
+    ],
+    "inputs": [],
+    "description": "This pipeline runs a PyOPIA demo analysis, generating figures and statistics from copepod image data and packaging the results into a STAC output.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "pyopia_demo_pipeline",
+    "software_version": "0.1.0",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0",
+    "citation": null,
+    "date_created": "2025-11-24T23:38:39Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-24T23:42:33.630551Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": "https://github.com/SINTEF/pyopia/tree/main",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "pyopia_demo_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: pyopia_demo_pipeline\n  doc: This pipeline runs the PyOPIA demo analysis for Norway.\n  inputs: []\n  steps:\n    step_pyopia:\n      run: '#pyopia_demo_sintef'\n      in: []\n      out:\n      - particles_figure\n      - vd_copepods\n      - vd_copepods_per_L\n      - netcdf_statistics\n      - metadata\n    step_2stac2:\n      run: '#2stac2_pyopia_pipeline'\n      in:\n        simulation: step_pyopia/netcdf_statistics\n        particles_figure: step_pyopia/particles_figure\n        vd_copepods: step_pyopia/vd_copepods\n        vd_copepods_per_L: step_pyopia/vd_copepods_per_L\n        metadata: step_pyopia/metadata\n      out:\n      - stac_result\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: pyopia_demo_pipeline\n  s:description: 'This pipeline runs a PyOPIA demo analysis, generating figures and\n    statistics from copepod image data and packaging the results into a STAC output.\n\n    '\n  s:keywords:\n  - pyopia\n  - simulation\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/SINTEF/pyopia/tree/main\n  s:dateCreated: '2025-11-24T23:38:39Z'\n  s:identifier: urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0\n  s:sdDatePublished: '2025-11-24T23:42:33.630551Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: pyopia_demo_sintef\n  baseCommand: uv\n  arguments:\n  - run\n  - /app/script.py\n  inputs: []\n  outputs:\n  - id: netcdf_statistics\n    type: File\n    format: edam:format_3650\n    outputBinding:\n      glob: pyopiaproject/processed/pyopiaproject-STATS.nc\n  - id: particles_figure\n    type: File\n    format: edam:format_3603\n    outputBinding:\n      glob: pyopiaproject/particles.png\n  - id: vd_copepods\n    type: File\n    format: edam:format_3603\n    outputBinding:\n      glob: pyopiaproject/vd_copepods.png\n  - id: vd_copepods_per_L\n    type: File\n    format: edam:format_3603\n    outputBinding:\n      glob: pyopiaproject/vd_copepods_per_L.png\n  - id: metadata\n    type: File\n    format: edam:format_3464\n    outputBinding:\n      glob: pyopiaproject/nc_metadata.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /app/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/pyopia-demo-sintef:0.1.0\n  s:name: pyopia_demo_sintef\n  s:description: Analysis of a small image example dataset using PyOPIA.\n  s:keywords:\n  - pyopia\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:author:\n  - class: s:Person\n    s:name: Raymond Nepstad\n    s:email: raymond.nepstad@sintef.no\n  - class: s:Person\n    s:name: Volker Hoffmann\n    s:email: volker.hoffmann@sintef.no\n  - class: s:Person\n    s:name: Antoine Pultier\n    s:email: antoine.pultier@sintef.no\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/SINTEF/pyopia/tree/main\n  s:dateCreated: '2025-10-29T18:07:13Z'\n- class: CommandLineTool\n  id: 2stac2_pyopia_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  inputs:\n    simulation:\n      format: edam:format_3650\n      doc: simulation NetCDF file\n      type: File\n      inputBinding:\n        prefix: --file\n    particles_figure:\n      format: edam:format_3603\n      doc: particles_figure\n      type: File?\n      inputBinding:\n        prefix: --file\n    vd_copepods:\n      format: edam:format_3603\n      doc: vd_copepods\n      type: File?\n      inputBinding:\n        prefix: --file\n    vd_copepods_per_L:\n      format: edam:format_3603\n      doc: vd_copepods_per_L\n      type: File?\n      inputBinding:\n        prefix: --file\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n      inputBinding:\n        prefix: --metadata\n        valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.1\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  metadata.push({...content, filename:inputs[\\\"simulation\\\"\\\n        ].basename});\\n  metadata.push({...content, filename:inputs[\\\"particles_figure\\\"\\\n        ].basename , media_type:\\\"image/png\\\"});\\n  metadata.push({...content, filename:inputs[\\\"\\\n        vd_copepods\\\"].basename , media_type:\\\"image/png\\\"});\\n  metadata.push({...content,\\\n        \\ filename:inputs[\\\"vd_copepods_per_L\\\"].basename , media_type:\\\"image/png\\\"\\\n        });\\n  return [{\\\"class\\\": \\\"File\\\", \\\"basename\\\": \\\"multiple_metadata.json\\\"\\\n        , \\\"contents\\\": JSON.stringify(metadata) }];\\n}\\n\"\n  s:name: 2stac2_pyopia_pipeline\n  s:softwareVersion: 0.3.1\n  s:description: 2stac2 tool to transform pyopia simulation files into a STAC\n  s:keywords:\n  - stac\n  - metadata\n  - pyopia\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-17T16:08:31Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:pyopia_demo_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

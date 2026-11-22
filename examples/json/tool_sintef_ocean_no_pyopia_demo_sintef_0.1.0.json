@@ -1,0 +1,215 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "format": "edam:format_3650",
+        "id": "netcdf_statistics",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3603",
+        "id": "particles_figure",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3603",
+        "id": "vd_copepods",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3603",
+        "id": "vd_copepods_per_L",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3464",
+        "id": "metadata",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/pyopia-demo-sintef/pyopia_demo_sintef_0_1_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "pyopia"
+    ],
+    "inputs": [],
+    "description": "Analysis of a small image example dataset using PyOPIA.",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "pyopia_demo_sintef",
+    "software_version": "0.1.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0",
+    "citation": null,
+    "date_created": "2025-10-29T18:07:13Z",
+    "author": [
+      {
+        "name": "Raymond Nepstad",
+        "email": "raymond.nepstad@sintef.no"
+      },
+      {
+        "name": "Volker Hoffmann",
+        "email": "volker.hoffmann@sintef.no"
+      },
+      {
+        "name": "Antoine Pultier",
+        "email": "antoine.pultier@sintef.no"
+      }
+    ],
+    "sdDatePublished": "2025-10-29T18:11:15.141151Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": "https://github.com/SINTEF/pyopia/tree/main",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      },
+      {
+        "address": {
+          "address_country": "NO"
+        },
+        "name": "SINTEF OCEAN",
+        "url": "https://sintef.no/en/ocean/"
+      }
+    ],
+    "name": "pyopia_demo_sintef",
+    "producer": [
+      {
+        "address": {
+          "address_country": "NO"
+        },
+        "name": "SINTEF OCEAN",
+        "url": "https://sintef.no/en/ocean/"
+      }
+    ],
+    "family": "urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: pyopia_demo_sintef\n  baseCommand: uv\n  arguments:\n  - run\n  - /app/script.py\n  inputs: []\n  outputs:\n  - id: netcdf_statistics\n    type: File\n    format: edam:format_3650\n    outputBinding:\n      glob: pyopiaproject/processed/pyopiaproject-STATS.nc\n  - id: particles_figure\n    type: File\n    format: edam:format_3603\n    outputBinding:\n      glob: pyopiaproject/particles.png\n  - id: vd_copepods\n    type: File\n    format: edam:format_3603\n    outputBinding:\n      glob: pyopiaproject/vd_copepods.png\n  - id: vd_copepods_per_L\n    type: File\n    format: edam:format_3603\n    outputBinding:\n      glob: pyopiaproject/vd_copepods_per_L.png\n  - id: metadata\n    type: File\n    format: edam:format_3464\n    outputBinding:\n      glob: pyopiaproject/nc_metadata.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /app/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/pyopia-demo-sintef:0.1.0\n  s:name: pyopia_demo_sintef\n  s:description: Analysis of a small image example dataset using PyOPIA.\n  s:keywords:\n  - pyopia\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:author:\n  - class: s:Person\n    s:name: Raymond Nepstad\n    s:email: raymond.nepstad@sintef.no\n  - class: s:Person\n    s:name: Volker Hoffmann\n    s:email: volker.hoffmann@sintef.no\n  - class: s:Person\n    s:name: Antoine Pultier\n    s:email: antoine.pultier@sintef.no\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/SINTEF/pyopia/tree/main\n  s:dateCreated: '2025-10-29T18:07:13Z'\n  s:identifier: urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0\n  s:sdDatePublished: '2025-10-29T18:11:15.141151Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:sintef_ocean:no:pyopia_demo_sintef\"&sortby=-software_version"
+    }
+  ]
+}

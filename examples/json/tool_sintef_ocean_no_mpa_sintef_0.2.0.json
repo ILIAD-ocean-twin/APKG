@@ -1,0 +1,246 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "format": "edam:format_3650",
+        "id": "simulation",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3620",
+        "id": "connectivity",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3620",
+        "id": "connectivity_with_locality_id",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/mpa-sintef/mpa_sintef_0_2_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "opendrift",
+      "mpa",
+      "aquaculture",
+      "connectivity",
+      "norway",
+      "norkyst800"
+    ],
+    "inputs": [
+      {
+        "doc": "aqua_site_file",
+        "id": "aqua_site_file",
+        "type": "string"
+      },
+      {
+        "doc": "aqua_site_distances_files",
+        "id": "aqua_site_distances_files",
+        "type": "string"
+      },
+      {
+        "doc": "aqua_opendrift_particles_per_site",
+        "id": "aqua_opendrift_particles_per_site",
+        "type": "int"
+      },
+      {
+        "doc": "aqua_opendrift_simulation_duration_hours",
+        "id": "aqua_opendrift_simulation_duration_hours",
+        "type": "int"
+      },
+      {
+        "doc": "aqua_connectivity_number_of_neighbours",
+        "id": "aqua_connectivity_number_of_neighbours",
+        "type": "int"
+      },
+      {
+        "doc": "aqua_connectivity_radius",
+        "id": "aqua_connectivity_radius",
+        "type": "int"
+      },
+      {
+        "doc": "The start time of the simulation",
+        "id": "starttime",
+        "type": "string?"
+      }
+    ],
+    "description": "Runs (i) OpenDrift, and (ii) the connectivity analysis for aquaculture sites in Norway using the NorKyst800 model data, for Marine Protected Areas (MPAs).",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "mpa_sintef",
+    "software_version": "0.2.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0",
+    "citation": null,
+    "date_created": "2025-11-25T11:24:32Z",
+    "author": [
+      {
+        "name": "Raymond Nepstad",
+        "email": "raymond.nepstad@sintef.no"
+      },
+      {
+        "name": "Volker Hoffmann",
+        "email": "volker.hoffmann@sintef.no"
+      },
+      {
+        "name": "Antoine Pultier",
+        "email": "antoine.pultier@sintef.no"
+      }
+    ],
+    "sdDatePublished": "2025-11-25T11:26:32.545874Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=cwl",
+    "license": null,
+    "code_repository": "https://github.com/ILIAD-ocean-twin/application_package/tree/main/mpa-norway",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      },
+      {
+        "address": {
+          "address_country": "NO"
+        },
+        "name": "SINTEF OCEAN",
+        "url": "https://sintef.no/en/ocean/"
+      }
+    ],
+    "name": "mpa_sintef",
+    "producer": [
+      {
+        "address": {
+          "address_country": "NO"
+        },
+        "name": "SINTEF OCEAN",
+        "url": "https://sintef.no/en/ocean/"
+      }
+    ],
+    "family": "urn:apkg:tool:sintef_ocean:no:mpa_sintef",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: mpa_sintef\n  baseCommand: python\n  arguments:\n  - /mpa/runnorkystforecast.py\n  inputs:\n    aqua_site_file:\n      type: string\n      doc: aqua_site_file\n      inputBinding:\n        prefix: --aqua_site_file\n    aqua_site_distances_files:\n      type: string\n      doc: aqua_site_distances_files\n      inputBinding:\n        prefix: --aqua_site_distances_files\n    aqua_opendrift_particles_per_site:\n      type: int\n      doc: aqua_opendrift_particles_per_site\n      inputBinding:\n        prefix: --aqua_opendrift_particles_per_site\n    aqua_opendrift_simulation_duration_hours:\n      type: int\n      doc: aqua_opendrift_simulation_duration_hours\n      inputBinding:\n        prefix: --aqua_opendrift_simulation_duration_hours\n    aqua_connectivity_number_of_neighbours:\n      type: int\n      doc: aqua_connectivity_number_of_neighbours\n      inputBinding:\n        prefix: --aqua_connectivity_number_of_neighbours\n    aqua_connectivity_radius:\n      type: int\n      doc: aqua_connectivity_radius\n      inputBinding:\n        prefix: --aqua_connectivity_radius\n    starttime:\n      type: string?\n      doc: The start time of the simulation\n      inputBinding:\n        prefix: --starttime\n  outputs:\n    simulation:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: modeloutput/salmon_midnor.nc\n    connectivity:\n      format: edam:format_3620\n      type: File\n      outputBinding:\n        glob: modeloutput/salmon_midnor_connectivity.xlsx\n    connectivity_with_locality_id:\n      format: edam:format_3620\n      type: File\n      outputBinding:\n        glob: modeloutput/salmon_midnor_connectivity_withLocalityId.xlsx\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/mpa-sintef:0.2.0\n  s:name: mpa_sintef\n  s:description: Runs (i) OpenDrift, and (ii) the connectivity analysis for aquaculture\n    sites in Norway using the NorKyst800 model data, for Marine Protected Areas (MPAs).\n  s:keywords:\n  - opendrift\n  - mpa\n  - aquaculture\n  - connectivity\n  - norway\n  - norkyst800\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: SINTEF OCEAN\n    s:url: https://sintef.no/en/ocean/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: 'NO'\n  s:author:\n  - class: s:Person\n    s:name: Raymond Nepstad\n    s:email: raymond.nepstad@sintef.no\n  - class: s:Person\n    s:name: Volker Hoffmann\n    s:email: volker.hoffmann@sintef.no\n  - class: s:Person\n    s:name: Antoine Pultier\n    s:email: antoine.pultier@sintef.no\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://github.com/ILIAD-ocean-twin/application_package/tree/main/mpa-norway\n  s:dateCreated: '2025-11-25T11:24:32Z'\n  s:identifier: urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0\n  s:sdDatePublished: '2025-11-25T11:26:32.545874Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:sintef_ocean:no:mpa_sintef:0.2.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:sintef_ocean:no:mpa_sintef\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:sintef_ocean:no:mpa_sintef\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:sintef_ocean:no:mpa_sintef\"&sortby=-software_version"
+    }
+  ]
+}

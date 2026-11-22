@@ -1,0 +1,220 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "doc": "STAC output",
+        "id": "stac_result",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/2stac2/2stac2_wp6tools_pipeline_0_3_1.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "stac",
+      "metadata"
+    ],
+    "inputs": [
+      {
+        "format": "edam:format_3464",
+        "doc": "unity choreography json file",
+        "id": "unity_choreography",
+        "type": "File?"
+      },
+      {
+        "format": "edam:format_3464",
+        "doc": "cesium choreography json file",
+        "id": "cesium_choreography",
+        "type": "File?"
+      },
+      {
+        "format": "edam:format_3650",
+        "doc": "NetCDF simulation file",
+        "id": "simulation",
+        "type": "File?"
+      },
+      {
+        "format": "edam:format_3467",
+        "doc": "Animation GIF file",
+        "id": "animation",
+        "type": "File?"
+      },
+      {
+        "format": "edam:format_3650",
+        "doc": "Bathymetry NetCDF file",
+        "id": "bathymetry",
+        "type": "File?"
+      },
+      {
+        "format": "edam:format_3464",
+        "doc": "Contours file",
+        "id": "contours",
+        "type": "File?"
+      },
+      {
+        "loadContents": true,
+        "format": "edam:format_3464",
+        "doc": "metadata file description",
+        "id": "metadata",
+        "type": "File"
+      }
+    ],
+    "description": "2stac2 for WP6 tools pipeline",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "2stac2_wp6tools_pipeline",
+    "software_version": "0.3.1",
+    "class": "CommandLineTool",
+    "latest": false,
+    "identifier": "urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1",
+    "citation": null,
+    "date_created": "2026-01-27T16:00:40Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2026-01-27T16:04:25.541687Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "2stac2_wp6tools_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: 2stac2_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - valueFrom: $( function () { if (inputs[\"unity_choreography\"]) { return [\"--file\",\n      inputs[\"unity_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"cesium_choreography\"]) { return [\"--file\",\n      inputs[\"cesium_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"simulation\"]) { return [\"--file\", inputs[\"simulation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"animation\"]) { return [\"--file\", inputs[\"animation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"bathymetry\"]) { return [\"--file\", inputs[\"bathymetry\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"contours\"]) { return [\"--file\", inputs[\"contours\"]];\n      } else { return []; } }())\n  - --metadata\n  - valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  inputs:\n    unity_choreography:\n      format: edam:format_3464\n      doc: unity choreography json file\n      type: File?\n    cesium_choreography:\n      format: edam:format_3464\n      doc: cesium choreography json file\n      type: File?\n    simulation:\n      format: edam:format_3650\n      doc: NetCDF simulation file\n      type: File?\n    animation:\n      format: edam:format_3467\n      doc: Animation GIF file\n      type: File?\n    bathymetry:\n      format: edam:format_3650\n      doc: Bathymetry NetCDF file\n      type: File?\n    contours:\n      format: edam:format_3464\n      doc: Contours file\n      type: File?\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.1\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  if(inputs.unity_choreography) metadata.push({...content,\\\n        \\ filename: inputs.unity_choreography.basename});\\n  if(inputs.cesium_choreography)\\\n        \\ metadata.push({...content, filename: inputs.cesium_choreography.basename});\\n\\\n        \\  if(inputs.simulation) metadata.push({...content, filename: inputs.simulation.basename});\\n\\\n        \\  if(inputs.animation) metadata.push({...content, filename: inputs.animation.basename});\\n\\\n        \\  if(inputs.bathymetry) metadata.push({...content, filename: inputs.bathymetry.basename});\\n\\\n        \\  if(inputs.contours) metadata.push({...content, filename: inputs.contours.basename});\\n\\\n        \\  return [{\\\"class\\\": \\\"File\\\", \\\"basename\\\": \\\"multiple_metadata.json\\\"\\\n        , \\\"contents\\\": JSON.stringify(metadata) }];\\n}\\n\"\n  s:name: 2stac2_wp6tools_pipeline\n  s:softwareVersion: 0.3.1\n  s:description: 2stac2 for WP6 tools pipeline\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2026-01-27T16:00:40Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1\n  s:sdDatePublished: '2026-01-27T16:04:25.541687Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline:0.3.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:2stac2_wp6tools_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

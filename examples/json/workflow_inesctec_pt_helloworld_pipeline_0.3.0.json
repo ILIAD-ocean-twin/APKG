@@ -1,0 +1,179 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": null,
+    "keywords": [
+      "helloworld"
+    ],
+    "inputs": [
+      {
+        "doc": "Some keyword",
+        "id": "name",
+        "type": "string"
+      }
+    ],
+    "description": "This pipeline runs the helloworld tool and returns the result.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "helloworld_pipeline",
+    "software_version": "0.3.0",
+    "class": "Workflow",
+    "latest": false,
+    "identifier": "urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0",
+    "citation": null,
+    "date_created": "2025-06-10T15:35:48Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:35.385148Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/workflows/hello-world/hello_world_0_3_0.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "helloworld_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:helloworld_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: helloworld_pipeline\n  inputs:\n    name:\n      type: string\n      doc: Some keyword\n  steps:\n    step_helloworld:\n      run: '#helloworld'\n      in:\n        name: name\n      out:\n      - result\n    step_2stac:\n      run: '#2stac2_simulation'\n      in:\n        result: step_helloworld/result\n      out:\n      - stac_result\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac/stac_result\n    type: Directory\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: helloworld_pipeline\n  s:description: 'This pipeline runs the helloworld tool and returns the result.\n\n    '\n  s:keywords:\n  - helloworld\n  s:softwareVersion: 0.3.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/workflows/hello-world/hello_world_0_3_0.cwl\n  s:dateCreated: '2025-06-10T15:35:48Z'\n  s:sdDatePublished: '2025-06-11T14:23:35.385148Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0\n- class: CommandLineTool\n  id: helloworld\n  baseCommand: python\n  arguments:\n  - /opt/helloworld.py\n  - valueFrom: $( inputs.name )\n  inputs:\n    name:\n      type: string\n      doc: Some keyword\n  outputs:\n    result:\n      type: File\n      outputBinding:\n        glob: result.txt\n      doc: result file\n  requirements:\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/hello-world:0.1.0\n  s:name: helloworld\n  s:description: Hello World example\n  s:keywords:\n  - helloworld\n  - example\n  - simple\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/hello-world/hello_world_0_1_0.cwl\n  s:dateCreated: '2025-05-12T12:21:05Z'\n- class: CommandLineTool\n  id: 2stac2_simulation\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - --file\n  - valueFrom: $( inputs.result )\n  - --metadata\n  - valueFrom: $(runtime.outdir + '/metadata.json')\n  inputs:\n    result:\n      type: File\n      doc: The resulting file of the previous model to insert in STAC\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    ResourceRequirement: {}\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.1\n    InitialWorkDirRequirement:\n      listing: \"${\\n\\n  return [{\\n    \\\"class\\\": \\\"File\\\",\\n    \\\"basename\\\": \\\"\\\n        metadata.json\\\",\\n    \\\"contents\\\": JSON.stringify([{\\n      \\\"filename\\\"\\\n        : inputs.result.basename,\\n      \\\"description\\\": \\\"This is an example metadata\\\n        \\ file for 2stac2.\\\",\\n      \\\"keywords\\\": [\\\"example\\\", \\\"metadata\\\", \\\"\\\n        helloworld\\\"],\\n      \\\"bbox\\\": [-180, -90, 180, 90],\\n      \\\"datetime\\\"\\\n        : new Date().toISOString(),\\n      \\\"media_type\\\": \\\"text/plain\\\",\\n     \\\n        \\ \\\"geometry\\\": {\\n        \\\"type\\\": \\\"Polygon\\\",\\n        \\\"coordinates\\\"\\\n        : [\\n          [\\n            [-180, -90],\\n            [-180, 90],\\n    \\\n        \\        [180, 90],\\n            [180, -90],\\n            [-180, -90]\\n  \\\n        \\        ]\\n        ]\\n      },\\n    }])}];\\n}\\n\"\n  s:name: 2stac2_simulation\n  s:softwareVersion: 0.3.1\n  s:description: Simulates a STAC result\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2stac2/2stac2_simulation_0_3_1.cwl\n  s:dateCreated: '2025-06-10T15:27:44Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:helloworld_pipeline:0.3.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:helloworld_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:helloworld_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:helloworld_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

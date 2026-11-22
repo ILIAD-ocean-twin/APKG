@@ -1,0 +1,218 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          10.403,
+          35.503
+        ],
+        [
+          11.397,
+          35.503
+        ],
+        [
+          11.397,
+          36.497
+        ],
+        [
+          10.403,
+          36.497
+        ],
+        [
+          10.403,
+          35.503
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "roms_output",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "roms",
+      "tunisia"
+    ],
+    "inputs": [
+      {
+        "doc": "forecast for the model",
+        "id": "forecast",
+        "type": "int"
+      },
+      {
+        "doc": "Hindcast for the model",
+        "id": "hindcast",
+        "type": "int"
+      },
+      {
+        "doc": "Password for Copernicus Download",
+        "id": "roms_password",
+        "type": "string"
+      },
+      {
+        "doc": "Username for Copernicus Download",
+        "id": "roms_username",
+        "type": "string"
+      },
+      {
+        "doc": "Simulation start date. If none is provided, today is used as reference",
+        "id": "timenow",
+        "type": "string"
+      }
+    ],
+    "description": "Ocean Digital Twin in Tunisia uses ROMS for precise aquaculture forecasts, enhancing sustainability.",
+    "maintainer": [
+      {
+        "name": "Hidromod",
+        "email": "iliad@hidromod.com"
+      }
+    ],
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "João Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      },
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "35.503 10.403 36.497 11.397"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "download_metoceanographic_data",
+    "software_version": "1.1.1",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1",
+    "citation": null,
+    "date_created": "2023-12-04",
+    "author": [
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      },
+      {
+        "name": "João Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:18.414816Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=cwl",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "name": "ROMS Tunisia",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "family": "urn:apkg:workflow:hidromod:pt:download_metoceanographic_data",
+    "cwl": "$graph:\n- class: Workflow\n  doc: Download of metoceanographic data\n  inputs:\n    forecast:\n      doc: forecast for the model\n      type: int\n    hindcast:\n      doc: Hindcast for the model\n      type: int\n    roms_password:\n      doc: Password for Copernicus Download\n      type: string\n    roms_username:\n      doc: Username for Copernicus Download\n      type: string\n    timenow:\n      doc: Simulation start date. If none is provided, today is used as reference\n      type: string\n  outputs:\n    roms_output:\n      type: Directory\n      outputSource: run_roms/roms_output\n  steps:\n    download_data:\n      in:\n        forecast: forecast\n        hindcast: hindcast\n        roms_password: roms_password\n        roms_username: roms_username\n        timenow: timenow\n      run: '#download_data'\n      out:\n      - roms_directory\n    run_roms:\n      in:\n        forecast: forecast\n        hindcast: hindcast\n        roms_directory: download_data/roms_directory\n        timenow: timenow\n      run: '#run_roms'\n      out:\n      - roms_output\n  id: download_metoceanographic_data\n  s:author:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:maintainer:\n  - class: s:Organization\n    s:email: iliad@hidromod.com\n    s:name: Hidromod\n  s:description: Ocean Digital Twin in Tunisia uses ROMS for precise aquaculture forecasts,\n    enhancing sustainability.\n  s:keywords:\n  - roms\n  - tunisia\n  s:name: ROMS Tunisia\n  s:programmingLanguage: python\n  s:softwareVersion: 1.1.1\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:dateCreated: '2023-12-04'\n  s:spatialCoverage:\n    class: s:geo\n    s:box: 35.503 10.403 36.497 11.397\n  s:license: https://creativecommons.org/licenses/by/4.0/\n  s:sdDatePublished: '2025-06-11T14:23:18.414816Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1\n- class: CommandLineTool\n  requirements:\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_roms_tunisia:1.1.1\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  inputs:\n    forecast:\n      type: int\n    hindcast:\n      type: int\n    roms_password:\n      type: string\n    roms_username:\n      type: string\n    timenow:\n      type: string\n  outputs:\n    roms_directory:\n      type: Directory\n      outputBinding:\n        glob: $(\"roms\")\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: \"\\\"/move_struct.sh $(runtime.outdir)\\\"; python3 /model/RomsOP.py --type\\\n      \\ preparation --forecast $(inputs.forecast) --hindcast $(inputs.hindcast) \\\\\\\n      \\n --roms_password $(inputs.roms_password) --roms_username $(inputs.roms_username)\\\n      \\ --timenow $(inputs.timenow);\\n\"\n    shellQuote: false\n  id: download_data\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:maintainer:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n  s:codeRepository: https://raw.githubusercontent.com/ILIAD-ocean-twin/application_package/main/ROMS_Tunisia/workflow.cwl\n  s:description: Download a preparation of executable to be used when executing ROMS\n  s:keywords:\n  - roms\n  - tunisia\n  - preparation\n  s:name: Preparation of ROMS Model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.1.1\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:dateCreated: '2023-12-04'\n  s:spatialCoverage:\n    class: s:geo\n    s:box: 35.503 10.403 36.497 11.397\n  s:license: https://creativecommons.org/licenses/by/4.0/\n- class: CommandLineTool\n  requirements:\n  - class: InitialWorkDirRequirement\n    listing:\n    - entryname: roms\n      writable: true\n      entry: $(inputs.roms_directory)\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_roms_tunisia:1.1.1\n  - class: InlineJavascriptRequirement\n  - class: NetworkAccess\n    networkAccess: true\n  inputs:\n    forecast:\n      type: int\n    hindcast:\n      type: int\n    roms_directory:\n      type: Directory\n    timenow:\n      type: string\n  outputs:\n    roms_output:\n      type: Directory\n      outputBinding:\n        glob: roms/[0-9]*\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: 'python3 /model/RomsOP.py --type execution --forecast $(inputs.forecast)\n      --hindcast $(inputs.hindcast) --timenow $(inputs.timenow);\n\n      '\n    shellQuote: false\n  id: run_roms\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  s:maintainer:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n  s:codeRepository: https://raw.githubusercontent.com/ILIAD-ocean-twin/application_package/main/ROMS_Tunisia/workflow.cwl\n  s:description: Execution of ROMS model with data from the preparation\n  s:keywords:\n  - roms\n  - tunisia\n  - execution\n  s:name: Execution of ROMS Model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.1.1\n  s:publisher:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:dateCreated: '2023-12-04'\n  s:spatialCoverage:\n    class: s:geo\n    s:box: 35.503 10.403 36.497 11.397\n  s:license: https://creativecommons.org/licenses/by/4.0/\n$namespaces:\n  ogc: http://www.opengis.net/def/media-type/ogc/1.0/\n  s: https://schema.org/\ncwlVersion: v1.2\n"
+  },
+  "id": "urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:download_metoceanographic_data:1.1.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:hidromod:pt:download_metoceanographic_data\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:hidromod:pt:download_metoceanographic_data\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:hidromod:pt:download_metoceanographic_data\"&sortby=-software_version"
+    }
+  ]
+}

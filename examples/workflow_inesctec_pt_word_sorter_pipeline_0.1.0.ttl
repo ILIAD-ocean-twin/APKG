@@ -1,0 +1,167 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+# Converted from urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0
+# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).
+
+<urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0> a apkg-pro:Process, apkg-rec:Record ;
+    dct:identifier "urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0" ;
+    dcat:qualifiedRelation [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "The landing page of this server as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "The landing page of this server as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "self" ;
+        apkg-rec:mediaType "application/geo+json" ;
+        dct:title "This document as GeoJSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=jsonld"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=jsonld_v2"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD) APKG V2"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "This document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+yaml" ;
+        dct:title "This document as CWL (YAML)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=cwljson"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+json" ;
+        dct:title "This document as CWL (JSON)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg"^^xsd:anyURI ;
+        apkg-rec:rel "collection" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "Application Packages"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:word_sorter_pipeline\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "All versions of this document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:word_sorter_pipeline\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:word_sorter_pipeline\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as RDF (JSON-LD)"
+    ] ;
+    dct:title "word_sorter_pipeline" ;
+    dct:description "This workflow sorts the words in a string and returns them in a text file.\n" ;
+    geo:hasGeometry [
+        a apkg-rec:Geometry ;
+        apkg-rec:geometryType "Polygon" ;
+        apkg-rec:coordinates "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+    ] ;
+    dcat:keyword "word sorting", "text processing" ;
+    apkg-pro:processID "urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0" ;
+    apkg-pro:familyID "urn:apkg:workflow:inesctec:pt:word_sorter_pipeline" ;
+    pav:version "0.1.0" ;
+    apkg-pro:dateCreated "2026-11-06"^^xsd:date ;
+    apkg-pro:registrationDate "2026-11-06T12:01:26.285614Z"^^xsd:dateTimeStamp ;
+    apkg-pro:isLatestVersion "true"^^xsd:boolean ;
+    apkg-pro:cwlDescriptor [
+        a apkg-pro:CWLDescriptor ;
+        apkg-pro:descriptorURL "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:word_sorter_pipeline:0.1.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:mediaType "application/cwl+yaml"
+    ] ;
+    dct:creator [
+        a apkg-pro:Person ;
+        foaf:name "João Campos" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "joao.campos@inesctec.pt"
+        ]
+    ] ;
+    dct:publisher [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "Application Package Registry" ;
+        apkg-pro:homepage "https://iliad-registry.inesctec.pt"^^xsd:anyURI
+    ] ;
+    apkg-pro:hasSourceOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "INESCTEC" ;
+        apkg-pro:homepage "https://inesctec.pt"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    apkg-pro:hasProducerOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "INESCTEC" ;
+        apkg-pro:homepage "https://inesctec.pt"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    bf:geographicCoverage [
+        a apkg-pro:SpatialCoverage ;
+        geo:hasGeometry [
+            a apkg-pro:Geo ;
+            apkg-pro:box "-90 -180 90 180"
+        ] ;
+        apkg-pro:geoClass "schema:GeoShape"
+    ] ;
+    apkg-pro:codeRepository "https://github.com/pastilhas/example-workflow/tree/main/"^^xsd:anyURI ;
+    apkg-pro:programmingLanguage "Python" ;
+    apkg-pro:originalURL "https://github.com/pastilhas/example-workflow/raw/refs/heads/main/workflow.cwl"^^xsd:anyURI ;
+    apkg-pro:processClass "Workflow" ;
+    apkg-pro:hasInput [
+        a apkg-pro:Parameter ;
+        dct:identifier "text" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "String to split into words and sort alphabetically."
+    ] ;
+    apkg-pro:hasOutput [
+        a apkg-pro:Parameter ;
+        dct:identifier "sorted_words" ;
+        apkg-pro:parameterType "File" ;
+        dct:description "Text file containing the words in alphabetical order." ;
+        apkg-pro:format "edam:format_2330"
+    ] .

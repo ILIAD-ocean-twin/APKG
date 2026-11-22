@@ -1,0 +1,278 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "doc": "Map of particles",
+        "id": "map",
+        "type": "File"
+      },
+      {
+        "doc": "Result NetCDF file",
+        "id": "result",
+        "type": "File"
+      },
+      {
+        "doc": "Video of particle simulation",
+        "id": "simulation",
+        "type": "File"
+      },
+      {
+        "doc": "Video of particle simulation with currents data",
+        "id": "simulation_currents",
+        "type": "File?"
+      },
+      {
+        "doc": "Extra process data",
+        "id": "statistics",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/openoil-booms/openoil_booms_0_4_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "opendrift",
+      "openoil",
+      "booms"
+    ],
+    "inputs": [
+      {
+        "doc": "Spill center latitude (WGS-84)",
+        "id": "latitude",
+        "type": "double"
+      },
+      {
+        "doc": "Spill center longitude (WGS-84)",
+        "id": "longitude",
+        "type": "double"
+      },
+      {
+        "doc": "Initial radius of the oil spill on the sea surface",
+        "id": "radius",
+        "type": "int"
+      },
+      {
+        "doc": "Calendar date and time when the spill begins (UTC)",
+        "id": "start_time",
+        "type": "string"
+      },
+      {
+        "doc": "Total number of hours to simulate",
+        "id": "duration",
+        "type": "int"
+      },
+      {
+        "doc": "Number of particles used to represent the oil slick.  More particles provide higher detail, require more computation time",
+        "id": "particles",
+        "type": "int?"
+      },
+      {
+        "doc": "Total mass of oil spilled in kilograms",
+        "id": "mass",
+        "type": "int?"
+      },
+      {
+        "doc": "THREDDS or OPeNDAP URL for ocean currents data",
+        "id": "reader_ocean",
+        "type": "string?"
+      },
+      {
+        "doc": "THREDDS or OPeNDAP URL for wave data",
+        "id": "reader_wave",
+        "type": "string?"
+      },
+      {
+        "doc": "THREDDS or OPeNDAP URL for wind data",
+        "id": "reader_wind",
+        "type": "string?"
+      },
+      {
+        "doc": "Model's internal calculation interval",
+        "id": "time_step",
+        "type": "int?"
+      },
+      {
+        "doc": "Result interval. Must be greater than time_step",
+        "id": "time_step_output",
+        "type": "int?"
+      },
+      {
+        "doc": "Mass per unit volume of the oil",
+        "id": "density",
+        "type": "double?"
+      },
+      {
+        "doc": "Oil's resistance to flow",
+        "id": "viscosity",
+        "type": "double?"
+      },
+      {
+        "doc": "Type of oil spilled. This determines its physical and chemical properties",
+        "id": "oil_type",
+        "type": "string?"
+      },
+      {
+        "doc": "List of containment booms",
+        "id": "booms",
+        "type": "string"
+      }
+    ],
+    "description": "OpenOil with Booms",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "openoil_booms",
+    "software_version": "0.4.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0",
+    "citation": null,
+    "date_created": "2025-12-02T12:08:38Z",
+    "author": [
+      {
+        "name": "Joao Campos",
+        "email": "joao.campos@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-12-02T12:09:00.605676Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "openoil_booms",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:openoil_booms",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n$graph:\n- class: CommandLineTool\n  id: openoil_booms\n  baseCommand:\n  - python\n  - /opt/headless.py\n  inputs:\n    latitude:\n      type: double\n      doc: Spill center latitude (WGS-84)\n      inputBinding:\n        prefix: --lat\n    longitude:\n      type: double\n      doc: Spill center longitude (WGS-84)\n      inputBinding:\n        prefix: --lon\n    radius:\n      type: int\n      doc: Initial radius of the oil spill on the sea surface\n      inputBinding:\n        prefix: --radius\n    start_time:\n      type: string\n      doc: Calendar date and time when the spill begins (UTC)\n      inputBinding:\n        prefix: --start_time\n    duration:\n      type: int\n      doc: Total number of hours to simulate\n      inputBinding:\n        prefix: --duration_hours\n    particles:\n      type: int?\n      doc: Number of particles used to represent the oil slick.  More particles provide\n        higher detail, require more computation time\n      inputBinding:\n        prefix: --number\n    mass:\n      type: int?\n      doc: Total mass of oil spilled in kilograms\n      inputBinding:\n        prefix: --total_mass_kg\n    reader_ocean:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for ocean currents data\n      inputBinding:\n        prefix: --reader_ocean\n    reader_wave:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for wave data\n      inputBinding:\n        prefix: --reader_wave\n    reader_wind:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for wind data\n      inputBinding:\n        prefix: --reader_wind\n    time_step:\n      type: int?\n      doc: Model's internal calculation interval\n      inputBinding:\n        prefix: --time_step\n    time_step_output:\n      type: int?\n      doc: Result interval. Must be greater than time_step\n      inputBinding:\n        prefix: --time_step_output\n    density:\n      type: double?\n      doc: Mass per unit volume of the oil\n      inputBinding:\n        prefix: --density\n    viscosity:\n      type: double?\n      doc: Oil's resistance to flow\n      inputBinding:\n        prefix: --viscosity\n    oil_type:\n      type: string?\n      doc: Type of oil spilled. This determines its physical and chemical properties\n      inputBinding:\n        prefix: --oil_type\n    booms:\n      type: string\n      doc: List of containment booms\n      inputBinding:\n        prefix: --boom\n        position: 1\n  outputs:\n    map:\n      type: File\n      doc: Map of particles\n      outputBinding:\n        glob: map.png\n    result:\n      type: File\n      doc: Result NetCDF file\n      outputBinding:\n        glob: results.nc\n    simulation:\n      type: File\n      doc: Video of particle simulation\n      outputBinding:\n        glob: simulation.mp4\n    simulation_currents:\n      type: File?\n      doc: Video of particle simulation with currents data\n      outputBinding:\n        glob: initial_simulation_with_currents.mp4\n    statistics:\n      type: File\n      doc: Extra process data\n      outputBinding:\n        glob: statistics.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/openoil-booms:0.4.0\n  s:name: openoil_booms\n  s:description: OpenOil with Booms\n  s:keywords:\n  - opendrift\n  - openoil\n  - booms\n  s:programmingLanguage: python\n  s:softwareVersion: 0.4.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Joao Campos\n    s:email: joao.campos@inesctec.pt\n  s:dateCreated: '2025-12-02T12:08:38Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0\n  s:sdDatePublished: '2025-12-02T12:09:00.605676Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:openoil_booms:0.4.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:openoil_booms\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:openoil_booms\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:openoil_booms\"&sortby=-software_version"
+    }
+  ]
+}

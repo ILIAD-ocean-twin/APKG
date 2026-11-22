@@ -1,0 +1,207 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/workflows/bathymetry-pipeline/bathymetry_pipeline_0_1_1.cwl",
+    "programming_language": null,
+    "keywords": [
+      "bathymetry",
+      "stac"
+    ],
+    "Secrets": {
+      "secrets": [
+        "access_key",
+        "secret_key",
+        "session_token"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "The minimum longitude of the study area",
+        "label": "area",
+        "id": "lon_min",
+        "type": "float"
+      },
+      {
+        "doc": "The maximum longitude of the study area",
+        "label": "area",
+        "id": "lon_max",
+        "type": "float"
+      },
+      {
+        "doc": "The minimum latitude of the study area",
+        "label": "area",
+        "id": "lat_min",
+        "type": "float"
+      },
+      {
+        "doc": "The maximum latitude of the study area",
+        "label": "area",
+        "id": "lat_max",
+        "type": "float"
+      }
+    ],
+    "description": "This pipeline crops the bathymetry for a given area, transforms the result to STAC format.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "bathymetry_pipeline",
+    "software_version": "0.1.1",
+    "class": "Workflow",
+    "latest": false,
+    "identifier": "urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1",
+    "citation": null,
+    "date_created": "2025-10-15T10:32:06Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-10-15T10:34:05.986760Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/workflows/bathymetry-pipeline/bathymetry_pipeline_0_1_1.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "bathymetry_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:bathymetry_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: bathymetry_pipeline\n  inputs:\n    lon_min:\n      type: float\n      doc: The minimum longitude of the study area\n      label: area\n    lon_max:\n      type: float\n      doc: The maximum longitude of the study area\n      label: area\n    lat_min:\n      type: float\n      doc: The minimum latitude of the study area\n      label: area\n    lat_max:\n      type: float\n      doc: The maximum latitude of the study area\n      label: area\n  steps:\n    step_bathymetry:\n      run: '#bathymetry'\n      in:\n        lon_min: lon_min\n        lon_max: lon_max\n        lat_min: lat_min\n        lat_max: lat_max\n      out:\n      - result\n      - metadata\n    step_2stac:\n      run: '#2stac'\n      in:\n        result: step_bathymetry/result\n        metadata: step_bathymetry/metadata\n      out:\n      - results\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac/results\n    type: Directory\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - access_key\n      - secret_key\n      - session_token\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: bathymetry_pipeline\n  s:description: 'This pipeline crops the bathymetry for a given area, transforms\n    the result to STAC format.\n\n    '\n  s:keywords:\n  - bathymetry\n  - stac\n  s:softwareVersion: 0.1.1\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/workflows/bathymetry-pipeline/bathymetry_pipeline_0_1_1.cwl\n  s:dateCreated: '2025-10-15T10:32:06Z'\n  s:identifier: urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1\n  s:sdDatePublished: '2025-10-15T10:34:05.986760Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: bathymetry\n  baseCommand: python\n  arguments:\n  - /opt/bathymetry.py\n  - --lon_min\n  - valueFrom: $( inputs.lon_min )\n  - --lon_max\n  - valueFrom: $( inputs.lon_max )\n  - --lat_min\n  - valueFrom: $( inputs.lat_min )\n  - --lat_max\n  - valueFrom: $( inputs.lat_max )\n  inputs:\n    lon_min:\n      type: float\n      doc: The minimum longitude of the study area.\n    lon_max:\n      type: float\n      doc: The maximum longitude of the study area.\n    lat_min:\n      type: float\n      doc: The minimum latitude of the study area.\n    lat_max:\n      type: float\n      doc: The maximum latitude of the study area.\n  outputs:\n    result:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: result/out.nc\n      doc: 'The output NetCDF file generated by the bathymetry model.\n\n        The file is in the OGC NetCDF media type.\n\n        '\n    metadata:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: result/metadata.json\n      doc: metadata description\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/bathymetry-forth:0.1.0\n  s:name: bathymetry\n  s:description: Get bathymetry to a given bounding box. You can define an outside\n    source.\n  s:keywords:\n  - bathymetry\n  - bounding box\n  s:softwareVersion: 0.1.0\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: FORTH\n    s:url: https://forth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: FORTH\n    s:url: https://forth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:author:\n  - class: s:Person\n    s:email: kspanoudaki@gmail.com\n    s:name: Katerina Spanoudaki\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.r.correia@inesctec.pt\n    s:name: Miguel Correia\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/bathymetry-forth/bathymetry_forth_0_1_0.cwl\n  s:dateCreated: '2025-10-14T22:55:36Z'\n- class: CommandLineTool\n  id: 2stac\n  baseCommand: python\n  arguments:\n  - /opt/2stac.py\n  - --result\n  - valueFrom: $( inputs.result )\n  - --metadata\n  - valueFrom: $( inputs.metadata )\n  inputs:\n    result:\n      type: File\n      doc: The resulting file of the previous model to insert in STAC\n    metadata:\n      format: edam:format_3464\n      type: File\n      doc: The resulting metadata of the previous model to insert in STAC\n  outputs:\n    results:\n      outputBinding:\n        glob: .\n      type: Directory\n      doc: STAC output\n  requirements:\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac:0.2.0\n  s:name: 2stac\n  s:softwareVersion: 0.2.0\n  s:description: Transform the result into a STAC\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2stac/2stac_0_2_0.cwl\n  s:dateCreated: '2025-10-14T22:47:19Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:bathymetry_pipeline:0.1.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:bathymetry_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:bathymetry_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:bathymetry_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "wf_outputs",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/workflows/booms-visualization/booms_visualization_0_3_0.cwl",
+    "programming_language": null,
+    "keywords": [
+      "oil spill",
+      "openoil",
+      "opendrift",
+      "visualization"
+    ],
+    "Secrets": {
+      "secrets": [
+        "access_key",
+        "secret_key",
+        "session_token",
+        "password"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "Spill center latitude (WGS-84)",
+        "id": "latitude",
+        "type": "double"
+      },
+      {
+        "doc": "Spill center longitude (WGS-84)",
+        "id": "longitude",
+        "type": "double"
+      },
+      {
+        "doc": "Initial radius of the oil spill on the sea surface",
+        "id": "radius",
+        "type": "int"
+      },
+      {
+        "doc": "Calendar date and time when the spill begins (UTC)",
+        "id": "start_time",
+        "type": "string"
+      },
+      {
+        "doc": "Total number of hours to simulate",
+        "id": "duration",
+        "type": "int"
+      },
+      {
+        "doc": "Number of particles used to represent the oil slick. More particles provide higher detail, require more computation time",
+        "id": "particles",
+        "type": "int?"
+      },
+      {
+        "doc": "Total mass of oil spilled in kilograms",
+        "id": "mass",
+        "type": "int?"
+      },
+      {
+        "doc": "THREDDS or OPeNDAP URL for ocean currents data",
+        "id": "reader_ocean",
+        "type": "string?"
+      },
+      {
+        "doc": "THREDDS or OPeNDAP URL for wave data",
+        "id": "reader_wave",
+        "type": "string?"
+      },
+      {
+        "doc": "THREDDS or OPeNDAP URL for wind data",
+        "id": "reader_wind",
+        "type": "string?"
+      },
+      {
+        "doc": "Model's internal calculation interval",
+        "id": "time_step",
+        "type": "int?"
+      },
+      {
+        "doc": "Result interval. Must be greater than time_step",
+        "id": "time_step_output",
+        "type": "int?"
+      },
+      {
+        "doc": "Type of oil spilled. This determines its physical and chemical properties",
+        "id": "oil_type",
+        "type": "string?"
+      },
+      {
+        "doc": "List of containment booms",
+        "id": "booms",
+        "type": "string?"
+      },
+      {
+        "doc": "Oil density values",
+        "id": "density",
+        "type": "double?"
+      },
+      {
+        "doc": "Oil viscosity values",
+        "id": "viscosity",
+        "type": "double?"
+      },
+      {
+        "default": "0,1,2,3,4,5,6,7,8,9,10",
+        "label": "narratives",
+        "id": "visualization_frames",
+        "type": "string?"
+      },
+      {
+        "default": "0.01, 0.05, 0.10, 0.50, 1.00",
+        "label": "narratives",
+        "id": "visualization_density",
+        "type": "string?"
+      }
+    ],
+    "description": "This pipeline runs an oil spill pipeline with openoil and creates visualizations of the simulation results.\n",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "booms_visualization_pipeline",
+    "software_version": "0.3.0",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0",
+    "citation": null,
+    "date_created": "2026-02-18T13:26:21Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2026-02-18T13:28:02.770048Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "booms_visualization_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: booms_visualization_pipeline\n  doc: This pipeline runs an oil spill simulation pipeline with openoil, and creates\n    visualizations of the simulation results.\n  inputs:\n    latitude:\n      type: double\n      doc: Spill center latitude (WGS-84)\n    longitude:\n      type: double\n      doc: Spill center longitude (WGS-84)\n    radius:\n      type: int\n      doc: Initial radius of the oil spill on the sea surface\n    start_time:\n      type: string\n      doc: Calendar date and time when the spill begins (UTC)\n    duration:\n      type: int\n      doc: Total number of hours to simulate\n    particles:\n      type: int?\n      doc: Number of particles used to represent the oil slick. More particles provide\n        higher detail, require more computation time\n    mass:\n      type: int?\n      doc: Total mass of oil spilled in kilograms\n    reader_ocean:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for ocean currents data\n    reader_wave:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for wave data\n    reader_wind:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for wind data\n    time_step:\n      type: int?\n      doc: Model's internal calculation interval\n    time_step_output:\n      type: int?\n      doc: Result interval. Must be greater than time_step\n    oil_type:\n      type: string?\n      doc: Type of oil spilled. This determines its physical and chemical properties\n    booms:\n      type: string?\n      doc: List of containment booms\n    density:\n      type: double?\n      doc: Oil density values\n    viscosity:\n      type: double?\n      doc: Oil viscosity values\n    visualization_frames:\n      type: string?\n      label: narratives\n      default: 0,1,2,3,4,5,6,7,8,9,10\n    visualization_density:\n      type: string?\n      label: narratives\n      default: 0.01, 0.05, 0.10, 0.50, 1.00\n  steps:\n    step_simulation:\n      run: '#openoil_booms'\n      in:\n        latitude: latitude\n        longitude: longitude\n        radius: radius\n        start_time: start_time\n        duration: duration\n        particles: particles\n        mass: mass\n        reader_ocean: reader_ocean\n        reader_wave: reader_wave\n        reader_wind: reader_wind\n        time_step: time_step\n        time_step_output: time_step_output\n        oil_type: oil_type\n        booms: booms\n        density: density\n        viscosity: viscosity\n      out:\n      - map\n      - result\n      - simulation\n      - simulation_currents\n      - statistics\n    step_netcdf_metadata:\n      run: '#netcdf_metadata'\n      in:\n        netcdf_file: step_simulation/result\n      out:\n      - metadata\n    step_extract_particles:\n      run: '#extract_particles'\n      in:\n        input-file: step_simulation/result\n        output-format:\n          default: stac\n        projection-function:\n          default: none\n        projection-resolution:\n          default: none\n        latitude-variable:\n          default: lat\n        longitude-variable:\n          default: lon\n        time-variable:\n          default: time\n      out:\n      - result\n    step_crop_frames:\n      run: '#crop_frames'\n      in:\n        particles: step_extract_particles/result\n        frames: visualization_frames\n      out:\n      - result\n    step_generate_contours:\n      run: '#generate_contours'\n      in:\n        cropped: step_crop_frames/result\n        density: visualization_density\n        output-format:\n          default: json\n      out:\n      - result\n    dir2files:\n      run: '#dir2files'\n      in:\n        input_dir: step_generate_contours/result\n      out:\n      - output_files\n    json_append:\n      run: '#json_append_wp6tools_pipeline'\n      in:\n        files: dir2files/output_files\n      out:\n      - result\n    step_2stac2:\n      run: '#2stac2_booms_pipeline'\n      in:\n        simulation: step_simulation/result\n        contours: json_append/result\n        metadata: step_netcdf_metadata/metadata\n        statistics: step_simulation/statistics\n      out:\n      - stac_result\n  outputs:\n  - id: wf_outputs\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - access_key\n      - secret_key\n      - session_token\n      - password\n  requirements:\n    InlineJavascriptRequirement: {}\n    SubworkflowFeatureRequirement: {}\n  s:name: booms_visualization_pipeline\n  s:description: 'This pipeline runs an oil spill pipeline with openoil and creates\n    visualizations of the simulation results.\n\n    '\n  s:keywords:\n  - oil spill\n  - openoil\n  - opendrift\n  - visualization\n  s:softwareVersion: 0.3.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2026-02-18T13:26:21Z'\n  s:identifier: urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0\n  s:sdDatePublished: '2026-02-18T13:28:02.770048Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: openoil_booms\n  baseCommand:\n  - python\n  - /opt/headless.py\n  inputs:\n    latitude:\n      type: double\n      doc: Spill center latitude (WGS-84)\n      inputBinding:\n        prefix: --lat\n    longitude:\n      type: double\n      doc: Spill center longitude (WGS-84)\n      inputBinding:\n        prefix: --lon\n    radius:\n      type: int\n      doc: Initial radius of the oil spill on the sea surface\n      inputBinding:\n        prefix: --radius\n    start_time:\n      type: string\n      doc: Calendar date and time when the spill begins (UTC)\n      inputBinding:\n        prefix: --start_time\n    duration:\n      type: int\n      doc: Total number of hours to simulate\n      inputBinding:\n        prefix: --duration_hours\n    particles:\n      type: int?\n      doc: Number of particles used to represent the oil slick. More particles provide\n        higher detail, require more computation time\n      inputBinding:\n        prefix: --number\n    mass:\n      type: int?\n      doc: Total mass of oil spilled in kilograms\n      inputBinding:\n        prefix: --total_mass_kg\n    reader_ocean:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for ocean currents data\n      inputBinding:\n        prefix: --reader_ocean\n    reader_wave:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for wave data\n      inputBinding:\n        prefix: --reader_wave\n    reader_wind:\n      type: string?\n      doc: THREDDS or OPeNDAP URL for wind data\n      inputBinding:\n        prefix: --reader_wind\n    time_step:\n      type: int?\n      doc: Model's internal calculation interval\n      inputBinding:\n        prefix: --time_step\n    time_step_output:\n      type: int?\n      doc: Result interval. Must be greater than time_step\n      inputBinding:\n        prefix: --time_step_output\n    oil_type:\n      type:\n      - string?\n      - type: record\n        fields:\n          density:\n            type: double\n            doc: Mass per unit volume of the oil\n          viscosity:\n            type: double\n            doc: Oil's resistance to flow\n      doc: Type of oil spilled. This determines its physical and chemical properties\n      inputBinding:\n        valueFrom: \"$(self === null\\n  ? self\\n  : typeof self === \\\"string\\\"\\n  \\\n          \\  ? [\\\"--oil_type\\\", self]\\n    : [\\\"--density\\\", self.density, \\\"--viscosity\\\"\\\n          , self.viscosity]\\n)\"\n    booms:\n      type:\n      - 'null'\n      - type: array\n        items:\n          type: record\n          fields:\n            coordinates:\n              type:\n                type: array\n                items:\n                  type: record\n                  fields:\n                    latitude: double\n                    longitude: double\n              doc: List of [longitude, latitude] pairs defining a polyline\n            type: string\n            overrides:\n              type:\n                type: record\n                fields:\n                  description: string?\n                  structural_type: string?\n                  freeboard_height_m: double?\n                  skirt_depth_m: double?\n                  anchor_strength_N: double?\n                  critical_froude_number: double?\n                  entrainment_coefficient: double?\n                  entrainment_critical_velocity_ms: double?\n                  viscosity_damping_factor: double?\n                  splashover_factor: double?\n                  buoyancy_to_weight_ratio: double?\n                  drag_coeff: double?\n                  wave_force_coeff: double?\n                  critical_accumulation_viscosity_cst: double?\n                  critical_accumulation_froude: double?\n                  absorption_rate: double?\n                  capacity_kg_per_m: double?\n                  accumulation_factor: double?\n                  wave_period_factor: double?\n                  accumulation_width_m: double?\n                  restoring_force_per_m: double?\n              doc: Optional override parameters\n      doc: List of containment booms\n      inputBinding:\n        valueFrom: \"$(JSON.stringify(self.map(\\n  function (boom) {\\n    return {\\n\\\n          \\      coordinates: boom.coordinates.map(function (x) { return [x.longitude,\\\n          \\ x.latitude]; }),\\n      type: boom.type,\\n      overrides: boom.overrides,\\n\\\n          \\    };\\n  }\\n)))\"\n        prefix: --boom\n        position: 1\n  outputs:\n    map:\n      type: File\n      format: edam:format_3603\n      doc: Map of particles\n      outputBinding:\n        glob: map.png\n    result:\n      type: File\n      format: edam:format_3650\n      doc: Result NetCDF file\n      outputBinding:\n        glob: results.nc\n    simulation:\n      type: File\n      format: edam:format_3997\n      doc: Video of particle simulation\n      outputBinding:\n        glob: simulation.mp4\n    simulation_currents:\n      type: File?\n      format: edam:format_3997\n      doc: Video of particle simulation with currents data\n      outputBinding:\n        glob: initial_simulation_with_currents.mp4\n    statistics:\n      type: File\n      format: edam:format_3464\n      doc: Extra process data\n      outputBinding:\n        glob: statistics.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/openoil-booms:0.5.0\n  s:name: openoil_booms\n  s:description: OpenOil with Booms\n  s:keywords:\n  - opendrift\n  - openoil\n  - booms\n  s:programmingLanguage: python\n  s:softwareVersion: 0.5.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Joao Campos\n    s:email: joao.campos@inesctec.pt\n  s:dateCreated: '2026-02-16T15:31:26Z'\n- class: CommandLineTool\n  id: netcdf_metadata\n  baseCommand: python\n  arguments:\n  - /opt/parse.py\n  - --netcdf_file\n  - valueFrom: $(inputs.netcdf_file)\n  - valueFrom: $(inputs.extra_props ? ['--extra_props', inputs.extra_props] :[])\n  inputs:\n    netcdf_file:\n      type: File\n    extra_props:\n      type: File?\n  outputs:\n    metadata:\n      outputBinding:\n        glob: ./metadata.json\n      type: File\n      format: edam:format_3464\n  requirements:\n    MultipleInputFeatureRequirement: {}\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/netcdf-metadata:0.1.0\n  s:name: netcdf_metadata\n  s:softwareVersion: 0.1.0\n  s:description: Extract metadata from NetCDF file\n  s:keywords:\n  - netcdf\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:39:29Z'\n- class: CommandLineTool\n  id: extract_particles\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - extract-particles\n  - --input-url\n  - valueFrom: $( inputs['input-file'] )\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --projection-function\n  - valueFrom: $( inputs['projection-function'] )\n  - --projection-resolution\n  - valueFrom: $( inputs['projection-resolution'] )\n  - --latitude-variable\n  - valueFrom: $( inputs['latitude-variable'] )\n  - --longitude-variable\n  - valueFrom: $( inputs[\"longitude-variable\"] )\n  - --time-variable\n  - valueFrom: $( inputs[\"time-variable\"] )\n  - --output-url\n  - output/particles\n  inputs:\n    input-file:\n      type: File\n    output-format:\n      type: string\n    projection-function:\n      type: string\n    projection-resolution:\n      type: string\n    latitude-variable:\n      type: string\n    longitude-variable:\n      type: string\n    time-variable:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/particles\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: extract_particles\n  s:description: extract particles frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - extract\n  - particles\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: crop_frames\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - crop-frames\n  - --input-url\n  - valueFrom: $( inputs['particles'])\n  - --input-format\n  - stac\n  - --frames\n  - valueFrom: $( inputs['frames'] )\n  - --output-url\n  - output/cropped\n  inputs:\n    particles:\n      type: Directory\n    frames:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/cropped\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: crop_frames\n  s:description: crop frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - crop\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: generate_contours\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - generate-contours-at-density\n  - --input-url\n  - valueFrom: $( inputs['cropped'])\n  - --input-format\n  - stac\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --density\n  - valueFrom: $( inputs['density'] )\n  - --output-url\n  - output/contours\n  inputs:\n    cropped:\n      type: Directory\n    output-format:\n      type: string\n      default: json\n    density:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/contours\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: generate_contours\n  s:description: generate contours frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - contours\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: dir2files\n  baseCommand: python\n  arguments:\n  - /opt/dir2files.py\n  - --directory\n  - valueFrom: $(inputs.input_dir)\n  inputs:\n    input_dir:\n      type: Directory\n  outputs:\n    output_files:\n      type: File[]\n      outputBinding:\n        glob: ./*\n  requirements:\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/dir2files:0.1.0\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n  s:name: dir2files\n  s:description: Converts a directory to a list of files\n  s:keywords:\n  - directory\n  - files\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:08:43Z'\n- class: CommandLineTool\n  id: json_append_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/append.py\n  - valueFrom: '$( function () {\n\n      var files_array = []; Object.keys(inputs.files).forEach(function (element) {\n      console.log(inputs.files[element]); if(inputs.files[element].basename !== ''contour-header.json'')\n      files_array.push(''--file''); files_array.push(inputs.files[element]); }); return\n      files_array;\n\n      }())'\n  inputs:\n    files:\n      type: File[]?\n      doc: files\n  outputs:\n    result:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: appended.json\n      doc: json file appended\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/json-append:0.1.0\n  s:name: json_append\n  s:description: Append json files, objects and array of objects, to an array of objects\n  s:keywords:\n  - json\n  - merge\n  - append\n  - metadata\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:32:08Z'\n- class: CommandLineTool\n  id: 2stac2_booms_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - valueFrom: $( function () { if (inputs[\"simulation\"]) { return [\"--file\", inputs[\"simulation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"statistics\"]) { return [\"--file\", inputs[\"statistics\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"contours\"]) { return [\"--file\", inputs[\"contours\"]];\n      } else { return []; } }())\n  - --metadata\n  - valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  inputs:\n    simulation:\n      format: edam:format_3650\n      doc: NetCDF simulation file\n      type: File?\n    contours:\n      format: edam:format_3464\n      doc: Contours file\n      type: File?\n    statistics:\n      format: edam:format_3464\n      doc: Statistics file\n      type: File?\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.1\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  if(inputs.simulation) metadata.push({...content, filename:\\\n        \\ inputs.simulation.basename});\\n  if(inputs.statistics) metadata.push({...content,\\\n        \\ filename: inputs.statistics.basename});\\n  if(inputs.contours) metadata.push({...content,\\\n        \\ filename: inputs.contours.basename});\\n  return [{\\\"class\\\": \\\"File\\\", \\\"\\\n        basename\\\": \\\"multiple_metadata.json\\\", \\\"contents\\\": JSON.stringify(metadata)\\\n        \\ }];\\n}\\n\"\n  s:name: 2stac2_booms_pipeline\n  s:softwareVersion: 0.3.1\n  s:description: 2stac2 for booms tools pipeline\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2026-01-27T16:00:40Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline:0.3.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:booms_visualization_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

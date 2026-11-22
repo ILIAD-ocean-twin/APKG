@@ -1,0 +1,241 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "openoil",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/workflows/netcdf-visualization/netcdf_visualization_0_1_0.cwl",
+    "programming_language": null,
+    "keywords": [
+      "oil spill",
+      "netcdf",
+      "choreographies",
+      "virtual choreographies",
+      "wp6",
+      "tools"
+    ],
+    "Secrets": {
+      "secrets": [
+        "access_key",
+        "secret_key",
+        "session_token"
+      ]
+    },
+    "inputs": [
+      {
+        "doc": "S3 storage endpoint",
+        "id": "s3_endpoint",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage region",
+        "id": "s3_region",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage access_key",
+        "id": "s3_access_key",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage secret_key",
+        "id": "s3_secret_key",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage region",
+        "id": "s3_session_token",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage bucket",
+        "id": "s3_bucket_name",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 path to file",
+        "id": "s3_path",
+        "type": "string?"
+      },
+      {
+        "format": "edam:format_3650",
+        "label": "netcdf file",
+        "id": "netcdf_file",
+        "type": [
+          "File?",
+          "string?"
+        ]
+      },
+      {
+        "label": "narratives",
+        "id": "frames",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "density",
+        "type": "string"
+      }
+    ],
+    "description": "netcdf visualization pipeline",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "netcdf_visualization_pipeline",
+    "software_version": "0.1.0",
+    "class": "Workflow",
+    "latest": false,
+    "identifier": "urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0",
+    "citation": null,
+    "date_created": "2025-11-17T17:06:25Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-17T17:08:24.812695Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "netcdf_visualization_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: netcdf_visualization_pipeline\n  doc: netcdf visualization pipeline\n  inputs:\n    s3_endpoint:\n      type: string?\n      doc: S3 storage endpoint\n    s3_region:\n      type: string?\n      doc: S3 storage region\n    s3_access_key:\n      type: string?\n      doc: S3 storage access_key\n    s3_secret_key:\n      type: string?\n      doc: S3 storage secret_key\n    s3_session_token:\n      type: string?\n      doc: S3 storage region\n    s3_bucket_name:\n      type: string?\n      doc: S3 storage bucket\n    s3_path:\n      type: string?\n      doc: S3 path to file\n    netcdf_file:\n      type:\n      - File?\n      - string?\n      label: netcdf file\n      format: edam:format_3650\n    frames:\n      type: string\n      label: narratives\n    density:\n      type: string\n      label: narratives\n  steps:\n    step_get_file:\n      run: '#get_file'\n      in:\n        filename:\n          default: simulation.nc\n        file: netcdf_file\n        s3_endpoint: s3_endpoint\n        s3_region: s3_region\n        s3_access_key: s3_access_key\n        s3_secret_key: s3_secret_key\n        s3_session_token: s3_session_token\n        s3_bucket_name: s3_bucket_name\n        s3_path: s3_path\n      out:\n      - file_output\n    step_extract_particles:\n      run: '#extract_particles'\n      in:\n        input-file: step_get_file/file_output\n        output-format:\n          default: stac\n        projection-function:\n          default: none\n        projection-resolution:\n          default: none\n        latitude-variable:\n          default: lat\n        longitude-variable:\n          default: lon\n        time-variable:\n          default: time\n      out:\n      - result\n    step_crop_frames:\n      run: '#crop_frames'\n      in:\n        particles: step_extract_particles/result\n        frames: frames\n      out:\n      - result\n    step_generate_contours:\n      run: '#generate_contours'\n      in:\n        cropped: step_crop_frames/result\n        density: density\n        output-format:\n          default: json\n      out:\n      - result\n    dir2files:\n      run: '#dir2files'\n      in:\n        input_dir: step_generate_contours/result\n      out:\n      - output_files\n    json_append:\n      run: '#json_append_wp6tools_pipeline'\n      in:\n        files: dir2files/output_files\n      out:\n      - result\n    step_virtual_choreographies_generator:\n      run: '#virtual_choreographies_generator'\n      in:\n        dataset: json_append/result\n      out:\n      - vc\n      - recipe\n    step_virtual_choreographies_unity_plugin:\n      run: '#virtual_choreographies_transformer_plugin_unity'\n      in:\n        vc: step_virtual_choreographies_generator/vc\n        vc_recipe: step_virtual_choreographies_generator/recipe\n      out:\n      - platform_choreography\n    step_virtual_choreographies_cesium_plugin:\n      run: '#virtual_choreographies_transformer_plugin_cesium'\n      in:\n        vc: step_virtual_choreographies_generator/vc\n        vc_recipe: step_virtual_choreographies_generator/recipe\n      out:\n      - platform_choreography\n    step_netcdf_metadata:\n      in:\n        netcdf_file: step_get_file/file_output\n      run: '#netcdf_metadata'\n      out:\n      - metadata\n    step_2stac2:\n      run: '#2stac2_wp6tools_pipeline'\n      in:\n        unity_choreography: step_virtual_choreographies_cesium_plugin/platform_choreography\n        cesium_choreography: step_virtual_choreographies_unity_plugin/platform_choreography\n        simulation: step_get_file/file_output\n        metadata: step_netcdf_metadata/metadata\n      out:\n      - stac_result\n  outputs:\n  - id: openoil\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - access_key\n      - secret_key\n      - session_token\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: netcdf_visualization_pipeline\n  s:description: netcdf visualization pipeline\n  s:keywords:\n  - oil spill\n  - netcdf\n  - choreographies\n  - virtual choreographies\n  - wp6\n  - tools\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-17T17:06:25Z'\n  s:identifier: urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0\n  s:sdDatePublished: '2025-11-17T17:08:24.812695Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n- class: CommandLineTool\n  id: get_csv_file\n  baseCommand: python\n  arguments:\n  - /opt/get-file.py\n  - --filename\n  - valueFrom: $( inputs.filename )\n  - valueFrom: '${ return inputs.file ? [\"--file\", inputs.file] : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_endpoint ? [\"--s3_endpoint\", inputs.s3_endpoint]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_region ? [\"--s3_region\", inputs.s3_region] : []\n      }\n\n      '\n  - valueFrom: '${ return inputs.s3_access_key ? [\"--s3_access_key\", inputs.s3_access_key]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_secret_key ? [\"--s3_secret_key\", inputs.s3_secret_key]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_session_token ? [\"--s3_session_token\", inputs.s3_session_token]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_bucket_name ? [\"--s3_bucket\", inputs.s3_bucket_name]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_path ? [\"--s3_path\", inputs.s3_path] : [] }\n\n      '\n  inputs:\n    filename:\n      type: string\n      doc: Name of the output file\n    file:\n      type:\n      - string?\n      - File?\n      doc: URL to download the file or local path\n    s3_endpoint:\n      type: string?\n      doc: S3 storage endpoint\n    s3_region:\n      type: string?\n      doc: S3 storage region\n    s3_access_key:\n      type: string?\n      doc: S3 storage access_key\n    s3_secret_key:\n      type: string?\n      doc: S3 storage secret_key\n    s3_session_token:\n      type: string?\n      doc: S3 storage region\n    s3_bucket_name:\n      type: string?\n      doc: S3 storage bucket\n    s3_path:\n      type: string?\n      doc: S3 path to file\n  outputs:\n    file_output:\n      format: edam:format_3752\n      type: File\n      outputBinding:\n        glob: $(inputs.filename)\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/get-file:0.1.0\n  s:name: get_csv_file\n  s:description: Tool to download a CSV file from a URL or S3 storage\n  s:keywords:\n  - s3\n  - csv\n  - storage\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:24:08Z'\n- class: CommandLineTool\n  id: extract_particles\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - extract-particles\n  - --input-url\n  - valueFrom: $( inputs['input-file'] )\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --projection-function\n  - valueFrom: $( inputs['projection-function'] )\n  - --projection-resolution\n  - valueFrom: $( inputs['projection-resolution'] )\n  - --latitude-variable\n  - valueFrom: $( inputs['latitude-variable'] )\n  - --longitude-variable\n  - valueFrom: $( inputs[\"longitude-variable\"] )\n  - --time-variable\n  - valueFrom: $( inputs[\"time-variable\"] )\n  - --output-url\n  - output/particles\n  inputs:\n    input-file:\n      type: File\n    output-format:\n      type: string\n    projection-function:\n      type: string\n    projection-resolution:\n      type: string\n    latitude-variable:\n      type: string\n    longitude-variable:\n      type: string\n    time-variable:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/particles\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: extract_particles\n  s:description: extract particles frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - extract\n  - particles\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: crop_frames\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - crop-frames\n  - --input-url\n  - valueFrom: $( inputs['particles'])\n  - --input-format\n  - stac\n  - --frames\n  - valueFrom: $( inputs['frames'] )\n  - --output-url\n  - output/cropped\n  inputs:\n    particles:\n      type: Directory\n    frames:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/cropped\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: crop_frames\n  s:description: crop frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - crop\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: generate_contours\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - generate-contours-at-density\n  - --input-url\n  - valueFrom: $( inputs['cropped'])\n  - --input-format\n  - stac\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --density\n  - valueFrom: $( inputs['density'] )\n  - --output-url\n  - output/contours\n  inputs:\n    cropped:\n      type: Directory\n    output-format:\n      type: string\n      default: json\n    density:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/contours\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.2.0\n  s:name: generate_contours\n  s:description: generate contours frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - contours\n  s:programmingLanguage: python\n  s:softwareVersion: 0.2.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-10-29T22:16:49Z'\n- class: CommandLineTool\n  id: dir2files\n  baseCommand: python\n  arguments:\n  - /opt/dir2files.py\n  - --directory\n  - valueFrom: $(inputs.input_dir)\n  inputs:\n    input_dir:\n      type: Directory\n  outputs:\n    output_files:\n      type: File[]\n      outputBinding:\n        glob: ./*\n  requirements:\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/dir2files:0.1.0\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n  s:name: dir2files\n  s:description: Converts a directory to a list of files\n  s:keywords:\n  - directory\n  - files\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:08:43Z'\n- class: CommandLineTool\n  id: json_append_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/append.py\n  - valueFrom: '$( function () {\n\n      var files_array = []; Object.keys(inputs.files).forEach(function (element) {\n      console.log(inputs.files[element]); if(inputs.files[element].basename !== ''contour-header.json'')\n      files_array.push(''--file''); files_array.push(inputs.files[element]); }); return\n      files_array;\n\n      }())'\n  inputs:\n    files:\n      type: File[]?\n      doc: files\n  outputs:\n    result:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: appended.json\n      doc: json file appended\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/json-append:0.1.0\n  s:name: json_append\n  s:description: Append json files, objects and array of objects, to an array of objects\n  s:keywords:\n  - json\n  - merge\n  - append\n  - metadata\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:32:08Z'\n- class: CommandLineTool\n  id: virtual_choreographies_generator\n  baseCommand: python\n  arguments:\n  - /opt/src/command.py\n  - valueFrom: $( inputs.dataset )\n  - valueFrom: $( inputs.template || inputs.template_url || '/opt/templates/template.json')\n  inputs:\n    template:\n      type: File?\n    template_url:\n      type: string?\n    dataset:\n      type: File\n  outputs:\n    vc:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: vc.json\n    recipe:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: recipe.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-generator:0.3.0\n  s:name: virtual_choreographies_generator\n  s:description: Generator of virtual choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  s:programmingLanguage: python\n  s:softwareVersion: 0.3.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://iliad.inesctec.pt/mite/\n  s:dateCreated: '2025-11-13T21:55:58Z'\n- class: CommandLineTool\n  id: virtual_choreographies_transformer_plugin_unity\n  baseCommand: python\n  arguments:\n  - /opt/src/command.py\n  - valueFrom: $( inputs.vc )\n  - valueFrom: $( inputs.mappings || inputs.mappings_url || '/opt/mappings/unity.j2'\n      )\n  - valueFrom: $( inputs.vc_recipe || inputs.vc_recipe_url )\n  - valueFrom: $( inputs.platform_recipe || inputs.platform_recipe_url || '/opt/recipes/platform_recipe_unity.json')\n  inputs:\n    vc:\n      type: File\n    mappings:\n      type: File?\n    mappings_url:\n      type: string?\n    vc_recipe:\n      type: File?\n    vc_recipe_url:\n      type: File?\n    platform_recipe:\n      type: File?\n    platform_recipe_url:\n      type: File?\n  outputs:\n    platform_choreography:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: result/platform_choreography.json\n        outputEval: ${self[0].basename=\"platform_choreography_unity.json\"; return\n          self;}\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-transformer-plugin:0.3.0\n  s:name: virtual_choreographies_transformer_plugin_unity\n  s:description: Generator of platform specific choregoraphies form generic virtual\n    choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  - transformer\n  s:programmingLanguage: python\n  s:softwareVersion: 0.3.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://iliad.inesctec.pt/mite/\n  s:dateCreated: '2025-11-13T21:55:58Z'\n- class: CommandLineTool\n  id: virtual_choreographies_transformer_plugin_cesium\n  baseCommand: python\n  arguments:\n  - /opt/src/command.py\n  - valueFrom: $( inputs.vc )\n  - valueFrom: $( inputs.mappings || inputs.mappings_url || '/opt/mappings/cesium.j2'\n      )\n  - valueFrom: $( inputs.vc_recipe || inputs.vc_recipe_url)\n  - valueFrom: $( inputs.platform_recipe || inputs.platform_recipe_url || '/opt/recipes/platform_recipe_cesium.json')\n  inputs:\n    vc:\n      type: File\n    mappings:\n      type: File?\n    mappings_url:\n      type: string?\n    vc_recipe:\n      type: File?\n    vc_recipe_url:\n      type: File?\n    platform_recipe:\n      type: File?\n    platform_recipe_url:\n      type: File?\n  outputs:\n    platform_choreography:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: result/platform_choreography.json\n        outputEval: ${self[0].basename=\"platform_choreography_cesium.json\"; return\n          self;}\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-transformer-plugin:0.3.0\n  s:name: virtual_choreographies_transformer_plugin_cesium\n  s:description: Generator of platform specific choregoraphies form generic virtual\n    choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  - transformer\n  s:programmingLanguage: python\n  s:softwareVersion: 0.3.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://iliad.inesctec.pt/mite/\n  s:dateCreated: '2025-11-13T21:55:58Z'\n- class: CommandLineTool\n  id: netcdf_metadata\n  baseCommand: python\n  arguments:\n  - /opt/parse.py\n  - --netcdf_file\n  - valueFrom: $(inputs.netcdf_file)\n  - valueFrom: $(inputs.extra_props ? ['--extra_props', inputs.extra_props] :[])\n  inputs:\n    netcdf_file:\n      type: File\n    extra_props:\n      type: File?\n  outputs:\n    metadata:\n      outputBinding:\n        glob: ./metadata.json\n      type: File\n      format: edam:format_3464\n  requirements:\n    MultipleInputFeatureRequirement: {}\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/netcdf-metadata:0.1.0\n  s:name: netcdf_metadata\n  s:softwareVersion: 0.1.0\n  s:description: Extract metadata from NetCDF file\n  s:keywords:\n  - netcdf\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:39:29Z'\n- class: CommandLineTool\n  id: 2stac2_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - valueFrom: $( function () { if (inputs[\"unity_choreography\"]) { return [\"--file\",\n      inputs[\"unity_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"cesium_choreography\"]) { return [\"--file\",\n      inputs[\"cesium_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"simulation\"]) { return [\"--file\", inputs[\"simulation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"animation\"]) { return [\"--file\", inputs[\"animation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"bathymetry\"]) { return [\"--file\", inputs[\"bathymetry\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"contours\"]) { return [\"--file\", inputs[\"contours\"]];\n      } else { return []; } }())\n  - --metadata\n  - valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  inputs:\n    unity_choreography:\n      format: edam:format_3464\n      doc: unity choreography json file\n      type: File?\n    cesium_choreography:\n      format: edam:format_3464\n      doc: cesium choreography json file\n      type: File?\n    simulation:\n      format: edam:format_3650\n      doc: NetCDF simulation file\n      type: File?\n    animation:\n      format: edam:format_3467\n      doc: Animation GIF file\n      type: File?\n    bathymetry:\n      format: edam:format_3650\n      doc: Bathymetry NetCDF file\n      type: File?\n    contours:\n      format: edam:format_3464\n      doc: Contours file\n      type: File?\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.3.1\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  if(inputs.unity_choreography) metadata.push({...content,\\\n        \\ filename: inputs.unity_choreography.basename});\\n  if(inputs.cesium_choreography)\\\n        \\ metadata.push({...content, filename: inputs.cesium_choreography.basename});\\n\\\n        \\  if(inputs.simulation) metadata.push({...content, filename: inputs.simulation.basename});\\n\\\n        \\  if(inputs.animation) metadata.push({...content, filename: inputs.animation.basename});\\n\\\n        \\  if(inputs.bathymetry) metadata.push({...content, filename: inputs.bathymetry.basename});\\n\\\n        \\  if(inputs.contours) metadata.push({...content, filename: inputs.contours.basename});\\n\\\n        \\  return [{\\\"class\\\": \\\"File\\\", \\\"basename\\\": \\\"multiple_metadata.json\\\"\\\n        , \\\"contents\\\": JSON.stringify(metadata) }];\\n}\\n\"\n  s:name: 2stac2_wp6tools_pipeline\n  s:softwareVersion: 0.3.1\n  s:description: 2stac2 for WP6 tools pipeline\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-17T16:08:31Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:netcdf_visualization_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

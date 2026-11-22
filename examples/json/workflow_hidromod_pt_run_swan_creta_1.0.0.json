@@ -1,0 +1,261 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "swan_output",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "swan",
+      "Heraklion",
+      "wave",
+      "hidromod"
+    ],
+    "inputs": [
+      {
+        "keywords": [
+          "string",
+          "password"
+        ],
+        "doc": "Password for CMEMS Download",
+        "id": "cmems_password",
+        "type": "string"
+      },
+      {
+        "keywords": [
+          "string",
+          "username"
+        ],
+        "doc": "Username for CMEMS Download",
+        "id": "cmems_username",
+        "type": "string"
+      },
+      {
+        "keywords": [
+          "int",
+          "forecast"
+        ],
+        "doc": "forecast for the model",
+        "id": "forecast",
+        "type": "int"
+      },
+      {
+        "keywords": [
+          "int",
+          "Hindcast"
+        ],
+        "doc": "Hindcast for the model",
+        "id": "hindcast",
+        "type": "int"
+      },
+      {
+        "keywords": [
+          "string",
+          "password"
+        ],
+        "doc": "Password for WRF Download",
+        "id": "wrf_ftpserver",
+        "type": "string"
+      },
+      {
+        "keywords": [
+          "string",
+          "username"
+        ],
+        "doc": "Username for WRF Download",
+        "id": "wrf_password",
+        "type": "string"
+      },
+      {
+        "keywords": [
+          "string",
+          "username"
+        ],
+        "doc": "Username for WRF Download",
+        "id": "wrf_username",
+        "type": "string"
+      }
+    ],
+    "description": "This 500m and 50m resolution SWAN wave model is designed specifically for the Heraklion Port area, spanning a geographical range from West: 25.0 to East: 25.3, and South: 35.32 to North: 35.57. It utilizes ocean boundary conditions derived from the CMEMS Mediterranean Sea Waves Analysis and Forecast model to ensure accurate wave dynamics within the Mediterranean context. Meteorological forcing is provided by the high-resolution ICON 7km dataset, offering detailed and reliable atmospheric inputs.",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "João Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      },
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      },
+      {
+        "name": "Vassiliki Metheniti",
+        "email": "vasmeth@iacm.forth.gr"
+      },
+      {
+        "name": "Antonios Parasyris",
+        "email": "antonisparasyris@iacm.forth.gr"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "run_swan_creta",
+    "software_version": "1.0.0",
+    "class": "Workflow",
+    "latest": true,
+    "identifier": "urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0",
+    "citation": null,
+    "date_created": null,
+    "author": [
+      {
+        "name": "Miguel Delgado",
+        "email": "miguel.delgado@hidromod.com"
+      },
+      {
+        "name": "João Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:14.122317Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "name": "Execution of SWAN wave model",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "family": "urn:apkg:workflow:hidromod:pt:run_swan_creta",
+    "cwl": "$graph:\n- class: Workflow\n  doc: Execution of SWAN wave model, designed specifically for the Heraklion Port\n    area\n  inputs:\n    cmems_password:\n      doc: Password for CMEMS Download\n      type: string\n      s:description: Password for CMEMS Download\n      s:keywords:\n      - string\n      - password\n      s:name: CMEMS Password\n    cmems_username:\n      doc: Username for CMEMS Download\n      type: string\n      s:description: Username for CMEMS Download\n      s:keywords:\n      - string\n      - username\n      s:name: CMEMS Username\n    forecast:\n      doc: forecast for the model\n      type: int\n      s:description: forecast for the model\n      s:keywords:\n      - int\n      - forecast\n      s:name: Hindcast\n    hindcast:\n      doc: Hindcast for the model\n      type: int\n      s:description: Hindcast for the model\n      s:keywords:\n      - int\n      - Hindcast\n      s:name: Hindcast\n    wrf_ftpserver:\n      doc: Password for WRF Download\n      type: string\n      s:description: FTP Server for WRF Download\n      s:keywords:\n      - string\n      - password\n      s:name: WRF Password\n    wrf_password:\n      doc: Username for WRF Download\n      type: string\n      s:description: Username for WRF Download\n      s:keywords:\n      - string\n      - username\n      s:name: WRF Username\n    wrf_username:\n      doc: Username for WRF Download\n      type: string\n      s:description: Username for WRF Download\n      s:keywords:\n      - string\n      - username\n      s:name: WRF Username\n  outputs:\n    swan_output:\n      type: Directory\n      outputSource: execution50m/swan_result\n  steps:\n    preparation:\n      in:\n        forecast: forecast\n        hindcast: hindcast\n        cmems_password: cmems_password\n        cmems_username: cmems_username\n        wrf_ftpserver: wrf_ftpserver\n        wrf_username: wrf_username\n        wrf_password: wrf_password\n      run: '#preparation'\n      out:\n      - swan_preparation_directory\n    execution500m:\n      in:\n        forecast: forecast\n        hindcast: hindcast\n        swan_preparation_directory: preparation/swan_preparation_directory\n      run: '#execution500m'\n      out:\n      - swan_execution500m_directory\n    execution50m:\n      in:\n        forecast: forecast\n        hindcast: hindcast\n        swan_directory: execution500m/swan_execution500m_directory\n      run: '#execution50m'\n      out:\n      - swan_result\n  id: run_swan_creta\n  s:author:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  s:description: 'This 500m and 50m resolution SWAN wave model is designed specifically\n    for the Heraklion Port area, spanning a geographical range from West: 25.0 to\n    East: 25.3, and South: 35.32 to North: 35.57. It utilizes ocean boundary conditions\n    derived from the CMEMS Mediterranean Sea Waves Analysis and Forecast model to\n    ensure accurate wave dynamics within the Mediterranean context. Meteorological\n    forcing is provided by the high-resolution ICON 7km dataset, offering detailed\n    and reliable atmospheric inputs.'\n  s:keywords:\n  - swan\n  - Heraklion\n  - wave\n  - hidromod\n  s:name: Execution of SWAN wave model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sdDatePublished: '2025-06-11T14:23:14.122317Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0\n- class: CommandLineTool\n  requirements:\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_heraklion_500m_50m:1.0.0\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  inputs:\n    cmems_password:\n      type: string\n    cmems_username:\n      type: string\n    forecast:\n      type: int\n    hindcast:\n      type: int\n    wrf_ftpserver:\n      type: string\n    wrf_password:\n      type: string\n    wrf_username:\n      type: string\n  outputs:\n    swan_preparation_directory:\n      type: Directory\n      outputBinding:\n        glob: .\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: '\"/home/heraklionport_500m/prepare_swan.sh $(runtime.outdir) \\\n\n      $(inputs.forecast) \\\n\n      $(inputs.hindcast) \\\n\n      ''$(inputs.cmems_password)'' \\\n\n      ''$(inputs.cmems_username)'' \\\n\n      ''$(inputs.wrf_ftpserver)'' \\\n\n      ''$(inputs.wrf_username)'' \\\n\n      ''$(inputs.wrf_password)''\"\n\n      '\n    shellQuote: false\n  id: preparation\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  s:description: Download and preparation of all the required files to execute SWAN\n  s:keywords:\n  - swan\n  - Heraklion\n  - wave\n  - hidromod\n  - preparation\n  s:name: Preparation of SWAN wave Model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n- class: CommandLineTool\n  requirements:\n  - class: InitialWorkDirRequirement\n    listing: '$(inputs.swan_preparation_directory.listing.map(function(item) { return\n      {entry: item, writable: true}; }))'\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_heraklion_500m_50m:1.0.0\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  inputs:\n    forecast:\n      type: int\n    hindcast:\n      type: int\n    swan_preparation_directory:\n      type: Directory\n  outputs:\n    swan_execution500m_directory:\n      type: Directory\n      outputBinding:\n        glob: .\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: '\"/home/heraklionport_500m/500m.sh $(runtime.outdir) $(inputs.forecast)\n      $(inputs.hindcast)\"\n\n      '\n    shellQuote: false\n  id: execution500m\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  s:description: Execution of SWAN 500m wave model with data from the preparation\n  s:keywords:\n  - swan\n  - Heraklion\n  - wave\n  - hidromod\n  - execution\n  s:name: Execution of SWAN wave Model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n- class: CommandLineTool\n  requirements:\n  - class: InitialWorkDirRequirement\n    listing: '$(inputs.swan_directory.listing.map(function(item) { return {entry:\n      item, writable: true}; }))'\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_heraklion_500m_50m:1.0.0\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  inputs:\n    forecast:\n      type: int\n    hindcast:\n      type: int\n    swan_directory:\n      type: Directory\n  outputs:\n    swan_result:\n      type: Directory\n      outputBinding:\n        glob: $(\"results\")\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: '\"/home/heraklionport_500m/50m.sh $(runtime.outdir) $(inputs.forecast)\n      $(inputs.hindcast)\"\n\n      '\n    shellQuote: false\n  id: execution50m\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xE3o Ribeiro\"\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.delgado@hidromod.com\n    s:name: Miguel Delgado\n  - class: s:Person\n    s:email: vasmeth@iacm.forth.gr\n    s:name: Vassiliki Metheniti\n  - class: s:Person\n    s:email: antonisparasyris@iacm.forth.gr\n    s:name: Antonios Parasyris\n  s:description: Execution of SWAN 50m wave model with data from the preparation and\n    the execution of 500m\n  s:keywords:\n  - swan\n  - Heraklion\n  - wave\n  - hidromod\n  - execution\n  s:name: Execution of SWAN wave Model\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n$namespaces:\n  ogc: http://www.opengis.net/def/media-type/ogc/1.0/\n  s: https://schema.org/\ncwlVersion: v1.2\ns:description: 'This 500m and 50m resolution SWAN wave model is designed specifically\n  for the Heraklion Port area, spanning a geographical range from West: 25.0 to East:\n  25.3, and South: 35.32 to North: 35.57. It utilizes ocean boundary conditions derived\n  from the CMEMS Mediterranean Sea Waves Analysis and Forecast model to ensure accurate\n  wave dynamics within the Mediterranean context. Meteorological forcing is provided\n  by the high-resolution ICON 7km dataset, offering detailed and reliable atmospheric\n  inputs.'\ns:name: Execution of SWAN wave model\ns:softwareVersion: 1.0.0\ns:spatialCoverage:\n  class: s:geo\n  s:box: 35.33499908 25.12233 35.36499786 25.17233\n"
+  },
+  "id": "urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:hidromod:pt:run_swan_creta:1.0.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:hidromod:pt:run_swan_creta\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:hidromod:pt:run_swan_creta\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:hidromod:pt:run_swan_creta\"&sortby=-software_version"
+    }
+  ]
+}

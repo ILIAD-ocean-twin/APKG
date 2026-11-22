@@ -1,0 +1,328 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+# Converted from urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0
+# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).
+
+<urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0> a apkg-pro:Process, apkg-rec:Record ;
+    dct:identifier "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0" ;
+    dcat:qualifiedRelation [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "The landing page of this server as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "The landing page of this server as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "self" ;
+        apkg-rec:mediaType "application/geo+json" ;
+        dct:title "This document as GeoJSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=jsonld"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=jsonld_v2"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD) APKG V2"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "This document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+yaml" ;
+        dct:title "This document as CWL (YAML)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=cwljson"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+json" ;
+        dct:title "This document as CWL (JSON)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg"^^xsd:anyURI ;
+        apkg-rec:rel "collection" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "Application Packages"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "All versions of this document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as RDF (JSON-LD)"
+    ] ;
+    dct:title "Sentinel-1 Oil Spill Object Detection Pipeline 1-2-3-5 and Medslik forecasting" ;
+    dct:description "Sentinel-1 Oil Spill Object Detection and Forecasting Pipeline using Deep Learning tecniques" ;
+    geo:hasGeometry [
+        a apkg-rec:Geometry ;
+        apkg-rec:geometryType "Polygon" ;
+        apkg-rec:coordinates "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+    ] ;
+    dcat:keyword "oil spill", "SAR", "Sentinel-1", "deep learning", "object detection" ;
+    apkg-rec:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    apkg-pro:processID "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0" ;
+    apkg-pro:familyID "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156" ;
+    pav:version "1.0.0" ;
+    apkg-pro:dateCreated "2024-12-01"^^xsd:date ;
+    apkg-pro:registrationDate "2025-07-30T14:51:37.285837Z"^^xsd:dateTimeStamp ;
+    apkg-pro:isLatestVersion "true"^^xsd:boolean ;
+    apkg-pro:cwlDescriptor [
+        a apkg-pro:CWLDescriptor ;
+        apkg-pro:descriptorURL "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_156:1.0.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:mediaType "application/cwl+yaml"
+    ] ;
+    dct:creator [
+        a apkg-pro:Person ;
+        foaf:name "Sabrina Outmani" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "outmani@meeo.it"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Noemi Fazzini" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "fazzini@meeo.it"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Antonios Parasyris" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "antonisparasyris@iacm.forth.gr"
+        ]
+    ] ;
+    dct:publisher [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "Application Package Registry" ;
+        apkg-pro:homepage "https://iliad-registry.inesctec.pt"^^xsd:anyURI
+    ] ;
+    apkg-pro:hasSourceOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "MEEO SRL" ;
+        apkg-pro:homepage "https://meeo.it/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "IT"
+        ]
+    ], [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "FORTH" ;
+        apkg-pro:homepage "https://www.forth.gr/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "GR"
+        ]
+    ], [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "INESCTEC" ;
+        apkg-pro:homepage "https://inesctec.pt"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    apkg-pro:hasProducerOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "FORTH" ;
+        apkg-pro:homepage "https://forth.gr"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "GR"
+        ]
+    ] ;
+    bf:geographicCoverage [
+        a apkg-pro:SpatialCoverage ;
+        geo:hasGeometry [
+            a apkg-pro:Geo ;
+            apkg-pro:box "-90 -180 90 180"
+        ] ;
+        apkg-pro:geoClass "schema:GeoShape"
+    ] ;
+    apkg-pro:temporalCoverage "2014-01-01T00:00:00Z/" ;
+    apkg-pro:programmingLanguage "python" ;
+    apkg-pro:processClass "Workflow" ;
+    apkg-pro:hasInput [
+        a apkg-pro:Parameter ;
+        dct:identifier "use_case_directory" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "Path to directory as a string where to find input files and where to store outputs"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "bbox" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "Bounding box for image search"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "start_date" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "Start date for data search"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "time_interval" ;
+        apkg-pro:parameterType "int?" ;
+        dct:description "Time interval (n of days) for data search"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "end_date" ;
+        apkg-pro:parameterType "string?" ;
+        dct:description "End date for data search"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "verbose" ;
+        apkg-pro:parameterType "boolean?" ;
+        dct:description "Enable verbose logging"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "debug" ;
+        apkg-pro:parameterType "boolean?" ;
+        dct:description "Enable debug mode"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "asf_username" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "asf_password" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "cont_slick" ;
+        apkg-pro:parameterType "string" ;
+        apkg-pro:defaultValue "NO"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "sat" ;
+        apkg-pro:parameterType "string" ;
+        apkg-pro:defaultValue "NO"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "use_high_res" ;
+        apkg-pro:parameterType "string" ;
+        apkg-pro:defaultValue "NO"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "min_lon" ;
+        apkg-pro:parameterType "float?" ;
+        apkg-pro:defaultValue "24.069118741783797"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "max_lon" ;
+        apkg-pro:parameterType "float?" ;
+        apkg-pro:defaultValue "24.990341065648366"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "min_lat" ;
+        apkg-pro:parameterType "float?" ;
+        apkg-pro:defaultValue "35.09663196120557"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "max_lat" ;
+        apkg-pro:parameterType "float?" ;
+        apkg-pro:defaultValue "35.990635331961315"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "lat_point" ;
+        apkg-pro:parameterType "float?" ;
+        apkg-pro:defaultValue "35.496"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "lon_point" ;
+        apkg-pro:parameterType "float?" ;
+        apkg-pro:defaultValue "-15.7433"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "date_spill" ;
+        apkg-pro:parameterType "string?" ;
+        apkg-pro:defaultValue "2024-11-07T06:22:00Z"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "spill_dur" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "spill_res" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "spill_tons" ;
+        apkg-pro:parameterType "float" ;
+        apkg-pro:defaultValue "1.4"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "username" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "password" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "ftp_server" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "ftp_user" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "ftp_password" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "remote_dir" ;
+        apkg-pro:parameterType "string"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "cds_token" ;
+        apkg-pro:parameterType "string?"
+    ] ;
+    apkg-pro:hasOutput [
+        a apkg-pro:Parameter ;
+        dct:identifier "pipeline_output" ;
+        apkg-pro:parameterType "Directory"
+    ] ;
+    apkg-pro:hasSecret [
+        a apkg-pro:Secret ;
+        apkg-pro:secretInputID "username", "password", "ftp_server", "ftp_password"
+    ] .

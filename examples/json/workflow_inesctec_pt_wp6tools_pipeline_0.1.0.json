@@ -1,0 +1,312 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "openoil",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": null,
+    "keywords": [
+      "oil spill",
+      "opendrift",
+      "choreographies",
+      "virtual choreographies",
+      "2s3",
+      "wp6",
+      "tools"
+    ],
+    "inputs": [
+      {
+        "doc": "If want to generate bathymetry",
+        "label": "bathymetry",
+        "id": "bathymetry",
+        "type": "boolean?"
+      },
+      {
+        "doc": "The latitude of the study area",
+        "label": "narratives",
+        "id": "latitude",
+        "type": "float"
+      },
+      {
+        "doc": "The longitude of the study area",
+        "label": "narratives",
+        "id": "longitude",
+        "type": "float"
+      },
+      {
+        "doc": "The radius of the study area",
+        "label": "narratives",
+        "id": "radius",
+        "type": "float"
+      },
+      {
+        "label": "narratives",
+        "id": "type",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "url",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "samples",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "time",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "minutes",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "frames",
+        "type": "string"
+      },
+      {
+        "label": "narratives",
+        "id": "density",
+        "type": "string"
+      },
+      {
+        "default": "stac",
+        "label": "narratives",
+        "id": "output-format",
+        "type": "string?"
+      },
+      {
+        "id": "depth",
+        "type": "float?"
+      },
+      {
+        "label": "narratives",
+        "id": "output-animation",
+        "type": "boolean?"
+      },
+      {
+        "label": "virtualc",
+        "id": "template_file",
+        "type": "string?"
+      },
+      {
+        "label": "virtualc",
+        "id": "cesium_mappings",
+        "type": "string?"
+      },
+      {
+        "label": "virtualc",
+        "id": "unity_mappings",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage endpoint",
+        "label": "s3storage",
+        "id": "endpoint",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage region",
+        "label": "s3storage",
+        "id": "region",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage access_key",
+        "label": "s3storage",
+        "id": "access_key",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage secret_key",
+        "label": "s3storage",
+        "id": "secret_key",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage region",
+        "label": "s3storage",
+        "id": "session_token",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage bucket",
+        "label": "s3storage",
+        "id": "bucket",
+        "type": "string?"
+      },
+      {
+        "default": "wp6tools_virtual_choreographies_pipeline",
+        "doc": "S3 storage final directory name",
+        "label": "s3storage",
+        "id": "base_path",
+        "type": "string?"
+      }
+    ],
+    "description": "wp6 tools workflow to generate contours",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "wp6tools_pipeline",
+    "software_version": "0.1.0",
+    "class": "Workflow",
+    "latest": false,
+    "identifier": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0",
+    "citation": null,
+    "date_created": "2025-05-09T16:32:43Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:24.646286Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/workflows/wp6tools-inesctec/wp6tools_inesctec_0_1_0.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "wp6tools_pipeline",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n  edam: http://edamontology.org/\n$graph:\n- class: Workflow\n  id: wp6tools_pipeline\n  doc: wp6 workflow\n  inputs:\n    bathymetry:\n      type: boolean?\n      doc: If want to generate bathymetry\n      label: bathymetry\n    latitude:\n      type: float\n      doc: The latitude of the study area\n      label: narratives\n    longitude:\n      type: float\n      doc: The longitude of the study area\n      label: narratives\n    radius:\n      type: float\n      doc: The radius of the study area\n      label: narratives\n    type:\n      type: string\n      label: narratives\n    url:\n      type: string\n      label: narratives\n    samples:\n      type: string\n      label: narratives\n    time:\n      type: string\n      label: narratives\n    minutes:\n      type: string\n      label: narratives\n    frames:\n      type: string\n      label: narratives\n    density:\n      type: string\n      label: narratives\n    output-format:\n      type: string?\n      default: stac\n      label: narratives\n    depth:\n      type: float?\n    output-animation:\n      type: boolean?\n      label: narratives\n    template_file:\n      type: string?\n      label: virtualc\n    cesium_mappings:\n      type: string?\n      label: virtualc\n    unity_mappings:\n      type: string?\n      label: virtualc\n    endpoint:\n      type: string?\n      doc: S3 storage endpoint\n      label: s3storage\n    region:\n      type: string?\n      doc: S3 storage region\n      label: s3storage\n    access_key:\n      type: string?\n      doc: S3 storage access_key\n      label: s3storage\n    secret_key:\n      type: string?\n      doc: S3 storage secret_key\n      label: s3storage\n    session_token:\n      type: string?\n      doc: S3 storage region\n      label: s3storage\n    bucket:\n      type: string?\n      doc: S3 storage bucket\n      label: s3storage\n    base_path:\n      type: string?\n      doc: S3 storage final directory name\n      default: wp6tools_virtual_choreographies_pipeline\n      label: s3storage\n  steps:\n    step_point2bbox:\n      when: $(inputs.bathymetry == true)\n      run: '#point2bbox'\n      in:\n        bathymetry: bathymetry\n        lat: latitude\n        lon: longitude\n        radius: radius\n      out:\n      - lon_min\n      - lon_max\n      - lat_min\n      - lat_max\n    step_bathymetry:\n      when: $(inputs.bathymetry == true)\n      run: '#bathymetry'\n      in:\n        bathymetry: bathymetry\n        lon_min: step_point2bbox/lon_min\n        lon_max: step_point2bbox/lon_max\n        lat_min: step_point2bbox/lat_min\n        lat_max: step_point2bbox/lat_max\n      out:\n      - result\n      - metadata\n    step_generate_model:\n      run: '#generate-model'\n      in:\n        type: type\n        url: url\n        latitude: latitude\n        longitude: longitude\n        radius: radius\n        samples: samples\n        time: time\n        minutes: minutes\n        output-animation: output-animation\n      out:\n      - result\n      - animation\n    step_extract_particles:\n      run: '#extract-particles'\n      in:\n        input-file: step_generate_model/result\n        output-format:\n          default: stac\n        projection-function:\n          default: none\n        projection-resolution:\n          default: none\n        latitude-variable:\n          default: lat\n        longitude-variable:\n          default: lon\n        time-variable:\n          default: time\n      out:\n      - result\n    step_crop_frames:\n      run: '#crop-frames'\n      in:\n        particles: step_extract_particles/result\n        frames: frames\n      out:\n      - result\n    step_generate_contours:\n      run: '#generate-contours'\n      in:\n        cropped: step_crop_frames/result\n        density: density\n        output-format: output-format\n      out:\n      - result\n    dir2files:\n      when: $(inputs.template_file != null && inputs.template_file != \"\")\n      run: '#dir2files'\n      in:\n        input_dir: step_generate_contours/result\n      out:\n      - output_files\n    json_append:\n      when: $(inputs.template_file != null && inputs.template_file != \"\")\n      run: '#json_append_wp6tools_pipeline'\n      in:\n        files: dir2files/output_files\n      out:\n      - result\n    step_virtual_choreographies_generator:\n      when: $(inputs.template_file != null && inputs.template_file != \"\")\n      run: '#virtual-choreographies-generator'\n      in:\n        dataset: json_append/result\n        template_url: template_file\n      out:\n      - vc\n    step_virtual_choreographies_unity_plugin:\n      when: $(inputs.template_file != null && inputs.template_file != \"\")\n      run: '#virtual-choreographies-unity-plugin'\n      in:\n        vc: step_virtual_choreographies_generator/vc\n        mappings_url: unity_mappings\n      out:\n      - platform_choreography\n    step_virtual_choreographies_cesium_plugin:\n      when: $(inputs.template_file != null && inputs.template_file != \"\")\n      run: '#virtual-choreographies-cesium-plugin'\n      in:\n        vc: step_virtual_choreographies_generator/vc\n        mappings_url: cesium_mappings\n      out:\n      - platform_choreography\n    step_metadata_2stact2:\n      run: '#metadata-2stact2'\n      in:\n        latitude: latitude\n        longitude: longitude\n        radius: radius\n        frames: frames\n        time: time\n      out:\n      - result\n    step_2stac2:\n      run: '#2stac2_wp6tools_pipeline'\n      in:\n        unity_choreography: step_virtual_choreographies_cesium_plugin/platform_choreography\n        cesium_choreography: step_virtual_choreographies_unity_plugin/platform_choreography\n        simulation: step_generate_model/result\n        animation: step_generate_model/animation\n        metadata: step_metadata_2stact2/result\n        bathymetry: step_bathymetry/result\n      out:\n      - stac_result\n    step_2s3:\n      run: '#2s3'\n      when: $(inputs.endpoint != null && inputs.endpoint != \"\")\n      in:\n        region: region\n        endpoint: endpoint\n        access_key: access_key\n        secret_key: secret_key\n        session_token: session_token\n        bucket: bucket\n        directory: step_2stac2/stac_result\n      out:\n      - base_path\n  outputs:\n  - id: openoil\n    outputSource:\n    - step_2stac2/stac_result\n    type: Directory\n    cwltool:Secrets: null\n  hints:\n    secrets:\n    - access_key\n    - secret_key\n    - session_token\n  requirements:\n    InlineJavascriptRequirement: {}\n  s:name: wp6tools_pipeline\n  s:description: wp6 tools workflow to generate contours\n  s:keywords:\n  - oil spill\n  - opendrift\n  - choreographies\n  - virtual choreographies\n  - 2s3\n  - wp6\n  - tools\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/workflows/wp6tools-inesctec/wp6tools_inesctec_0_1_0.cwl\n  s:dateCreated: '2025-05-09T16:32:43Z'\n  s:sdDatePublished: '2025-06-11T14:23:24.646286Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0\n- class: CommandLineTool\n  id: point2bbox\n  baseCommand: python\n  arguments:\n  - /opt/point2bbox.py\n  - --lat\n  - valueFrom: $( inputs.lat )\n  - --lon\n  - valueFrom: $( inputs.lon )\n  - --radius\n  - valueFrom: $( inputs.radius )\n  inputs:\n    lat:\n      type: float\n      doc: Latitude\n    lon:\n      type: float\n      doc: Longitude\n    radius:\n      type: float\n      doc: Radius\n  outputs:\n    lon_min:\n      type: float\n    lon_max:\n      type: float\n    lat_min:\n      type: float\n    lat_max:\n      type: float\n  requirements:\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/point2bbox:0.1.0\n  s:name: point2bbox\n  s:description: Convert a point and radius to a bounding box\n  s:keywords:\n  - point2bbox\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/point2bbox/point2bbox_0_1_0.cwl\n  s:dateCreated: '2025-05-09T15:52:52Z'\n- class: CommandLineTool\n  id: bathymetry\n  baseCommand: python\n  arguments:\n  - /opt/bathymetry.py\n  - --lon_min\n  - valueFrom: $( inputs.lon_min )\n  - --lon_max\n  - valueFrom: $( inputs.lon_max )\n  - --lat_min\n  - valueFrom: $( inputs.lat_min )\n  - --lat_max\n  - valueFrom: $( inputs.lat_max )\n  inputs:\n    lon_min:\n      type: float\n      doc: The minimum longitude of the study area.\n    lon_max:\n      type: float\n      doc: The maximum longitude of the study area.\n    lat_min:\n      type: float\n      doc: The minimum latitude of the study area.\n    lat_max:\n      type: float\n      doc: The maximum latitude of the study area.\n  outputs:\n    result:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: result/out.nc\n      doc: 'The output NetCDF file generated by the bathymetry model.\n\n        The file is in the OGC NetCDF media type.\n\n        '\n    metadata:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: result/metadata.json\n      doc: metadata description\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/bathymetry-forth:0.1.0\n  s:name: bathymetry\n  s:description: Get bathymetry to a given bounding box. You can define an outside\n    source.\n  s:keywords:\n  - bathymetry\n  - bounding box\n  s:softwareVersion: 0.1.0\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: FORTH\n    s:url: https://forth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  - class: s:Organization\n    s:name: FORTH\n    s:url: https://forth.gr\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  s:author:\n  - class: s:Person\n    s:email: kspanoudaki@gmail.com\n    s:name: Katerina Spanoudaki\n  s:contributor:\n  - class: s:Person\n    s:email: miguel.r.correia@inesctec.pt\n    s:name: Miguel Correia\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/bathymetry-forth/bathymetry_forth_0_1_0.cwl\n  s:dateCreated: '2025-05-09T15:19:21Z'\n- class: CommandLineTool\n  id: generate-model\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - generate-model\n  - --type\n  - valueFrom: $( inputs.type )\n  - --url\n  - valueFrom: $( inputs.url )\n  - --latitude\n  - valueFrom: $( inputs.latitude )\n  - --longitude\n  - valueFrom: $( inputs.longitude )\n  - --radius\n  - valueFrom: $( inputs.radius )\n  - --samples\n  - valueFrom: $( inputs.samples )\n  - --time\n  - valueFrom: $( inputs.time )\n  - --minutes\n  - valueFrom: $( inputs.minutes )\n  - valueFrom: $( function () { if (inputs[\"output-animation\"]) { return [\"--output-animation\",\n      \"true\"]; } else { return []; } }())\n  - valueFrom: $( function () { return [\"--depth\", inputs[\"depth\"]]; }())\n  - --output-url\n  - output/oceandrift.nc\n  inputs:\n    type:\n      type: string\n    url:\n      type: string\n    latitude:\n      type: float\n    longitude:\n      type: float\n    radius:\n      type: float\n    samples:\n      type: string\n    time:\n      type: string\n    minutes:\n      type: string\n    output-animation:\n      type: boolean?\n    depth:\n      type: float?\n      default: 0\n  outputs:\n    result:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: output/oceandrift.nc\n    animation:\n      format: edam:format_3467\n      type: File?\n      outputBinding:\n        glob: output/animation.gif\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.2\n  s:name: generate-model\n  s:description: generate model frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - model\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.2\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-generate-model/wp6tools_generate_model_0_1_2.cwl\n  s:dateCreated: '2025-05-09T16:18:08Z'\n- class: CommandLineTool\n  id: extract-particles\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - extract-particles\n  - --input-url\n  - valueFrom: $( inputs['input-file'] )\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --projection-function\n  - valueFrom: $( inputs['projection-function'] )\n  - --projection-resolution\n  - valueFrom: $( inputs['projection-resolution'] )\n  - --latitude-variable\n  - valueFrom: $( inputs['latitude-variable'] )\n  - --longitude-variable\n  - valueFrom: $( inputs[\"longitude-variable\"] )\n  - --time-variable\n  - valueFrom: $( inputs[\"time-variable\"] )\n  - --output-url\n  - output/particles\n  inputs:\n    input-file:\n      type: File\n    output-format:\n      type: string\n    projection-function:\n      type: string\n    projection-resolution:\n      type: string\n    latitude-variable:\n      type: string\n    longitude-variable:\n      type: string\n    time-variable:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/particles\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.2\n  s:name: extract-particles\n  s:description: extract particles frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - extract\n  - particles\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.2\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-extract-particles/wp6tools_extract_particles_0_1_2.cwl\n  s:dateCreated: '2025-05-09T16:18:08Z'\n- class: CommandLineTool\n  id: crop-frames\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - crop-frames\n  - --input-url\n  - valueFrom: $( inputs['particles'])\n  - --input-format\n  - stac\n  - --frames\n  - valueFrom: $( inputs['frames'] )\n  - --output-url\n  - output/cropped\n  inputs:\n    particles:\n      type: Directory\n    frames:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/cropped\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.2\n  s:name: crop-frames\n  s:description: crop frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - crop\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.2\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-crop-frames/wp6tools_crop_frames_0_1_2.cwl\n  s:dateCreated: '2025-05-09T16:18:08Z'\n- class: CommandLineTool\n  id: generate-contours\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - generate-contours-at-density\n  - --input-url\n  - valueFrom: $( inputs['cropped'])\n  - --input-format\n  - stac\n  - --output-format\n  - valueFrom: $( inputs['output-format'] )\n  - --density\n  - valueFrom: $( inputs['density'] )\n  - --output-url\n  - output/contours\n  inputs:\n    cropped:\n      type: Directory\n    output-format:\n      type: string\n      default: json\n    density:\n      type: string\n  outputs:\n    result:\n      type: Directory\n      outputBinding:\n        glob: output/contours\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.2\n  s:name: generate-contours\n  s:description: generate contours frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - contours\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.2\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-generate-contours/wp6tools_generate_contours_0_1_2.cwl\n  s:dateCreated: '2025-05-09T16:18:08Z'\n- class: CommandLineTool\n  id: dir2files\n  baseCommand: python\n  arguments:\n  - /opt/dir2files.py\n  - --directory\n  - valueFrom: $(inputs.input_dir)\n  inputs:\n    input_dir:\n      type: Directory\n  outputs:\n    output_files:\n      type: File[]\n      outputBinding:\n        glob: ./*\n  requirements:\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/dir2files:0.1.0\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n  s:name: dir2files\n  s:description: Converts a directory to a list of files\n  s:keywords:\n  - directory\n  - files\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/dir2files/dir2files_0_1_0.cwl\n  s:dateCreated: '2025-05-09T15:28:21Z'\n- class: CommandLineTool\n  id: json_append_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/append.py\n  - valueFrom: '$( function () {\n\n      var files_array = []; Object.keys(inputs.files).forEach(function (element) {\n      console.log(inputs.files[element]); if(inputs.files[element].basename !== ''contour-header.json'')\n      files_array.push(''--file''); files_array.push(inputs.files[element]); }); return\n      files_array;\n\n      }())'\n  inputs:\n    files:\n      type: File[]?\n      doc: files\n  outputs:\n    result:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: appended.json\n      doc: json file appended\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/json-append:0.1.0\n  s:name: json_append\n  s:description: Append json files, objects and array of objects, to an array of objects\n  s:keywords:\n  - json\n  - merge\n  - append\n  - metadata\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:sourceOrganization:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n    class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/json-append/json_append_wp6tools_pipeline_0_1_0.cwl\n  s:dateCreated: '2025-05-09T15:42:41Z'\n- class: CommandLineTool\n  id: virtual-choreographies-generator\n  baseCommand: python\n  arguments:\n  - /opt/src/vc_generator.py\n  - valueFrom: $( inputs.dataset )\n  - valueFrom: $( inputs.template || inputs.template_url )\n  inputs:\n    template:\n      type: File?\n    template_url:\n      type: string?\n    dataset:\n      type: File\n  outputs:\n    vc:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: vc.json\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-generator:0.1.0\n  s:name: virtual-choreographies-generator\n  s:description: Generator of virtual choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: null\n  s:dateCreated: '2025-05-09T16:01:05Z'\n- class: CommandLineTool\n  id: virtual-choreographies-unity-plugin\n  baseCommand: python\n  arguments:\n  - /opt/src/converter_unity.py\n  - valueFrom: $( inputs.vc )\n  - valueFrom: $( inputs.mappings || inputs.mappings_url )\n  inputs:\n    vc:\n      type: File\n    mappings:\n      type: File?\n    mappings_url:\n      type: string?\n  outputs:\n    platform_choreography:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: platform_choreography.json\n        outputEval: ${self[0].basename=\"platform_choreography_unity.json\"; return\n          self;}\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-unity-plugin:0.1.0\n  s:name: virtual-choreographies-unity-plugin\n  s:description: Generator of unity inputs to virtual choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  - unity\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: null\n  s:dateCreated: '2025-05-09T16:01:05Z'\n- class: CommandLineTool\n  id: virtual-choreographies-cesium-plugin\n  baseCommand: python\n  arguments:\n  - /opt/src/converter_cesium.py\n  - valueFrom: $( inputs.vc )\n  - valueFrom: $( inputs.mappings || inputs.mappings_url )\n  inputs:\n    vc:\n      type: File\n    mappings:\n      type: File?\n    mappings_url:\n      type: string?\n  outputs:\n    platform_choreography:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: platform_choreography.json\n        outputEval: ${self[0].basename=\"platform_choreography_cesium.json\"; return\n          self;}\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/virtual-choreographies-cesium-plugin:0.1.0\n  s:name: virtual-choreographies-cesium-plugin\n  s:description: Generator of cesium inputs to virtual choreographies\n  s:keywords:\n  - wp6-tools\n  - choreographies\n  - virtual-choreographies\n  - cesium\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Fernando Cassola\n    s:email: fernando.c.marques@inesctec.pt\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:maintainer:\n  - class: s:Person\n    s:name: Vitor Cavaleiro\n    s:email: vitor.cavaleiro@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: null\n  s:dateCreated: '2025-05-09T16:01:05Z'\n- class: CommandLineTool\n  id: metadata-2stact2\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - metadata-2stac2\n  - --latitude\n  - valueFrom: $( inputs.latitude )\n  - --longitude\n  - valueFrom: $( inputs.longitude )\n  - --radius\n  - valueFrom: $( inputs.radius )\n  - --time\n  - valueFrom: $( inputs.time )\n  - --frames\n  - valueFrom: $( inputs.frames )\n  - --output-url\n  - output/metadata.json\n  inputs:\n    latitude:\n      type: float\n    longitude:\n      type: float\n    radius:\n      type: float\n    time:\n      type: string\n    frames:\n      type: string\n  outputs:\n    result:\n      format: edam:format_3464\n      type: File\n      outputBinding:\n        glob: output/metadata.json\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.0\n  s:name: metadata-2stact2\n  s:description: generate metadata from wp6-tools to the 2stac2\n  s:keywords:\n  - wp6-tools\n  - metadata\n  - 2stac2\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:publisher:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-metadata-2stac2/wp6tools_metadata_2stac2_0_1_0.cwl\n  s:dateCreated: '2025-03-18T12:44:49Z'\n- class: CommandLineTool\n  id: 2stac2_wp6tools_pipeline\n  baseCommand: python\n  arguments:\n  - /opt/2stac2.py\n  - valueFrom: $( function () { if (inputs[\"unity_choreography\"]) { return [\"--file\",\n      inputs[\"unity_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"cesium_choreography\"]) { return [\"--file\",\n      inputs[\"cesium_choreography\"]]; } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"simulation\"]) { return [\"--file\", inputs[\"simulation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"animation\"]) { return [\"--file\", inputs[\"animation\"]];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs[\"bathymetry\"]) { return [\"--file\", inputs[\"bathymetry\"]];\n      } else { return []; } }())\n  - --metadata\n  - valueFrom: $(runtime.outdir + '/multiple_metadata.json')\n  inputs:\n    unity_choreography:\n      format: edam:format_3464\n      doc: unity choreography json file\n      type: File?\n    cesium_choreography:\n      format: edam:format_3464\n      doc: cesium choreography json file\n      type: File?\n    simulation:\n      format: edam:format_3650\n      doc: NetCDF simulation file\n      type: File?\n    animation:\n      format: edam:format_3467\n      doc: Animation GIF file\n      type: File?\n    bathymetry:\n      format: edam:format_3650\n      doc: Bathymetry NetCDF file\n      type: File?\n    metadata:\n      format: edam:format_3464\n      doc: metadata file description\n      type: File\n      loadContents: true\n  outputs:\n    stac_result:\n      outputBinding:\n        glob: stac_result\n      type: Directory\n      doc: STAC output\n  requirements:\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/conda/envs/application/bin:/opt/conda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2stac2:0.1.1\n    InplaceUpdateRequirement:\n      inplaceUpdate: true\n    InitialWorkDirRequirement:\n      listing: \"${\\n  const content = JSON.parse(inputs.metadata.contents);\\n  const\\\n        \\ metadata = [];\\n  if(inputs.unity_choreography) metadata.push({...content,\\\n        \\ filename: inputs.unity_choreography.basename});\\n  if(inputs.cesium_choreography)\\\n        \\ metadata.push({...content, filename: inputs.cesium_choreography.basename});\\n\\\n        \\  if(inputs.simulation) metadata.push({...content, filename: inputs.simulation.basename});\\n\\\n        \\  if(inputs.animation) metadata.push({...content, filename: inputs.animation.basename});\\n\\\n        \\  if(inputs.bathymetry) metadata.push({...content, filename: inputs.bathymetry.basename});\\n\\\n        \\  return [{\\\"class\\\": \\\"File\\\", \\\"basename\\\": \\\"multiple_metadata.json\\\"\\\n        , \\\"contents\\\": JSON.stringify(metadata) }];\\n}\\n\"\n  s:name: 2stac2_wp6tools_pipeline\n  s:softwareVersion: 0.1.1\n  s:description: Transform and array of files into a STAC\n  s:keywords:\n  - stac\n  - metadata\n  s:programmingLanguage: python\n  s:sourceOrganization:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n    class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2stac2/2stac2_wp6tools_pipeline_0_1_1.cwl\n  s:dateCreated: '2025-05-09T15:13:13Z'\n- class: CommandLineTool\n  id: 2s3\n  baseCommand: python\n  arguments:\n  - /opt/2s3.py\n  - --endpoint\n  - valueFrom: $( inputs.endpoint )\n  - --access_key\n  - valueFrom: $( inputs.access_key )\n  - --secret_key\n  - valueFrom: $( inputs.secret_key )\n  - --bucket\n  - valueFrom: $( inputs.bucket )\n  - --endpoint\n  - valueFrom: $( inputs.endpoint )\n  - valueFrom: $( function () { if (inputs.region) { return [\"--region\", inputs.region];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs.base_path) { return [\"--base_path\", `${inputs.base_path}_${new\n      Date().toISOString().replace(/:/g, '').replace(/\\-/g, '').split('.')[0]}`];\n      } else { return []; } }())\n  - valueFrom: $( function () { if (inputs.session_token) { return [\"--session_token\",\n      inputs.session_token]; } else { return []; } }())\n  - valueFrom: '$( function () { if(inputs.files) { var files_array = [];\n\n      Object.keys(inputs.files).forEach(function (element) { files_array.push(''--file'');\n      files_array.push(inputs.files[element]); });\n\n      return files_array; } else { return []; } }())'\n  - valueFrom: '$( function () { if(inputs.directories) { var directories_array =\n      [];\n\n      Object.keys(inputs.directories).forEach(function (element) { directories_array.push(''--directory'');\n      directories_array.push(inputs.directories[element]); });\n\n      return directories_array; } else { return []; } }())'\n  - valueFrom: $( function () { if(inputs.file) { return ['--file', inputs.file];\n      } else { return []; } }())\n  - valueFrom: $( function () { if(inputs.directory) { return ['--directory', inputs.directory];\n      } else { return []; } }())\n  inputs:\n    endpoint:\n      type: string?\n      doc: S3 storage endpoint\n    region:\n      type: string?\n      doc: S3 storage region\n    access_key:\n      type: string?\n      doc: S3 storage access_key\n    secret_key:\n      type: string?\n      doc: S3 storage secret_key\n    session_token:\n      type: string?\n      doc: S3 storage region\n    bucket:\n      type: string?\n      doc: S3 storage bucket\n    base_path:\n      type: string?\n      doc: S3 storage final directory name\n    files:\n      type: File[]?\n      doc: Multiple files to upload\n    directories:\n      type: Directory[]?\n      doc: Multiple directories to upload\n    directory:\n      type: Directory?\n      doc: Single directory to upload\n    file:\n      type: File?\n      doc: Single file to upload\n  outputs:\n    base_path:\n      type: string\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/2s3:0.1.0\n  hints:\n    cwltool:Secrets:\n      secrets:\n      - access_key\n      - secret_key\n      - session_token\n  s:name: 2s3\n  s:description: Uploads files and/or folders to a S3 bucket storage.\n  s:keywords:\n  - s3\n  - storage\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/2s3/2s3_0_1_0.cwl\n  s:dateCreated: '2025-05-09T14:25:17Z'\n"
+  },
+  "id": "urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:inesctec:pt:wp6tools_pipeline:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:inesctec:pt:wp6tools_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:inesctec:pt:wp6tools_pipeline\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:inesctec:pt:wp6tools_pipeline\"&sortby=-software_version"
+    }
+  ]
+}

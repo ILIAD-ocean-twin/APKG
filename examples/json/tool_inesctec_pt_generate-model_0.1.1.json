@@ -1,0 +1,222 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "format": "edam:format_3650",
+        "id": "result",
+        "type": "File"
+      },
+      {
+        "format": "edam:format_3467",
+        "id": "animation",
+        "type": "File?"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "wp6-tools",
+      "model"
+    ],
+    "inputs": [
+      {
+        "id": "type",
+        "type": "string"
+      },
+      {
+        "id": "url",
+        "type": "string"
+      },
+      {
+        "id": "latitude",
+        "type": "float"
+      },
+      {
+        "id": "longitude",
+        "type": "float"
+      },
+      {
+        "id": "radius",
+        "type": "float"
+      },
+      {
+        "id": "samples",
+        "type": "string"
+      },
+      {
+        "id": "time",
+        "type": "string"
+      },
+      {
+        "id": "minutes",
+        "type": "string"
+      },
+      {
+        "id": "output-animation",
+        "type": "boolean?"
+      }
+    ],
+    "description": "generate model frames from wp6-tools",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "generate-model",
+    "software_version": "0.1.1",
+    "class": "CommandLineTool",
+    "latest": false,
+    "identifier": "urn:apkg:tool:inesctec:pt:generate-model:0.1.1",
+    "citation": null,
+    "date_created": "2025-03-18T13:07:57Z",
+    "author": [
+      {
+        "name": "Alexandre Valle",
+        "email": "alexandre.valle@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:29:22.805222Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=cwl",
+    "license": null,
+    "code_repository": "https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-generate-model/wp6tools_generate_model_0_1_1.cwl",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "generate-model",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:generate-model",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/SoftwareApplication\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: generate-model\n  baseCommand: python\n  arguments:\n  - /opt/main.py\n  - generate-model\n  - --type\n  - valueFrom: $( inputs.type )\n  - --url\n  - valueFrom: $( inputs.url )\n  - --latitude\n  - valueFrom: $( inputs.latitude )\n  - --longitude\n  - valueFrom: $( inputs.longitude )\n  - --radius\n  - valueFrom: $( inputs.radius )\n  - --samples\n  - valueFrom: $( inputs.samples )\n  - --time\n  - valueFrom: $( inputs.time )\n  - --minutes\n  - valueFrom: $( inputs.minutes )\n  - valueFrom: $( function () { if (inputs[\"output-animation\"]) { return [\"--output-animation\",\n      \"true\"]; } else { return []; } }())\n  - --output-url\n  - output/oceandrift.nc\n  inputs:\n    type:\n      type: string\n    url:\n      type: string\n    latitude:\n      type: float\n    longitude:\n      type: float\n    radius:\n      type: float\n    samples:\n      type: string\n    time:\n      type: string\n    minutes:\n      type: string\n    output-animation:\n      type: boolean?\n  outputs:\n    result:\n      format: edam:format_3650\n      type: File\n      outputBinding:\n        glob: output/oceandrift.nc\n    animation:\n      format: edam:format_3467\n      type: File?\n      outputBinding:\n        glob: output/animation.gif\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    EnvVarRequirement:\n      envDef:\n        PATH: /opt/miniconda3/envs/opendrift/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/wp6tools:0.1.1\n  s:name: generate-model\n  s:description: generate model frames from wp6-tools\n  s:keywords:\n  - wp6-tools\n  - model\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.1\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Alexandre Valle\n    s:email: alexandre.valle@inesctec.pt\n  s:contributor:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:codeRepository: https://pipe-drive.inesctec.pt/application-packages/tools/wp6tools-generate-model/wp6tools_generate_model_0_1_1.cwl\n  s:dateCreated: '2025-03-18T13:07:57Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:generate-model:0.1.1\n  s:sdDatePublished: '2025-06-11T14:29:22.805222Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:generate-model:0.1.1",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:generate-model:0.1.1?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:generate-model\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:generate-model\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:generate-model\"&sortby=-software_version"
+    }
+  ]
+}

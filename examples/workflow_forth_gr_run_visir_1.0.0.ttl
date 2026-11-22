@@ -1,0 +1,297 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+# Converted from urn:apkg:workflow:forth:gr:run_visir:1.0.0
+# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).
+
+<urn:apkg:workflow:forth:gr:run_visir:1.0.0> a apkg-pro:Process, apkg-rec:Record ;
+    dct:identifier "urn:apkg:workflow:forth:gr:run_visir:1.0.0" ;
+    dcat:qualifiedRelation [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "The landing page of this server as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "root" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "The landing page of this server as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=json"^^xsd:anyURI ;
+        apkg-rec:rel "self" ;
+        apkg-rec:mediaType "application/geo+json" ;
+        dct:title "This document as GeoJSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=jsonld"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=jsonld_v2"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/ld+json" ;
+        dct:title "This document as RDF (JSON-LD) APKG V2"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=html"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "This document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+yaml" ;
+        dct:title "This document as CWL (YAML)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=cwljson"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/cwl+json" ;
+        dct:title "This document as CWL (JSON)"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg"^^xsd:anyURI ;
+        apkg-rec:rel "collection" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "Application Packages"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "text/html" ;
+        dct:title "All versions of this document as HTML"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as JSON"
+    ], [
+        a apkg-rec:Link ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:rel "alternate" ;
+        apkg-rec:mediaType "application/json" ;
+        dct:title "All versions of this document as RDF (JSON-LD)"
+    ] ;
+    dct:title "Execution of VISIR model" ;
+    dct:description "Solving Dijkstra's optimization algorithm to find optimal ship routes that minimize CO2 emissions, trip time and distance. Using VISIR II software (https://zenodo.org/records/10960842 created by CMCC), that runs using forcing from either CMRL's (https://crl.iacm.forth.gr/en/) high resolution models in the southern Greece region forecasting atmospheric state (WRF 3km x 3km), hydrodynamics (NEMO 1km x 1km) and waves (Wavewatch III 1km x 1km), or the GFS/CMEMS lower resolution forecasts to be able to generalize to routes globally." ;
+    geo:hasGeometry [
+        a apkg-rec:Geometry ;
+        apkg-rec:geometryType "Polygon" ;
+        apkg-rec:coordinates "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+    ] ;
+    dcat:keyword "hidromod", "visir", "VISIR", "least CO2 emissions", "optimal ship routes", "least distance", "least time", "regional", "high resolution", "global", "FORTH", "CMRL" ;
+    apkg-pro:processID "urn:apkg:workflow:forth:gr:run_visir:1.0.0" ;
+    apkg-pro:familyID "urn:apkg:workflow:forth:gr:run_visir" ;
+    pav:version "1.0.0" ;
+    apkg-pro:registrationDate "2025-06-11T14:23:17.001124Z"^^xsd:dateTimeStamp ;
+    apkg-pro:isLatestVersion "true"^^xsd:boolean ;
+    apkg-pro:cwlDescriptor [
+        a apkg-pro:CWLDescriptor ;
+        apkg-pro:descriptorURL "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:run_visir:1.0.0?f=cwl"^^xsd:anyURI ;
+        apkg-rec:mediaType "application/cwl+yaml"
+    ] ;
+    dct:creator [
+        a apkg-pro:Person ;
+        foaf:name "Vassiliki Metheniti" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "vasmeth@iacm.forth.gr"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Antonios Parasyris" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "antonisparasyris@iacm.forth.gr"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "João Ribeiro" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "joao.ribeiro@hidromod.com"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Miguel Delgado" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "miguel.delgado@hidromod.com"
+        ]
+    ] ;
+    dct:contributor [
+        a apkg-pro:Person ;
+        foaf:name "Vassiliki Metheniti" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "vasmeth@iacm.forth.gr"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Antonios Parasyris" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "antonisparasyris@iacm.forth.gr"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "João Ribeiro" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "joao.ribeiro@hidromod.com"
+        ]
+    ], [
+        a apkg-pro:Person ;
+        foaf:name "Miguel Delgado" ;
+        vcard:hasEmail [
+            a apkg-rec:Email ;
+            vcard:value "miguel.delgado@hidromod.com"
+        ]
+    ] ;
+    dct:publisher [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "Application Package Registry" ;
+        apkg-pro:homepage "https://iliad-registry.inesctec.pt"^^xsd:anyURI
+    ] ;
+    apkg-pro:hasSourceOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "FORTH" ;
+        apkg-pro:homepage "https://www.iacm.forth.gr/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "GR"
+        ]
+    ], [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "CMRL" ;
+        apkg-pro:homepage "https://crl.iacm.forth.gr/en/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "GR"
+        ]
+    ], [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "Hidromod" ;
+        apkg-pro:homepage "https://hidromod.com/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "PT"
+        ]
+    ] ;
+    apkg-pro:hasProducerOrganisation [
+        a apkg-pro:Organisation ;
+        skos:prefLabel "FORTH" ;
+        apkg-pro:homepage "https://www.iacm.forth.gr/"^^xsd:anyURI ;
+        vcard:hasAddress [
+            a apkg-rec:Address ;
+            vcard:country-name "GR"
+        ]
+    ] ;
+    bf:geographicCoverage [
+        a apkg-pro:SpatialCoverage ;
+        geo:hasGeometry [
+            a apkg-pro:Geo ;
+            apkg-pro:box "-90 -180 90 180"
+        ] ;
+        apkg-pro:geoClass "schema:GeoShape"
+    ] ;
+    apkg-pro:programmingLanguage "python" ;
+    apkg-pro:processClass "Workflow" ;
+    apkg-pro:hasInput [
+        a apkg-pro:Parameter ;
+        dct:identifier "wrf_ftpserver" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "FTP Server for WRF Download"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "wrf_password" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "Password for WRF Download"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "wrf_username" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "Username for WRF Download"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "wrf_remotedir" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "Remote dir path from root for WRF Download"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "vessel_type" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "Vessel Type (sail or motor)"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "cmems_username" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "CMEMS Username"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "cmems_password" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "CMEMS Password"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "departure_date" ;
+        apkg-pro:parameterType "string" ;
+        dct:description "Departure Date (%Y-%m-%dT%H:%M:00Z)"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "start_lat" ;
+        apkg-pro:parameterType "float" ;
+        dct:description "Starting Latitude"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "start_lon" ;
+        apkg-pro:parameterType "float" ;
+        dct:description "Starting Longitude"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "end_lat" ;
+        apkg-pro:parameterType "float" ;
+        dct:description "Ending Latitude"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "end_lon" ;
+        apkg-pro:parameterType "float" ;
+        dct:description "Ending Longitude"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "maxDraught" ;
+        apkg-pro:parameterType "float" ;
+        dct:description "Max Draught"
+    ], [
+        a apkg-pro:Parameter ;
+        dct:identifier "bathymetry_file" ;
+        apkg-pro:parameterType "File?" ;
+        dct:description "Optional Bathymetry File"
+    ] ;
+    apkg-pro:hasOutput [
+        a apkg-pro:Parameter ;
+        dct:identifier "visir_output" ;
+        apkg-pro:parameterType "Directory"
+    ] ;
+    apkg-pro:hasSecret [
+        a apkg-pro:Secret ;
+        apkg-pro:secretInputID "wrf_username", "wrf_password", "cmems_username", "cmems_password"
+    ] .

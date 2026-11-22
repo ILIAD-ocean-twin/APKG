@@ -16,7 +16,7 @@ The two files follow the two modules of the ontology (folder `terms/`):
 - `apkg-rec-shapes-v2.ttl` imports the Record ontology (`terms/apkg-rec-v2.ttl`) and does not depend on the Process module.
 - `apkg-pro-shapes-v2.ttl` imports the Process ontology (`terms/apkg-pro-v2.ttl`) and the Record shapes, because a Process is also a Record.
 
-To validate data, load **both** files as one shapes graph (the `owl:imports` IRIs are not resolvable on the web yet). The script `SCRIPTS/validate.py` does this for you.
+To validate data, load **both** files as one shapes graph. The script `SCRIPTS/validate.py` does this for you.
 
 ## How to validate
 

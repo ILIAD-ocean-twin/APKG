@@ -1,0 +1,224 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "path_output",
+        "type": "Directory"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/get-dir/get_dir_0_1_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "s3",
+      "storage"
+    ],
+    "inputs": [
+      {
+        "doc": "Name of the output directory",
+        "id": "dir_name",
+        "type": "string"
+      },
+      {
+        "doc": "URL to download the directory or local path",
+        "id": "directory",
+        "type": [
+          "string?",
+          "Directory?"
+        ]
+      },
+      {
+        "doc": "S3 storage endpoint",
+        "id": "s3_endpoint",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage region",
+        "id": "s3_region",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage access_key",
+        "id": "s3_access_key",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage secret_key",
+        "id": "s3_secret_key",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage region",
+        "id": "s3_session_token",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 storage bucket",
+        "id": "s3_bucket_name",
+        "type": "string?"
+      },
+      {
+        "doc": "S3 path to the directory",
+        "id": "s3_path",
+        "type": "string?"
+      }
+    ],
+    "description": "Tool to download a directory from a URL or S3 storage",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "get_dir",
+    "software_version": "0.1.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:inesctec:pt:get_dir:0.1.0",
+    "citation": null,
+    "date_created": "2025-11-13T17:16:45Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-13T17:20:45.830999Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "get_dir",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:get_dir",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  cwltool: http://commonwl.org/cwltool#\n$graph:\n- class: CommandLineTool\n  id: get_dir\n  baseCommand: python\n  arguments:\n  - /opt/get-dir.py\n  - --dir_name\n  - valueFrom: $( inputs.dir_name )\n  - valueFrom: '${ return inputs.directory ? [\"--directory\", inputs.directory] : []\n      }\n\n      '\n  - valueFrom: '${ return inputs.s3_endpoint ? [\"--s3_endpoint\", inputs.s3_endpoint]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_region ? [\"--s3_region\", inputs.s3_region] : []\n      }\n\n      '\n  - valueFrom: '${ return inputs.s3_access_key ? [\"--s3_access_key\", inputs.s3_access_key]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_secret_key ? [\"--s3_secret_key\", inputs.s3_secret_key]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_session_token ? [\"--s3_session_token\", inputs.s3_session_token]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_bucket_name ? [\"--s3_bucket\", inputs.s3_bucket_name]\n      : [] }\n\n      '\n  - valueFrom: '${ return inputs.s3_path ? [\"--s3_path\", inputs.s3_path] : [] }\n\n      '\n  inputs:\n    dir_name:\n      type: string\n      doc: Name of the output directory\n    directory:\n      type:\n      - string?\n      - Directory?\n      doc: URL to download the directory or local path\n    s3_endpoint:\n      type: string?\n      doc: S3 storage endpoint\n    s3_region:\n      type: string?\n      doc: S3 storage region\n    s3_access_key:\n      type: string?\n      doc: S3 storage access_key\n    s3_secret_key:\n      type: string?\n      doc: S3 storage secret_key\n    s3_session_token:\n      type: string?\n      doc: S3 storage region\n    s3_bucket_name:\n      type: string?\n      doc: S3 storage bucket\n    s3_path:\n      type: string?\n      doc: S3 path to the directory\n  outputs:\n    path_output:\n      type: Directory\n      outputBinding:\n        glob: $(inputs.dir_name)\n  requirements:\n    NetworkAccess:\n      networkAccess: true\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/get-dir:0.1.0\n  s:name: get_dir\n  s:description: Tool to download a directory from a URL or S3 storage\n  s:keywords:\n  - s3\n  - storage\n  s:programmingLanguage: python\n  s:softwareVersion: 0.1.0\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:16:45Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:get_dir:0.1.0\n  s:sdDatePublished: '2025-11-13T17:20:45.830999Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:get_dir:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:get_dir:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:get_dir\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:get_dir\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:get_dir\"&sortby=-software_version"
+    }
+  ]
+}

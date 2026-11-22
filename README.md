@@ -1,14 +1,43 @@
 # APKG Linked Data Application Profile
 
+The APKG Linked Data Application Profile (APKG-LDAP) describes the records of the [Application Package registry](https://iliad-registry.inesctec.pt/collections/apkg/items?f=html) as Linked Data. It is a semantic uplift of the OGC API - Records catalogue record, extended with the description of the application package itself (a CWL Process: a CommandLineTool or a Workflow).
+
+This is **version 2** of the profile. It keeps the current registry data (v1) unchanged: values that v1 holds as strings stay literals, and the notes "In v3 it becomes ..." in the tables say how each term will change in version 3, which will be fully aligned with Semantic Web principles.
+
+## Repository contents
+
+| Folder / file | Content |
+|---------------|---------|
+| This README and the `*Class.md` files | The profile: one table per class, with the OGC/CWL property, the vocabulary term, domain, range, cardinalities, value encoding schemes and notes |
+| [NameSpaces.md](NameSpaces.md) | The prefixes and namespaces used in the profile |
+| [terms/](terms/README.md) | The OWL ontology: Record module (`apkg-rec`), Process module (`apkg-pro`) and declarations module |
+| [SHACL/](SHACL/README.md) | The SHACL shapes to validate data against the profile |
+| [examples/](examples/README.md) | Registry records converted to Turtle and JSON-LD, and the source JSON |
+| [SCRIPTS/](SCRIPTS/README.md) | Scripts to download the registry, convert JSON to RDF (Turtle, JSON-LD) and validate |
+| [skos/](skos/) | The RFC 5646 language subtag registry as a SKOS concept scheme |
+| [APKG-LDAP — Rationale for the Choice of Terms.md](APKG-LDAP%20—%20Rationale%20for%20the%20Choice%20of%20Terms.md) | Rationale for the choice of terms |
+
+## Quick start
+
+Open a terminal in the root folder of the repository (see [SCRIPTS/README.md](SCRIPTS/README.md) for the requirements):
+
+```
+python SCRIPTS\download_registry.py --with-cwl --convert    download all records, convert and validate
+python SCRIPTS\json2rdf.py record.json --format both        convert one record to Turtle and JSON-LD
+python SCRIPTS\validate.py                                  validate the files in examples\
+```
+
+## Legend
+
 🟢 $\color{green}{\rightarrow}$ a term from another ontology.
 🔴 $\color{red}{\rightarrow}$ APKG ontology: apkg-rec (module Core, tables A and B) or apkg-pro (module Process, tables C and D)
 
 
-# 1. Namespaces
+## 1. Namespaces
 Find [here](NameSpaces.md) the list of the namespaces.
 
 
-# 2. Module Core
+## 2. Module Core
 
 Table A - Catalogue Record class
 
@@ -35,7 +64,7 @@ Table B - Classes related to the Record
 | 13 | [Theme](ThemeClass.md) | A theme of the Record. | 🔴 apkg-rec:Theme | rdfs:subClassOf bf:Topic | B13 |
 
 
-# 3. Module Process
+## 3. Module Process
 
 Table C - Process Class
 
@@ -57,6 +86,6 @@ Table D - Classes related to the Process
 
 > [!NOTE]
 >Declarations for non-OWL superclasses. 
->Some reused classes are declared only as rdfs:Class in their source vocabularies. For OWL 2 DL reasoning they are declared as owl:Class in a separate declarations module, not in the APKG ontology (apkg-rec / apkg-pro): cwl:Process, cwl:Parameter, cwltool:Secrets, hydra:IriTemplate, hydra:IriTemplateMapping, dct:LinguisticSystem, dct:MediaTypeOrExtent.
+>Some reused classes are declared only as rdfs:Class in their source vocabularies. For OWL 2 DL reasoning they are declared as owl:Class in a separate declarations module ([terms/apkg-declarations-v2.ttl](terms/apkg-declarations-v2.ttl)), not in the APKG ontology (apkg-rec / apkg-pro): cwl:Process, cwl:Parameter, cwltool:Secrets, hydra:IriTemplate, hydra:IriTemplateMapping, dct:LinguisticSystem, dct:MediaTypeOrExtent.
 
 &copy; INESC TEC, 2026

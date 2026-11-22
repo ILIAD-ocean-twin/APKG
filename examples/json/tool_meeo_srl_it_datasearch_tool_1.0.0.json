@@ -1,0 +1,241 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "doc": "Directory containing the search results",
+        "id": "results",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "oil spill",
+      "SAR",
+      "Sentinel-1",
+      "ASF"
+    ],
+    "inputs": [
+      {
+        "doc": "Bounding box for image search",
+        "id": "bbox",
+        "type": "string?"
+      },
+      {
+        "doc": "Directory where to find input files and store outputs",
+        "id": "use_case_directory",
+        "type": "string"
+      },
+      {
+        "doc": "Start date for data search",
+        "id": "start_date",
+        "type": "string?"
+      },
+      {
+        "doc": "Time interval (n of days) for data search",
+        "id": "time_interval",
+        "type": "int?"
+      },
+      {
+        "doc": "End date for data search",
+        "id": "end_date",
+        "type": "string?"
+      },
+      {
+        "doc": "Enable verbose logging",
+        "id": "verbose",
+        "type": "boolean?"
+      },
+      {
+        "doc": "Enable debug mode",
+        "id": "debug",
+        "type": "boolean?"
+      },
+      {
+        "doc": "Username for ASF",
+        "id": "asf_username",
+        "type": "string"
+      },
+      {
+        "doc": "Password for ASF",
+        "id": "asf_password",
+        "type": "string"
+      }
+    ],
+    "description": "ASF search for SAR images from Sentinel-1",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": "2014-01-01T00:00:00Z/",
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "datasearch_tool",
+    "software_version": "1.0.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0",
+    "citation": "",
+    "date_created": "2024-12-01",
+    "author": [
+      {
+        "name": "Sabrina Outmani",
+        "email": "outmani@meeo.it"
+      },
+      {
+        "name": "Noemi Fazzini",
+        "email": "fazzini@meeo.it"
+      }
+    ],
+    "sdDatePublished": "2025-07-30T14:37:59.631829Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=cwl",
+    "license": "https://opensource.org/licenses/MIT",
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "IT"
+        },
+        "name": "MEEO SRL",
+        "url": "https://meeo.it/"
+      },
+      {
+        "address": {
+          "address_country": "GR"
+        },
+        "name": "FORTH",
+        "url": "https://www.forth.gr/"
+      },
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "Sentinel-1 Oil Spill Detection Data Search",
+    "producer": [
+      {
+        "address": {
+          "address_country": "IT"
+        },
+        "name": "MEEO SRL",
+        "url": "https://meeo.it/"
+      }
+    ],
+    "family": "urn:apkg:tool:meeo_srl:it:datasearch_tool",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n$graph:\n- baseCommand:\n  - /srv/miniconda3/envs/oilspill001/bin/python\n  - -m\n  - oilspill001.main\n  class: CommandLineTool\n  id: datasearch_tool\n  arguments:\n  - valueFrom: $(inputs.bbox)\n    prefix: --bbox\n  - --use-case-directory\n  - valueFrom: $(inputs.use_case_directory)\n  - --start-date\n  - valueFrom: $(inputs.start_date)\n  - valueFrom: $(inputs.time_interval)\n    prefix: --time-interval\n  - valueFrom: $(inputs.end_date)\n    prefix: --end-date\n  - valueFrom: $(inputs.verbose)\n    prefix: --verbose\n  - valueFrom: $(inputs.debug)\n    prefix: --debug\n  - --asf-username\n  - valueFrom: $(inputs.asf_username)\n  - --asf-password\n  - valueFrom: $(inputs.asf_password)\n  inputs:\n    bbox:\n      type: string?\n      doc: Bounding box for image search\n      s:name: Bounding Box\n      s:description: Optional bounding box to restrict the image search.\n    use_case_directory:\n      type: string\n      doc: Directory where to find input files and store outputs\n      s:name: Use Case Directory\n      s:description: Directory to store input and output files.\n    start_date:\n      type: string?\n      doc: Start date for data search\n      s:name: Start Date\n      s:description: The start date to search for data.\n    time_interval:\n      type: int?\n      doc: Time interval (n of days) for data search\n      s:name: Time Interval\n      s:description: Number of days for the data search interval.\n    end_date:\n      type: string?\n      doc: End date for data search\n      s:name: End Date\n      s:description: The end date for data search (optional).\n    verbose:\n      type: boolean?\n      doc: Enable verbose logging\n      s:name: Verbose Logging\n      s:description: Flag to enable verbose logging.\n    debug:\n      type: boolean?\n      doc: Enable debug mode\n      s:name: Debug Mode\n      s:description: Flag to enable debug mode for additional logging.\n    asf_username:\n      type: string\n      doc: Username for ASF\n      s:name: ASF Username\n      s:description: Username for the ASF platform authentication.\n    asf_password:\n      type: string\n      doc: Password for ASF\n      s:name: ASF Password\n      s:description: Password for the ASF platform authentication.\n  outputs:\n    results:\n      type: Directory\n      doc: Directory containing the search results\n      outputBinding:\n        glob: $(inputs.use_case_directory)\n      s:name: Results Directory\n      s:description: The directory containing the outputs of the data search.\n  requirements:\n  - class: DockerRequirement\n    dockerPull: registry.services.meeo.it/outmani/iliad_oil_spill_pilot/oilspill001:1.0.0\n  - class: NetworkAccess\n    networkAccess: true\n  - class: InlineJavascriptRequirement\n  s:name: Sentinel-1 Oil Spill Detection Data Search\n  s:description: ASF search for SAR images from Sentinel-1\n  s:keywords:\n  - oil spill\n  - SAR\n  - Sentinel-1\n  - ASF\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:producer:\n    class: s:Organization\n    s:name: MEEO SRL\n    s:url: https://meeo.it/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: IT\n  s:publisher:\n    class: s:Organization\n    s:name: MEEO SRL\n    s:url: https://meeo.it/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: IT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: MEEO SRL\n    s:url: https://meeo.it/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: IT\n  - class: s:Organization\n    s:name: FORTH\n    s:url: https://www.forth.gr/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: GR\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Sabrina Outmani\n    s:email: outmani@meeo.it\n  - class: s:Person\n    s:name: Noemi Fazzini\n    s:email: fazzini@meeo.it\n  s:dateCreated: '2024-12-01'\n  s:temporalCoverage: 2014-01-01T00:00:00Z/\n  s:spatialCoverage:\n    class: s:GeoShape\n    s:box: -90 -180 90 180\n  s:codeRepository: null\n  s:license: https://opensource.org/licenses/MIT\n  s:citation: ''\n  s:identifier: urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0\n  s:sdDatePublished: '2025-07-30T14:37:59.631829Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:meeo_srl:it:datasearch_tool:1.0.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:meeo_srl:it:datasearch_tool\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:meeo_srl:it:datasearch_tool\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:meeo_srl:it:datasearch_tool\"&sortby=-software_version"
+    }
+  ]
+}

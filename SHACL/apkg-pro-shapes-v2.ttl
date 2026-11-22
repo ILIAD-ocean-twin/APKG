@@ -182,7 +182,7 @@ apkg-pro:ParameterShape a sh:NodeShape ;
         sh:minCount 1;
         sh:maxCount 1;
         sh:datatype xsd:string;
-        sh:pattern "^(null|boolean|int|long|float|double|string|File|Directory)\\??$"
+        sh:pattern "^(null|boolean|int|long|float|double|string|File|Directory)(\\[\\])?\\??(\\|(null|boolean|int|long|float|double|string|File|Directory)(\\[\\])?\\??)*$"
     ], [
         sh:path dct:description;
         sh:maxCount 1;

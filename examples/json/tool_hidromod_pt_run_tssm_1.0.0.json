@@ -1,0 +1,196 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "tssm_directory",
+        "type": "Directory"
+      }
+    ],
+    "programming_language": "python",
+    "keywords": [
+      "tssm",
+      "scotland"
+    ],
+    "inputs": [
+      {
+        "id": "duration",
+        "type": "string"
+      },
+      {
+        "id": "num_proc",
+        "type": "int"
+      },
+      {
+        "id": "ramp_duration",
+        "type": "string"
+      },
+      {
+        "keywords": [
+          "string",
+          "date"
+        ],
+        "doc": "Start date time (YYYY-MM-DDTHH:MM) of simulation",
+        "id": "start",
+        "type": "string"
+      }
+    ],
+    "description": "Running TSSM Scotland",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "run_tssm",
+    "software_version": "1.0.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:hidromod:pt:run_tssm:1.0.0",
+    "citation": null,
+    "date_created": "2023-12-04",
+    "author": [
+      {
+        "name": "JoÃ£o Ribeiro",
+        "email": "joao.ribeiro@hidromod.com"
+      }
+    ],
+    "sdDatePublished": "2025-06-11T14:23:14.557786Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=cwl",
+    "license": null,
+    "code_repository": "None",
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "name": "TSSM Scotland",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "Hidromod",
+        "url": "https://hidromod.com/"
+      }
+    ],
+    "family": "urn:apkg:tool:hidromod:pt:run_tssm",
+    "cwl": "$graph:\n- class: CommandLineTool\n  requirements:\n  - class: InlineJavascriptRequirement\n  - class: ShellCommandRequirement\n  - class: DockerRequirement\n    dockerPull: hidromodadmin/iliad_tssm_scotland:1.0.0\n  - class: NetworkAccess\n    networkAccess: true\n  - class: LoadListingRequirement\n    loadListing: deep_listing\n  inputs:\n    duration:\n      type: string\n    num_proc:\n      type: int\n    ramp_duration:\n      type: string\n    start:\n      doc: Start date time (YYYY-MM-DDTHH:MM) of simulation\n      type: string\n      s:description: Start date time (YYYY-MM-DDTHH:MM) of simulation\n      s:keywords:\n      - string\n      - date\n      s:name: Input date string\n  outputs:\n    tssm_directory:\n      type: Directory\n      outputBinding:\n        glob: $(\"out_DT/\")\n  baseCommand:\n  - /bin/bash\n  - -c\n  arguments:\n  - valueFrom: '\"/move_struct.sh $(runtime.outdir)\"; set -e; . /home/firedrake/firedrake/bin/activate;\n      pip3 install -r requirements.txt; python sim.py --start \"$(inputs.start)\" --duration\n      \"$(inputs.duration)\" --ramp-duration $(inputs.ramp_duration) --num-proc $(inputs.num_proc)\n\n      '\n    shellQuote: false\n  id: run_tssm\n  s:author:\n  - class: s:Person\n    s:email: joao.ribeiro@hidromod.com\n    s:name: \"Jo\\xC3\\xA3o Ribeiro\"\n  s:codeRepository: None\n  s:dateCreated: '2023-12-04'\n  s:description: Running TSSM Scotland\n  s:keywords:\n  - tssm\n  - scotland\n  s:name: TSSM Scotland\n  s:programmingLanguage: python\n  s:softwareVersion: 1.0.0\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:producer:\n    class: s:Organization\n    s:name: Hidromod\n    s:url: https://hidromod.com/\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sdDatePublished: '2025-06-11T14:23:14.557786Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n  s:identifier: urn:apkg:tool:hidromod:pt:run_tssm:1.0.0\n$namespaces:\n  ogc: http://www.opengis.net/def/media-type/ogc/1.0/\n  s: https://schema.org/\ncwlVersion: v1.2\ns:description: TSSM Scotland\ns:name: TSSM Scotland\ns:softwareVersion: 1.0.0\n"
+  },
+  "id": "urn:apkg:tool:hidromod:pt:run_tssm:1.0.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:hidromod:pt:run_tssm:1.0.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:hidromod:pt:run_tssm\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:hidromod:pt:run_tssm\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:hidromod:pt:run_tssm\"&sortby=-software_version"
+    }
+  ]
+}

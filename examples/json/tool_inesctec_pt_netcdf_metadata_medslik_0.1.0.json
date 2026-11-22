@@ -1,0 +1,181 @@
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          -90.0
+        ],
+        [
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "type": "Feature",
+  "properties": {
+    "outputs": [
+      {
+        "id": "metadata",
+        "type": "File"
+      }
+    ],
+    "registration_url": "https://pipe-drive.inesctec.pt/application-packages/tools/netcdf-metadata/netcdf_metadata_medslik_pipeline_0_1_0.cwl",
+    "programming_language": "python",
+    "keywords": [
+      "netcdf",
+      "metadata"
+    ],
+    "inputs": [
+      {
+        "loadListing": "deep_listing",
+        "id": "medslik_result",
+        "type": "Directory"
+      }
+    ],
+    "description": "Extract metadata from NetCDF file",
+    "maintainer": null,
+    "sdPublisher": [
+      {
+        "name": "Application Package Registry",
+        "class": "Organization",
+        "url": "https://iliad-registry.inesctec.pt"
+      }
+    ],
+    "temporal_coverage": null,
+    "contributor": null,
+    "spatial_coverage": {
+      "geo": {
+        "box": "-90 -180 90 180"
+      },
+      "class": "schema:GeoShape"
+    },
+    "id": "netcdf_metadata_medslik",
+    "software_version": "0.1.0",
+    "class": "CommandLineTool",
+    "latest": true,
+    "identifier": "urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0",
+    "citation": null,
+    "date_created": "2025-11-13T17:39:29Z",
+    "author": [
+      {
+        "name": "Miguel Correia",
+        "email": "miguel.r.correia@inesctec.pt"
+      }
+    ],
+    "sdDatePublished": "2025-11-13T17:41:34.435696Z",
+    "url": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=cwl",
+    "license": null,
+    "code_repository": null,
+    "source_organization": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "name": "netcdf_metadata",
+    "producer": [
+      {
+        "address": {
+          "address_country": "PT"
+        },
+        "name": "INESCTEC",
+        "url": "https://inesctec.pt"
+      }
+    ],
+    "family": "urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik",
+    "cwl": "cwlVersion: v1.2\n$namespaces:\n  s: https://schema.org/\n  edam: http://edamontology.org/\n$graph:\n- class: CommandLineTool\n  id: netcdf_metadata_medslik\n  baseCommand: python\n  arguments:\n  - /opt/parse.py\n  - --netcdf_file\n  - valueFrom: \"${\\n  // Find the first .nc file in the input directory (recursively\\\n      \\ if needed)\\n  function findNetcdfFile(dir) {\\n    console.log(\\\"Searching\\\n      \\ for NetCDF file in:\\\", dir);\\n    if (dir.class === 'File' && dir.basename.endsWith('.nc'))\\\n      \\ return dir.path;\\n    if (dir.class === 'Directory' && dir.listing) {\\n  \\\n      \\    for (const f of dir.listing) {\\n        const found = findNetcdfFile(f);\\n\\\n      \\        if (found) return found;\\n      }\\n    }\\n    return null;\\n  }\\n \\\n      \\ const ncPath = findNetcdfFile(inputs.medslik_result);\\n  if (!ncPath) throw\\\n      \\ new Error('No NetCDF file found in directory');\\n  return ncPath;\\n}\\n\"\n  - --extra_props\n  - valueFrom: $(runtime.outdir + '/extra_props.json')\n  inputs:\n    medslik_result:\n      type: Directory\n      loadListing: deep_listing\n  outputs:\n    metadata:\n      outputBinding:\n        glob: ./metadata.json\n      type: File\n  requirements:\n    MultipleInputFeatureRequirement: {}\n    ResourceRequirement: {}\n    InlineJavascriptRequirement: {}\n    DockerRequirement:\n      dockerPull: iliad-repository.inesctec.pt/netcdf-metadata:0.1.0\n    InitialWorkDirRequirement:\n      listing: \"${\\n  return [{\\n    \\\"class\\\": \\\"File\\\",\\n    \\\"basename\\\": \\\"extra_props.json\\\"\\\n        ,\\n    \\\"contents\\\": JSON.stringify({\\n      \\\"description\\\": \\\"Medslik simulation\\\n        \\ NetCDF file\\\",\\n      \\\"keywords\\\": [\\\"metadata\\\", \\\"medslik\\\", \\\"netcdf\\\"\\\n        ],\\n    })}];\\n}\\n\"\n  s:name: netcdf_metadata\n  s:softwareVersion: 0.1.0\n  s:description: Extract metadata from NetCDF file\n  s:keywords:\n  - netcdf\n  - metadata\n  s:programmingLanguage: python\n  s:producer:\n    class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:sourceOrganization:\n  - class: s:Organization\n    s:name: INESCTEC\n    s:url: https://inesctec.pt\n    s:address:\n      class: s:PostalAddress\n      s:addressCountry: PT\n  s:author:\n  - class: s:Person\n    s:name: Miguel Correia\n    s:email: miguel.r.correia@inesctec.pt\n  s:dateCreated: '2025-11-13T17:39:29Z'\n  s:identifier: urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0\n  s:sdDatePublished: '2025-11-13T17:41:34.435696Z'\n  s:sdPublisher:\n    class: Organization\n    name: Application Package Registry\n    url: https://iliad-registry.inesctec.pt\n"
+  },
+  "id": "urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0",
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "root",
+      "title": "The landing page of this server as JSON",
+      "href": "https://iliad-registry.inesctec.pt?f=json"
+    },
+    {
+      "type": "text/html",
+      "rel": "root",
+      "title": "The landing page of this server as HTML",
+      "href": "https://iliad-registry.inesctec.pt?f=html"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=json"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=jsonld"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD) APKG V2",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=jsonld_v2"
+    },
+    {
+      "rel": "alternate",
+      "type": "text/html",
+      "title": "This document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=html"
+    },
+    {
+      "type": "application/cwl+yaml",
+      "rel": "alternate",
+      "title": "This document as CWL (YAML)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=cwl"
+    },
+    {
+      "type": "application/cwl+json",
+      "rel": "alternate",
+      "title": "This document as CWL (JSON)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik:0.1.0?f=cwljson"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "Application Packages",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "All versions of this document as HTML",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as JSON",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik\"&sortby=-software_version"
+    },
+    {
+      "type": "application/json",
+      "rel": "alternate",
+      "title": "All versions of this document as RDF (JSON-LD)",
+      "href": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:netcdf_metadata_medslik\"&sortby=-software_version"
+    }
+  ]
+}

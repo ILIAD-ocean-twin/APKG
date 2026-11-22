@@ -1,0 +1,449 @@
+{
+  "@context": {
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "dct": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "apkg-rec": "http://w3id.org/apkg/v2/records#",
+    "apkg-pro": "http://w3id.org/apkg/v2/process#",
+    "bf": "http://id.loc.gov/ontologies/bibframe/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "pav": "http://purl.org/pav/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#"
+  },
+  "@id": "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0",
+  "@type": [
+    "apkg-pro:Process",
+    "apkg-rec:Record"
+  ],
+  "dct:identifier": "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0",
+  "dcat:qualifiedRelation": [
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt?f=json",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "root",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "The landing page of this server as JSON"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt?f=html",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "root",
+      "apkg-rec:mediaType": "text/html",
+      "dct:title": "The landing page of this server as HTML"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=json",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "self",
+      "apkg-rec:mediaType": "application/geo+json",
+      "dct:title": "This document as GeoJSON"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=jsonld",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/ld+json",
+      "dct:title": "This document as RDF (JSON-LD)"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=jsonld_v2",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/ld+json",
+      "dct:title": "This document as RDF (JSON-LD) APKG V2"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=html",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "text/html",
+      "dct:title": "This document as HTML"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=cwl",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/cwl+yaml",
+      "dct:title": "This document as CWL (YAML)"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=cwljson",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/cwl+json",
+      "dct:title": "This document as CWL (JSON)"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "collection",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "Application Packages"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146\"&sortby=-software_version",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "text/html",
+      "dct:title": "All versions of this document as HTML"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146\"&sortby=-software_version",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "All versions of this document as JSON"
+    },
+    {
+      "@type": "apkg-rec:Link",
+      "apkg-rec:href": {
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146\"&sortby=-software_version",
+        "@type": "xsd:anyURI"
+      },
+      "apkg-rec:rel": "alternate",
+      "apkg-rec:mediaType": "application/json",
+      "dct:title": "All versions of this document as RDF (JSON-LD)"
+    }
+  ],
+  "dct:title": "Sentinel-1 Oil Spill Object Detection Pipeline 1-2-3-4 and Medslik Forecasting",
+  "dct:description": "Sentinel-1 Oil Spill Object Detection and Forecasting Pipeline using Deep Learning tecniques",
+  "geo:hasGeometry": {
+    "@type": "apkg-rec:Geometry",
+    "apkg-rec:geometryType": "Polygon",
+    "apkg-rec:coordinates": "[[[-180.0,-90.0],[180.0,-90.0],[180.0,90.0],[-180.0,90.0],[-180.0,-90.0]]]"
+  },
+  "dcat:keyword": [
+    "oil spill",
+    "SAR",
+    "Sentinel-1",
+    "deep learning",
+    "object detection"
+  ],
+  "apkg-rec:license": {
+    "@value": "https://opensource.org/licenses/MIT",
+    "@type": "xsd:anyURI"
+  },
+  "apkg-pro:processID": "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0",
+  "apkg-pro:familyID": "urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146",
+  "pav:version": "1.0.0",
+  "apkg-pro:dateCreated": {
+    "@value": "2024-12-01",
+    "@type": "xsd:date"
+  },
+  "apkg-pro:registrationDate": {
+    "@value": "2025-06-11T14:23:15.877984Z",
+    "@type": "xsd:dateTimeStamp"
+  },
+  "apkg-pro:isLatestVersion": {
+    "@value": "true",
+    "@type": "xsd:boolean"
+  },
+  "apkg-pro:cwlDescriptor": {
+    "@type": "apkg-pro:CWLDescriptor",
+    "apkg-pro:descriptorURL": {
+      "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items/urn:apkg:workflow:forth:gr:oilspill_pipeline_medslik_146:1.0.0?f=cwl",
+      "@type": "xsd:anyURI"
+    },
+    "apkg-rec:mediaType": "application/cwl+yaml"
+  },
+  "dct:creator": [
+    {
+      "@type": "apkg-pro:Person",
+      "foaf:name": "Sabrina Outmani",
+      "vcard:hasEmail": {
+        "@type": "apkg-rec:Email",
+        "vcard:value": "outmani@meeo.it"
+      }
+    },
+    {
+      "@type": "apkg-pro:Person",
+      "foaf:name": "Noemi Fazzini",
+      "vcard:hasEmail": {
+        "@type": "apkg-rec:Email",
+        "vcard:value": "fazzini@meeo.it"
+      }
+    },
+    {
+      "@type": "apkg-pro:Person",
+      "foaf:name": "Antonios Parasyris",
+      "vcard:hasEmail": {
+        "@type": "apkg-rec:Email",
+        "vcard:value": "antonisparasyris@iacm.forth.gr"
+      }
+    }
+  ],
+  "dct:publisher": {
+    "@type": "apkg-pro:Organisation",
+    "skos:prefLabel": "Application Package Registry",
+    "apkg-pro:homepage": {
+      "@value": "https://iliad-registry.inesctec.pt",
+      "@type": "xsd:anyURI"
+    }
+  },
+  "apkg-pro:hasSourceOrganisation": [
+    {
+      "@type": "apkg-pro:Organisation",
+      "skos:prefLabel": "MEEO SRL",
+      "apkg-pro:homepage": {
+        "@value": "https://meeo.it/",
+        "@type": "xsd:anyURI"
+      },
+      "vcard:hasAddress": {
+        "@type": "apkg-rec:Address",
+        "vcard:country-name": "IT"
+      }
+    },
+    {
+      "@type": "apkg-pro:Organisation",
+      "skos:prefLabel": "FORTH",
+      "apkg-pro:homepage": {
+        "@value": "https://www.forth.gr/",
+        "@type": "xsd:anyURI"
+      },
+      "vcard:hasAddress": {
+        "@type": "apkg-rec:Address",
+        "vcard:country-name": "GR"
+      }
+    },
+    {
+      "@type": "apkg-pro:Organisation",
+      "skos:prefLabel": "INESCTEC",
+      "apkg-pro:homepage": {
+        "@value": "https://inesctec.pt",
+        "@type": "xsd:anyURI"
+      },
+      "vcard:hasAddress": {
+        "@type": "apkg-rec:Address",
+        "vcard:country-name": "PT"
+      }
+    }
+  ],
+  "apkg-pro:hasProducerOrganisation": {
+    "@type": "apkg-pro:Organisation",
+    "skos:prefLabel": "FORTH",
+    "apkg-pro:homepage": {
+      "@value": "https://www.forth.gr/",
+      "@type": "xsd:anyURI"
+    },
+    "vcard:hasAddress": {
+      "@type": "apkg-rec:Address",
+      "vcard:country-name": "GR"
+    }
+  },
+  "bf:geographicCoverage": {
+    "@type": "apkg-pro:SpatialCoverage",
+    "geo:hasGeometry": {
+      "@type": "apkg-pro:Geo",
+      "apkg-pro:box": "-90 -180 90 180"
+    },
+    "apkg-pro:geoClass": "schema:GeoShape"
+  },
+  "apkg-pro:temporalCoverage": "2014-01-01T00:00:00Z/",
+  "apkg-pro:programmingLanguage": "python",
+  "apkg-pro:processClass": "Workflow",
+  "apkg-pro:hasInput": [
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "use_case_directory",
+      "apkg-pro:parameterType": "string",
+      "dct:description": "Path to directory as a string where to find input files and where to store outputs"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "bbox",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "Bounding box for image search"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "start_date",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "Start date for data search"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "time_interval",
+      "apkg-pro:parameterType": "int?",
+      "dct:description": "Time interval (n of days) for data search"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "end_date",
+      "apkg-pro:parameterType": "string?",
+      "dct:description": "End date for data search"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "verbose",
+      "apkg-pro:parameterType": "boolean?",
+      "dct:description": "Enable verbose logging"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "debug",
+      "apkg-pro:parameterType": "boolean?",
+      "dct:description": "Enable debug mode"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "asf_username",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "asf_password",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "cont_slick",
+      "apkg-pro:parameterType": "string",
+      "apkg-pro:defaultValue": "NO"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "sat",
+      "apkg-pro:parameterType": "string",
+      "apkg-pro:defaultValue": "NO"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "min_lon",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "24.069118741783797"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "max_lon",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "24.990341065648366"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "min_lat",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "35.09663196120557"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "max_lat",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "35.990635331961315"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "lat_point",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "35.496"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "lon_point",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "-15.7433"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "date_spill",
+      "apkg-pro:parameterType": "string",
+      "apkg-pro:defaultValue": "2024-11-07T06:22:00Z"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "spill_dur",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "spill_res",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "spill_tons",
+      "apkg-pro:parameterType": "float",
+      "apkg-pro:defaultValue": "1.4"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "username",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "password",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "ftp_server",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "ftp_user",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "ftp_password",
+      "apkg-pro:parameterType": "string"
+    },
+    {
+      "@type": "apkg-pro:Parameter",
+      "dct:identifier": "remote_dir",
+      "apkg-pro:parameterType": "string"
+    }
+  ],
+  "apkg-pro:hasOutput": {
+    "@type": "apkg-pro:Parameter",
+    "dct:identifier": "pipeline_output",
+    "apkg-pro:parameterType": "Directory"
+  },
+  "apkg-pro:hasSecret": {
+    "@type": "apkg-pro:Secret",
+    "apkg-pro:secretInputID": [
+      "username",
+      "password",
+      "ftp_server",
+      "ftp_password"
+    ]
+  }
+}
