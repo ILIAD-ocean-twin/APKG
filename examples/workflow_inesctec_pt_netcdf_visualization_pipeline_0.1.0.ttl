@@ -189,15 +189,18 @@
         a apkg-pro:Parameter ;
         dct:identifier "netcdf_file" ;
         apkg-pro:parameterType "File?|string?" ;
-        apkg-pro:format "edam:format_3650"
+        apkg-pro:format "edam:format_3650" ;
+        rdfs:label "netcdf file"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "frames" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "density" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

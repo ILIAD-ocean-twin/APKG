@@ -154,58 +154,69 @@
         a apkg-pro:Parameter ;
         dct:identifier "lon_min" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The minimum longitude of the study area"
+        dct:description "The minimum longitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lon_max" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The maximum longitude of the study area"
+        dct:description "The maximum longitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lat_min" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The minimum latitude of the study area"
+        dct:description "The minimum latitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lat_max" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The maximum latitude of the study area"
+        dct:description "The maximum latitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "endpoint" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage endpoint"
+        dct:description "S3 storage endpoint" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "region" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage region"
+        dct:description "S3 storage region" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "access_key" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage access_key"
+        dct:description "S3 storage access_key" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "secret_key" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage secret_key"
+        dct:description "S3 storage secret_key" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "session_token" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage region"
+        dct:description "S3 storage region" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "bucket" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage bucket"
+        dct:description "S3 storage bucket" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "base_path" ;
         apkg-pro:parameterType "string?" ;
         dct:description "S3 storage final directory name" ;
-        apkg-pro:defaultValue "bathymetry_pipeline"
+        apkg-pro:defaultValue "bathymetry_pipeline" ;
+        rdfs:label "s3storage"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

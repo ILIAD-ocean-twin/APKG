@@ -325,6 +325,16 @@ apkg-pro:format a owl:DatatypeProperty ;
     skos:scopeNote "APKG-LDAP v2, Table(s) D18."@en ;
     rdfs:isDefinedBy <http://w3id.org/apkg/v2/process> .
 
+apkg-pro:parameterKeyword a owl:DatatypeProperty ;
+    rdfs:label "parameter keyword"@en ;
+    skos:definition "A keyword (tag) associated with the parameter."@en ;
+    rdfs:domain apkg-pro:Parameter ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso dcat:keyword ;
+    rdfs:comment "Not dcat:keyword, whose domain dcat:Resource would infer every parameter as a DCAT resource."@en ;
+    skos:scopeNote "APKG-LDAP v2, Table(s) D18."@en ;
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/process> .
+
 apkg-pro:geoClass a owl:DatatypeProperty ;
     rdfs:label "geo class"@en ;
     skos:definition "The scheme structure of the geo element."@en ;

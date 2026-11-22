@@ -234,12 +234,14 @@
         a apkg-pro:Parameter ;
         dct:identifier "visualization_frames" ;
         apkg-pro:parameterType "string?" ;
-        apkg-pro:defaultValue "0,1,2,3,4,5,6,7,8,9,10"
+        apkg-pro:defaultValue "0,1,2,3,4,5,6,7,8,9,10" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "visualization_density" ;
         apkg-pro:parameterType "string?" ;
-        apkg-pro:defaultValue "0.01, 0.05, 0.10, 0.50, 1.00"
+        apkg-pro:defaultValue "0.01, 0.05, 0.10, 0.50, 1.00" ;
+        rdfs:label "narratives"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

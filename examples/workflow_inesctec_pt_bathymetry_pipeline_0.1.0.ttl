@@ -155,22 +155,26 @@
         a apkg-pro:Parameter ;
         dct:identifier "lon_min" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The minimum longitude of the study area"
+        dct:description "The minimum longitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lon_max" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The maximum longitude of the study area"
+        dct:description "The maximum longitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lat_min" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The minimum latitude of the study area"
+        dct:description "The minimum latitude of the study area" ;
+        rdfs:label "area"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lat_max" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The maximum latitude of the study area"
+        dct:description "The maximum latitude of the study area" ;
+        rdfs:label "area"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

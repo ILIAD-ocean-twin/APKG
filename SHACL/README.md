@@ -62,7 +62,7 @@ Any other SHACL processor can be used, as long as it supports SHACL Core and SHA
 | `apkg-pro:CWLDescriptorShape` | `apkg-pro:CWLDescriptor` | D15 | `descriptorURL` exactly 1; `mediaType` fixed to "application/cwl+yaml" |
 | `apkg-pro:GeoShape` | `apkg-pro:Geo` | D16 | `box` exactly 1, four numbers (schema.org box syntax) |
 | `apkg-pro:OrganisationShape` | `apkg-pro:Organisation` | D17 | name (`skos:prefLabel`) and `homepage` exactly 1; address at most 1 |
-| `apkg-pro:ParameterShape` | `apkg-pro:Parameter` | D18 | `dct:identifier` and `parameterType` exactly 1; type in the CWL types, optionally followed by "?" |
+| `apkg-pro:ParameterShape` | `apkg-pro:Parameter` | D18 | `dct:identifier` and `parameterType` exactly 1; type in the CWL types, optionally followed by "[]" and/or "?", unions joined with "\|"; `rdfs:label` at most 1; `parameterKeyword` as strings |
 | `apkg-pro:PersonShape` | `apkg-pro:Person` | D19 | `foaf:name` and one Email exactly 1 |
 | `apkg-pro:SpatialCoverageShape` | `apkg-pro:SpatialCoverage` | D20 | one Geo (`geo:hasGeometry`); `geoClass` fixed to "schema:GeoShape" |
 | `apkg-pro:SecretShape` | `apkg-pro:Secret` | D21 | at least one `secretInputID` |

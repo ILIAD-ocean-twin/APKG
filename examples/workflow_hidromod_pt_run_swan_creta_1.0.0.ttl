@@ -189,37 +189,44 @@
         a apkg-pro:Parameter ;
         dct:identifier "cmems_password" ;
         apkg-pro:parameterType "string" ;
-        dct:description "Password for CMEMS Download"
+        dct:description "Password for CMEMS Download" ;
+        apkg-pro:parameterKeyword "string", "password"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "cmems_username" ;
         apkg-pro:parameterType "string" ;
-        dct:description "Username for CMEMS Download"
+        dct:description "Username for CMEMS Download" ;
+        apkg-pro:parameterKeyword "string", "username"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "forecast" ;
         apkg-pro:parameterType "int" ;
-        dct:description "forecast for the model"
+        dct:description "forecast for the model" ;
+        apkg-pro:parameterKeyword "int", "forecast"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "hindcast" ;
         apkg-pro:parameterType "int" ;
-        dct:description "Hindcast for the model"
+        dct:description "Hindcast for the model" ;
+        apkg-pro:parameterKeyword "int", "Hindcast"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "wrf_ftpserver" ;
         apkg-pro:parameterType "string" ;
-        dct:description "Password for WRF Download"
+        dct:description "Password for WRF Download" ;
+        apkg-pro:parameterKeyword "string", "password"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "wrf_password" ;
         apkg-pro:parameterType "string" ;
-        dct:description "Username for WRF Download"
+        dct:description "Username for WRF Download" ;
+        apkg-pro:parameterKeyword "string", "username"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "wrf_username" ;
         apkg-pro:parameterType "string" ;
-        dct:description "Username for WRF Download"
+        dct:description "Username for WRF Download" ;
+        apkg-pro:parameterKeyword "string", "username"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

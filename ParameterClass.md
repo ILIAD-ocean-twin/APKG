@@ -13,5 +13,7 @@
 | doc | A documentation string. | 🟢 dct:description | 🔴 apkg-pro:Parameter | xsd:string | 0-1 | | |
 | default | The default value of the parameter. | 🔴 apkg-pro:defaultValue | 🔴 apkg-pro:Parameter | xsd:string | 0-1 | | owl:DatatypeProperty. Plain string because v1 data mixes strings and numbers (e.g. "NO", 24.069118741783797). In v3 it can take the XSD datatype given by type. |
 | format | The format of the file (for File parameters). | 🔴 apkg-pro:format | 🔴 apkg-pro:Parameter | xsd:string | 0-1 | EDAM format (VES) | owl:DatatypeProperty. Plain string because of v1 data, as a prefixed name (e.g. "edam:format_3464"). In v3 it becomes an object property to the EDAM format IRI (http://edamontology.org/format_3464). |
+| label | A short, human-readable title of the parameter. | 🟢 rdfs:label | 🔴 apkg-pro:Parameter | xsd:string | 0-1 | | As in CWL, whose schema maps label to rdfs:label. |
+| keywords | Keywords (tags) associated with the parameter. | 🔴 apkg-pro:parameterKeyword | 🔴 apkg-pro:Parameter | xsd:string | 0-M | | owl:DatatypeProperty; rdfs:seeAlso dcat:keyword. Not a CWL field: added by the registry. Not dcat:keyword, whose domain dcat:Resource would infer every parameter as a DCAT resource. |
 
 [<- main](README.md)

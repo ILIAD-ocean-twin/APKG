@@ -154,37 +154,44 @@
         a apkg-pro:Parameter ;
         dct:identifier "lat" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The latitude of the study area"
+        dct:description "The latitude of the study area" ;
+        rdfs:label "openoil"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "lon" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The longitude of the study area"
+        dct:description "The longitude of the study area" ;
+        rdfs:label "openoil"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "time" ;
         apkg-pro:parameterType "string" ;
-        dct:description "The start time of the simulation"
+        dct:description "The start time of the simulation" ;
+        rdfs:label "openoil"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "oiltype" ;
         apkg-pro:parameterType "string" ;
-        dct:description "The type of the oil to run the simulation"
+        dct:description "The type of the oil to run the simulation" ;
+        rdfs:label "openoil"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "duration" ;
         apkg-pro:parameterType "int" ;
-        dct:description "The simulation duration"
+        dct:description "The simulation duration" ;
+        rdfs:label "openoil"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "username" ;
         apkg-pro:parameterType "string" ;
-        dct:description "The CMEMS username"
+        dct:description "The CMEMS username" ;
+        rdfs:label "cmems_credentials"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "password" ;
         apkg-pro:parameterType "string" ;
-        dct:description "The CMEMS password"
+        dct:description "The CMEMS password" ;
+        rdfs:label "cmems_credentials"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

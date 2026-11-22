@@ -131,7 +131,7 @@ def link(l):
     return n
 
 
-PARAM_KEYS = {"id", "type", "doc", "default", "format"}
+PARAM_KEYS = {"id", "type", "doc", "default", "format", "label", "keywords"}
 
 
 def cwl_type(t):
@@ -165,6 +165,9 @@ def parameter(p, warnings=None):
         d = p["default"]
         n.add("apkg-pro:defaultValue", d if isinstance(d, str) else json.dumps(d))
     n.add("apkg-pro:format", p.get("format"))
+    n.add("rdfs:label", p.get("label"))
+    for k in as_list(p.get("keywords")):
+        n.add("apkg-pro:parameterKeyword", k)
     return n
 
 

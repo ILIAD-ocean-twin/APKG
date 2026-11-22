@@ -9,7 +9,7 @@ This folder contains the OWL ontology of the APKG Linked Data Application Profil
 | File | Ontology IRI | Prefix / namespace | Content |
 |------|--------------|--------------------|---------|
 | `apkg-rec-v2.ttl` | `http://w3id.org/apkg/v2/records` | `apkg-rec:` `http://w3id.org/apkg/v2/records#` | Record (Core) module, tables A.1.1, A.1.2 and B2-B13: 13 classes, 24 properties (17 datatype, 7 object) |
-| `apkg-pro-v2.ttl` | `http://w3id.org/apkg/v2/process` | `apkg-pro:` `http://w3id.org/apkg/v2/process#` | Process module, tables C14 and D15-D21: 8 classes, 27 properties (19 datatype, 8 object) |
+| `apkg-pro-v2.ttl` | `http://w3id.org/apkg/v2/process` | `apkg-pro:` `http://w3id.org/apkg/v2/process#` | Process module, tables C14 and D15-D21: 8 classes, 28 properties (20 datatype, 8 object) |
 | `apkg-declarations-v2.ttl` | `http://w3id.org/apkg/v2/declarations` | (no own terms) | Declarations of reused classes that are only `rdfs:Class` in their source vocabularies |
 
 Each ontology has `owl:versionInfo "2.0"` and an `owl:versionIRI` ending in `/2.0`.

@@ -287,11 +287,13 @@
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "frames" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "density" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

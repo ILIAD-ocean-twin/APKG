@@ -280,17 +280,20 @@
       "@type": "apkg-pro:Parameter",
       "dct:identifier": "netcdf_file",
       "apkg-pro:parameterType": "File?|string?",
-      "apkg-pro:format": "edam:format_3650"
+      "apkg-pro:format": "edam:format_3650",
+      "rdfs:label": "netcdf file"
     },
     {
       "@type": "apkg-pro:Parameter",
       "dct:identifier": "frames",
-      "apkg-pro:parameterType": "string"
+      "apkg-pro:parameterType": "string",
+      "rdfs:label": "narratives"
     },
     {
       "@type": "apkg-pro:Parameter",
       "dct:identifier": "density",
-      "apkg-pro:parameterType": "string"
+      "apkg-pro:parameterType": "string",
+      "rdfs:label": "narratives"
     }
   ],
   "apkg-pro:hasOutput": {

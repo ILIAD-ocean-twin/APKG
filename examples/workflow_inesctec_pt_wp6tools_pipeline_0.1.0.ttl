@@ -154,55 +154,67 @@
         a apkg-pro:Parameter ;
         dct:identifier "bathymetry" ;
         apkg-pro:parameterType "boolean?" ;
-        dct:description "If want to generate bathymetry"
+        dct:description "If want to generate bathymetry" ;
+        rdfs:label "bathymetry"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "latitude" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The latitude of the study area"
+        dct:description "The latitude of the study area" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "longitude" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The longitude of the study area"
+        dct:description "The longitude of the study area" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "radius" ;
         apkg-pro:parameterType "float" ;
-        dct:description "The radius of the study area"
+        dct:description "The radius of the study area" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "type" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "url" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "samples" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "time" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "minutes" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "frames" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "density" ;
-        apkg-pro:parameterType "string"
+        apkg-pro:parameterType "string" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "output-format" ;
         apkg-pro:parameterType "string?" ;
-        apkg-pro:defaultValue "stac"
+        apkg-pro:defaultValue "stac" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "depth" ;
@@ -210,55 +222,66 @@
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "output-animation" ;
-        apkg-pro:parameterType "boolean?"
+        apkg-pro:parameterType "boolean?" ;
+        rdfs:label "narratives"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "template_file" ;
-        apkg-pro:parameterType "string?"
+        apkg-pro:parameterType "string?" ;
+        rdfs:label "virtualc"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "cesium_mappings" ;
-        apkg-pro:parameterType "string?"
+        apkg-pro:parameterType "string?" ;
+        rdfs:label "virtualc"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "unity_mappings" ;
-        apkg-pro:parameterType "string?"
+        apkg-pro:parameterType "string?" ;
+        rdfs:label "virtualc"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "endpoint" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage endpoint"
+        dct:description "S3 storage endpoint" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "region" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage region"
+        dct:description "S3 storage region" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "access_key" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage access_key"
+        dct:description "S3 storage access_key" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "secret_key" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage secret_key"
+        dct:description "S3 storage secret_key" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "session_token" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage region"
+        dct:description "S3 storage region" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "bucket" ;
         apkg-pro:parameterType "string?" ;
-        dct:description "S3 storage bucket"
+        dct:description "S3 storage bucket" ;
+        rdfs:label "s3storage"
     ], [
         a apkg-pro:Parameter ;
         dct:identifier "base_path" ;
         apkg-pro:parameterType "string?" ;
         dct:description "S3 storage final directory name" ;
-        apkg-pro:defaultValue "wp6tools_virtual_choreographies_pipeline"
+        apkg-pro:defaultValue "wp6tools_virtual_choreographies_pipeline" ;
+        rdfs:label "s3storage"
     ] ;
     apkg-pro:hasOutput [
         a apkg-pro:Parameter ;

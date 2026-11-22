@@ -250,7 +250,11 @@
       "@type": "apkg-pro:Parameter",
       "dct:identifier": "start",
       "apkg-pro:parameterType": "string",
-      "dct:description": "Start date time (YYYY-MM-DDTHH:MM) of simulation"
+      "dct:description": "Start date time (YYYY-MM-DDTHH:MM) of simulation",
+      "apkg-pro:parameterKeyword": [
+        "string",
+        "date"
+      ]
     }
   ],
   "apkg-pro:hasOutput": {

@@ -1,3 +1,4 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -194,6 +195,13 @@ apkg-pro:ParameterShape a sh:NodeShape ;
     ], [
         sh:path apkg-pro:format;
         sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path rdfs:label;
+        sh:maxCount 1;
+        sh:datatype xsd:string
+    ], [
+        sh:path apkg-pro:parameterKeyword;
         sh:datatype xsd:string
     ] .
 

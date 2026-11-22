@@ -108,7 +108,7 @@ The mapping follows the tables of the profile (see the [main README](../README.m
 - CWL parameter types are written as one string: `File?` (optional), `File[]` (array), and union types (a JSON list such as `["string?", "File?"]`) joined with `|` (`string?|File?`).
 - Empty values (`null`, `""`, `[]`) are not mapped.
 - The short CWL id (`properties.id`) is not mapped in v2.
-- Fields that the script does not map are listed as warnings, so that nothing is lost silently. This includes the parameter fields `label` and `keywords`, which the profile does not cover yet. The OGC fields `time`, `language`, `languages`, `resourceLanguages`, `externalIds` and `linkTemplates` are reported as warnings when present.
+- Fields that the script does not map are listed as warnings, so that nothing is lost silently. The OGC fields `time`, `language`, `languages`, `resourceLanguages`, `externalIds` and `linkTemplates` are reported as warnings when present.
 
 ## JSON-LD output
 

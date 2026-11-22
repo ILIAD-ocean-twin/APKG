@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <!-- APKG-LDAP v2: load the imported modules from the files in this folder -->
+    <uri id="APKG records module" name="http://w3id.org/apkg/v2/records" uri="apkg-rec-v2.ttl"/>
+    <uri id="APKG process module" name="http://w3id.org/apkg/v2/process" uri="apkg-pro-v2.ttl"/>
+    <uri id="APKG declarations module" name="http://w3id.org/apkg/v2/declarations" uri="apkg-declarations-v2.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>
