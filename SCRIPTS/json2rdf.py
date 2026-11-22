@@ -1,49 +1,7 @@
-"""Convert APKG registry records (v1 JSON) to Turtle following the APKG-LDAP v2 profile,
-then validate the result with validate.py (SHACL).
+"""Convert APKG registry records (v1 JSON) to RDF (Turtle and/or JSON-LD) following the APKG-LDAP v2 profile,
+then validate the result with validate.py.
 
-REQUIREMENTS
-    - Python 3.9 or later (check with:  python --version)
-    - The conversion itself needs nothing else.
-    - The validation at the end needs pyshacl (it also installs rdflib):
-          pip install pyshacl
-      If "pip" is not found:  python -m pip install pyshacl
-      Without pyshacl the files are still converted; the validation is skipped
-      with a message.
-
-HOW TO RUN
-    Open a terminal in the APKG folder, for example:
-          cd C:\\Users\\dei\\GitHub\\APKG
-
-    Then run one of:
-          python SCRIPTS\\json2ttl.py record.json
-              -> converts one record and writes examples\\<name>.ttl
-          python SCRIPTS\\json2ttl.py rec1.json rec2.json
-              -> converts several records
-          python SCRIPTS\\json2ttl.py some\\folder
-              -> converts every .json file in the folder
-          python SCRIPTS\\json2ttl.py record.json -o out
-              -> writes the .ttl files to the folder "out" instead of examples\\
-          python SCRIPTS\\json2ttl.py record.json --no-validate
-              -> converts only, without the SHACL validation
-
-    Input: a record as returned by the registry with ?f=json, e.g.
-      https://iliad-registry.inesctec.pt/collections/apkg/items/<id>?f=json
-    A file may also hold a list of records, or a FeatureCollection
-    ({"features": [...]}, as returned by .../items?f=json).
-
-MAPPING (see the tables of the profile)
-    - The record id (URN) is the IRI of the main node, typed apkg-rec:Record
-      and, when properties.class is present, also apkg-pro:Process.
-    - All other nodes (links, persons, organisations, parameters, ...) are
-      blank nodes.
-    - Secrets are taken from the cwltool:Secrets hint of the embedded CWL
-      (field "cwl"), when the JSON includes it.
-    - Empty values (null, "", []) are not mapped.
-    - Fields that this script does not map are listed as warnings, so that
-      nothing is lost silently.
-
-EXIT CODE
-    0 if every record was converted and (when validated) conforms, 1 otherwise.
+Instructions (requirements, how to run, mapping): see README.md in this folder.
 """
 import argparse
 import json
@@ -388,7 +346,7 @@ EXTRA = []
 def to_turtle(main, source):
     EXTRA.clear()
     out_head = "".join(f"@prefix {p}: <{u}> .\n" for p, u in PREFIXES.items())
-    body = f"\n# Converted from {source}\n# following the APKG-LDAP v2 application profile (SCRIPTS/json2ttl.py).\n\n"
+    body = f"\n# Converted from {source}\n# following the APKG-LDAP v2 application profile (SCRIPTS/json2rdf.py).\n\n"
     parts = [f"a {', '.join(main.types)}"] + [f"{p} " + ", ".join(value_ttl(v, 4) for v in vs) for p, vs in grouped(main.props)]
     body += main.iri + " " + " ;\n    ".join(parts) + " .\n"
     while EXTRA:
@@ -399,6 +357,31 @@ def to_turtle(main, source):
 
 
 # ------------------------------------------------------------------ main
+def jsonld_value(v):
+    if isinstance(v, Lit):
+        if v.datatype in (None, "xsd:string"):
+            return v.value
+        return {"@value": v.value, "@type": v.datatype}
+    return jsonld_node(v)
+
+
+def jsonld_node(n):
+    obj = {}
+    if n.iri:
+        obj["@id"] = n.iri.strip("<>")
+    obj["@type"] = n.types if len(n.types) > 1 else n.types[0]
+    for p, vs in grouped(n.props):
+        values = [jsonld_value(v) for v in vs]
+        obj[p] = values if len(values) > 1 else values[0]
+    return obj
+
+
+def to_jsonld(main, source):
+    doc = {"@context": dict(PREFIXES)}
+    doc.update(jsonld_node(main))
+    return json.dumps(doc, ensure_ascii=False, indent=2) + "\n"
+
+
 def records_in(data):
     if isinstance(data, list):
         return data
@@ -417,6 +400,8 @@ def main():
     ap.add_argument("inputs", nargs="+", help="JSON files or folders with JSON files")
     ap.add_argument("-o", "--output", default=str(ROOT / "examples"), help="output folder (default: examples/)")
     ap.add_argument("--no-validate", action="store_true", help="do not run the SHACL validation at the end")
+    ap.add_argument("-f", "--format", choices=["ttl", "jsonld", "both"], default="ttl",
+                    help="output format: ttl (Turtle, default), jsonld (JSON-LD) or both")
     args = ap.parse_args()
 
     files = []
@@ -443,10 +428,17 @@ def main():
                 ok = False
                 continue
             rid = rec.get("id") or rec["properties"]["identifier"]
-            target = out_dir / f"{safe_name(rid)}.ttl"
-            target.write_text(to_turtle(node, rid), encoding="utf-8")
-            written.append(target)
-            print(f"{f.name} -> {target}")
+            outputs = []
+            if args.format in ("ttl", "both"):
+                target = out_dir / f"{safe_name(rid)}.ttl"
+                target.write_text(to_turtle(node, rid), encoding="utf-8")
+                outputs.append(target)
+            if args.format in ("jsonld", "both"):
+                target = out_dir / f"{safe_name(rid)}.jsonld"
+                target.write_text(to_jsonld(node, rid), encoding="utf-8")
+                outputs.append(target)
+            written += outputs
+            print(f"{f.name} -> " + ", ".join(str(t) for t in outputs))
             for w in warnings:
                 print(f"   warning: {w}")
 
