@@ -1,3 +1,6 @@
 # Python cache, recreated automatically when the scripts run
 __pycache__/
 *.pyc
+
+# Protégé catalog (local mapping of the owl:imports to the files in terms/)
+catalog-v001.xml
