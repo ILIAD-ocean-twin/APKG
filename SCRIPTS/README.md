@@ -31,11 +31,13 @@ The conversion itself (`json2rdf.py`) needs nothing besides Python. Without `pys
 
 ## How to run
 
-Open a terminal (Command Prompt, PowerShell or the VS Code terminal) in the `APKG` folder, for example:
+Open a terminal (Command Prompt, PowerShell or the VS Code terminal) and position yourself in the root folder of the repository, that is, the folder that contains `SCRIPTS`, `SHACL`, `terms` and `examples`:
 
 ```
-cd C:\Users\dei\GitHub\APKG
+cd <path-to-the-repository>
 ```
+
+All the commands below are run from that folder. On macOS or Linux, use `/` instead of `\` in the paths (e.g. `python SCRIPTS/json2rdf.py`).
 
 ### json2rdf.py: convert JSON to RDF
 

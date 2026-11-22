@@ -20,10 +20,9 @@ To validate data, load **both** files as one shapes graph (the `owl:imports` IRI
 
 ## How to validate
 
-The easiest way is the validation script (see [SCRIPTS/README.md](../SCRIPTS/README.md)):
+The easiest way is the validation script (see [SCRIPTS/README.md](../SCRIPTS/README.md)). Open a terminal and position yourself in the root folder of the repository (the folder that contains `SHACL`, `terms`, `examples` and `SCRIPTS`), then run:
 
 ```
-cd C:\Users\dei\GitHub\APKG
 python SCRIPTS\validate.py                      (every .ttl and .jsonld in examples\)
 python SCRIPTS\validate.py examples\my-record.ttl
 ```
