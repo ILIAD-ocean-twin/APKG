@@ -47,9 +47,6 @@ And the logical axioms: `rdfs:subClassOf` (alignment with the reused vocabularie
 - **No sub-property of annotation properties.** `apkg-rec:alternateName` points to `rdfs:label` with `rdfs:seeAlso`, not `rdfs:subPropertyOf`, because in OWL 2 DL a datatype property cannot be a sub-property of an annotation property.
 - **Inferences to be aware of.** Some reused properties classify APKG nodes through their domains, e.g. `apkg-rec:Record` is inferred as `dcat:Resource` and `geo:Feature`, `apkg-rec:Link` as `prov:Influence`, and `apkg-pro:SpatialCoverage` as `geo:Feature`. These are noted in the `rdfs:comment` of the classes.
 
-## Using the ontology
-
-- **Protégé**: open `apkg-pro-v2.ttl` (it imports the Record and declarations modules), or `apkg-rec-v2.ttl` for the Record module alone. The three files can also be opened from this folder in the same session.
-- **Python (rdflib)**: load the three files into one graph, as `scripts/validate.py` does.
+## Related folders
 
 The SHACL shapes that use this ontology are in [shacl/](../shacl/README.md); the namespaces of all prefixes are listed in [NameSpaces.md](../NameSpaces.md).
