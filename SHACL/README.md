@@ -76,6 +76,8 @@ Any other SHACL processor can be used, as long as it supports SHACL Core and SHA
 - **Node types must be explicit.** `sh:class` checks the `rdf:type` of related nodes (for example a link must be typed `apkg-rec:Link`). `SCRIPTS/json2rdf.py` writes these types.
 - **v1 data as literals.** Following the profile, values that v1 data holds as strings stay literals (`xsd:string` or `xsd:anyURI`), and value lists are checked with `sh:in`, `sh:pattern` or `sh:hasValue`. The notes "In v3 it becomes ..." in the tables say how each one will change.
 - **Link relations.** `rel` accepts the 134 relation types of the IANA Link Relation Types registry (last updated 2026-06-12), plus "root" (used by OGC API - Records, not registered at IANA), or any URI (extension relation types, RFC 8288).
+- **URI values.** Every `xsd:anyURI` value is also checked with `` sh:pattern "^[^\\s\"<>{}|\\\\^`]*$" ``: no spaces, quotes or other characters that are not allowed in a URI. Some SHACL processors accept such values, but OWL reasoners (e.g. HermiT) reject them as malformed literals.
+- **Date-time precision.** Every `xsd:dateTimeStamp` value is also checked with `sh:pattern "^[^.]*(\\.[0-9]{1,3})?(Z|[+-][0-9]{2}:[0-9]{2})$"`: at most three fractional digits in the seconds (milliseconds), plus the timezone. XML Schema allows more digits, but OWL reasoners (e.g. HermiT) reject them as malformed literals.
 - **Fixed values.** Two constants that are not in the v1 JSON are enforced with `sh:hasValue`: the CWL media type ("application/cwl+yaml") and the legacy geo class ("schema:GeoShape").
 
 ## Known limits

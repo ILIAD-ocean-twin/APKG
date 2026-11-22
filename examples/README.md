@@ -7,9 +7,11 @@ This folder contains records of the [APKG registry](https://iliad-registry.inesc
 - Turtle (`.ttl`)
 - JSON-LD (`.jsonld`)
 
-All files conform to the SHACL shapes of the profile (folder `SHACL/`).
+All files conform to the SHACL shapes of the profile (folder `SHACL/`), except one record with an error in its source data (see [Known issues](#known-issues)).
 
 ## Contents
+
+The folder holds every record of the registry. Two of them are described below as reference examples.
 
 | File | Record | Kind |
 |------|--------|------|
@@ -56,3 +58,7 @@ python SCRIPTS\validate.py
 - Empty values in the JSON (`null`, `""`, `[]`) are not converted.
 - The short CWL id (`properties.id`) is not converted in v2.
 - On macOS or Linux, use `/` instead of `\` in the paths.
+
+## Known issues
+
+- **`tool_inesctec_pt_2stac_simulation_0.2.0.ttl` / `.jsonld`** (`urn:apkg:tool:inesctec:pt:2stac_simulation:0.2.0`) does **not** conform to the shapes. The error is in the record's CWL in the registry, not in the profile or in the conversion: `InitialWorkDirRequirement` is indented under `outputs`, so it is read as an output parameter without a type, and the shapes report the missing `apkg-pro:parameterType` (`sh:minCount 1`). The file is kept as a real example of what the validation catches. It will conform once the CWL is corrected in the registry and the record is downloaded and converted again.

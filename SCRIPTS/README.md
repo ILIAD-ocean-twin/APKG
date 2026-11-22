@@ -105,6 +105,8 @@ The mapping follows the tables of the profile (see the [main README](../README.m
 - All other nodes (links, persons, organisations, parameters, ...) are blank nodes.
 - Secrets are taken from the field `Secrets` (`{"secrets": [...]}`) when present, otherwise from the `cwltool:Secrets` hints of the embedded CWL (field `cwl`, added by `download_registry.py --with-cwl`).
 - `registration_url` is mapped to `apkg-pro:originalURL`.
+- URL values (`xsd:anyURI`) are percent-encoded where they contain characters that are not allowed in a URI, e.g. `"` becomes `%22` (as in the registry links `...?family="urn:..."`), so that OWL reasoners accept them.
+- Date-times are cut to milliseconds (three fractional digits), e.g. `2025-06-11T14:23:15.877984Z` becomes `2025-06-11T14:23:15.877Z`, because OWL reasoners reject more digits. Dates without time (`2024-12-01`) are written as `xsd:date`.
 - CWL parameter types are written as one string: `File?` (optional), `File[]` (array), and union types (a JSON list such as `["string?", "File?"]`) joined with `|` (`string?|File?`).
 - Empty values (`null`, `""`, `[]`) are not mapped.
 - The short CWL id (`properties.id`) is not mapped in v2.

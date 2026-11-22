@@ -73,19 +73,19 @@
         dct:title "Application Packages"
     ], [
         a apkg-rec:Link ;
-        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:meeo_srl:it:datasearch_tool\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=%22urn:apkg:tool:meeo_srl:it:datasearch_tool%22&sortby=-software_version"^^xsd:anyURI ;
         apkg-rec:rel "alternate" ;
         apkg-rec:mediaType "text/html" ;
         dct:title "All versions of this document as HTML"
     ], [
         a apkg-rec:Link ;
-        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:meeo_srl:it:datasearch_tool\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=%22urn:apkg:tool:meeo_srl:it:datasearch_tool%22&sortby=-software_version"^^xsd:anyURI ;
         apkg-rec:rel "alternate" ;
         apkg-rec:mediaType "application/json" ;
         dct:title "All versions of this document as JSON"
     ], [
         a apkg-rec:Link ;
-        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:meeo_srl:it:datasearch_tool\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=%22urn:apkg:tool:meeo_srl:it:datasearch_tool%22&sortby=-software_version"^^xsd:anyURI ;
         apkg-rec:rel "alternate" ;
         apkg-rec:mediaType "application/json" ;
         dct:title "All versions of this document as RDF (JSON-LD)"
@@ -103,7 +103,7 @@
     apkg-pro:familyID "urn:apkg:tool:meeo_srl:it:datasearch_tool" ;
     pav:version "1.0.0" ;
     apkg-pro:dateCreated "2024-12-01"^^xsd:date ;
-    apkg-pro:registrationDate "2025-07-30T14:37:59.631829Z"^^xsd:dateTimeStamp ;
+    apkg-pro:registrationDate "2025-07-30T14:37:59.631Z"^^xsd:dateTimeStamp ;
     apkg-pro:isLatestVersion "true"^^xsd:boolean ;
     apkg-pro:cwlDescriptor [
         a apkg-pro:CWLDescriptor ;

@@ -114,7 +114,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=%22urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -124,7 +124,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=%22urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -134,7 +134,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=%22urn:apkg:tool:sintef_ocean:no:mpa_ditto_summit%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -165,7 +165,7 @@
     "@type": "xsd:dateTimeStamp"
   },
   "apkg-pro:registrationDate": {
-    "@value": "2026-10-30T20:13:15.302103Z",
+    "@value": "2026-10-30T20:13:15.302Z",
     "@type": "xsd:dateTimeStamp"
   },
   "apkg-pro:isLatestVersion": {

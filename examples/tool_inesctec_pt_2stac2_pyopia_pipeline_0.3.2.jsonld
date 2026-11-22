@@ -114,7 +114,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:2stac2_pyopia_pipeline\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=%22urn:apkg:tool:inesctec:pt:2stac2_pyopia_pipeline%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -124,7 +124,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:2stac2_pyopia_pipeline\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=%22urn:apkg:tool:inesctec:pt:2stac2_pyopia_pipeline%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -134,7 +134,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:2stac2_pyopia_pipeline\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=%22urn:apkg:tool:inesctec:pt:2stac2_pyopia_pipeline%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -162,7 +162,7 @@
     "@type": "xsd:dateTimeStamp"
   },
   "apkg-pro:registrationDate": {
-    "@value": "2026-10-30T16:38:29.342190Z",
+    "@value": "2026-10-30T16:38:29.342Z",
     "@type": "xsd:dateTimeStamp"
   },
   "apkg-pro:isLatestVersion": {

@@ -73,19 +73,19 @@
         dct:title "Application Packages"
     ], [
         a apkg-rec:Link ;
-        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:tool:inesctec:pt:metadata_2stact2\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?family=%22urn:apkg:tool:inesctec:pt:metadata_2stact2%22&sortby=-software_version"^^xsd:anyURI ;
         apkg-rec:rel "alternate" ;
         apkg-rec:mediaType "text/html" ;
         dct:title "All versions of this document as HTML"
     ], [
         a apkg-rec:Link ;
-        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:tool:inesctec:pt:metadata_2stact2\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=%22urn:apkg:tool:inesctec:pt:metadata_2stact2%22&sortby=-software_version"^^xsd:anyURI ;
         apkg-rec:rel "alternate" ;
         apkg-rec:mediaType "application/json" ;
         dct:title "All versions of this document as JSON"
     ], [
         a apkg-rec:Link ;
-        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:tool:inesctec:pt:metadata_2stact2\"&sortby=-software_version"^^xsd:anyURI ;
+        apkg-rec:href "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=%22urn:apkg:tool:inesctec:pt:metadata_2stact2%22&sortby=-software_version"^^xsd:anyURI ;
         apkg-rec:rel "alternate" ;
         apkg-rec:mediaType "application/json" ;
         dct:title "All versions of this document as RDF (JSON-LD)"
@@ -102,7 +102,7 @@
     apkg-pro:familyID "urn:apkg:tool:inesctec:pt:metadata_2stact2" ;
     pav:version "0.2.0" ;
     apkg-pro:dateCreated "2025-10-29T22:16:49Z"^^xsd:dateTimeStamp ;
-    apkg-pro:registrationDate "2025-10-29T22:20:57.646202Z"^^xsd:dateTimeStamp ;
+    apkg-pro:registrationDate "2025-10-29T22:20:57.646Z"^^xsd:dateTimeStamp ;
     apkg-pro:isLatestVersion "false"^^xsd:boolean ;
     apkg-pro:cwlDescriptor [
         a apkg-pro:CWLDescriptor ;

@@ -114,7 +114,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?family=%22urn:apkg:workflow:forth:gr:run_visir%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -124,7 +124,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=json&family=%22urn:apkg:workflow:forth:gr:run_visir%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -134,7 +134,7 @@
     {
       "@type": "apkg-rec:Link",
       "apkg-rec:href": {
-        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=\"urn:apkg:workflow:forth:gr:run_visir\"&sortby=-software_version",
+        "@value": "https://iliad-registry.inesctec.pt/collections/apkg/items?f=jsonld&family=%22urn:apkg:workflow:forth:gr:run_visir%22&sortby=-software_version",
         "@type": "xsd:anyURI"
       },
       "apkg-rec:rel": "alternate",
@@ -167,7 +167,7 @@
   "apkg-pro:familyID": "urn:apkg:workflow:forth:gr:run_visir",
   "pav:version": "1.0.0",
   "apkg-pro:registrationDate": {
-    "@value": "2025-06-11T14:23:17.001124Z",
+    "@value": "2025-06-11T14:23:17.001Z",
     "@type": "xsd:dateTimeStamp"
   },
   "apkg-pro:isLatestVersion": {

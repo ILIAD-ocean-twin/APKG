@@ -6,6 +6,7 @@ Instructions (requirements, how to run, mapping): see README.md in this folder.
 import argparse
 import json
 import re
+import urllib.parse
 import sys
 from pathlib import Path
 
@@ -77,8 +78,15 @@ def as_list(v):
     return v if isinstance(v, list) else [v]
 
 
+URI_SAFE = ":/?#[]@!$&'()*+,;=%-._~"  # reserved and unreserved URI characters, and % (already escaped)
+
+
 def uri(v):
-    return None if empty(v) else Lit(v, "xsd:anyURI")
+    """xsd:anyURI literal. Characters that are not allowed in a URI (e.g. '"', spaces) are
+    percent-encoded, as in the IRI-to-URI mapping, so that reasoners such as HermiT accept the value."""
+    if empty(v):
+        return None
+    return Lit(urllib.parse.quote(str(v).strip(), safe=URI_SAFE), "xsd:anyURI")
 
 
 def date_literal(v):
@@ -86,6 +94,9 @@ def date_literal(v):
         return None
     if re.fullmatch(r"\d{4}-\d{2}-\d{2}", v):
         return Lit(v, "xsd:date")
+    # OWL reasoners (e.g. HermiT) accept at most 3 fractional digits (milliseconds):
+    # "2025-06-11T14:23:15.877984Z" -> "2025-06-11T14:23:15.877Z"
+    v = re.sub(r"(T\d{2}:\d{2}:\d{2}\.\d{3})\d+", r"\1", v)
     return Lit(v, "xsd:dateTimeStamp")
 
 
