@@ -8,7 +8,7 @@
 | rdfs           | http://www.w3.org/2000/01/rdf-schema#                |
 | adms           | http://www.w3.org/ns/adms#                           |
 | apkg-pro       | http://w3id.org/apkg/v2/process#                     |
-| apkg-rec       | http://w3id.org/apkg/v2/records#                     |
+| apkg-rec       | http://w3id.org/apkg/v2/record#                     |
 | bf             | http://id.loc.gov/ontologies/bibframe/               |
 | cito           | http://purl.org/spar/cito/                           |
 | cwl            | https://w3id.org/cwl/cwl#                            |

@@ -4,7 +4,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/record#> .
 @prefix apkg-pro: <http://w3id.org/apkg/v2/process#> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -14,7 +14,7 @@
 
 <http://w3id.org/apkg/v2/process/shapes> a owl:Ontology ;
     dct:title "APKG-LDAP v2 - SHACL shapes for the Process module (apkg-pro)"@en ;
-    owl:imports <http://w3id.org/apkg/v2/process>, <http://w3id.org/apkg/v2/records/shapes> .
+    owl:imports <http://w3id.org/apkg/v2/process>, <http://w3id.org/apkg/v2/record/shapes> .
 
 #################################################################
 # Shapes

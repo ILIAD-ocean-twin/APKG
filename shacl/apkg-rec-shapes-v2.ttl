@@ -7,15 +7,15 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
-@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/record#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-<http://w3id.org/apkg/v2/records/shapes> a owl:Ontology ;
+<http://w3id.org/apkg/v2/record/shapes> a owl:Ontology ;
     dct:title "APKG-LDAP v2 - SHACL shapes for the Record module (apkg-rec)"@en ;
-    owl:imports <http://w3id.org/apkg/v2/records> ;
+    owl:imports <http://w3id.org/apkg/v2/record> ;
     sh:declare [
         sh:prefix "skos";
         sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI
@@ -315,7 +315,7 @@ apkg-rec:LanguageShape a sh:NodeShape ;
     ] ;
     sh:sparql [
         sh:message "The language tag of name (skos:prefLabel) must equal code (skos:notation)."@en;
-        sh:prefixes <http://w3id.org/apkg/v2/records/shapes>;
+        sh:prefixes <http://w3id.org/apkg/v2/record/shapes>;
         sh:select """
         SELECT $this ?value WHERE {
             $this skos:notation ?code ;

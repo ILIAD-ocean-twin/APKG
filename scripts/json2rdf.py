@@ -19,7 +19,7 @@ PREFIXES = {
     "dct": "http://purl.org/dc/terms/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "adms": "http://www.w3.org/ns/adms#",
-    "apkg-rec": "http://w3id.org/apkg/v2/records#",
+    "apkg-rec": "http://w3id.org/apkg/v2/record#",
     "apkg-pro": "http://w3id.org/apkg/v2/process#",
     "bf": "http://id.loc.gov/ontologies/bibframe/",
     "foaf": "http://xmlns.com/foaf/0.1/",

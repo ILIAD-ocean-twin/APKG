@@ -8,7 +8,7 @@ This folder contains the SHACL shapes of the APKG Linked Data Application Profil
 
 | File | Module | Shapes for | Shapes graph IRI |
 |------|--------|-----------|------------------|
-| `apkg-rec-shapes-v2.ttl` | Record (Core), prefix `apkg-rec:` | Tables A.1.1, A.1.2 and B2-B13 | `http://w3id.org/apkg/v2/records/shapes` |
+| `apkg-rec-shapes-v2.ttl` | Record (Core), prefix `apkg-rec:` | Tables A.1.1, A.1.2 and B2-B13 | `http://w3id.org/apkg/v2/record/shapes` |
 | `apkg-pro-shapes-v2.ttl` | Process, prefix `apkg-pro:` | Tables C14 and D15-D21 | `http://w3id.org/apkg/v2/process/shapes` |
 
 The two files follow the two modules of the ontology (folder `terms/`):
