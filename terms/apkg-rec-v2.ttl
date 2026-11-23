@@ -5,7 +5,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix apkg-rec: <http://w3id.org/apkg/v2/records#> .
+@prefix apkg-rec: <http://w3id.org/apkg/v2/record#> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix hydra: <http://www.w3.org/ns/hydra/core#> .
@@ -14,11 +14,11 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-<http://w3id.org/apkg/v2/records> a owl:Ontology ;
+<http://w3id.org/apkg/v2/record> a owl:Ontology ;
     dct:title "APKG-LDAP ontology - Record module (apkg-rec)"@en ;
     dct:description "Classes and properties of the Core module of the APKG Linked Data Application Profile v2: the OGC API - Records catalogue record and its related classes (tables A and B). Independent of the Process module."@en ;
     owl:versionInfo "2.0" ;
-    owl:versionIRI <http://w3id.org/apkg/v2/records/2.0> ;
+    owl:versionIRI <http://w3id.org/apkg/v2/record/2.0> ;
     dct:rightsHolder "INESC TEC" ;
     dct:created "2026-11-21"^^xsd:date ;
     owl:imports <http://w3id.org/apkg/v2/declarations> .
@@ -32,14 +32,14 @@ apkg-rec:Record a owl:Class ;
     skos:definition "A record in the catalogue."@en ;
     rdfs:comment "Inferred as dcat:Resource (domain of dcat:qualifiedRelation and dcat:keyword) and as geo:Feature (domain of geo:hasGeometry)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.1; A.1.2."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Address a owl:Class ;
     rdfs:label "Address"@en ;
     skos:definition "Physical location at which contact can be made."@en ;
     rdfs:subClassOf vcard:Address ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B2."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Concept a owl:Class ;
     rdfs:label "Concept"@en ;
@@ -47,27 +47,27 @@ apkg-rec:Concept a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:comment "The OGC url of the concept is used as the IRI of the node, with no property."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B3."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Contact a owl:Class ;
     rdfs:label "Contact"@en ;
     skos:definition "Identification of, and means of communication with, the party responsible for a resource."@en ;
     rdfs:subClassOf prov:Agent, vcard:Kind ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B4."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Email a owl:Class ;
     rdfs:label "Email"@en ;
     skos:definition "Email address at which contact can be made."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B5."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Format a owl:Class ;
     rdfs:label "Format"@en ;
     skos:definition "A format of the resource."@en ;
     rdfs:subClassOf dct:MediaTypeOrExtent ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B6."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Geometry a owl:Class ;
     rdfs:label "Geometry"@en ;
@@ -75,7 +75,7 @@ apkg-rec:Geometry a owl:Class ;
     rdfs:subClassOf geo:Geometry ;
     skos:editorialNote "In v3 it also takes over the role of the Geo class of the Process module."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B7."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:IriTemplateMapping a owl:Class ;
     rdfs:label "IRI template mapping"@en ;
@@ -83,14 +83,14 @@ apkg-rec:IriTemplateMapping a owl:Class ;
     rdfs:subClassOf hydra:IriTemplateMapping ;
     rdfs:comment "Link templates are not used in v1 data; the class is kept for conformance with OGC API - Records."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B8."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Language a owl:Class ;
     rdfs:label "Language"@en ;
     skos:definition "Language used for textual values."@en ;
     rdfs:subClassOf dct:LinguisticSystem ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B9."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Link a owl:Class ;
     rdfs:label "Link"@en ;
@@ -98,27 +98,27 @@ apkg-rec:Link a owl:Class ;
     rdfs:subClassOf dcat:Relationship ;
     rdfs:comment "Inferred as prov:Influence (dcat:qualifiedRelation is a sub-property of prov:qualifiedInfluence)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B10."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:LinkTemplate a owl:Class ;
     rdfs:label "Link template"@en ;
     skos:definition "Link template related to a record."@en ;
     rdfs:subClassOf hydra:IriTemplate ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B11."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Phone a owl:Class ;
     rdfs:label "Phone"@en ;
     skos:definition "Telephone number at which contact can be made."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B12."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:Theme a owl:Class ;
     rdfs:label "Theme"@en ;
     skos:definition "A theme of the Record."@en ;
     rdfs:subClassOf bf:Topic ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B13."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 #################################################################
 # Properties
@@ -132,7 +132,7 @@ apkg-rec:conformsTo a owl:DatatypeProperty ;
     rdfs:comment "Values are OGC conformance class URIs, stored as strings in v1 data."@en ;
     skos:editorialNote "In v3 it becomes dct:conformsTo (dct:Standard)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.1."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hasAlternateLanguage a owl:ObjectProperty ;
     rdfs:label "has alternate language"@en ;
@@ -142,7 +142,7 @@ apkg-rec:hasAlternateLanguage a owl:ObjectProperty ;
     rdfs:seeAlso dct:language ;
     rdfs:comment "Not rdfs:subPropertyOf dct:language, which would infer alternate languages as the record language."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.1."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hasLinkTemplate a owl:ObjectProperty ;
     rdfs:label "has link template"@en ;
@@ -150,7 +150,7 @@ apkg-rec:hasLinkTemplate a owl:ObjectProperty ;
     rdfs:domain apkg-rec:Record ;
     rdfs:range apkg-rec:LinkTemplate ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.1."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:resourceType a owl:DatatypeProperty ;
     rdfs:label "resource type"@en ;
@@ -159,7 +159,7 @@ apkg-rec:resourceType a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:comment "Not dct:type, whose range rdfs:Class would turn the literal value into a class."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.2."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hasTheme a owl:ObjectProperty ;
     rdfs:label "has theme"@en ;
@@ -168,7 +168,7 @@ apkg-rec:hasTheme a owl:ObjectProperty ;
     rdfs:range apkg-rec:Theme ;
     rdfs:comment "A Theme groups concepts from one scheme (dcat:theme points to a single concept)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.2."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:resourceLanguage a owl:ObjectProperty ;
     rdfs:label "resource language"@en ;
@@ -178,7 +178,7 @@ apkg-rec:resourceLanguage a owl:ObjectProperty ;
     rdfs:seeAlso dct:language ;
     rdfs:comment "dct:language is already used for the language of the record."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.2."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:license a owl:DatatypeProperty ;
     rdfs:label "license"@en ;
@@ -188,7 +188,7 @@ apkg-rec:license a owl:DatatypeProperty ;
     rdfs:comment "v1 data holds a licence URL. Not dct:license, whose range dct:LicenseDocument requires an IRI."@en ;
     skos:editorialNote "In v3 it becomes dct:license with the licence as an IRI."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) A.1.2."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:contactPointType a owl:DatatypeProperty ;
     rdfs:label "contact point type"@en ;
@@ -201,7 +201,7 @@ apkg-rec:contactPointType a owl:DatatypeProperty ;
     rdfs:comment "Plain string values because of v1 data."@en ;
     skos:editorialNote "In v3, private and work can be expressed with the vCard types vcard:Home and vcard:Work (as rdf:type of the node)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B2; B5; B12."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hasLink a owl:ObjectProperty ;
     rdfs:label "has link"@en ;
@@ -209,7 +209,7 @@ apkg-rec:hasLink a owl:ObjectProperty ;
     rdfs:domain apkg-rec:Contact ;
     rdfs:range apkg-rec:Link ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B4."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hoursOfService a owl:DatatypeProperty ;
     rdfs:label "hours of service"@en ;
@@ -218,7 +218,7 @@ apkg-rec:hoursOfService a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:comment "Plain string because of v1 data. Not time:Interval, which is a single period in time, not a recurring schedule."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B4."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:contactInstructions a owl:DatatypeProperty ;
     rdfs:label "contact instructions"@en ;
@@ -227,7 +227,7 @@ apkg-rec:contactInstructions a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf vcard:note ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B4."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:geometryType a owl:DatatypeProperty ;
     rdfs:label "geometry type"@en ;
@@ -237,7 +237,7 @@ apkg-rec:geometryType a owl:DatatypeProperty ;
     rdfs:comment "GeoJSON geometry types (RFC 7946). Not geojson:type, which GeoJSON-LD maps to rdf:type."@en ;
     skos:editorialNote "In v3 type and coordinates become a single geo:asGeoJSON literal."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B7."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:coordinates a owl:DatatypeProperty ;
     rdfs:label "coordinates"@en ;
@@ -247,7 +247,7 @@ apkg-rec:coordinates a owl:DatatypeProperty ;
     rdfs:comment "The whole JSON array in a single string, because multiple RDF values are unordered and coordinate order defines the geometry. Lon-lat order (RFC 7946)."@en ;
     skos:editorialNote "In v3 type and coordinates become a single geo:asGeoJSON literal."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B7."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:alternateName a owl:DatatypeProperty ;
     rdfs:label "alternate name"@en ;
@@ -258,7 +258,7 @@ apkg-rec:alternateName a owl:DatatypeProperty ;
     rdfs:comment "Plain string because the language of the value is not given in v1 data."@en ;
     skos:editorialNote "In v3 it becomes skos:prefLabel with an explicit language tag."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B9."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:textDirection a owl:DatatypeProperty ;
     rdfs:label "text direction"@en ;
@@ -268,7 +268,7 @@ apkg-rec:textDirection a owl:DatatypeProperty ;
     rdfs:seeAlso its:dir ;
     rdfs:comment "Absence means ltr. No RDF term covers ttb/btt."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B9."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:href a owl:DatatypeProperty ;
     rdfs:label "href"@en ;
@@ -277,7 +277,7 @@ apkg-rec:href a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:editorialNote "In v3 it becomes dct:relation (target IRI)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B10."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:rel a owl:DatatypeProperty ;
     rdfs:label "relation type"@en ;
@@ -290,7 +290,7 @@ apkg-rec:rel a owl:DatatypeProperty ;
     rdfs:comment "IANA link relation types."@en ;
     skos:editorialNote "In v3 it becomes dcat:hadRole with IANA link relation IRIs (dcat:Role)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B10; B11."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:mediaType a owl:DatatypeProperty ;
     rdfs:label "media type"@en ;
@@ -299,7 +299,7 @@ apkg-rec:mediaType a owl:DatatypeProperty ;
     rdfs:comment "No rdfs:domain declared, so that it can be used by classes of both modules (apkg-rec and apkg-pro). The classes that use it are constrained in SHACL."@en ;
     skos:editorialNote "In v3 it becomes dcat:mediaType with IANA IRIs (dct:MediaType)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B6; B10; B11; D15."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hreflang a owl:ObjectProperty ;
     rdfs:label "href language"@en ;
@@ -310,7 +310,7 @@ apkg-rec:hreflang a owl:ObjectProperty ;
     ] ;
     rdfs:range apkg-rec:Language ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B10; B11."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:length a owl:DatatypeProperty ;
     rdfs:label "length"@en ;
@@ -322,7 +322,7 @@ apkg-rec:length a owl:DatatypeProperty ;
     rdfs:range xsd:nonNegativeInteger ;
     rdfs:comment "Not dcat:byteSize, to avoid inferring every link as dcat:Distribution."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B10; B11."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:profile a owl:DatatypeProperty ;
     rdfs:label "profile"@en ;
@@ -334,7 +334,7 @@ apkg-rec:profile a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:editorialNote "In v3 it becomes dct:conformsTo (dct:Standard)."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B10; B11."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:varBase a owl:DatatypeProperty ;
     rdfs:label "variable base"@en ;
@@ -343,7 +343,7 @@ apkg-rec:varBase a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     rdfs:comment "Literal, as OGC allows relative paths."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B11."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:hasConcept a owl:ObjectProperty ;
     rdfs:label "has concept"@en ;
@@ -351,7 +351,7 @@ apkg-rec:hasConcept a owl:ObjectProperty ;
     rdfs:domain apkg-rec:Theme ;
     rdfs:range apkg-rec:Concept ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B13."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
 
 apkg-rec:scheme a owl:DatatypeProperty ;
     rdfs:label "scheme"@en ;
@@ -361,4 +361,4 @@ apkg-rec:scheme a owl:DatatypeProperty ;
     rdfs:comment "Not skos:inScheme, which links a concept (not a theme) to a skos:ConceptScheme."@en ;
     skos:editorialNote "In v3 it becomes skos:inScheme on each Concept."@en ;
     skos:scopeNote "APKG-LDAP v2, Table(s) B13."@en ;
-    rdfs:isDefinedBy <http://w3id.org/apkg/v2/records> .
+    rdfs:isDefinedBy <http://w3id.org/apkg/v2/record> .
